@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: 프로젝트에 새로운 기능 추가
-title: "[Feature #00]"
+title: "[Feature]"
 labels: enhancement
 assignees: ''
 
