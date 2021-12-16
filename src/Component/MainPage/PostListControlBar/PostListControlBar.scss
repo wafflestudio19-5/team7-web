@@ -12,6 +12,7 @@
   .CategorySection{
     //border: solid;
     width: 14rem;
+    display: flex;
   }
 
   .TrendingButton{
@@ -34,16 +35,133 @@
     font-size: 1.5rem;
     margin-right: 0.5rem;
   }
+
+  .RecentButton{
+    width: 7rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: rgb(134, 142, 150);
+    height: 3rem;
+    margin: 0px;
+  }
+
+  .ClockIcon{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .PeriodSelectBox{
+    position: absolute;
+    top: 10px;
+    left: 260px;
+    background: white;
+    height: 2rem;
+    width: 6rem;
+    border-style: none;
+    border-radius: 4px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-weight: 600;
+    color: rgb(73, 80, 87);
+    font-size: 0.875rem;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 4px;
+    cursor: pointer;
+  }
+
+
 }
 
 @media(max-width: 1056px) {
   .PostListControlBar {
     position: absolute;
     top: 88px;
-    left: calc((100% - 1056px) / 2);
+    left: 16px;
     width: 1056px;
     height: 48px;
-    border: solid;
+    //border: solid;
     display: flex;
   }
+
+  .CategorySection{
+    //border: solid;
+    width: 14rem;
+    display: flex;
+  }
+
+  .TrendingButton{
+    width: 7rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: rgb(52, 58, 64);
+    font-weight: bold;
+    height: 3rem;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+  }
+
+  .TrendingIcon{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .RecentButton{
+    width: 7rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: rgb(134, 142, 150);
+    height: 3rem;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    margin: 0px;
+  }
+
+  .ClockIcon{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .PeriodSelectBox{
+    position: absolute;
+    top: 10px;
+    left: 260px;
+    background: white;
+    height: 2rem;
+    width: 6rem;
+    border-style: none;
+    border-radius: 4px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-weight: 600;
+    color: rgb(73, 80, 87);
+    font-size: 0.875rem;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 4px;
+    cursor: pointer;
+  }
+
+
 }
