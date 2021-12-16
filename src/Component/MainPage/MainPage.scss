@@ -1,9 +1,11 @@
 .mainpage{
 
+  position: absolute;
   margin: 0px;
   width: 100vw;
   height: 100vh;
-  background: rgb(220,255,230);
+  background-color: #f8f9fa;
+  overflow: scroll;
 
   .header{
     background: rgb(255,255,0);
