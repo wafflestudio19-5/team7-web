@@ -1,5 +1,4 @@
-.mainpage{
-
+.Mainpage{
   position: absolute;
   margin: 0px;
   width: 100vw;
@@ -7,43 +6,43 @@
   background-color: #f8f9fa;
   overflow: scroll;
 
-  .header{
-    background: rgb(255,255,0);
+  .Header{
+    background: rgb(224, 224, 108);
     position: absolute;
     top: 20px;
     left: 20px;
     right: 20px;
     height: 55px;
 
-    .logo{
+    .Logo{
       position: absolute;
       height: 100%;
       width: 5%;
       left: 10px;
 
-      .logo-img{
+      .Logo-Img{
         position: absolute;
         width: 100%;
         height: 100%;
       }
     }
-    .search{
+    .Search{
       position: absolute;
-      background: orange;
+      background: #deb975;
       height: 100%;
       width: 5%;
       right: 100px;
     }
-    .userprofile{
+    .UserProfile{
       position: absolute;
-      background: blue;
+      background: #6e6ed3;
       height: 100%;
       width: 5%;
       right:10px;
     }
-    .btn-login{
+    .Btn-Login{
       position: absolute;
-      background: pink;
+      background: #e3a4af;
       height: 100%;
       width: 5%;
       right:10px;
@@ -51,5 +50,37 @@
 
   }
 
+}
 
+@media(min-width: 1057px) {
+  .PostList {
+    position: absolute;
+    top: 160px;
+    left: calc((100% - 1056px) / 2);
+    width: 1056px;
+    height: auto;
+    //border: solid;
+    display: flex;
+    flex-direction: row; /* 왼쪽에서 오른쪽으로 나열되도록 설정 */
+    flex-wrap: wrap;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+  }
+}
+
+@media(max-width: 1056px) {
+  .PostList {
+    position: absolute;
+    top: 160px;
+    width: 100%;
+    height: auto;
+    //border: solid;
+    display: flex;
+    flex-direction: row; /* 왼쪽에서 오른쪽으로 나열되도록 설정 */
+    flex-wrap: wrap;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+  }
 }

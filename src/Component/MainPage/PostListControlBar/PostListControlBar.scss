@@ -1,0 +1,49 @@
+@media(min-width: 1057px) {
+  .PostListControlBar {
+    position: absolute;
+    top: 88px;
+    left: calc((100% - 1024px) / 2);
+    width: 1024px;
+    height: 48px;
+    //border: solid;
+    display: flex;
+  }
+
+  .CategorySection{
+    //border: solid;
+    width: 14rem;
+  }
+
+  .TrendingButton{
+    width: 7rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: rgb(52, 58, 64);
+    font-weight: bold;
+    height: 3rem;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+  }
+
+  .TrendingIcon{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media(max-width: 1056px) {
+  .PostListControlBar {
+    position: absolute;
+    top: 88px;
+    left: calc((100% - 1056px) / 2);
+    width: 1056px;
+    height: 48px;
+    border: solid;
+    display: flex;
+  }
+}
