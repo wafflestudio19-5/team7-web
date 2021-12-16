@@ -1,6 +1,9 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import MainPage from "./Component/MainPage/MainPage";
+import SearchPage from "./Component/SearchPage/SearchPage";
 
 function App() {
     const [tempPong, setTempPong] = useState(false);
@@ -19,10 +22,13 @@ function App() {
     }
 
     return (
-        <div className={"App"}>
-            <h1>Hello World!</h1>
-            <h1 onClick={pingPong}> {tempPong ? "Ping" : "Pong"} </h1>
-        </div>
+        <BrowserRouter>
+            <Switch>
+                <Route path="/search" component={SearchPage} exact={true}></Route>
+                <Route path="" component={MainPage} exact={true}></Route>
+                <Redirect to=""></Redirect>
+            </Switch>
+        </BrowserRouter>
     );
 }
 

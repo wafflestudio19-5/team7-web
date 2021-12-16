@@ -1,0 +1,68 @@
+.searchpage {
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: #dcffe6;
+}
+.searchpage .header {
+  background: yellow;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 55px;
+}
+.searchpage .header .logo {
+  position: absolute;
+  height: 100%;
+  width: 5%;
+  left: 10px;
+}
+.searchpage .header .logo .logo-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.searchpage .header .search {
+  position: absolute;
+  background: orange;
+  height: 100%;
+  width: 5%;
+  right: 100px;
+}
+.searchpage .header .goback {
+  position: absolute;
+  background: fuchsia;
+  height: 100%;
+  width: 5%;
+  right: 200px;
+}
+.searchpage .header .userprofile {
+  position: absolute;
+  background: blue;
+  height: 100%;
+  width: 5%;
+  right: 10px;
+}
+.searchpage .header .btn-login {
+  position: absolute;
+  background: pink;
+  height: 100%;
+  width: 5%;
+  right: 10px;
+}
+.searchpage .searchbox {
+  background: #61dafb;
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  right: 20px;
+  height: 55px;
+}
+.searchpage .searchbox .search-input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+/*# sourceMappingURL=SearchPage.css.map */
