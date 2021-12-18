@@ -24,7 +24,9 @@ const SearchPage = () => {
             <Header/>
             <div className="searchbox">
                 <IoIosSearch className="searchpage-icon" color/>
-                <input className="search-input" placeholder="검색어를 입력하세요" value={tag} onChange={(e) => setTag(e.target.value)}/>
+                <div className="search-input-box">
+                    <input className="search-input" placeholder="검색어를 입력하세요" value={tag} onChange={(e) => setTag(e.target.value)}/>
+                </div>
             </div>
         </div>
     )

@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="merged two to one">
-      <change afterPath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.scss" afterDir="false" />
     </list>
@@ -91,7 +85,7 @@
       <updated>1639678404071</updated>
       <workItem from="1639678406065" duration="2803000" />
       <workItem from="1639828719582" duration="32000" />
-      <workItem from="1639829636329" duration="5143000" />
+      <workItem from="1639829636329" duration="6023000" />
     </task>
     <task id="LOCAL-00001" summary="checkout branch">
       <created>1639678608563</created>

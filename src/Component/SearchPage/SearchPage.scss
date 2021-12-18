@@ -20,14 +20,21 @@
     height: 70px;
     border: 2px solid gainsboro;
 
+    .search-input-box{
+      position: absolute;
+      font-size: 30px;
+      left: 80px;
+      right: 10px;
+      height: 65px;
+    }
+
     .search-input{
       position: absolute;
       font-size: 30px;
-      right: 1px;
+      width: 100%;
       height: 65px;
-      width: 770px;
-      outline: none;
       border: none;
+      outline: none;
     }
   }
 
