@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="merged two to one">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +42,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
@@ -51,6 +55,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar" />
       <recent name="$PROJECT_DIR$/src/Component/MainPage/PostItem" />
     </key>
@@ -79,6 +84,8 @@
       <option name="presentableId" value="Default" />
       <updated>1639678404071</updated>
       <workItem from="1639678406065" duration="2803000" />
+      <workItem from="1639828719582" duration="32000" />
+      <workItem from="1639829636329" duration="6023000" />
     </task>
     <task id="LOCAL-00001" summary="checkout branch">
       <created>1639678608563</created>
@@ -110,6 +117,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="checkout branch" />

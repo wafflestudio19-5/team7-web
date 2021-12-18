@@ -3,6 +3,7 @@ import './MainPage.scss';
 import {useHistory} from "react-router-dom";
 import PostItem from "./PostItem/PostItem";
 import PostListControlBar from "./PostListControlBar/PostListControlBar";
+import Header from "./Header/Header";
 
 
 // 더미 데이터
@@ -72,33 +73,10 @@ const dummyData = [
 
 const MainPage = () => {
 
-    const [isLogin, setIsLogin] = useState(false);
-    const history = useHistory();
-
-    const handleLogin = () => {
-        setIsLogin(!isLogin);
-    }
-    const handleSearch = () => {
-        history.push('/search');
-    }
-    const handleLogo = () => {
-        history.replace("");
-    }
-
     return (
         <div className="Mainpage">
 
-            <div className="Header">
-                <a className="Logo" onClick={handleLogo} target="_blank">
-                    <img className="Logo-Img"
-                         src="https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75"
-                         alt="waffle_studio"/>
-                </a>
-                <div className="Search" onClick={handleSearch}>검색</div>
-                {isLogin ? <div className="UserProfile" onClick={handleLogin}>로그아웃</div> :
-                    <div className="Btn-Login" onClick={handleLogin}>로그인</div>}
-            </div>
-
+            <Header/>
             <PostListControlBar/>
 
             <ul className={"PostList"}>
