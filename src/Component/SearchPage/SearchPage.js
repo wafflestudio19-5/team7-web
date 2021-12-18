@@ -1,6 +1,9 @@
 import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import './SearchPage.scss';
+import Header from '../MainPage/Header/Header';
+import { IoIosSearch } from "react-icons/io";
+
 
 const SearchPage = () => {
 
@@ -14,17 +17,14 @@ const SearchPage = () => {
         history.replace("");
     }
 
+    const [tag, setTag] = useState('');
+
     return(
         <div className="searchpage">
-            <div className="header">
-                <a className="logo" onClick={handleLogo} target="_blank">
-                    <img className="logo-img" src="https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75" alt="waffle_studio"/>
-                </a>
-                <div className="goback" onClick={handleLogo}>뒤로가기</div>
-                {isLogin ? <div className="userprofile" onClick={handleLogin}>로그아웃</div> : <div className="btn-login" onClick={handleLogin}>로그인</div>}
-            </div>
+            <Header/>
             <div className="searchbox">
-                <input className="search-input" value={"기다려주세오"}/>
+                <IoIosSearch className="searchpage-icon" color/>
+                <input className="search-input" placeholder="검색어를 입력하세요" value={tag} onChange={(e) => setTag(e.target.value)}/>
             </div>
         </div>
     )

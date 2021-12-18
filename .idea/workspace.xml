@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="merged two to one">
+      <change afterPath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -53,6 +61,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar" />
       <recent name="$PROJECT_DIR$/src/Component/MainPage/PostItem" />
     </key>
@@ -82,6 +91,7 @@
       <updated>1639678404071</updated>
       <workItem from="1639678406065" duration="2803000" />
       <workItem from="1639828719582" duration="32000" />
+      <workItem from="1639829636329" duration="5143000" />
     </task>
     <task id="LOCAL-00001" summary="checkout branch">
       <created>1639678608563</created>
