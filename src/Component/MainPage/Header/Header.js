@@ -2,6 +2,8 @@ import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import "./Header.scss";
 import { FaSearch } from "react-icons/fa";
+import LoginModal from "../../LoginModal/LoginModal";
+
 
 const Header = () => {
 
@@ -9,7 +11,7 @@ const Header = () => {
     const history = useHistory();
 
     const handleLogin = () => {
-        setIsLogin(!isLogin);
+        setIsOpen(true);
     }
     const handleSearch = () => {
         history.push('/search');
@@ -17,6 +19,8 @@ const Header = () => {
     const handleLogo = () => {
         history.replace("");
     }
+    
+    const [isOpen, setIsOpen] = useState(false);
 
     return(
         <div className="Header">
@@ -27,7 +31,8 @@ const Header = () => {
             </a>
             <div className="maintitle" onClick={handleLogo}>Walog</div>
             <FaSearch className="search-icon" onClick={handleSearch}/>
-            <button className="btn-login">로그인</button>
+            <button className="btn-login" onClick={handleLogin}>로그인</button>
+            <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
         </div>
     )
 }

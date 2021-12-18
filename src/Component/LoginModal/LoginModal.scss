@@ -1,0 +1,119 @@
+.login-modal{
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 300px);
+  height: 50%;
+  width: 600px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  WebkitOverflowScrolling: touch;
+  outline: none;
+  padding: 20px;
+  animation: 0.4s ease-in-out 0s 1 normal forwards running hwrkPK;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+
+  .login-modal-title{
+    position: absolute;
+    top: 15px;
+    left: 30px;
+  }
+  .login-modal-email{
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    color: rgb(134, 142, 150);
+    font-size: 18px;
+  }
+  .login-modal-inputbox{
+    position: absolute;
+    top: 150px;
+    left:0px;
+    width: 100%;
+    height: 35px;
+
+    .login-modal-input{
+      position: absolute;
+      top:0px;
+      left: 30px;
+      width: 400px;
+      height: 60%;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      padding: 1rem;
+      font-size: 1rem;
+      border-top: 1px solid rgb(222, 226, 230);
+      border-bottom: 1px solid rgb(222, 226, 230);
+      border-left: 1px solid rgb(222, 226, 230);
+      border-image: initial;
+      border-right: none;
+    }
+
+    .login-modal-btn{
+      position: absolute;
+      top: 0px;
+      left: 463px;
+      width: 100px;
+      height: 55px;
+      background: rgb(18, 184, 134);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      outline: none;
+      border: none;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      width: 6rem;
+      word-break: keep-all;
+      cursor: pointer;
+    }
+  }
+  .login-modal-social{
+    position: absolute;
+    top: 230px;
+    left: 30px;
+    color: rgb(134, 142, 150);
+    font-size: 18px;
+  }
+
+  .login-github{
+    position: absolute;
+    left: 30px;
+    top: 300px;
+    height: 50px;
+    width: 50px;
+  }
+  .login-google{
+    position: absolute;
+    left: 150px;
+    top: 300px;
+    height: 50px;
+    width: 50px;
+  }
+  .login-facebook{
+    position: absolute;
+    left: 270px;
+    top: 300px;
+    height: 50px;
+    width: 50px;
+  }
+
+  .github-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .google-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .facebook-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
