@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import "./Header.scss";
-import { GoSearch } from "react-icons/go";
+import { IoSearchOutline } from "react-icons/io5";
 import LoginModal from "../../LoginModal/LoginModal";
 import "@fontsource/source-code-pro";
 
@@ -31,7 +31,7 @@ const Header = () => {
                      alt="waffle_studio"/>
             </a>
             <div className="main-title" onClick={handleLogo}>walog</div>
-            <GoSearch className="search-icon" onClick={handleSearch}/>
+            <IoSearchOutline className="search-icon" onClick={handleSearch}/>
             <button className="btn-write" onClick={handleLogin}>새 글 작성</button>
             <button className="btn-login" onClick={handleLogin}>로그인</button>
             <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
