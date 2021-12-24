@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import "./Header.scss";
-import { FaSearch } from "react-icons/fa";
+import { IoSearchOutline } from "react-icons/io5";
 import LoginModal from "../../LoginModal/LoginModal";
+import "@fontsource/source-code-pro";
 
 
 const Header = () => {
@@ -23,14 +24,15 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return(
-        <div className="Header">
-            <a className="Logo" onClick={handleLogo} target="_blank">
-                <img className="Logo-Img"
+        <div className="header">
+            <a className="logo" onClick={handleLogo} target="_blank">
+                <img className="logo-img"
                      src="https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75"
                      alt="waffle_studio"/>
             </a>
-            <div className="maintitle" onClick={handleLogo}>Walog</div>
-            <FaSearch className="search-icon" onClick={handleSearch}/>
+            <div className="main-title" onClick={handleLogo}>walog</div>
+            <IoSearchOutline className="search-icon" onClick={handleSearch}/>
+            <button className="btn-write" onClick={handleLogin}>새 글 작성</button>
             <button className="btn-login" onClick={handleLogin}>로그인</button>
             <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
         </div>
