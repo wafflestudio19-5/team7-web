@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="backend connection test">
+    <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="api connection complete, recent page made">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +101,7 @@
       <workItem from="1640343471765" duration="239000" />
       <workItem from="1640344653160" duration="13594000" />
       <workItem from="1640438021449" duration="1869000" />
-      <workItem from="1640439897481" duration="3931000" />
+      <workItem from="1640439897481" duration="6183000" />
     </task>
     <task id="LOCAL-00001" summary="checkout branch">
       <created>1639678608563</created>
@@ -179,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640438425256</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="api connection complete, recent page made">
+      <created>1640446366371</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1640446366371</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +207,7 @@
     <MESSAGE value="search icon changed" />
     <MESSAGE value="search icon shadow" />
     <MESSAGE value="backend connection test" />
-    <option name="LAST_COMMIT_MESSAGE" value="backend connection test" />
+    <MESSAGE value="api connection complete, recent page made" />
+    <option name="LAST_COMMIT_MESSAGE" value="api connection complete, recent page made" />
   </component>
 </project>
