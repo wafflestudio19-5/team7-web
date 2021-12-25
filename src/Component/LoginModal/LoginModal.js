@@ -8,6 +8,8 @@ const LoginModal = ( props ) => {
     
     const [emailInput, setEmailInput] = useState("");
 
+    Modal.setAppElement('#root');
+
     return(
         <Modal className="login-modal" isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
             <h1 className="login-modal-title">로그인</h1>

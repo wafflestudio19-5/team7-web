@@ -6,6 +6,7 @@ import MainPage from "./Component/MainPage/MainPage";
 import SearchPage from "./Component/SearchPage/SearchPage";
 
 function App() {
+
     const [tempPong, setTempPong] = useState(false);
 
     const pingPong = () => {
