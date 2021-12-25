@@ -1,6 +1,5 @@
-import {useEffect, useState} from "react";
-import axios from "axios";
-import './MainPage.scss';
+import {useState} from "react";
+import './RecentPage.scss';
 import {useHistory} from "react-router-dom";
 import PostItem from "./PostItem/PostItem";
 import PostListControlBar from "./PostListControlBar/PostListControlBar";
@@ -8,7 +7,7 @@ import Header from "./Header/Header";
 
 
 // 더미 데이터
-const dummyData = [
+const dummyData2 = [
     {
         id: 1,
         title: "2021 나만의 도시 여행기",
@@ -72,26 +71,7 @@ const dummyData = [
 ];
 
 
-const MainPage = () => {
-
-    useEffect(() => {
-        axios
-            .get(
-                "http://13.124.30.252/ping",
-                // {
-                //     date: 0
-                // }
-            )
-            .then((response) => {
-                console.log(response);
-
-            })
-            .catch((error) => {
-
-            });
-    }, []);
-
-
+const RecentPage = () => {
 
     return (
         <div className="Mainpage">
@@ -100,7 +80,7 @@ const MainPage = () => {
             <PostListControlBar/>
 
             <ul className={"PostList"}>
-                {dummyData.map((item) => (
+                {dummyData2.map((item) => (
                     <PostItem item={item} key={item.id} />
                 ))}
             </ul>
@@ -110,4 +90,4 @@ const MainPage = () => {
     )
 }
 
-export default MainPage;
+export default RecentPage;
