@@ -77,24 +77,27 @@ const MainPage = () => {
     useEffect(() => {
         axios
             .get(
-                "http://13.124.30.252/ping",
-                // {
-                //     date: 0
-                // }
+                "http://waflog.kro.kr/api/v1/post/trend/",
+                {
+                    params: {
+                        page: 0
+                    },
+                    date: 0
+                }
             )
             .then((response) => {
                 console.log(response);
 
             })
             .catch((error) => {
+                console.log(error);
 
             });
     }, []);
-
-
+    
 
     return (
-        <div className="Mainpage">
+        <div className="mainpage">
 
             <Header/>
             <PostListControlBar/>

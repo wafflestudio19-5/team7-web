@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="search icon shadow">
-      <change afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/WritePage/WritePage.scss" afterDir="false" />
+    <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="backend connection test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WritePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +45,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/MainPage/MainPage.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="22NWDG32KnTRRAf0CEwhsSqz5UY" />
@@ -101,7 +106,8 @@
       <workItem from="1639829636329" duration="6023000" />
       <workItem from="1640343471765" duration="239000" />
       <workItem from="1640344653160" duration="13594000" />
-      <workItem from="1640438021449" duration="335000" />
+      <workItem from="1640438021449" duration="1869000" />
+      <workItem from="1640439897481" duration="3931000" />
     </task>
     <task id="LOCAL-00001" summary="checkout branch">
       <created>1639678608563</created>
@@ -166,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640275918954</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="backend connection test">
+      <created>1640438425256</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1640438425256</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +205,7 @@
     <MESSAGE value="postlist top position changed" />
     <MESSAGE value="search icon changed" />
     <MESSAGE value="search icon shadow" />
-    <option name="LAST_COMMIT_MESSAGE" value="search icon shadow" />
+    <MESSAGE value="backend connection test" />
+    <option name="LAST_COMMIT_MESSAGE" value="backend connection test" />
   </component>
 </project>
