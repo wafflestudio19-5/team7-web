@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import './MainPage.scss';
-import {useHistory} from "react-router-dom";
 import PostItem from "./PostItem/PostItem";
 import PostListControlBar from "./PostListControlBar/PostListControlBar";
 import Header from "./Header/Header";
@@ -74,6 +73,8 @@ const dummyData = [
 
 const MainPage = () => {
 
+    const [trendPeriod, setTrendPeriod] = useState(7);
+
     useEffect(() => {
         axios
             .get(
@@ -82,7 +83,7 @@ const MainPage = () => {
                     params: {
                         page: 0
                     },
-                    date: 0
+                    date: trendPeriod
                 }
             )
             .then((response) => {
@@ -94,13 +95,16 @@ const MainPage = () => {
 
             });
     }, []);
-    
+
 
     return (
         <div className="mainpage">
 
             <Header/>
-            <PostListControlBar/>
+            <PostListControlBar
+                trendPeriod = {trendPeriod}
+                setTrendPeriod = {setTrendPeriod}
+            />
 
             <ul className={"PostList"}>
                 {dummyData.map((item) => (
