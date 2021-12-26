@@ -1,30 +1,69 @@
 import "./PostListControlBar.scss";
+import { useHistory } from "react-router-dom";
 import { IoMdTrendingUp } from "react-icons/io";
 import { FiClock } from "react-icons/fi";
 
-const PostListControlBar = () => {
+const PostListControlBar = ({ trendPeriod, setTrendPeriod }) => {
+  const history = useHistory();
+
+  const handleTrending = () => {
+    history.push("");
+  };
+  const handleRecent = () => {
+    history.replace("/recent");
+  };
+
+  const handlePeriod = () => {
+    const langSelect = document.getElementById("PeriodSelectBox");
+    // select element에서 선택된 option의 value가 저장된다.
+    const selectValue = langSelect.options[langSelect.selectedIndex].value;
+    // select element에서 선택된 option의 text가 저장된다.
+    const selectText = langSelect.options[langSelect.selectedIndex].text;
+    setTrendPeriod(selectValue);
+    console.log(selectValue);
+  };
+
   return (
     <div className={"PostListControlBar"}>
       <div className={"CategorySection"}>
-        <a className={"TrendingButton"}>
+        <a
+          className={
+            window.location.pathname === "/"
+              ? "TrendingButton"
+              : "TrendingButton-unselected"
+          }
+          onClick={handleTrending}
+        >
           <IoMdTrendingUp className={"TrendingIcon"} /> 트렌딩
         </a>
-        <a className={"RecentButton"}>
+        <a
+          className={
+            window.location.pathname === "/recent"
+              ? "RecentButton"
+              : "RecentButton-unselected"
+          }
+          onClick={handleRecent}
+        >
           <FiClock className={"ClockIcon"} /> 최신
         </a>
       </div>
 
       <select
-          className={"PeriodSelectBox"}
-          name="Period"
+        id={"PeriodSelectBox"}
+        className={
+          window.location.pathname === "/"
+            ? "PeriodSelectBox"
+            : "PeriodSelectBox-hidden"
+        }
+        name="Period"
+        defaultValue={"7"}
+        onChange={handlePeriod}
       >
-          <option value="today">오늘</option>
-        <option value="week" selected>이번 주</option>
-        <option value="month">이번 달</option>
-        <option value="year">올해</option>
+        <option value="0">오늘</option>
+        <option value="7">이번 주</option>
+        <option value="30">이번 달</option>
+        <option value="365">올해</option>
       </select>
-
-
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import './MainPage.scss';
-import {useHistory} from "react-router-dom";
 import PostItem from "./PostItem/PostItem";
 import PostListControlBar from "./PostListControlBar/PostListControlBar";
 import Header from "./Header/Header";
@@ -74,30 +73,38 @@ const dummyData = [
 
 const MainPage = () => {
 
+    const [trendPeriod, setTrendPeriod] = useState(7);
+
     useEffect(() => {
         axios
             .get(
-                "http://13.124.30.252/ping",
-                // {
-                //     date: 0
-                // }
+                "http://waflog.kro.kr/api/v1/post/trend/",
+                {
+                    params: {
+                        page: 0
+                    },
+                    date: trendPeriod
+                }
             )
             .then((response) => {
                 console.log(response);
 
             })
             .catch((error) => {
+                console.log(error);
 
             });
     }, []);
 
 
-
     return (
-        <div className="Mainpage">
+        <div className="mainpage">
 
             <Header/>
-            <PostListControlBar/>
+            <PostListControlBar
+                trendPeriod = {trendPeriod}
+                setTrendPeriod = {setTrendPeriod}
+            />
 
             <ul className={"PostList"}>
                 {dummyData.map((item) => (
