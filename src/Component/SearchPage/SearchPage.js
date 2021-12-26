@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import './SearchPage.scss';
 import Header from '../MainPage/Header/Header';
 import { IoIosSearch } from "react-icons/io";
+import SearchItem from './SearchItem/SearchItem';
 
 import dummyData from '../DummyData.js';
 import PostItem from '../MainPage/PostItem/PostItem'
@@ -59,10 +60,10 @@ const SearchPage = () => {
                     <input className="search-input" placeholder="검색어를 입력하세요" value={tag} onChange={handleInput}/>
                 </div>
             </div>
-            {isSearching ? <div>총 {filtedNumber}개의 포스트를 찾았습니다.</div> : <div>검색결과가 없습니다.</div> }
-            <ul className={"PostList"}>
+            {isSearching ? <div className="search-info">총 {filtedNumber}개의 포스트를 찾았습니다.</div> : <div className="search-info">검색결과가 없습니다.</div> }
+            <ul className="search-list">
                 {filtedPost.map((item) => (
-                    <PostItem item={item} key={item.id} />
+                    <SearchItem item={item} key={item.id} />
                 ))}
             </ul>
         </div>
