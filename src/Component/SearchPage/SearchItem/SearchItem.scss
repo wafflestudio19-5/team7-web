@@ -1,0 +1,86 @@
+@media (min-width: 769px) {
+  .search-item{
+    width: 768px;
+    height: auto;
+    left: calc((100% - 768px) / 2);
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid gainsboro;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-item{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+    font-size: 25px;
+    border-bottom: 2px solid gainsboro;
+  }
+}
+
+.user-info{
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .user-profile{
+    width: 70px;
+    height: auto;
+  }
+  .user-name{
+    height: auto;
+    width: auto;
+    font-size: 1.1rem;
+    color: rgb(33, 37, 41);
+    font-weight: bold;
+    margin-left: 25px;
+  }
+}
+
+.thumbnail{
+  height: auto;
+  width: 100%;
+  .thumbnail-img{
+    height: auto;
+    width: 100%;
+  }
+}
+
+.title{
+  height: auto;
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.summary{
+  height: auto;
+  font-size: 16px;
+  color: rgb(73, 80, 87);
+  width: 100%;
+}
+
+.tags{
+  height: 50px;
+  width: 100%;
+}
+
+.sub-info{
+  height: auto;
+  width: 100%;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
