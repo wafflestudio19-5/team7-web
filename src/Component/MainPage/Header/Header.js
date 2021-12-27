@@ -17,6 +17,9 @@ const Header = () => {
     const handleSearch = () => {
         history.replace('/search');
     }
+    const handleWrite = () => {
+        history.replace('/write');
+    }
     const handleLogo = () => {
         history.replace("");
     }
@@ -32,7 +35,7 @@ const Header = () => {
             </a>
             <div className="main-title" onClick={handleLogo}>Walog</div>
             <IoSearchOutline className="search-icon" onClick={handleSearch}/>
-            <button className="btn-write" onClick={handleLogin}>새 글 작성</button>
+            <button className="btn-write" onClick={handleWrite}>새 글 작성</button>
             <button className="btn-login" onClick={handleLogin}>로그인</button>
             <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
         </div>
