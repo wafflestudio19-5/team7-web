@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment=".DS_store removed">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
+    <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="writepage toast ui fail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +103,7 @@
       <workItem from="1640344653160" duration="13594000" />
       <workItem from="1640438021449" duration="1869000" />
       <workItem from="1640439897481" duration="6183000" />
+      <workItem from="1640597735346" duration="1165000" />
     </task>
     <task id="LOCAL-00001" summary="checkout branch">
       <created>1639678608563</created>
@@ -195,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640590611579</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="writepage toast ui fail">
+      <created>1640597903154</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1640597903154</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +225,8 @@
     <MESSAGE value="backend connection test" />
     <MESSAGE value="api connection complete, recent page made" />
     <MESSAGE value=".DS_store removed" />
-    <option name="LAST_COMMIT_MESSAGE" value=".DS_store removed" />
+    <MESSAGE value="writepage toast ui fail" />
+    <option name="LAST_COMMIT_MESSAGE" value="writepage toast ui fail" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
