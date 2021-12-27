@@ -12,7 +12,7 @@ function App() {
     const [tempPong, setTempPong] = useState(false);
 
     const pingPong = () => {
-        axios.get("http://13.124.30.252/ping/", {})
+        axios.get("https://waflog.kro.kr/ping", {})
             .then((res) => {
                 console.log(res.data.pong);
                 if(res.data.pong === true){
