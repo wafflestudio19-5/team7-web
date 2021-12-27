@@ -78,7 +78,7 @@ const MainPage = () => {
     useEffect(() => {
         axios
             .get(
-                "http://13.124.30.252/api/v1/post/trend/",
+                "https://waflog.kro.kr/api/v1/post/trend",
                 {
                     params: {
                         page: 0

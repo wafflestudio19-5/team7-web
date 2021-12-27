@@ -41,7 +41,7 @@ const RecentPage = () => {
     useEffect(() => {
         axios
             .get(
-                "http://waflog.kro.kr/api/v1/post/recent/",
+                "https://waflog.kro.kr/api/v1/post/recent",
                 {
                     params: {
                         page: 0
