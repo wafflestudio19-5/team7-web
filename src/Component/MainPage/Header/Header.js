@@ -15,13 +15,13 @@ const Header = () => {
         setIsOpen(true);
     }
     const handleSearch = () => {
-        history.replace('/search');
+        history.push('/search');
     }
     const handleWrite = () => {
-        history.replace('/write');
+        history.push('/write');
     }
     const handleLogo = () => {
-        history.replace("");
+        history.push("");
     }
     
     const [isOpen, setIsOpen] = useState(false);
