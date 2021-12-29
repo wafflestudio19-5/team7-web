@@ -6,6 +6,7 @@ import MainPage from "./Component/MainPage/MainPage";
 import SearchPage from "./Component/SearchPage/SearchPage";
 import RecentPage from "./Component/RecentPage/RecentPage";
 import WritePage from "./Component/WritePage/WritePage";
+import ErrorPage from "./Component/ErrorPage/ErrorPage";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/search" component={SearchPage} exact={true}/>
                 <Route path="/recent" component={RecentPage} exact={true}/>
                 <Route path="/write" component={WritePage} exact={true}/>
+                <Route path="/error" component={ErrorPage} exact={true}/>
                 <Route path="" component={MainPage} exact={true}/>
                 <Redirect to=""/>
             </Switch>
