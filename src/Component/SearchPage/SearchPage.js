@@ -1,58 +1,88 @@
 import {useHistory, useParams, useLocation} from "react-router-dom";
-import {useEffect, useState} from "react";
+import axios from "axios";
+import {useEffect, useState, useRef} from "react";
 import './SearchPage.scss';
 import Header from '../MainPage/Header/Header';
 import { IoIosSearch } from "react-icons/io";
 import SearchItem from './SearchItem/SearchItem';
-
-import dummyData from '../DummyData.js';
-import PostItem from '../MainPage/PostItem/PostItem'
 
 const SearchPage = () => {
 
     const history = useHistory();
     const {search} = useLocation();
     const params = new URLSearchParams(search);
-
-    const [isLogin,setIsLogin] = useState(false);
-    const [tag, setTag] = useState(params.get('q'));
-    //이거 때문에 warning 많이 뜨는데 백엔드랑 연결하면 상수로 고정시킬수 있을것 같습니다.
-    const [searchData, setSearchData] = useState(null);
+    const searchPageRef = useRef({});
+    
+    const [tag, setTag] = useState(`${params.get('q')}`);
+    const [searchData, setSearchData] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
     const [filtedNumber, setFiltedNumber] = useState(0);
-
-    const handleLogin = () => {
-        setIsLogin(!isLogin);
-    }
-    const handleLogo = () => {
-        history.replace("");
-    }
+    const [searchPageNumber, setSearchPageNumber] = useState(0);
+    
     const handleInput = (e) => {
         setTag(e.target.value);
         history.replace(`/search?q=${e.target.value}`);
     }
 
-    const filtedPost = dummyData.filter(function (elements){
-        if(params.get('q') === null || params.get('q').length === 0){
-            return null;
-        }
-        return (typeof elements.summary == "string" && elements.summary.indexOf(params.get('q')) > -1);
-    });
-
     useEffect(() => {
-        if(filtedPost === null || tag === null || tag === "" || tag.length === 0){
+        if(searchData === null || tag === null || tag === "" || tag.length === 0){
             setIsSearching(false);
             setTag("");
         }
         else{
             setIsSearching(true);
-            setFiltedNumber(filtedPost.length);
+            setFiltedNumber(searchData.length);
             setTag(params.get('q'));
         }
     },[params]);
 
+    useEffect(() => {
+        axios
+            .get(`https://waflog.kro.kr/api/v1/post/search`, {
+                params: {
+                    keyword: tag,
+                    page: 0,
+                },
+            })
+            .then((response) => {
+                console.log(response.data.content);
+                setSearchData(response.data.content);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [tag]);
+
+    const handleScroll = () => {
+        const scrollTop = searchPageRef.current.scrollTop;
+        const scrollHeight = searchPageRef.current.scrollHeight;
+        const clientHeight = searchPageRef.current.clientHeight;
+
+        if (scrollHeight - scrollTop - clientHeight === 0) {
+            if (!(searchPageNumber === null)) {
+                axios
+                    .get("https://waflog.kro.kr/api/v1/post/search", {
+                        params: {
+                            keyword: tag,
+                            page: searchPageNumber,
+                        },
+                    })
+                    .then((response) => {
+                        setSearchData(searchData.concat(response.data.content));
+                        if (response.data.last === true) {
+                            setSearchPageNumber(null);
+                        } else {
+                            setSearchPageNumber(searchPageNumber + 1);
+                        }
+                        console.log(searchData);
+                        console.log(searchPageNumber);
+                    });
+            }
+        }
+    };
+
     return(
-        <div className="searchpage">
+        <div className="searchpage" ref={searchPageRef} onScroll={handleScroll}>
             <Header/>
             <div className="searchbox">
                 <IoIosSearch className="searchpage-icon" color/>
@@ -62,7 +92,7 @@ const SearchPage = () => {
             </div>
             {isSearching ? <div className="search-info">총 {filtedNumber}개의 포스트를 찾았습니다.</div> : <div className="search-info">검색결과가 없습니다.</div> }
             <ul className="search-list">
-                {filtedPost.map((item) => (
+                {searchData.map((item) => (
                     <SearchItem item={item} key={item.id} />
                 ))}
             </ul>
