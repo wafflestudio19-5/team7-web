@@ -19,26 +19,27 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 const WritePage = () => {
 
+    const titleRef = createRef();
     const editorRef = createRef();
 
     const onChangeEditorTextHandler = () => {
+        console.log("제목");
+        console.log("내용");
         console.log(editorRef.current.getInstance().getMarkdown());
     }
 
     return (
         <div>
-            <div className="title-warp">
-                <textarea
-                    type="title"
-                    placeholder="제목을 입력하세요."
-                    className="title-style"
-                ></textarea>
-            </div>
+            <textarea
+                placeholder="제목을 입력하세요."
+                className="title-style"
+                ref={titleRef}
+            />
             <Editor
                 previewStyle="vertical"
-                height="79vh"
+                height="85vh"
                 initialEditType="markdown"
-                initialValue={`# H스타일\n * 목록 스타일\n `}
+                placeholder="내용을 입력하세요."
                 ref={editorRef}
                 plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
                 onChange={onChangeEditorTextHandler}

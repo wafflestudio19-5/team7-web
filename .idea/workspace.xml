@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="cloudfront test">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" afterDir="false" />
+=======
       <change afterPath="$PROJECT_DIR$/src/Component/ErrorPage/ErrorPage.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Component/ErrorPage/ErrorPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -12,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" afterDir="false" />
+>>>>>>> 819e72887e73375a7fcde8a38537419f831869ca
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +50,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/App.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/MainPage/MainPage.js" root0="FORCE_HIGHLIGHTING" />
@@ -110,7 +116,7 @@
       <workItem from="1640438021449" duration="1869000" />
       <workItem from="1640439897481" duration="6183000" />
       <workItem from="1640597735346" duration="2876000" />
-      <workItem from="1640617668572" duration="213000" />
+      <workItem from="1640617668572" duration="2548000" />
     </task>
     <task id="LOCAL-00001" summary="checkout branch">
       <created>1639678608563</created>
