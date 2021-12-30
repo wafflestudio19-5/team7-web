@@ -85,13 +85,20 @@ const MainPage = () => {
       .get("https://waflog.kro.kr/api/v1/post/trend", {
         params: {
           page: 0,
-        },
-        date: trendPeriod,
+          size: 4,
+          date: trendPeriod
+        }
       })
       .then((response) => {
-        console.log(response.data.content);
-        setTrendingPostList(response.data.content);
         console.log(response);
+        setTrendingPostList(response.data.content);
+
+        if (response.data.last === true) {
+          setTrendingPostPage(null);
+        }
+        else{
+          setTrendingPostPage(1);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -106,13 +113,16 @@ const MainPage = () => {
     const clientHeight = trendingPostRef.current.clientHeight;
 
     if (scrollHeight - scrollTop - clientHeight === 0) {
+      console.log("BOTTOM!!!!!")
+      console.log(trendingPostPage);
       if (!(trendingPostPage === null)) {
         axios
           .get("https://waflog.kro.kr/api/v1/post/trend", {
             params: {
               page: trendingPostPage,
-            },
-            date: trendPeriod
+              size: 4,
+              date: trendPeriod
+            }
           })
           .then((response) => {
             setTrendingPostList(trendingPostList.concat(response.data.content));
@@ -121,8 +131,7 @@ const MainPage = () => {
             } else {
               setTrendingPostPage(trendingPostPage + 1);
             }
-            console.log(trendingPostList);
-            console.log(trendingPostPage);
+            console.log(response);
           });
       }
     }
@@ -134,10 +143,11 @@ const MainPage = () => {
       <PostListControlBar
         trendPeriod={trendPeriod}
         setTrendPeriod={setTrendPeriod}
+        setTrendingPostPage={setTrendingPostPage}
       />
 
       <ul className={"PostList"}>
-        {dummyData.map((item) => (
+        {trendingPostList.map((item) => (
           <PostItem item={item} key={item.id} />
         ))}
       </ul>

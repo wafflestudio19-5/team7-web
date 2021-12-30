@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { IoMdTrendingUp } from "react-icons/io";
 import { FiClock } from "react-icons/fi";
 
-const PostListControlBar = ({ trendPeriod, setTrendPeriod }) => {
+const PostListControlBar = ({ trendPeriod, setTrendPeriod, setTrendingPostPage }) => {
   const history = useHistory();
 
   const handleTrending = () => {
@@ -20,6 +20,7 @@ const PostListControlBar = ({ trendPeriod, setTrendPeriod }) => {
     // select element에서 선택된 option의 text가 저장된다.
     const selectText = langSelect.options[langSelect.selectedIndex].text;
     setTrendPeriod(selectValue);
+    setTrendingPostPage(0);
     console.log(selectValue);
   };
 

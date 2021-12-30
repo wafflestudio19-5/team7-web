@@ -97,10 +97,18 @@ const RecentPage = () => {
       .get("https://waflog.kro.kr/api/v1/post/recent", {
         params: {
           page: 0,
-        },
+          size: 4
+        }
       })
       .then((response) => {
         console.log(response);
+        setRecentPostList(response.data.content);
+        if (response.data.last === true) {
+          setRecentPostPage(null);
+        }
+        else{
+          setRecentPostPage(1);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -120,6 +128,7 @@ const RecentPage = () => {
           .get("https://waflog.kro.kr/api/v1/post/recent", {
             params: {
               page: recentPostPage,
+              size: 4
             }
           })
           .then((response) => {
@@ -142,7 +151,7 @@ const RecentPage = () => {
       <PostListControlBar />
 
       <ul className={"PostList"}>
-        {dummyData2.map((item) => (
+        {recentPostList.map((item) => (
           <PostItem item={item} key={item.id} />
         ))}
       </ul>
