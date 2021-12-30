@@ -47,6 +47,12 @@ const SearchPage = () => {
             .then((response) => {
                 console.log(response.data.content);
                 setSearchData(response.data.content);
+                if (response.data.last === true) {
+                    setSearchPageNumber(null);
+                }
+                else{
+                    setSearchPageNumber(1);
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -90,7 +96,7 @@ const SearchPage = () => {
                     <input className="search-input" placeholder="검색어를 입력하세요" value={tag} onChange={handleInput}/>
                 </div>
             </div>
-            {isSearching ? <div className="search-info">총 {filtedNumber}개의 포스트를 찾았습니다.</div> : <div className="search-info">검색결과가 없습니다.</div> }
+            {isSearching ? <div className="search-info">총 <strong>{filtedNumber}개</strong>의 포스트를 찾았습니다.</div> : <div className="search-info">검색결과가 없습니다.</div> }
             <ul className="search-list">
                 {searchData.map((item) => (
                     <SearchItem item={item} key={item.id} />
