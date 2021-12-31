@@ -12,8 +12,9 @@ const SearchPage = () => {
     const {search} = useLocation();
     const params = new URLSearchParams(search);
     const searchPageRef = useRef({});
+    const initialParams = params.get('q') === null ? "" : params.get('q');
     
-    const [tag, setTag] = useState(`${params.get('q')}`);
+    const [tag, setTag] = useState(initialParams);
     const [searchData, setSearchData] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
     const [filtedNumber, setFiltedNumber] = useState(0);
@@ -25,29 +26,18 @@ const SearchPage = () => {
     }
 
     useEffect(() => {
-        if(searchData === null || tag === null || tag === "" || tag.length === 0){
-            setIsSearching(false);
-            setTag("");
-        }
-        else{
-            setIsSearching(true);
-            setFiltedNumber(searchData.length);
-            setTag(params.get('q'));
-        }
-    },[params]);
-
-    useEffect(() => {
         axios
             .get(`https://waflog.kro.kr/api/v1/post/search`, {
                 params: {
                     keyword: tag,
                     page: 0,
-                    size: 4
+                    size: 3
                 },
             })
             .then((response) => {
                 console.log(response.data.content);
                 setSearchData(response.data.content);
+                setFiltedNumber(response.data.totalElements);
                 if (response.data.last === true) {
                     setSearchPageNumber(null);
                 }
@@ -58,6 +48,15 @@ const SearchPage = () => {
             .catch((error) => {
                 console.log(error);
             });
+
+        if(searchData === null || tag === null || tag === "" || tag.length === 0){
+            setIsSearching(false);
+            setTag("");
+        }
+        else{
+            setIsSearching(true);
+            setTag(params.get('q'));
+        }
     }, [tag]);
 
     const handleScroll = () => {
@@ -72,7 +71,7 @@ const SearchPage = () => {
                         params: {
                             keyword: tag,
                             page: searchPageNumber,
-                            size: 4
+                            size: 3
                         },
                     })
                     .then((response) => {
@@ -82,8 +81,6 @@ const SearchPage = () => {
                         } else {
                             setSearchPageNumber(searchPageNumber + 1);
                         }
-                        console.log(searchData);
-                        console.log(searchPageNumber);
                     });
             }
         }
@@ -93,7 +90,7 @@ const SearchPage = () => {
         <div className="searchpage" ref={searchPageRef} onScroll={handleScroll}>
             <Header/>
             <div className="searchbox">
-                <IoIosSearch className="searchpage-icon" color/>
+                <IoIosSearch className="searchpage-icon"/>
                 <div className="search-input-box">
                     <input className="search-input" placeholder="검색어를 입력하세요" value={tag} onChange={handleInput}/>
                 </div>
