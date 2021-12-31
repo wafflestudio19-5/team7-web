@@ -42,6 +42,7 @@ const SearchPage = () => {
                 params: {
                     keyword: tag,
                     page: 0,
+                    size: 4
                 },
             })
             .then((response) => {
@@ -71,6 +72,7 @@ const SearchPage = () => {
                         params: {
                             keyword: tag,
                             page: searchPageNumber,
+                            size: 4
                         },
                     })
                     .then((response) => {
@@ -96,7 +98,7 @@ const SearchPage = () => {
                     <input className="search-input" placeholder="검색어를 입력하세요" value={tag} onChange={handleInput}/>
                 </div>
             </div>
-            {isSearching ? <div className="search-info">총 <strong>{filtedNumber}개</strong>의 포스트를 찾았습니다.</div> : <div className="search-info">검색결과가 없습니다.</div> }
+            {isSearching ? <div className="search-info">총 <b>{filtedNumber}개</b>의 포스트를 찾았습니다.</div> : <div className="search-info">검색결과가 없습니다.</div> }
             <ul className="search-list">
                 {searchData.map((item) => (
                     <SearchItem item={item} key={item.id} />

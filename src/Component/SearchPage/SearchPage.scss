@@ -4,14 +4,6 @@
   width: 100vw;
   height: 100vh;
 
-  .searchpage-icon{
-    position: absolute;
-    color: gainsboro;
-    top: 10px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-  }
 
   @media (min-width: 769px){
     .searchbox{
@@ -19,8 +11,19 @@
       top: 120px;
       width: 768px;
       left: calc((100% - 768px) / 2);
-      height: 70px;
-      border: 2px solid gainsboro;
+      height: 65px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(181, 188, 189);
+
+      .searchpage-icon{
+        position: absolute;
+        color: rgb(181, 188, 189);
+        top: 14px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+      }
 
       .search-input-box{
         position: absolute;
@@ -32,11 +35,26 @@
 
       .search-input{
         position: absolute;
-        font-size: 30px;
+        top: calc(50% - 1rem);
+        font-size: 1.5rem;
+        line-height: 10rem;
+        height: 2rem;
         width: 100%;
-        height: 65px;
         border: none;
         outline: none;
+      }
+
+      .search-input::placeholder{
+        color: #bdbdbd;
+      }
+    }
+
+    .searchbox:focus-within{
+      border-color: black;
+      color: black;
+
+      .searchpage-icon{
+        color: black;
       }
     }
 
@@ -51,7 +69,7 @@
 
     .search-list{
       position: absolute;
-      top: 280px;
+      top: 260px;
       width: 768px;
       height: auto;
       left: calc((100% - 768px) / 2);
@@ -74,8 +92,19 @@
       top: 120px;
       left: 5%;
       width: 90%;
-      height: 70px;
-      border: 2px solid gainsboro;
+      height: 65px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(181, 188, 189);
+
+      .searchpage-icon{
+        position: absolute;
+        color: rgb(181, 188, 189);
+        top: 14px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+      }
 
       .search-input-box{
         position: absolute;
@@ -87,11 +116,31 @@
 
       .search-input{
         position: absolute;
+        top: calc(50% - 1rem);
+        font-size: 1.5rem;
+        line-height: 10rem;
+        height: 2rem;
+        width: 100%;
+        border: none;
+        outline: none;
+      }
+
+      .search-input:focus{
+        position: absolute;
         font-size: 30px;
         width: 100%;
         height: 65px;
         border: none;
         outline: none;
+      }
+    }
+
+    .searchbox:focus-within{
+      border-color: black;
+      color: black;
+
+      .searchpage-icon{
+        color: black;
       }
     }
 
@@ -106,8 +155,9 @@
 
     .search-list{
       position: absolute;
-      top: 280px;
-      width: 100%;
+      top: 260px;
+      left: 3%;
+      width: 94%;
       height: auto;
       //border: solid;
       display: flex;
