@@ -1,7 +1,14 @@
 import './SearchItem.scss';
+import { useHistory } from "react-router-dom";
 import dayjs from "dayjs";
 
 const SearchItem = ({item}) => {
+
+    const history = useHistory();
+
+    const handlePostClick = () =>{
+        history.push("/post/"+item.id);
+    }
 
     return(
         <div className="search-item">
@@ -9,10 +16,10 @@ const SearchItem = ({item}) => {
                 <img className="user-profile" src={item.user.image} alt="저자 이미지"/>
                 <div className="user-name">{item.user.username}</div>
             </div>
-            <div className="thumbnail">
+            <div className="thumbnail" onClick={handlePostClick}>
                 <img className="thumbnail-img" src={item.thumbnail} alt="썸네일"/>
             </div>
-            <div className="post-mainsection">
+            <div className="post-mainsection" onClick={handlePostClick}>
                 <div className="title">{item.title}</div>
                 <div className="summary">{item.summary}</div>
                 <div className="tags"></div>
