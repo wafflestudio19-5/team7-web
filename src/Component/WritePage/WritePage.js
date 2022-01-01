@@ -28,13 +28,11 @@ const WritePage = () => {
     const history = useHistory();
 
     const [title, setTitle] = useState("");
+    const [contents, setContents] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
     const onChangeEditorTextHandler = () => {
-        console.log("제목");
-        console.log(title);
-        console.log("내용");
-        console.log(editorRef.current.getInstance().getMarkdown());
+        setContents(editorRef.current.getInstance().getMarkdown());
     }
 
     const handleTitle = (e) => {
@@ -76,7 +74,7 @@ const WritePage = () => {
                     <AiOutlineEnter className="submit-icon"/>
                 </button>
             </div>
-            <WriteModal isOpen={isOpen} setIsOpen={setIsOpen}></WriteModal>
+            <WriteModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents}/>
         </div>
     )
 }
