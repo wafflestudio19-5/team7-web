@@ -5,6 +5,7 @@ import SearchPage from "./Component/SearchPage/SearchPage";
 import RecentPage from "./Component/RecentPage/RecentPage";
 import WritePage from "./Component/WritePage/WritePage";
 import ErrorPage from "./Component/ErrorPage/ErrorPage";
+import PostPage from "./Component/PostPage/PostPage";
 
 function App() {
 
@@ -15,8 +16,9 @@ function App() {
                 <Route path="/recent" component={RecentPage} exact={true}/>
                 <Route path="/write" component={WritePage} exact={true}/>
                 <Route path="/error" component={ErrorPage} exact={true}/>
-                <Route path="" component={MainPage} exact={true}/>
-                <Redirect to=""/>
+                <Route path="/post/:id" component={PostPage} exact={true}/>
+                <Route path="/" component={MainPage} exact={true}/>
+                <Redirect to="/"/>
             </Switch>
         </BrowserRouter>
     );
