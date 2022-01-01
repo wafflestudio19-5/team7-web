@@ -1,17 +1,25 @@
 import "./PostItem.scss";
+import {useHistory} from "react-router-dom";
 import dayjs from "dayjs";
 
 const PostItem = ({item}) => {
 
+    const history = useHistory();
+
+    const handlePostClick = () =>{
+        history.push("/post/"+item.id);
+    }
+
+
     return (
         <div className="PostItem">
-            <div className={"PostPhotoSection"}>
+            <div className={"PostPhotoSection"} onClick={handlePostClick}>
                 <img className={"PostPhoto"} src={item.thumbnail} alt={"포스트 이미지"}/>
             </div>
-            <div className={"PostMainSection"}>
+            <div className={"PostMainSection"} onClick={handlePostClick}>
                 <h4 className={"PostTitle"}>{item.title}</h4>
                 <p className={"PostSummary"}>{item.summary}</p>
-                <p className={"PostSubInfo"}>{dayjs(item.createdAt).format("YYYY년 MM월 DD일")} · {item.comments}개의 댓글</p>
+                <p className={"PostSubInfo"}>{dayjs(item.createAt).format("YYYY년 MM월 DD일")} · {item.comments}개의 댓글</p>
             </div>
             <div className={"PostSubSection"}>
                 <a className={"PostAuthorInfo"}>

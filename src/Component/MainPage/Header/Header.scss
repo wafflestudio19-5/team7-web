@@ -27,6 +27,19 @@
     cursor: pointer;
   }
 
+  .page-title{
+    position: absolute;
+    height: 100%;
+    top: 10px;
+    width: 5%;
+    font-size: 24px;
+    left: 65px;
+    font-family: "Source Code Pro", monospace;
+    font-weight: 600;
+    letter-spacing: -1px;
+    cursor: pointer;
+  }
+
   .logo{
     position: absolute;
     top: 5px;
