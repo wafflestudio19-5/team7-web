@@ -48,6 +48,134 @@
   margin-top: 50px;
 }
 
+@media (min-width: 1024px) {
+  .post-like-section {
+    position: fixed;
+    top: 300px;
+    left: 30px;
+    width: 4rem;
+    background: rgb(248, 249, 250);
+    border: 1px solid rgb(241, 243, 245);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+
+  .post-like-wrapper {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid rgb(173, 181, 189);
+    border-radius: 1.5rem;
+    color: rgb(134, 142, 150);
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .post-like-count {
+    margin-top: 0.5rem;
+    color: rgb(73, 80, 87);
+    line-height: 1;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .icon-heart {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: red;
+  }
+
+  .icon-heart-path {
+    fill: currentcolor;
+    d: path("M 18 1 l -6 4 l -6 -4 l -6 5 v 7 l 12 10 l 12 -10 v -7 Z");
+  }
+
+  .icon-link {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: black;
+  }
+}
+
+@media (max-width: 1023px) {
+
+  .post-information-section {
+    line-height: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+    color: rgb(73, 80, 87);
+    display: flex;
+  }
+
+  .post-like-section {
+    margin-left: 1rem;
+    width: 6rem;
+    background: rgb(248, 249, 250);
+    border: 1px solid rgb(241, 243, 245);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+
+  .post-like-wrapper {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid rgb(173, 181, 189);
+    border-radius: 1.5rem;
+    color: rgb(134, 142, 150);
+    cursor: pointer;
+    z-index: 5;
+    //margin-right: 0.5rem;
+  }
+
+  .post-like-count {
+    width: 1.5rem;
+    text-align: center;
+    margin-top: 0.75rem;
+    color: rgb(73, 80, 87);
+    line-height: 1;
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+  }
+
+  .icon-heart {
+    width: 1rem;
+    height: 1rem;
+    color: red;
+  }
+
+  .icon-heart-path {
+    fill: currentcolor;
+    d: path("M 18 1 l -6 4 l -6 -4 l -6 5 v 7 l 12 10 l 12 -10 v -7 Z");
+  }
+
+  .icon-link {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: black;
+  }
+}
+
 .post-user-section {
   width: 768px;
   margin-top: 16rem;
