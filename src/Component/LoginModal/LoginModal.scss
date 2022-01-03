@@ -32,6 +32,23 @@
     width: 100%;
     height: 35px;
 
+    .login-link-alert{
+      position: absolute;
+      top: 0px;
+      left: 30px;
+      width: 500px;
+      vertical-align: center;
+      -webkit-box-align: center;
+      text-align: center;
+      background: rgb(195, 250, 232);
+      border: 1px solid rgb(150, 242, 215);
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      line-height: 45px;
+      height: 3rem;
+      color: rgb(12, 166, 120);
+    }
+
     .login-modal-input{
       position: absolute;
       top:0px;
@@ -115,5 +132,24 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .select-box{
+    display: flex;
+    position: absolute;
+    top: 380px;
+    left: 30px;
+
+    .select-text{
+
+    }
+
+    .select-type{
+      margin-left: 20px;
+      display: inline-block;
+      font-weight: bold;
+      color: rgb(18, 184, 134);
+      cursor: pointer;
+    }
   }
 }
