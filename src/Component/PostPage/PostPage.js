@@ -7,79 +7,91 @@ import ReactMarkdown from "react-markdown";
 import Header from "../MainPage/Header/Header";
 import { GoMarkGithub } from "react-icons/go";
 
+const dataFormat = {
+    comments: [],
+    content: "",
+    createdAt: "",
+    id: 0,
+    likes: 0,
+    nextPost: {},
+    prevPost: {},
+    seriesPosts: null,
+    tags: [],
+    thumbnail: "",
+    title: "",
+    url: "",
+    user: {
+        facebookId: "",
+        githubId: "",
+        homepage: "",
+        id: 0,
+        image: "",
+        name: "",
+        pageTitle: "",
+        publicEmail: "",
+        shortIntro: "",
+        twitterId: "",
+        userId: ""
+    }
+}
 
 const PostPage = () => {
+  const params = useParams();
+  const history = useHistory();
+  const [postResponse, setPostResponse] = useState(dataFormat);
 
-    const params = useParams();
-    const history = useHistory();
-    const [pageTitle, setPageTitle] = useState(null);
-    const [postUserName, setPostUserName] = useState("");
-    const [postContent, setPostContent] = useState();
-    const [postUserImage, setPostUserImage] = useState();
-    const [postUserUsername, setPostUserUsername] = useState();
-    const [postUserIntro, setPostUserIntro] = useState("");
-    const [githubId, setGithubId] = useState("");
+  useEffect(() => {
+    axios
+      .get(`https://waflog.kro.kr/api/v1/post/${params.id}`)
+      .then((response) => {
+        setPostResponse(response.data);
+      })
+      .catch((error) => {
+        history.push("/error"); // 백엔드 404 response 필요!!
+      });
+  }, []);
 
-    useEffect(() => {
-        axios
-            .get(`https://waflog.kro.kr/api/v1/post/${params.id}`)
-            .then((response) => {
-                setPageTitle(response.data.user.pageTitle);
-                setPostUserName(response.data.user.name);
-                setPostContent(response.data.content);
-                setPostUserImage(response.data.user.image);
-                setPostUserUsername(response.data.user.username);
-                setPostUserIntro(response.data.user.shortIntro);
-                setGithubId(response.data.user.githubId);
-                console.log(postContent);
-                console.log(params.id);
-                console.log(response);
+  return (
+    <div className="postpage">
+      <Header pageTitle={postResponse.user.pageTitle} />
 
-            })
-            .catch((error) => {
-                history.push("/error"); // 백엔드 404 response 필요!!
-            });
-    }, []);
+      <div className="post-main-section">
+        <div className="post-title">{postResponse.title}</div>
+        <div className="post-information-section">
+          <span className="post-user-id">
+            <a>{postResponse.user.userId}</a>
+          </span>
+          <span className="post-separator">·</span>
+          <span className="post-datetime">
+            {dayjs(postResponse.createdAt).format("YYYY년 MM월 DD일")}
+          </span>
+        </div>
+        <ReactMarkdown className="post-content">{postResponse.content}</ReactMarkdown>
+      </div>
 
-
-    return (
-       <div className="postpage">
-           <Header pageTitle = {pageTitle}/>
-
-           <div className="post-main-section">
-               <div className="post-title">예시 제목 예시 제목</div>
-               <div className="post-information-section">
-                   <span className="post-user-name">
-                       <a>{postUserName}</a>
-                   </span>
-                   <span className="post-separator">·</span>
-                   <span className="post-datetime">
-                       2022년 00월 00일
-                   </span>
-               </div>
-               <ReactMarkdown className="post-content">{postContent}</ReactMarkdown>
-           </div>
-
-           <div className="post-user-section">
-               <div className="post-user-info">
-                   <img className="post-user-image" src={postUserImage} alt="유저 이미지"/>
-                   <div className="post-user-text">
-                       <div className="post-user-username">
-                           <a>{postUserUsername}</a>
-                       </div>
-                       <div className="post-user-intro">{postUserIntro}</div>
-                   </div>
-               </div>
-               <div className="post-user-division"/>
-               <div className="post-user-sns">
-                   <a className={"href-github"} href={`https://github.com/${githubId}`}>
-                       <GoMarkGithub className={"icon-github"}/>
-                   </a>
-               </div>
-           </div>
-
-       </div>
-    );
+      <div className="post-user-section">
+        <div className="post-user-info">
+          <img
+            className="post-user-image"
+            src={postResponse.user.image}
+            alt="유저 이미지"
+          />
+          <div className="post-user-text">
+            <div className="post-user-name">
+              <a>{postResponse.user.name}</a>
+            </div>
+            <div className="post-user-intro">{postResponse.user.shortIntro}</div>
+          </div>
+        </div>
+        <div className="post-user-division" />
+        <div className="post-user-sns">
+          <a className={"href-github"} href={`https://github.com/${postResponse.user.githubId}`}>
+            <GoMarkGithub className={"icon-github"} />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default PostPage;

@@ -6,6 +6,7 @@ import RecentPage from "./Component/RecentPage/RecentPage";
 import WritePage from "./Component/WritePage/WritePage";
 import ErrorPage from "./Component/ErrorPage/ErrorPage";
 import PostPage from "./Component/PostPage/PostPage";
+import RegisterPage from "./Component/RegisterPage/RegisterPage";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/write" component={WritePage} exact={true}/>
                 <Route path="/error" component={ErrorPage} exact={true}/>
                 <Route path="/post/:id" component={PostPage} exact={true}/>
+                <Route path="/register" component={RegisterPage} exact={true}/>
                 <Route path="/" component={MainPage} exact={true}/>
                 <Redirect to="/"/>
             </Switch>

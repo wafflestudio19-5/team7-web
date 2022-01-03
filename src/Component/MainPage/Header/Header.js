@@ -9,6 +9,7 @@ import "@fontsource/source-code-pro";
 const Header = ({pageTitle}) => {
 
     const [isLogin, setIsLogin] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const history = useHistory();
 
@@ -27,8 +28,6 @@ const Header = ({pageTitle}) => {
     const handlePageTitle = () => {
 
     }
-    
-    const [isOpen, setIsOpen] = useState(false);
 
     if(window.location.pathname === "/" || window.location.pathname === "/recent" || window.location.pathname === "/search") {
         return (

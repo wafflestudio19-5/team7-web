@@ -14,7 +14,7 @@ const SearchItem = ({item}) => {
         <div className="search-item">
             <div className="user-info">
                 <img className="user-profile" src={item.user.image} alt="저자 이미지"/>
-                <div className="user-name">{item.user.username}</div>
+                <div className="user-name">{item.user.userId}</div>
             </div>
             <div className="thumbnail" onClick={handlePostClick}>
                 <img className="thumbnail-img" src={item.thumbnail} alt="썸네일"/>
