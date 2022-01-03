@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {useHistory, useParams, useLocation} from "react-router-dom";
 import Modal from 'react-modal';
 import './WriteModal.scss';
 import { BsImage, BsFileEarmarkLock } from "react-icons/bs";
@@ -7,6 +8,7 @@ import { GoGlobe } from "react-icons/go";
 const WriteModal = ( props ) => {
 
     const {isOpen, setIsOpen, title, contents} = props;
+    const history = useHistory();
 
     const [summaryIn, setSummaryIn] = useState("");
     const [summaryOver, setSummaryOver] = useState(false);
@@ -34,7 +36,7 @@ const WriteModal = ( props ) => {
         setIsOpen(false);
     }
     const handleSubmit = () => {
-        window.alert(contents);
+        history.push('/temp?data='+contents);
     }
 
     Modal.setAppElement('#root');
