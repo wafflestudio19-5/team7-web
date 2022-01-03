@@ -24,7 +24,7 @@ const PostItem = ({item}) => {
             <div className={"PostSubSection"}>
                 <a className={"PostAuthorInfo"}>
                     <img className={"PostAuthorImg"} src={item.user.image} alt={"저자 이미지"}/>
-                    <span className={"PostAuthorName"}>by <b>{item.user.username}</b></span>
+                    <span className={"PostAuthorName"}>by <b>{item.user.userId}</b></span>
                 </a>
 
                 <div className={"Likes"}>
