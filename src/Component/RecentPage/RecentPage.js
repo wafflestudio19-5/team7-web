@@ -97,7 +97,7 @@ const RecentPage = () => {
       .get("https://waflog.kro.kr/api/v1/post/recent", {
         params: {
           page: 0,
-          size: 4
+          size: 6
         }
       })
       .then((response) => {
@@ -128,7 +128,7 @@ const RecentPage = () => {
           .get("https://waflog.kro.kr/api/v1/post/recent", {
             params: {
               page: recentPostPage,
-              size: 4
+              size: 6
             }
           })
           .then((response) => {
