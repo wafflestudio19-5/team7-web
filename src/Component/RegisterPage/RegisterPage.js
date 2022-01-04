@@ -68,7 +68,6 @@ const RegisterPage = () => {
         {
           headers: {
             Authentication: registerToken
-            // Authentication: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDEzMjAxMzAsImlhdCI6MTY0MTI4NDEzMCwiZW1haWwiOiJjaHJpczE1MDNAbmF2ZXIuY29tIn0.jeKadsFDOCuUgMfEsfzRtfyduOvaKMZdAI4cGjOdC3E
           },
         }
       )
