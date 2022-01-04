@@ -3,7 +3,6 @@
   margin: 0px;
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
 }
 
 .post-main-section {
@@ -105,6 +104,14 @@
     height: 1.5rem;
     color: black;
   }
+
+  .post-scroll-top{
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
 }
 
 @media (max-width: 1023px) {
@@ -174,6 +181,12 @@
     height: 1.5rem;
     color: black;
   }
+
+  .post-scroll-top {
+    margin: 0;
+    width: 0;
+    visibility: hidden;
+  }
 }
 
 .post-user-section {
@@ -237,15 +250,73 @@
   display: flex;
 }
 
-.href-github {
+.href-sns {
   color: rgb(173, 181, 189);
 }
 
-.icon-github {
+.icon-sns {
   width: 40px;
   height: 40px;
 }
 
-.icon-github:hover {
+.icon-sns:hover {
   color: black;
+}
+
+.post-comments-section{
+  margin-top: 3rem;
+  color: rgb(52, 58, 64);
+  //border: solid;
+}
+
+.post-comments-count {
+  ont-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.post-comments-input {
+  padding: 1rem 1rem 1.5rem;
+  outline: none;
+  border: 1px solid rgb(233, 236, 239);
+  margin-bottom: 1.5rem;
+  width: 100%;
+  border-radius: 4px;
+  min-height: 6.125rem;
+  font-size: 1rem;
+  color: rgb(33, 37, 41);
+  line-height: 1.75;
+  box-sizing: border-box;
+}
+
+.post-comments-button-wrapper {
+  display: flex;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+
+.post-comments-button {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(18, 184, 134);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.25rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.post-comments-list {
+  padding-bottom: 6rem;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  padding-inline-start: 0px;
 }

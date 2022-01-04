@@ -2,10 +2,6 @@ import "./RegisterPage.scss";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import dayjs from "dayjs";
-import ReactMarkdown from "react-markdown";
-import Header from "../MainPage/Header/Header";
-import { GoMarkGithub } from "react-icons/go";
 
 const RegisterPage = () => {
   const params = useParams();
@@ -13,45 +9,11 @@ const RegisterPage = () => {
   const URLSearch = new URLSearchParams(window.location.search);
 
   const [registerName, setRegisterName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
   const [registerId, setRegisterId] = useState("");
   const [registerIntro, setRegisterIntro] = useState("");
   const [registerError, setRegisterError] = useState(0);
-
-  const handleCancel = () => {
-    history.push("/");
-  }
-
-  const handleComplete = (e) => {
-    const spacePattern = /\s/g; // 공백
-    const specialPattern = /[~!@#$%^&*()+|<>?:{}]/; // 특수문자
-    const koreanPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글
-
-    if(registerName === ""){
-      setRegisterError(1);
-    }
-    else if(registerId.match(spacePattern) || registerId.match(specialPattern) || registerId.match(koreanPattern) || registerId.length < 3 || registerId.length > 16){
-      setRegisterError(2);
-    }
-    else{
-      setRegisterError(0);
-    }
-
-    axios
-        .post(`https://waflog.kro.kr/api/v1/auth/user/info`, {
-          email: "chris1503@naver.com",
-          name: registerName,
-          userId: registerId,
-          shortIntro: registerIntro
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          if(registerError!==0) {
-            setRegisterError(4);
-          }
-        });
-  }
+  const [registerToken, setRegisterToken] = useState("");
 
   useEffect(() => {
     const registerCode = URLSearch.get("code");
@@ -60,14 +22,65 @@ const RegisterPage = () => {
     axios
       .get(`https://waflog.kro.kr/api/v1/auth/verify`, {
         params: {
-          token: registerCode
-        }
+          token: registerCode,
+        },
       })
       .then((response) => {
-        console.log(response)
+        console.log(response);
+        setRegisterEmail(response.data.email);
+        setRegisterToken(response.headers.authentication);
       })
       .catch((error) => {});
   }, []);
+
+  const handleCancel = () => {
+    history.push("/");
+  };
+
+  const handleComplete = (e) => {
+    const spacePattern = /\s/g; // 공백
+    const specialPattern = /[~!@#$%^&*()+|<>?:{}]/; // 특수문자
+    const koreanPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글
+
+    if (registerName === "") {
+      setRegisterError(1);
+    } else if (
+      registerId.match(spacePattern) ||
+      registerId.match(specialPattern) ||
+      registerId.match(koreanPattern) ||
+      registerId.length < 3 ||
+      registerId.length > 16
+    ) {
+      setRegisterError(2);
+    } else {
+      setRegisterError(0);
+    }
+
+    axios
+        .post(
+        `https://waflog.kro.kr/api/v1/auth/user/info`,
+        {
+          email: registerEmail,
+          name: registerName,
+          userId: registerId,
+          shortIntro: registerIntro
+        },
+        {
+          headers: {
+            Authentication: registerToken
+            // Authentication: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDEzMjAxMzAsImlhdCI6MTY0MTI4NDEzMCwiZW1haWwiOiJjaHJpczE1MDNAbmF2ZXIuY29tIn0.jeKadsFDOCuUgMfEsfzRtfyduOvaKMZdAI4cGjOdC3E
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.headers);
+      })
+      .catch((error) => {
+        if (registerError === 0 || registerError === 4) {
+          setRegisterError(4);
+        }
+      });
+  };
 
   return (
     <div className="registerpage">
@@ -97,7 +110,7 @@ const RegisterPage = () => {
               <div className="register-detail-input-wrapper">
                 <input
                   className="register-detail-input-inputbox"
-                  placeholder="abc@gmail.com"
+                  placeholder={registerEmail}
                   disabled
                 />
               </div>
@@ -132,14 +145,23 @@ const RegisterPage = () => {
         </div>
 
         <div className="register-error-section">
-          {registerError===0 ? "" : registerError===1 ? "이름을 입력해주세요." : registerError===2 ? "아이디는 3~16자의 알파벳,숫자,혹은 - _ 으로 이루어져야 합니다." : "에러 발생!"}
+          {registerError === 0
+            ? ""
+            : registerError === 1
+            ? "이름을 입력해주세요."
+            : registerError === 2
+            ? "아이디는 3~16자의 알파벳,숫자,혹은 - _ 으로 이루어져야 합니다."
+            : "에러 발생!"}
         </div>
 
         <div className="register-button-section">
-          <button className="register-btn-cancel" onClick={handleCancel}>취소</button>
-          <button className="register-btn-complete" onClick={handleComplete}>완료</button>
+          <button className="register-btn-cancel" onClick={handleCancel}>
+            취소
+          </button>
+          <button className="register-btn-complete" onClick={handleComplete}>
+            완료
+          </button>
         </div>
-
       </div>
     </div>
   );
