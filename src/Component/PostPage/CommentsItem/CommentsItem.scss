@@ -1,0 +1,68 @@
+.comments-item {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e3e2e2;
+}
+
+.comments-info-section {
+  margin-bottom: 1.5rem;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.comments-info-profile {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.comments-info-image {
+  width: 3.375rem;
+  height: 3.375rem;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comments-info-detail {
+  margin-left: 1rem;
+  line-height: 1;
+}
+
+.comments-info-userId {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(52, 58, 64);
+}
+
+.comments-info-userId-href {
+  color: rgb(52, 58, 64);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.comments-info-userId-href:hover {
+  color: rgb(52, 58, 64);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.comments-info-date {
+  margin-top: 0.5rem;
+  color: rgb(134, 142, 150);
+  font-size: 0.875rem;
+}
+
+.comments-content {
+  font-size: 1.125rem;
+  color: rgb(34, 36, 38);
+  line-height: 1.7;
+  letter-spacing: -0.004em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
