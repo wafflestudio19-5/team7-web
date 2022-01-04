@@ -1,0 +1,64 @@
+.title-style{
+  font-size: 2.75rem;
+  height: auto;
+  width: 90%;
+  resize: none;
+  line-height: 1.5;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  color: rgb(33, 37, 41);
+  padding-left: 40px;
+  padding-top: 20px;
+  margin-bottom: -60px;
+}
+
+.btn-box{
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  width: 500px;
+  height: 50px;
+
+  .out-btn{
+    height: 100%;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: rgb(233, 236, 239);
+    color: rgb(73, 80, 87);
+    border-radius: 4px;
+    padding: 0px 1.25rem;
+    font-size: 120%;
+  }
+
+  .out-icon{
+    margin-right: 5px;
+  }
+
+  .submit-btn{
+    height: 100%;
+    margin-left: 10px;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: rgb(18, 184, 134);
+    color: white;
+    border-radius: 4px;
+    padding: 0px 1.25rem;
+    font-size: 120%;
+  }
+
+  .submit-icon{
+    margin-left: 5px;
+  }
+}

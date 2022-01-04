@@ -3,15 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/source-code-pro": "^4.5.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.24.0",
+    "@toast-ui/editor": "^3.1.2",
+    "@toast-ui/editor-plugin-code-syntax-highlight": "^3.0.0",
+    "@toast-ui/editor-plugin-color-syntax": "^3.0.2",
+    "dayjs": "^1.10.7",
     "http-proxy-middleware": "^2.0.1",
-    "react": "^17.0.2",
+    "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-markdown": "^7.1.1",
+    "react-modal": "^3.14.4",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
+    "react-toastify": "^8.1.0",
     "sass": "^1.43.5",
     "web-vitals": "^1.1.2"
   },
@@ -40,6 +48,10 @@
     ]
   },
   "devDependencies": {
-    "prettier": "2.4.1"
+    "@toast-ui/react-editor": "^3.1.2",
+    "axios": "^0.24.0",
+    "file-loader": "^6.2.0",
+    "prettier": "2.4.1",
+    "react": "^17.0.2"
   }
 }

@@ -1,10 +1,10 @@
 name: Deploy to Production
-    
+
 on:
-    push:
-        branches:
-          - master
-    
+  push:
+    branches:
+      - master
+
 jobs:
   deploy:
     name: build and upload to s3
@@ -23,9 +23,12 @@ jobs:
 
       - name: install node modules
         run: npm install
-        
-      - name: build 
+
+      - name: build
         run: CI=false npm run build
 
       - name: upload build directory to s3
         run: aws s3 cp build s3://${{ secrets.AWS_S3_BUCKET }} --recursive --acl public-read
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_DISTRIBUTION_ID}} --paths "/*"

@@ -1,53 +1,41 @@
 .mainpage{
-
+  position: absolute;
   margin: 0px;
   width: 100vw;
   height: 100vh;
-  background: rgb(220,255,230);
+  background-color: #f8f9fa;
+  overflow: scroll;
+}
 
-  .header{
-    background: rgb(255,255,0);
+@media(min-width: 1057px) {
+  .PostList {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    height: 55px;
-
-    .logo{
-      position: absolute;
-      height: 100%;
-      width: 5%;
-      left: 10px;
-
-      .logo-img{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .search{
-      position: absolute;
-      background: orange;
-      height: 100%;
-      width: 5%;
-      right: 100px;
-    }
-    .userprofile{
-      position: absolute;
-      background: blue;
-      height: 100%;
-      width: 5%;
-      right:10px;
-    }
-    .btn-login{
-      position: absolute;
-      background: pink;
-      height: 100%;
-      width: 5%;
-      right:10px;
-    }
-
+    top: 165px;
+    left: calc((100% - 1056px) / 2);
+    width: 1056px;
+    height: auto;
+    //border: solid;
+    display: flex;
+    flex-direction: row; /* 왼쪽에서 오른쪽으로 나열되도록 설정 */
+    flex-wrap: wrap;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
   }
+}
 
-
+@media(max-width: 1056px) {
+  .PostList {
+    position: absolute;
+    top: 165px;
+    width: 100%;
+    height: auto;
+    //border: solid;
+    display: flex;
+    flex-direction: row; /* 왼쪽에서 오른쪽으로 나열되도록 설정 */
+    flex-wrap: wrap;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+  }
 }
