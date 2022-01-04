@@ -105,6 +105,7 @@ const PostPage = () => {
   const params = useParams();
   const history = useHistory();
   const [postResponse, setPostResponse] = useState(dataFormat);
+  const [commentInput, setCommentInput] = useState("");
 
   const currentUrl = window.location.href;
 
@@ -123,6 +124,10 @@ const PostPage = () => {
       behavior: "smooth",
     });
   };
+
+  const handleComment = () => {
+    setCommentInput("");
+  }
 
   useEffect(() => {
     axios
@@ -260,13 +265,15 @@ const PostPage = () => {
           <div className="post-comments-section">
             <h4 className="post-comments-count">{}개의 댓글</h4>
 
-            <input
+            <textarea
               className="post-comments-input"
               placeholder="댓글을 입력하세요."
+              value={commentInput}
+              onChange={(e) => setCommentInput(e.target.value)}
             />
 
             <div className="post-comments-button-wrapper">
-              <button className="post-comments-button">댓글 작성</button>
+              <button className="post-comments-button" onClick={handleComment}>댓글 작성</button>
             </div>
 
             <ul className={"post-comments-list"}>

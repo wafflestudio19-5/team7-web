@@ -85,7 +85,7 @@ const MainPage = () => {
       .get("https://waflog.kro.kr/api/v1/post/trend", {
         params: {
           page: 0,
-          size: 4,
+          size: 6,
           date: trendPeriod
         }
       })
@@ -120,7 +120,7 @@ const MainPage = () => {
           .get("https://waflog.kro.kr/api/v1/post/trend", {
             params: {
               page: trendingPostPage,
-              size: 4,
+              size: 6,
               date: trendPeriod
             }
           })

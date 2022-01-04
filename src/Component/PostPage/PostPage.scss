@@ -277,6 +277,7 @@
 }
 
 .post-comments-input {
+  resize: none;
   padding: 1rem 1rem 1.5rem;
   outline: none;
   border: 1px solid rgb(233, 236, 239);
@@ -288,6 +289,7 @@
   color: rgb(33, 37, 41);
   line-height: 1.75;
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 .post-comments-button-wrapper {

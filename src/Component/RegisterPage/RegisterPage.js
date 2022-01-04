@@ -53,32 +53,28 @@ const RegisterPage = () => {
     ) {
       setRegisterError(2);
     } else {
-      setRegisterError(0);
-    }
-
-    axios
+      axios
         .post(
-        `https://waflog.kro.kr/api/v1/auth/user/info`,
-        {
-          email: registerEmail,
-          name: registerName,
-          userId: registerId,
-          shortIntro: registerIntro
-        },
-        {
-          headers: {
-            Authentication: registerToken
+          `https://waflog.kro.kr/api/v1/auth/user/info`,
+          {
+            email: registerEmail,
+            name: registerName,
+            userId: registerId,
+            shortIntro: registerIntro,
           },
-        }
-      )
-      .then((response) => {
-        console.log(response.headers);
-      })
-      .catch((error) => {
-        if (registerError === 0 || registerError === 4) {
-          setRegisterError(4);
-        }
-      });
+          {
+            headers: {
+              Authentication: registerToken,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.headers);
+        })
+        .catch((error) => {
+            setRegisterError(4);
+        });
+    }
   };
 
   return (
