@@ -115,6 +115,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
 
   .PostItem:hover {
@@ -134,12 +135,12 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
 
   .PostItem:hover {
     box-shadow: rgb(0 0 0 / 10%) 10px 10px 16px 0px;
   }
-
 
 }
 

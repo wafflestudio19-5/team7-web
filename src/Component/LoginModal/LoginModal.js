@@ -86,6 +86,7 @@ const LoginModal = ( props ) => {
                             autoClose: 6000,
                         });
                         setSignUpReq(true);
+                        setLoginReqType(true);
                     }
                 })
                 .catch((error) => {

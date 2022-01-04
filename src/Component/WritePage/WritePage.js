@@ -1,4 +1,5 @@
-import React, {useState, createRef} from "react";
+import React, {useState, createRef, useEffect} from "react";
+import axios from "axios";
 import {useHistory} from "react-router-dom";
 import './WritePage.scss';
 import WriteModal from './WriteModal/WriteModal';
@@ -45,6 +46,35 @@ const WritePage = () => {
     const handleSubmit = () => {
         setIsOpen(true);
     }
+
+    useEffect(() => {
+        if (editorRef.current) {
+            editorRef.current.getInstance().removeHook("addImageBlobHook");
+            editorRef.current
+                .getInstance()
+                .addHook("addImageBlobHook", (blob, callback) => {
+                    console.log("이미지 감지");
+                    /*(async () => {
+                        let formData = new FormData();
+                        formData.append("file", blob);
+
+                        axios.defaults.withCredentials = true;
+                        const { data: url } = await axios.post(
+                            `${backUrl}image.do`,
+                            formData,
+                            {
+                                header: { "content-type": "multipart/formdata" },
+                            }
+                        );
+                        callback(url, "alt text");
+                    })();*/
+
+                    return false;
+                });
+        }
+
+        return () => {};
+    }, [editorRef]);
 
     return (
         <div>
