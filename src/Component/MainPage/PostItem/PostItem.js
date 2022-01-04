@@ -7,7 +7,7 @@ const PostItem = ({item}) => {
     const history = useHistory();
 
     const handlePostClick = () =>{
-        history.push("/post/"+item.id);
+        history.push("/post/@"+item.user.userId+"/"+item.url);
     }
 
 
