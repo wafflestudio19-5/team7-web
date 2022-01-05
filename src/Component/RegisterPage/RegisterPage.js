@@ -64,6 +64,7 @@ const RegisterPage = () => {
           },
           {
             headers: {
+              Access-Control-Allow-Origin: "*",
               Authentication: registerToken,
             },
           }
