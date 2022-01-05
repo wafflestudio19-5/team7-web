@@ -7,6 +7,7 @@ import WritePage from "./Component/WritePage/WritePage";
 import ErrorPage from "./Component/ErrorPage/ErrorPage";
 import PostPage from "./Component/PostPage/PostPage";
 import RegisterPage from "./Component/RegisterPage/RegisterPage";
+import LoginPage from "./Component/LoginPage/LoginPage";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/error" component={ErrorPage} exact={true}/>
                 <Route path="/post/@:userId/:postUrl" component={PostPage} exact={true}/>
                 <Route path="/register" component={RegisterPage} exact={true}/>
+                <Route path="/email-login" component={LoginPage} exact={true}/>
                 <Route path="/" component={MainPage} exact={true}/>
                 <Redirect to="/"/>
             </Switch>
