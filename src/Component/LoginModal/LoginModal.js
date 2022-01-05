@@ -41,6 +41,7 @@ const LoginModal = ( props ) => {
                         toast.success("로그인 이메일을 보냈습니다.",{
                             autoClose: 3000,
                         });
+                        setSignUpReq(true);
                         setLoginReqType(true);
                         setLoginReq(true);
                     }
@@ -48,6 +49,7 @@ const LoginModal = ( props ) => {
                         toast.success("가입 이메일을 보냈습니다.",{
                             autoClose: 6000,
                         });
+                        setSignUpReq(true);
                         setLoginReqType(true);
                         setLoginReq(false);
                     }
