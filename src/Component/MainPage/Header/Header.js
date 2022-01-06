@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import "./Header.scss";
 import { IoSearchOutline } from "react-icons/io5";
+import { IoMdArrowDropdownCircle } from "react-icons/io";
 import LoginModal from "../../LoginModal/LoginModal";
 import "@fontsource/source-code-pro";
 import {useSessionContext} from "../../../Context/SessionContext";
@@ -9,8 +10,9 @@ import {useSessionContext} from "../../../Context/SessionContext";
 
 const Header = ({pageTitle}) => {
 
-    const {isLogin} = useSessionContext();
+    const {handleLogout , isLogin, userId, userImg} = useSessionContext();
     const [isOpen, setIsOpen] = useState(false);
+    const [option, setOption] = useState(false);
 
     const history = useHistory();
 
@@ -29,6 +31,12 @@ const Header = ({pageTitle}) => {
     const handlePageTitle = () => {
 
     }
+    const handleOption = () => {
+        setOption(!option);
+    }
+    const handleWalog = () => {
+        history.push('./@' + userId);
+    }
 
     if(window.location.pathname === "/" || window.location.pathname === "/recent" || window.location.pathname === "/search") {
         return (
@@ -40,8 +48,30 @@ const Header = ({pageTitle}) => {
                 </a>
                 <div className="main-title" onClick={handleLogo}>Waflog</div>
                 <IoSearchOutline className="search-icon" onClick={handleSearch}/>
-                <button className="btn-write" onClick={handleWrite}>새 글 작성</button>
-                <button className="btn-login" onClick={handleLogin} disabled={isLogin}>로그인</button>
+                {isLogin ?
+                    <button className="btn-write" onClick={handleWrite}>새 글 작성</button>
+                    :
+                    <button className="btn-login" onClick={handleLogin} disabled={isLogin}>로그인</button>
+                }
+                {isLogin ?
+                    <div className="user-box">
+                        <div className="profile-img">
+                            <img src={userImg} alt="X" className="user-img"/>
+                        </div>
+                        <IoMdArrowDropdownCircle className="option-btn" onClick={handleOption}/>
+                    </div>
+                    :
+                    null
+                }
+                {option ?
+                    <div className="custom-select">
+                        <div className="op-1" onClick={handleWalog}>내 와로그</div>
+                        <div className="op-2">설정</div>
+                        <div className="op-3" onClick={handleLogout}>로그아웃</div>
+                    </div>
+                    :
+                    null
+                }
                 <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
             </div>
         )
@@ -56,8 +86,30 @@ const Header = ({pageTitle}) => {
                 </a>
                 <div className="page-title" onClick={handlePageTitle}>{pageTitle}</div>
                 <IoSearchOutline className="search-icon" onClick={handleSearch}/>
-                <button className="btn-write" onClick={handleWrite}>새 글 작성</button>
-                <button className="btn-login" onClick={handleLogin} disabled={isLogin}>로그인</button>
+                {isLogin ?
+                    <button className="btn-write" onClick={handleWrite}>새 글 작성</button>
+                    :
+                    <button className="btn-login" onClick={handleLogin} disabled={isLogin}>로그인</button>
+                }
+                {isLogin ?
+                    <div className="user-box">
+                        <div className="profile-img">
+                            <img src={userImg} alt="X" className="user-img"/>
+                        </div>
+                        <IoMdArrowDropdownCircle className="option-btn" onClick={handleOption}/>
+                    </div>
+                    :
+                    null
+                }
+                {option ?
+                    <div className="custom-select">
+                        <div className="op-1" onClick={handleWalog}>내 와로그</div>
+                        <div className="op-2">설정</div>
+                        <div className="op-3" onClick={handleLogout}>로그아웃</div>
+                    </div>
+                    :
+                    null
+                }
                 <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
             </div>
         )
