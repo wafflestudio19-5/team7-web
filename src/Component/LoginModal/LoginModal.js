@@ -15,10 +15,8 @@ const LoginModal = ( props ) => {
     const [isUser, setIsUser] = useState(true);
     const [disable, setDisable] = useState(false);
 
-    const [signUpReq, setSignUpReq] = useState(false);
-
-    const [loginReqType, setLoginReqType] = useState(false);
-    const [loginReq, setLoginReq] = useState(false);
+    const [req, setReq] = useState(false);
+    const [reqType, setReqType] = useState(false);
 
     Modal.setAppElement('#root');
 
@@ -41,17 +39,18 @@ const LoginModal = ( props ) => {
                         toast.success("로그인 이메일을 보냈습니다.",{
                             autoClose: 3000,
                         });
-                        setSignUpReq(true);
-                        setLoginReqType(true);
-                        setLoginReq(true);
+                        setReq(true);
+                        setReqType(true);
                     }
                     else{
+                        toast.error("존재하지 않는 유저입니다.",{
+                            autoClose: 6000,
+                        });
                         toast.success("가입 이메일을 보냈습니다.",{
                             autoClose: 6000,
                         });
-                        setSignUpReq(true);
-                        setLoginReqType(true);
-                        setLoginReq(false);
+                        setReq(true);
+                        setReqType(false);
                     }
                 })
                 .catch((error) => {
@@ -81,14 +80,18 @@ const LoginModal = ( props ) => {
                         toast.error("이미 존재하는 이메일입니다.",{
                             autoClose: 3000,
                         });
-                        setDisable(false);
+                        toast.success("로그인 이메일을 보냈습니다.",{
+                            autoClose: 6000,
+                        });
+                        setReq(true);
+                        setReqType(true);
                     }
                     else{
                         toast.success("가입 이메일을 보냈습니다.",{
                             autoClose: 6000,
                         });
-                        setSignUpReq(true);
-                        setLoginReqType(true);
+                        setReq(true);
+                        setReqType(false);
                     }
                 })
                 .catch((error) => {
@@ -121,8 +124,8 @@ const LoginModal = ( props ) => {
                 <div>
                     <h1 className="login-modal-title">로그인</h1>
                     <h2 className="login-modal-email">이메일로 로그인</h2>
-                    {loginReqType ?
-                        loginReq ?
+                    {req ?
+                        reqType ?
                             <div className="login-modal-inputbox">
                                 <div className="login-link-alert">로그인 링크가 이메일로 전송되었습니다.</div>
                             </div>
@@ -155,10 +158,15 @@ const LoginModal = ( props ) => {
                 <div>
                     <h1 className="login-modal-title">회원가입</h1>
                     <h2 className="login-modal-email">이메일로 회원가입</h2>
-                    {signUpReq ?
-                        <div className="login-modal-inputbox">
-                            <div className="login-link-alert">회원가입 링크가 이메일로 전송되었습니다.</div>
-                        </div>
+                    {req ?
+                        reqType ?
+                            <div className="login-modal-inputbox">
+                                <div className="login-link-alert">로그인 링크가 이메일로 전송되었습니다.</div>
+                            </div>
+                            :
+                            <div className="login-modal-inputbox">
+                                <div className="login-link-alert">회원가입 링크가 이메일로 전송되었습니다.</div>
+                            </div>
                         :
                         <div className="login-modal-inputbox">
                             <input className="login-modal-input" placeholder="이메일을 입력하세요." value={emailInput} disabled={disable} onChange={(e) => setEmailInput(e.target.value)} onKeyPress={handleSignEnter}/>
