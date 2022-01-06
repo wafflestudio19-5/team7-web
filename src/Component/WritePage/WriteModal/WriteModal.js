@@ -6,6 +6,7 @@ import { BsImage, BsFileEarmarkLock } from "react-icons/bs";
 import { GoGlobe } from "react-icons/go";
 import axios from "axios";
 import {useSessionContext} from "../../../Context/SessionContext";
+import { ToastContainer, toast } from "react-toastify";
 
 const WriteModal = ( props ) => {
 
@@ -70,10 +71,10 @@ const WriteModal = ( props ) => {
                 {
                     title: title,
                     content: contents,
-                    thumbnail: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+                    thumbnail: thumbImgBase64,
                     summary: summaryIn,
                     private: !isPublic,
-                    url: `/@${userId}/` + url,
+                    url: `/post/@${userId}/` + url,
                 },
                 {
                     headers: {
@@ -82,11 +83,15 @@ const WriteModal = ( props ) => {
                 }
                 )
             .then((response) => {
-                console.log(response.data);
-                console.log("전송완료!");
+                history.push("");
             })
             .catch((error) => {
-                console.log(error);
+                toast.error("로그인이 만료되었습니다.",{
+                    autoClose: 3000,
+                });
+                toast.error("다시 로그인 해주세요.",{
+                    autoClose: 3000,
+                });
             });
     }
     const handleThumbnail = (e) => {
@@ -98,6 +103,7 @@ const WriteModal = ( props ) => {
 
     return(
         <Modal className="login-modal" isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+            <ToastContainer/>
             <div className="left-box">
                 <h2 className="preview-title">포스트 미리보기</h2>
                 <div className="thumbnail-box">
