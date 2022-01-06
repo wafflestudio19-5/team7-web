@@ -4,15 +4,19 @@ import Modal from 'react-modal';
 import './WriteModal.scss';
 import { BsImage, BsFileEarmarkLock } from "react-icons/bs";
 import { GoGlobe } from "react-icons/go";
+import axios from "axios";
+import {useSessionContext} from "../../../Context/SessionContext";
 
 const WriteModal = ( props ) => {
 
+    const {handleLogout , isLogin, userId, token} = useSessionContext();
     const {isOpen, setIsOpen, title, contents} = props;
     const history = useHistory();
 
     const [summaryIn, setSummaryIn] = useState("");
     const [summaryOver, setSummaryOver] = useState(false);
     const [isPublic, setIsPublic] = useState(true);
+    const [url, setUrl] = useState("");
 
     const [thumbImgBase64, setThumbImgBase64] = useState(""); // 파일 base64
     const [thumbImgFile, setThumbImgFile] = useState(null);	//파일
@@ -54,11 +58,37 @@ const WriteModal = ( props ) => {
     const handlePrivate = () => {
         setIsPublic(false);
     }
+    const handleUrl = (e) => {
+        setUrl(e.target.value);
+    }
     const handleCancle = () => {
         setIsOpen(false);
     }
     const handleSubmit = () => {
-        history.push('/temp?data='+contents);
+        axios
+            .post(`https://waflog.kro.kr/api/v1/post`,
+                {
+                    title: title,
+                    content: contents,
+                    thumbnail: "",
+                    summary: summaryIn,
+                    private: isPublic,
+                    url: `/@${userId}/` + url,
+                    seriesName: "",
+                }, {withCredentials: true},
+                {
+                    headers: {
+                        Authentication: token,
+                    },
+                }
+                )
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        history.push("");
     }
     const handleThumbnail = (e) => {
         e.preventDefault();
@@ -98,8 +128,8 @@ const WriteModal = ( props ) => {
                 </div>
                 <h2 className="url-title">URL 설정</h2>
                 <div className="url-box">
-                    <div className="username-box">/@{title}/</div>
-                    <input className="url-input"/>
+                    <div className="username-box">/@{userId}/</div>
+                    <input className="url-input" value={url} onChange={handleUrl}/>
                 </div>
                 <div className="btn-box">
                     <button className="btn-cancle" onClick={handleCancle}>취소</button>
