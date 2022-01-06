@@ -8,12 +8,14 @@ const LoginPage = () => {
 
     useEffect(() => {
         const registerCode = URLSearch.get("code");
+        const email = URLSearch.get("email")
         console.log(registerCode);
 
         axios
             .get(`https://waflog.kro.kr/api/v1/auth/verify/login`, {
                 params: {
                     token: registerCode,
+                    email: email,
                     withCredentials: true,
                 },
             })

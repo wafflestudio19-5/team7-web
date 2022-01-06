@@ -103,6 +103,17 @@ const LoginModal = ( props ) => {
 
     };
 
+    const handleLoginEnter = (e) => {
+        if(e.key === 'Enter'){
+            handleLogin();
+        }
+    }
+    const handleSignEnter = (e) => {
+        if(e.key === 'Enter'){
+            handleSignUp();
+        }
+    }
+
     return(
         <Modal className="login-modal" isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
             <ToastContainer/>
@@ -121,7 +132,7 @@ const LoginModal = ( props ) => {
                             </div>
                         :
                         <div className="login-modal-inputbox">
-                            <input className="login-modal-input" placeholder="이메일을 입력하세요." disabled={disable} value={emailInput} onChange={(e) => setEmailInput(e.target.value)}/>
+                            <input className="login-modal-input" placeholder="이메일을 입력하세요." disabled={disable} value={emailInput} onChange={(e) => setEmailInput(e.target.value)} onKeyPress={handleLoginEnter}/>
                             <button className="login-modal-btn" disabled={disable} onClick={handleLogin}>로그인</button>
                         </div>
                     }
@@ -150,7 +161,7 @@ const LoginModal = ( props ) => {
                         </div>
                         :
                         <div className="login-modal-inputbox">
-                            <input className="login-modal-input" placeholder="이메일을 입력하세요." value={emailInput} disabled={disable} onChange={(e) => setEmailInput(e.target.value)}/>
+                            <input className="login-modal-input" placeholder="이메일을 입력하세요." value={emailInput} disabled={disable} onChange={(e) => setEmailInput(e.target.value)} onKeyPress={handleSignEnter}/>
                             <button className="login-modal-btn" onClick={handleSignUp} disabled={disable}>회원가입</button>
                         </div>
                     }
