@@ -152,7 +152,7 @@ const PostPage = () => {
           toast.success("댓글이 작성되었습니다.");
         })
         .catch((error) => {
-          history.push("/error"); // 백엔드 404 response 필요!!
+          toast.error("댓글 작성 오류");
         });
 
   }
