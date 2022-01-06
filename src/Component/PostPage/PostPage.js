@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
+import { useSessionContext } from "../../Context/SessionContext";
 
 const dataFormat = {
   comments: [],
@@ -104,7 +105,13 @@ const commentsData = [
 const PostPage = () => {
   const params = useParams();
   const history = useHistory();
+
+  const { token } = useSessionContext();
+
   const [postResponse, setPostResponse] = useState(dataFormat);
+  const [postId, setPostId] = useState();
+  const [commentsCount, setCommentsCount] = useState(0);
+  const [commentsList, setCommentsList] = useState(commentsData);
   const [commentInput, setCommentInput] = useState("");
 
   const currentUrl = window.location.href;
@@ -126,7 +133,28 @@ const PostPage = () => {
   };
 
   const handleComment = () => {
-    setCommentInput("");
+    axios
+        .post(
+            `https://waflog.kro.kr/api/v1/post/${postId}/comment`,
+            {
+              content : commentInput
+            },
+            {
+              headers: {
+                Authentication: token
+              }
+            }
+        )
+        .then((response) => {
+          setCommentInput("");
+          setCommentsCount(response.data.count);
+          setCommentsList(response.data.contents);
+          toast.success("댓글이 작성되었습니다.");
+        })
+        .catch((error) => {
+          toast.error("댓글 작성 오류");
+        });
+
   }
 
   useEffect(() => {
@@ -136,6 +164,9 @@ const PostPage = () => {
       )
       .then((response) => {
         setPostResponse(response.data);
+        setPostId(response.data.id);
+        setCommentsCount(response.data.comments.count);
+        setCommentsList(response.data.comments.contents);
       })
       .catch((error) => {
         history.push("/error"); // 백엔드 404 response 필요!!
@@ -263,7 +294,7 @@ const PostPage = () => {
           </div>
 
           <div className="post-comments-section">
-            <h4 className="post-comments-count">{}개의 댓글</h4>
+            <h4 className="post-comments-count">{commentsCount}개의 댓글</h4>
 
             <textarea
               className="post-comments-input"
@@ -277,7 +308,7 @@ const PostPage = () => {
             </div>
 
             <ul className={"post-comments-list"}>
-              {commentsData.map((item) => (
+              {commentsList.map((item) => (
                 <CommentsItem item={item} key={item.id} />
               ))}
             </ul>
