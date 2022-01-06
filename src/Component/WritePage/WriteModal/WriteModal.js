@@ -74,7 +74,6 @@ const WriteModal = ( props ) => {
                     summary: summaryIn,
                     private: !isPublic,
                     url: `/@${userId}/` + url,
-                    seriesName: "test",
                 },
                 {
                     headers: {
