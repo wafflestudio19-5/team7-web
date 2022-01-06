@@ -14,6 +14,7 @@ const LoginPage = () => {
             .get(`https://waflog.kro.kr/api/v1/auth/verify/login`, {
                 params: {
                     token: registerCode,
+                    withCredentials: true,
                 },
             })
             .then((response) => {
