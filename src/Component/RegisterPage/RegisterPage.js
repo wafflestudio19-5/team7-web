@@ -27,6 +27,7 @@ const RegisterPage = () => {
         },
       })
       .then((response) => {
+        console.log(registerCode);
         setRegisterEmail(response.data.email);
         setRegisterToken(response.headers.authentication);
       })
@@ -60,9 +61,8 @@ const RegisterPage = () => {
             email: registerEmail,
             name: registerName,
             userId: registerId,
-            shortIntro: registerIntro,
-            token: registerToken
-          }, {withCredentials: true},
+            shortIntro: registerIntro
+          },
           {
             headers: {
               Authentication: registerToken,
