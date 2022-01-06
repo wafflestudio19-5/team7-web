@@ -10,7 +10,7 @@ import {useSessionContext} from "../../../Context/SessionContext";
 
 const Header = ({pageTitle}) => {
 
-    const {handleLogout , isLogin, userId, userImg} = useSessionContext();
+    const {handleLogout, isLogin, userId, userImg} = useSessionContext();
     const [isOpen, setIsOpen] = useState(false);
     const [option, setOption] = useState(false);
 
@@ -30,6 +30,10 @@ const Header = ({pageTitle}) => {
     }
     const handlePageTitle = () => {
 
+    }
+    const handleLogOut = () => {
+        handleLogout();
+        history.replace("");
     }
     const handleOption = () => {
         setOption(!option);
@@ -67,7 +71,7 @@ const Header = ({pageTitle}) => {
                     <div className="custom-select">
                         <div className="op-1" onClick={handleWalog}>내 와로그</div>
                         <div className="op-2">설정</div>
-                        <div className="op-3" onClick={handleLogout}>로그아웃</div>
+                        <div className="op-3" onClick={handleLogOut}>로그아웃</div>
                     </div>
                     :
                     null
@@ -105,7 +109,7 @@ const Header = ({pageTitle}) => {
                     <div className="custom-select">
                         <div className="op-1" onClick={handleWalog}>내 와로그</div>
                         <div className="op-2">설정</div>
-                        <div className="op-3" onClick={handleLogout}>로그아웃</div>
+                        <div className="op-3" onClick={handleLogOut}>로그아웃</div>
                     </div>
                     :
                     null

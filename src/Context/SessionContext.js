@@ -30,7 +30,6 @@ export const SessionProvider = ({ children }) => {
         setToken(null);
         setUserId("");
         setUserImg("");
-        history.replace("");
     }
 
     return (
