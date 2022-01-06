@@ -12,7 +12,7 @@ const LoginPage = () => {
         console.log(registerCode);
 
         axios
-            .get(`https://waflog.kro.kr/api/v1/auth/verify/login`, {
+            .post(`https://waflog.kro.kr/api/v1/auth/verify/login`, {
                 params: {
                     token: registerCode,
                     email: email,
