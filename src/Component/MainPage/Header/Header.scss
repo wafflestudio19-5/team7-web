@@ -60,7 +60,7 @@
     top: 6px;
     height: 22px;
     width: 22px;
-    right: 225px;
+    right: 275px;
     padding: 10px;
     cursor: pointer;
   }
@@ -70,7 +70,7 @@
     top: 6px;
     height: 22px;
     width: 22px;
-    right: 225px;
+    right: 275px;
     padding: 10px;
     border-radius: 25px;
     cursor: pointer;
@@ -88,7 +88,7 @@
 
   .btn-write{
     position: absolute;
-    right: 110px;
+    right: 160px;
     top: 10px;
     height: 2rem;
     padding-left: 1rem;
@@ -107,7 +107,7 @@
 
   .btn-write:hover{
     position: absolute;
-    right: 110px;
+    right: 160px;
     top: 10px;
     height: 2rem;
     padding-left: 1rem;
@@ -148,4 +148,76 @@
     opacity: 0.5;
   }
 
+}
+
+.user-box{
+  position: absolute;
+  display: flex;
+  right: 5px;
+  height: 55px;
+  width: 90px;
+
+  .profile-img{
+    width: 47px;
+    height: 47px;
+    border-radius: 70%;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: rgb(0 0 0 / 6%) 0px 0px 4px 0px;
+    align-items: center;
+    cursor: pointer;
+
+    .user-img{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .option-btn{
+    position: relative;
+    margin-top: 1rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+    color: rgb(134, 142, 150);
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+  }
+
+}
+
+.custom-select{
+  position: fixed;
+  display: inline-block;
+  top: 80px;
+  right: 40px;
+  z-index: 5;
+  width: 12rem;
+  background: white;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
+
+  .op-1{
+    position: relative;
+    color: rgb(33, 37, 41);
+    padding: 0.75rem 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .op-2{
+    position: relative;
+    color: rgb(33, 37, 41);
+    padding: 0.75rem 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .op-3{
+    position: relative;
+    color: rgb(33, 37, 41);
+    padding: 0.75rem 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+    cursor: pointer;
+  }
 }

@@ -1,12 +1,15 @@
 import {createContext, useContext, useState} from "react";
+import { useHistory } from "react-router-dom";
 
 const initialState = {};
 
 const SessionContext = createContext(initialState);
 
 export const SessionProvider = ({ children }) => {
+    
+    const history = useHistory();
 
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(localStorage.getItem('token') !== null);
     const [token, setToken] = useState(null);
 
     const [id, setId] = useState("");
