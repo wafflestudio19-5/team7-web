@@ -70,9 +70,9 @@ const WriteModal = ( props ) => {
                 {
                     title: title,
                     content: contents,
-                    thumbnail: "",
+                    thumbnail: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
                     summary: summaryIn,
-                    private: isPublic,
+                    private: !isPublic,
                     url: `/@${userId}/` + url,
                     seriesName: "",
                 }, {withCredentials: true},
@@ -84,11 +84,11 @@ const WriteModal = ( props ) => {
                 )
             .then((response) => {
                 console.log(response.data);
+                console.log("전송완료!");
             })
             .catch((error) => {
                 console.log(error);
             });
-        history.push("");
     }
     const handleThumbnail = (e) => {
         e.preventDefault();
