@@ -134,7 +134,7 @@ const PostPage = () => {
 
   const handleComment = () => {
     axios
-        .get(
+        .post(
             `https://waflog.kro.kr/api/v1/post/${postId}/comment`,
             {
               content : commentInput
