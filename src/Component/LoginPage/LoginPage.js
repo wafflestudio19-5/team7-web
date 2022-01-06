@@ -24,7 +24,6 @@ const LoginPage = () => {
                 console.log(registerCode);
                 console.log(response);
             })
-            .catch((error) => {});
     }, []);
 
     return(
