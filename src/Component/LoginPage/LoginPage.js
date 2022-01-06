@@ -13,10 +13,8 @@ const LoginPage = () => {
 
         axios
             .post(`https://waflog.kro.kr/api/v1/auth/verify/login`, {
-                params: {
                     token: registerCode,
                     email: email,
-                },
             },
                 {withCredentials: true}
             )
