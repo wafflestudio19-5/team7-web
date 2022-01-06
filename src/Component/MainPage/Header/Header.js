@@ -32,6 +32,7 @@ const Header = ({pageTitle}) => {
 
     }
     const handleLogOut = () => {
+        setOption(false);
         handleLogout();
         history.replace("");
     }
