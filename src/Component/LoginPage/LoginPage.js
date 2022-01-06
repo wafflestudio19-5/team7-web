@@ -16,9 +16,10 @@ const LoginPage = () => {
                 params: {
                     token: registerCode,
                     email: email,
-                    withCredentials: true,
                 },
-            })
+            },
+                { withCredentials: true }
+            )
             .then((response) => {
                 console.log(registerCode);
                 console.log(response);

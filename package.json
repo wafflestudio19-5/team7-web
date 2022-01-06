@@ -1,5 +1,4 @@
 {
-  "proxy": "https://waflog.kro.kr/",
   "name": "velog_toyproject_web",
   "version": "0.1.0",
   "private": true,
