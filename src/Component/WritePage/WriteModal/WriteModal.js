@@ -75,7 +75,7 @@ const WriteModal = ( props ) => {
                     private: !isPublic,
                     url: `/@${userId}/` + url,
                     seriesName: "",
-                }, {withCredentials: true},
+                },
                 {
                     headers: {
                         Authentication: token,
