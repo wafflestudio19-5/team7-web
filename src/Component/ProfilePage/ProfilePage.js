@@ -23,7 +23,7 @@ const ProfilePage = () => {
                                  alt="waffle_studio"/>
                         </div>
                         <div className="user-introduce">
-                            <div className="user-id">ididididid</div>
+                            <div className="user-id">{params.userId}</div>
                             <div className="user-summary">summarysummarysummarysummarysummarysummarysummary</div>
                         </div>
                     </div>
