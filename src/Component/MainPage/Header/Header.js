@@ -4,11 +4,12 @@ import "./Header.scss";
 import { IoSearchOutline } from "react-icons/io5";
 import LoginModal from "../../LoginModal/LoginModal";
 import "@fontsource/source-code-pro";
+import {useSessionContext} from "../../../Context/SessionContext";
 
 
 const Header = ({pageTitle}) => {
 
-    const [isLogin, setIsLogin] = useState(false);
+    const {isLogin} = useSessionContext();
     const [isOpen, setIsOpen] = useState(false);
 
     const history = useHistory();
@@ -40,7 +41,7 @@ const Header = ({pageTitle}) => {
                 <div className="main-title" onClick={handleLogo}>Waflog</div>
                 <IoSearchOutline className="search-icon" onClick={handleSearch}/>
                 <button className="btn-write" onClick={handleWrite}>새 글 작성</button>
-                <button className="btn-login" onClick={handleLogin}>로그인</button>
+                <button className="btn-login" onClick={handleLogin} disabled={!isLogin}>로그인</button>
                 <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
             </div>
         )
@@ -56,7 +57,7 @@ const Header = ({pageTitle}) => {
                 <div className="page-title" onClick={handlePageTitle}>{pageTitle}</div>
                 <IoSearchOutline className="search-icon" onClick={handleSearch}/>
                 <button className="btn-write" onClick={handleWrite}>새 글 작성</button>
-                <button className="btn-login" onClick={handleLogin}>로그인</button>
+                <button className="btn-login" onClick={handleLogin} disabled={!isLogin}>로그인</button>
                 <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
             </div>
         )

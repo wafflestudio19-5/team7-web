@@ -9,14 +9,16 @@ export const SessionProvider = ({ children }) => {
     const [isLogin, setIsLogin] = useState(false);
     const [token, setToken] = useState(null);
 
+    const [id, setId] = useState("");
     const [userId, setUserId] = useState("");
     const [userImg, setUserImg] = useState("");
 
-    const handleLogin = (token, id, img) =>{
+    const handleLogin = (id, userid, img, token) =>{
         localStorage.setItem('token',token);
         setToken(localStorage.getItem('token'));
         setIsLogin(true);
-        setUserId(id);
+        setId(id);
+        setUserId(userid);
         setUserImg(img);
     }
     const handleLogout = () =>{
@@ -29,7 +31,7 @@ export const SessionProvider = ({ children }) => {
 
     return (
         <SessionContext.Provider
-            value={{isLogin, token, userId, userImg, handleLogin,handleLogout}}
+            value={{isLogin, token, id, userId, userImg, handleLogin,handleLogout}}
         >
             {children}
         </SessionContext.Provider>
