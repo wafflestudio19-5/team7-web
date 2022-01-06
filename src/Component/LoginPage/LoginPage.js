@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { BiLoaderAlt } from "react-icons/bi";
 import axios from "axios";
+import './LoginPage.scss';
 
 const LoginPage = () => {
 
@@ -25,7 +27,12 @@ const LoginPage = () => {
     }, []);
 
     return(
-        <div>로그인확인용</div>
+        <div className="loginpage">
+            <div className="login-title">로그인 중입니다.</div>
+            <div>
+                <BiLoaderAlt className="login-img"/>
+            </div>
+        </div>
     )
 }
 
