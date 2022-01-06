@@ -18,7 +18,7 @@ const LoginPage = () => {
                     email: email,
                 },
             },
-                { withCredentials: true }
+                {withCredentials: true}
             )
             .then((response) => {
                 console.log(registerCode);
