@@ -61,6 +61,7 @@ const RegisterPage = () => {
             name: registerName,
             userId: registerId,
             shortIntro: registerIntro,
+            token: registerToken
           }, {withCredentials: true},
           {
             headers: {
