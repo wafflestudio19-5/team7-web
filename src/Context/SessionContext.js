@@ -29,6 +29,9 @@ export const SessionProvider = ({ children }) => {
     }
     const handleLogout = () =>{
         localStorage.removeItem('token');
+        localStorage.removeItem('id');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userImg');
         setIsLogin(false);
         setToken(null);
         setUserId("");
