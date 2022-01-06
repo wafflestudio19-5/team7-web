@@ -99,7 +99,7 @@ const RecentPage = () => {
           page: 0,
           size: 6
         }
-      })
+      },{ withCredentials: true })
       .then((response) => {
         console.log(response);
         setRecentPostList(response.data.content);
