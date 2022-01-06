@@ -20,7 +20,7 @@ const LoginPage = () => {
             )
             .then((response) => {
                 console.log(registerCode);
-                console.log(response);
+                console.log(response.data);
             })
     }, []);
 
