@@ -2,6 +2,8 @@ import "./RegisterPage.scss";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage = () => {
   const params = useParams();
@@ -17,7 +19,6 @@ const RegisterPage = () => {
 
   useEffect(() => {
     const registerCode = URLSearch.get("code");
-    console.log(registerCode);
 
     axios
       .get(`https://waflog.kro.kr/api/v1/auth/verify`, {
@@ -26,7 +27,6 @@ const RegisterPage = () => {
         },
       })
       .then((response) => {
-        console.log(response);
         setRegisterEmail(response.data.email);
         setRegisterToken(response.headers.authentication);
       })
@@ -69,7 +69,9 @@ const RegisterPage = () => {
           }
         )
         .then((response) => {
-          console.log(response.headers);
+          history.push("/");
+          toast.success("회원가입이 완료되었습니다.");
+
         })
         .catch((error) => {
             setRegisterError(4);
@@ -79,6 +81,7 @@ const RegisterPage = () => {
 
   return (
     <div className="registerpage">
+      <ToastContainer />
       <div className="register-section">
         <h1 className="register-welcome">환영합니다!</h1>
         <div className="register-description">
