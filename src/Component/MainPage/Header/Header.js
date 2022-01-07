@@ -89,7 +89,7 @@ const Header = ({ pageTitle }) => {
         {isLogin ? (
           <div className="user-box">
             <div className="profile-img">
-              <img src={userImg} alt="X" className="user-img" />
+              <img src={userImg} alt="X" className="user-img" onClick={handleOption} />
             </div>
             <IoMdArrowDropdownCircle
               className="option-btn"
@@ -102,7 +102,7 @@ const Header = ({ pageTitle }) => {
             <div className="op-1" onClick={handleWaflog}>
               내 와플로그
             </div>
-            <div className="op-2">설정</div>
+            <div className="op-2" onClick={handleSetting}>설정</div>
             <div className="op-3" onClick={handleLogOut}>
               로그아웃
             </div>
@@ -149,7 +149,7 @@ const Header = ({ pageTitle }) => {
         {isLogin ? (
           <div className="user-box">
             <div className="profile-img">
-              <img src={userImg} alt="X" className="user-img" />
+              <img src={userImg} alt="X" className="user-img" onClick={handleOption} />
             </div>
             <IoMdArrowDropdownCircle
               className="option-btn"

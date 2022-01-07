@@ -16,7 +16,7 @@ const SettingPage = () => {
         <div className="contents">
             {isLogin ?
                 <div className="setting-page">
-                    <Header pageTitle={userId} />
+                    <Header />
                     <div className="main">
                         <div className="info">
                             <div className="thumbnail-area">
