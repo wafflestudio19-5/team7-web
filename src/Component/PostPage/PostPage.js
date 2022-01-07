@@ -55,7 +55,7 @@ const commentsData = [
         userId: "abc",
         image: "https://picsum.photos/id/2/200",
       },
-      content: "이것은 예시 댓글입니다!",
+      content: "수정할 내용을 입력하세요.",
       depth: 2,
       createdAt: "2021-12-29T17:33:43",
     },
@@ -116,6 +116,7 @@ const PostPage = () => {
   const [commentInput, setCommentInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [targetCommentId, setTargetCommentId] = useState();
+  const [updateComment, setUpdateComment] = useState();
 
   const currentUrl = window.location.href;
 
@@ -160,6 +161,7 @@ const PostPage = () => {
   };
 
   useEffect(() => {
+    console.log("POSTPAGE REFRESH");
     axios
       .get(
         `https://waflog.kro.kr/api/v1/post/@${params.userId}/${params.postUrl}`
@@ -173,12 +175,9 @@ const PostPage = () => {
       .catch((error) => {
         history.push("/error"); // 백엔드 404 response 필요!!
       });
-  }, []);
+  }, [updateComment]);
 
   console.log(postResponse);
-
-  console.log("token");
-  console.log(token);
 
   return (
     <div className="postpage">
@@ -334,6 +333,7 @@ const PostPage = () => {
                 setTargetCommentId={setTargetCommentId}
                 postId={postId}
                 setCommentsList={setCommentsList}
+                setUpdateComment={setUpdateComment}
               />
             ))}
           </ul>
@@ -347,6 +347,7 @@ const PostPage = () => {
         targetCommentId={targetCommentId}
         setCommentsCount={setCommentsCount}
         setCommentsList={setCommentsList}
+        setUpdateComment={setUpdateComment}
       ></CommentsDeleteModal>
     </div>
   );
