@@ -85,7 +85,7 @@ const MainPage = () => {
           .get("https://waflog.kro.kr/api/v1/post/trend", {
             params: {
               page: trendingPostPage,
-              size: 6,
+              size: 12,
               date: trendPeriod
             }
           })
