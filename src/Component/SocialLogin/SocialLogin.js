@@ -25,12 +25,12 @@ const SocialLogin = () => {
                 {withCredentials: true}
             )
             .then((response) => {
-                //handleLogin(response.data.user.id, response.data.user.userId, response.data.user.image, response.data.token);
+                handleLogin(response.data.id, response.data.userId, response.data.image, registerToken);
                 toast.success("로그인을 성공했습니다.",{
                     autoClose: 4000,
                 });
                 console.log(response.data);
-                //history.replace('');
+                history.replace('');
             })
             .catch((error) => {
                 toast.error("잘못된 요청입니다. 다시 시도해주세요.",{
