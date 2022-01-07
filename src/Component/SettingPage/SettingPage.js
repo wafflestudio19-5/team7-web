@@ -25,7 +25,7 @@ const SettingPage = () => {
                                 <button className="delete-btn">이미지 제거</button>
                             </div>
                             <div className="info-area">
-                                <h2>{userId}</h2>
+                                <h2>{userId}(name)</h2>
                                 <p>한 줄 소개</p>
                                 <button className="insert">수정</button>
                             </div>
@@ -34,14 +34,14 @@ const SettingPage = () => {
                             <div className="custom-list">
                                 <div className="list-style">
                                     <div className="list-title">벨로그 제목</div>
-                                    <div className="list-info">{id}</div>
+                                    <div className="list-info">{userid}</div>
                                 </div>
                                 <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
                             </div>
                             <div className="custom-list">
                                 <div className="list-style">
                                     <div className="list-title">이메일 주소</div>
-                                    <div className="list-info">{userId + "@~~~"}</div>
+                                    <div className="list-info">{userId + "@"}</div>
                                 </div>
                                 <div className="explanation">회원 인증 또는 시스템에서 발송하는 이메일을 수신하는 주소입니다.</div>
                             </div>
