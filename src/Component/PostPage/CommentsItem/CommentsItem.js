@@ -15,7 +15,7 @@ const CommentsItem = ({
   setUpdateComment,
 }) => {
   const history = useHistory();
-  const { userId, token } = useSessionContext();
+  const { id, token } = useSessionContext();
   const [isModifying, setIsModifying] = useState(false);
   const [modifyInput, setModifyInput] = useState(item.rootComment.content);
 
@@ -80,7 +80,7 @@ const CommentsItem = ({
           </div>
         </div>
 
-        { userId === item.rootComment.user.userId ? (
+        { id === item.rootComment.user.id ? (
           <div className="comments-actions">
             <button className="comments-actions-button" onClick={handleModify}>
               수정
