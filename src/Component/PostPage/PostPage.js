@@ -17,6 +17,13 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
 import { useSessionContext } from "../../Context/SessionContext";
 import CommentsDeleteModal from "./CommentsDeleteModal/CommentsDeleteModal";
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css';
+
+import '@toast-ui/editor/dist/toastui-editor.css';
+
+import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
+import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
 const dataFormat = {
   comments: [],
@@ -226,7 +233,7 @@ const PostPage = () => {
           </div>
         </div>
 
-        <ReactMarkdown className="post-content">
+        <ReactMarkdown className="post-content" plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}>
           {postResponse.content}
         </ReactMarkdown>
       </div>
