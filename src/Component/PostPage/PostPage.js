@@ -186,7 +186,9 @@ const PostPage = () => {
         <div className="post-title">{postResponse.title}</div>
         <div className="post-information-section">
           <span className="post-user-id">
-            <a>{postResponse.user.userId}</a>
+            <a href={"/@" + postResponse.user.userId}>
+              {postResponse.user.userId}
+            </a>
           </span>
           <span className="post-separator">·</span>
           <span className="post-datetime">
@@ -225,14 +227,18 @@ const PostPage = () => {
 
       <div className="post-user-section">
         <div className="post-user-info">
-          <img
-            className="post-user-image"
-            src={postResponse.user.image}
-            alt="유저 이미지"
-          />
+          <a href={"/@" + postResponse.user.userId}>
+            <img
+              className="post-user-image"
+              src={postResponse.user.image}
+              alt="유저 이미지"
+            />
+          </a>
           <div className="post-user-text">
             <div className="post-user-name">
-              <a>{postResponse.user.name}</a>
+              <a href={"/@" + postResponse.user.userId}>
+                {postResponse.user.name}
+              </a>
             </div>
             <div className="post-user-intro">
               {postResponse.user.shortIntro}
@@ -328,8 +334,8 @@ const PostPage = () => {
         setIsOpen={setIsOpen}
         postId={postId}
         targetCommentId={targetCommentId}
-        setCommentsCount = {setCommentsCount}
-        setCommentsList = {setCommentsList}
+        setCommentsCount={setCommentsCount}
+        setCommentsList={setCommentsList}
       ></CommentsDeleteModal>
     </div>
   );
