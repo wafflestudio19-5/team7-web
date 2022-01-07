@@ -117,20 +117,6 @@ const LoginModal = ( props ) => {
         }
     }
 
-    const handleGithubLogin = () => {
-        axios
-            .get(`https://waflog.kro.kr/oauth2/authorization/github`)
-            .then((response) => {
-                console.log("github login");
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-    }
-
-
     return(
         <Modal className="login-modal" isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
             <ToastContainer/>
@@ -188,7 +174,7 @@ const LoginModal = ( props ) => {
                         </div>
                     }
                     <h2 className="login-modal-social">소셜 계정으로 회원가입</h2>
-                    <a className="login-github" onClick={handleGithubLogin}>
+                    <a className="login-github" href="https://waflog.kro.kr/oauth2/authorization/github">
                         <img className="github-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png" alt="git"/>
                     </a>
                     <a className="login-google" href="http://waflog.kro.kr/oauth2/authorization/google">
