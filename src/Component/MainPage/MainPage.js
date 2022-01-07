@@ -78,6 +78,8 @@ const MainPage = () => {
     const scrollHeight = trendingPostRef.current.scrollHeight;
     const clientHeight = trendingPostRef.current.clientHeight;
 
+    console.log(scrollHeight - scrollTop - clientHeight);
+
     if (scrollHeight - scrollTop - clientHeight < 10) {
       console.log("BOTTOM!!!!!")
       console.log(trendingPostPage);
