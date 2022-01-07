@@ -93,7 +93,7 @@ const Header = ({ pageTitle }) => {
         {option ? (
           <div className="custom-select">
             <div className="op-1" onClick={handleWaflog}>
-              내 와로그
+              내 와플로그
             </div>
             <div className="op-2">설정</div>
             <div className="op-3" onClick={handleLogOut}>

@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import './CommentsDeleteModal.scss';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,7 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
 
     Modal.setAppElement('#root');
 
+    const params = useParams();
     const history = useHistory();
     const { token } = useSessionContext();
 
@@ -28,12 +29,10 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
                 }
             )
             .then((response) => {
-                // console.log(response);
                 // setCommentsCount(response.data.count);
                 // setCommentsList(response.data.contents);
                 setIsOpen(false);
-                toast.success("댓글이 삭제되었습니다.");
-                history.replace("./");
+                history.replace(`/post/@${params.userId}/${params.postUrl}`);
             })
             .catch((error) => {
                  toast.error("댓글 삭제 오류");
