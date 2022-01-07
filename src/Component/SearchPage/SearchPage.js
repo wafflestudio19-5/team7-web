@@ -64,7 +64,7 @@ const SearchPage = () => {
         const scrollHeight = searchPageRef.current.scrollHeight;
         const clientHeight = searchPageRef.current.clientHeight;
 
-        if (scrollHeight - scrollTop - clientHeight === 0) {
+        if (scrollHeight - scrollTop - clientHeight < 10) {
             if (!(searchPageNumber === null)) {
                 axios
                     .get("https://waflog.kro.kr/api/v1/post/search", {

@@ -122,7 +122,7 @@ const RecentPage = () => {
     const scrollHeight = recentPostRef.current.scrollHeight;
     const clientHeight = recentPostRef.current.clientHeight;
 
-    if (scrollHeight - scrollTop - clientHeight === 0) {
+    if (scrollHeight - scrollTop - clientHeight < 10) {
       console.log("BOTTOM!!!!!");
       if (!(recentPostPage === null)) {
         axios
