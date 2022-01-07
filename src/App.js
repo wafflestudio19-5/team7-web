@@ -8,6 +8,7 @@ import ErrorPage from "./Component/ErrorPage/ErrorPage";
 import PostPage from "./Component/PostPage/PostPage";
 import RegisterPage from "./Component/RegisterPage/RegisterPage";
 import LoginPage from "./Component/LoginPage/LoginPage";
+import SocialLogin from "./Component/SocialLogin/SocialLogin";
 import ProfilePage from "./Component/ProfilePage/ProfilePage";
 import SettingPage from "./Component/SettingPage/SettingPage";
 
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/post/@:userId/:postUrl" component={PostPage} exact={true}/>
                 <Route path="/register" component={RegisterPage} exact={true}/>
                 <Route path="/email-login" component={LoginPage} exact={true}/>
+                <Route path="/social" component={SocialLogin} exact={true}/>
                 <Route path="/setting" component={SettingPage} exact={true}/>
                 <Route path="/" component={MainPage} exact={true}/>
                 <Redirect to="/"/>
