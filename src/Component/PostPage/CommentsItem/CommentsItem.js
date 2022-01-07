@@ -13,7 +13,7 @@ const CommentsItem = ({ item, setIsOpen, setTargetCommentId }) => {
 
   const handleDelete = () => {
     setTargetCommentId(item.rootComment.id);
-    setIsOpen(false);
+    setIsOpen(true);
   };
 
   return (
@@ -44,8 +44,8 @@ const CommentsItem = ({ item, setIsOpen, setTargetCommentId }) => {
 
         {userId === item.rootComment.user.userId ? (
             <div className="comments-actions">
-              <button className="comments-actions-span" onClick={handleModify}>수정</button>
-              <button className="comments-actions-span" onClick={handleDelete}>삭제</button>
+              <button className="comments-actions-button" onClick={handleModify}>수정</button>
+              <button className="comments-actions-button" onClick={handleDelete}>삭제</button>
             </div>
         ) : (
             <div />
