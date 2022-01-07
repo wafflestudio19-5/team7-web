@@ -2,18 +2,54 @@ import "./CommentsItem.scss";
 import { useHistory } from "react-router-dom";
 import dayjs from "dayjs";
 import { useSessionContext } from "../../../Context/SessionContext";
+import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const CommentsItem = ({ item, setIsOpen, setTargetCommentId }) => {
+const CommentsItem = ({
+  item,
+  setIsOpen,
+  setTargetCommentId,
+  postId,
+  setCommentsList,
+}) => {
+
   const history = useHistory();
-  const { userId } = useSessionContext();
+  const { token } = useSessionContext();
+  const [isModifying, setIsModifying] = useState(false);
+  const [modifyInput, setModifyInput] = useState(item.rootComment.content);
 
   const handleModify = () => {
-    history.push("/post/@" + item.user.userId + "/" + item.url);
+    setIsModifying(true);
   };
 
   const handleDelete = () => {
     setTargetCommentId(item.rootComment.id);
     setIsOpen(true);
+  };
+
+  const cancelModify = () => {
+    setIsModifying(false);
+  };
+
+  const completeModify = () => {
+    axios
+      .put(
+        `https://waflog.kro.kr/api/v1/post/${postId}/comment/${item.rootComment.id}`,
+        { content: modifyInput },
+        {
+          headers: {
+            Authentication: token,
+          },
+        }
+      )
+      .then((response) => {
+        setCommentsList(response.data.contents);
+        setIsModifying(false);
+      })
+      .catch((error) => {
+        toast.error("댓글 수정 오류");
+      });
   };
 
   return (
@@ -42,17 +78,48 @@ const CommentsItem = ({ item, setIsOpen, setTargetCommentId }) => {
           </div>
         </div>
 
-        {userId === item.rootComment.user.userId ? (
-            <div className="comments-actions">
-              <button className="comments-actions-button" onClick={handleModify}>수정</button>
-              <button className="comments-actions-button" onClick={handleDelete}>삭제</button>
-            </div>
+        {/*userId === item.rootComment.user.userId*/}
+        {true ? (
+          <div className="comments-actions">
+            <button className="comments-actions-button" onClick={handleModify}>
+              수정
+            </button>
+            <button className="comments-actions-button" onClick={handleDelete}>
+              삭제
+            </button>
+          </div>
         ) : (
-            <div />
+          <div />
         )}
-
       </div>
-      <div className="comments-content">{item.rootComment.content}</div>
+
+      {isModifying ? (
+        <>
+          <textarea
+            className="post-comments-input"
+            placeholder="댓글을 입력하세요."
+            value={modifyInput}
+            onChange={(e) => setModifyInput(e.target.value)}
+          />
+
+          <div className="post-comments-button-wrapper">
+            <button
+              className="post-comments-button-cancel"
+              onClick={cancelModify}
+            >
+              취소
+            </button>
+            <button
+              className="post-comments-button-modify"
+              onClick={completeModify}
+            >
+              댓글 수정
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className="comments-content">{item.rootComment.content}</div>
+      )}
     </div>
   );
 };

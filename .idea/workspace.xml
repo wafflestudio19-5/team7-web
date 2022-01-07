@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="new git repo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsDeleteModal/CommentsDeleteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsDeleteModal/CommentsDeleteModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="23N4zDqzczstMt1Qypi7Sftv172" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
@@ -14,5 +50,50 @@
       <envs />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="" />
+      <created>1641561470357</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641561470357</updated>
+      <workItem from="1641561472471" duration="1748000" />
+    </task>
+    <task id="LOCAL-00001" summary="new git repo">
+      <created>1641561603979</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641561603979</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new git repo">
+      <created>1641561649137</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641561649137</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new git repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="new git repo" />
   </component>
 </project>
