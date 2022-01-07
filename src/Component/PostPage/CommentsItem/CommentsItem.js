@@ -39,17 +39,18 @@ const CommentsItem = ({ item, setIsOpen, setTargetCommentId }) => {
             <div className="comments-info-date">
               {dayjs(item.rootComment.createdAt).format("YYYY년 MM월 DD일")}
             </div>
-
-            {userId === item.rootComment.user.userId ? (
-              <div className="comments-actions">
-                <span onClick={handleModify}>수정</span>
-                <span onClick={handleDelete}>삭제</span>
-              </div>
-            ) : (
-              <div />
-            )}
           </div>
         </div>
+
+        {userId === item.rootComment.user.userId ? (
+            <div className="comments-actions">
+              <button className="comments-actions-span" onClick={handleModify}>수정</button>
+              <button className="comments-actions-span" onClick={handleDelete}>삭제</button>
+            </div>
+        ) : (
+            <div />
+        )}
+
       </div>
       <div className="comments-content">{item.rootComment.content}</div>
     </div>

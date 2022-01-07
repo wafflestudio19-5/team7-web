@@ -63,9 +63,16 @@
   color: rgb(134, 142, 150);
 }
 
-.comments-actions .span{
+.comments-actions-button{
   margin-left: 0.5rem;
+  background: none;
+  border: none;
   cursor: pointer;
+
+}
+
+.comments-actions-button:hover{
+  text-decoration: underline;
 }
 
 .comments-content {
