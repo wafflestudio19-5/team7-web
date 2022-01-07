@@ -10,6 +10,7 @@ export const SessionProvider = ({ children }) => {
     const history = useHistory();
 
     const [isLogin, setIsLogin] = useState(localStorage.getItem('token') !== null);
+    //const [isLogin, setIsLogin] = useState(true);
     const [token, setToken] = useState(localStorage.getItem('token') === null ?  null :  localStorage.getItem('token'));
 
     const [id, setId] = useState(localStorage.getItem('id') === null ?  "" :  localStorage.getItem('id'));

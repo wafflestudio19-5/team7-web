@@ -26,7 +26,9 @@ const Header = ({ pageTitle }) => {
   const handleLogo = () => {
     history.push("");
   };
-  const handlePageTitle = () => {};
+  const handlePageTitle = () => {
+    history.push("/@"+pageTitle.substr(0,pageTitle.length-4));
+  };
   const handleLogOut = () => {
     setOption(false);
     handleLogout();
@@ -35,8 +37,13 @@ const Header = ({ pageTitle }) => {
   const handleOption = () => {
     setOption(!option);
   };
+  const handleSetting = () => {
+    history.push("/setting");
+    setOption(false);
+  }
   const handleWaflog = () => {
     history.push("/@" + userId);
+    setOption(false);
   };
 
   if (
@@ -155,7 +162,7 @@ const Header = ({ pageTitle }) => {
             <div className="op-1" onClick={handleWaflog}>
               내 와플로그
             </div>
-            <div className="op-2">설정</div>
+            <div className="op-2" onClick={handleSetting}>설정</div>
             <div className="op-3" onClick={handleLogOut}>
               로그아웃
             </div>

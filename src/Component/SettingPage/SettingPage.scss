@@ -1,0 +1,215 @@
+.errorpage {
+  position: absolute;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.error-image {
+  position: absolute;
+  top: 25%;
+  left: calc(50% - 10rem);
+  width: 20rem;
+  height: auto;
+}
+
+.text-nothing {
+  position: absolute;
+  top: calc(25% + 160px);
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  white-space: pre;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 2.5rem;
+  color: rgb(52, 58, 64);
+  margin-top: 2rem;
+}
+
+.btn-returnhome {
+  position: absolute;
+  top: calc(25% + 290px);
+  left: calc(50% - 3rem);
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(18, 184, 134);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.125rem;
+  width: 6rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+}
+
+.setting-page{
+  width: 100vw;
+  height: 100vh;
+
+  .main{
+    margin-top: 9rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 768px;
+    padding-bottom: 5rem;
+
+    .info{
+      display: flex;
+      height: 13.75rem;
+
+      .thumbnail-area{
+        padding-right: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        .thumbnail-box{
+          object-fit: cover;
+          width: 8rem;
+          height: 8rem;
+          border-radius: 50%;
+          display: block;
+          margin-bottom: 1.25rem;
+        }
+
+        .upload-btn{
+          display: inline-flex;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          font-weight: bold;
+          cursor: pointer;
+          outline: none;
+          border: none;
+          background: rgb(18, 184, 134);
+          color: white;
+          border-radius: 4px;
+          padding: 0px 1.25rem;
+          height: 2rem;
+          font-size: 1rem;
+        }
+
+        .delete-btn{
+          margin-top: 0.5rem;
+          display: inline-flex;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          font-weight: bold;
+          cursor: pointer;
+          outline: none;
+          border: none;
+          background: none;
+          color: rgb(18, 184, 134);
+          border-radius: 4px;
+          padding: 0px 1.25rem;
+          height: 2rem;
+          font-size: 1rem;
+        }
+      }
+
+      .info-area{
+        flex: 1 1 0%;
+        padding-left: 1.5rem;
+        border-left: 1px solid rgb(233, 236, 239);
+
+        h2{
+          font-size: 2.25rem;
+          margin: 0px;
+          line-height: 1.5;
+          color: rgb(52, 58, 64);
+        }
+
+        p{
+          font-size: 1rem;
+          margin-top: 0.25rem;
+          margin-bottom: 0.5rem;
+          line-height: 1.5;
+          color: rgb(134, 142, 150);
+        }
+
+        .insert{
+          outline: none;
+          padding: 0px;
+          border: none;
+          display: inline;
+          font-size: 1rem;
+          line-height: 1.5;
+          color: rgb(18, 184, 134);
+          text-decoration: underline;
+          background: none;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .custom{
+      margin-top: 4rem;
+      display: block;
+      box-sizing: inherit;
+
+      .custom-list{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        display: block;
+        box-sizing: inherit;
+        border-top: 1px solid rgb(233, 236, 239);
+
+        .list-style{
+          display: flex;
+          box-sizing: inherit;
+
+          .list-title{
+            width: 9.5rem;
+            flex-shrink: 0;
+            line-height: 1.5;
+            color: rgb(52, 58, 64);
+            margin: 0px;
+            font-size: 1.125rem;
+            font-weight: bold;
+          }
+
+          .list-info{
+            flex: 1 1 0%;
+            font-size: 1rem;
+            color: rgb(73, 80, 87);
+            line-height: 1.5;
+
+            .resign-btn{
+              display: inline-flex;
+              -webkit-box-align: center;
+              align-items: center;
+              -webkit-box-pack: center;
+              justify-content: center;
+              font-weight: bold;
+              cursor: pointer;
+              outline: none;
+              border: none;
+              background: rgb(255, 107, 107);
+              color: white;
+              border-radius: 4px;
+              padding: 0px 1.25rem;
+              height: 2rem;
+              font-size: 1rem;
+            }
+          }
+        }
+
+        .explanation{
+          margin-top: 0.875rem;
+          color: rgb(134, 142, 150);
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
