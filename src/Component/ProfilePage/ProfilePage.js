@@ -34,8 +34,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="post-type">
                     <div className="select-type">
-                        <a className="type-btn">글</a>
-                        <a className="type-btn">소개</a>
+                        <a className="type-btn">글 목록</a>
                     </div>
                 </div>
                 <div className="userpost-list">
