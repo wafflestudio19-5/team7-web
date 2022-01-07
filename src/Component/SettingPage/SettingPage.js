@@ -34,7 +34,7 @@ const SettingPage = () => {
                             <div className="custom-list">
                                 <div className="list-style">
                                     <div className="list-title">벨로그 제목</div>
-                                    <div className="list-info">{userid}</div>
+                                    <div className="list-info">{userId}</div>
                                 </div>
                                 <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
                             </div>
