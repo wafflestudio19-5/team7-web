@@ -31,7 +31,7 @@ const SearchPage = () => {
                 params: {
                     keyword: tag,
                     page: 0,
-                    size: 3
+                    size: 6
                 },
             })
             .then((response) => {
@@ -71,7 +71,7 @@ const SearchPage = () => {
                         params: {
                             keyword: tag,
                             page: searchPageNumber,
-                            size: 3
+                            size: 6
                         },
                     })
                     .then((response) => {
