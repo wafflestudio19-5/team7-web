@@ -35,6 +35,18 @@
   font-weight: bold;
 }
 
+.post-user-id-href {
+  color: rgb(52, 58, 64);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.post-user-id-href:hover {
+  color: rgb(52, 58, 64);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .post-separator {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -225,6 +237,16 @@
   line-height: 1.5;
   font-weight: bold;
   color: rgb(33, 37, 41);
+}
+
+.post-user-name-href {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.post-user-name-href:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .post-user-intro {
