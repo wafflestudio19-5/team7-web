@@ -27,6 +27,7 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
                 }
             )
             .then((response) => {
+                console.log(response);
                 setCommentsCount(response.data.count);
                 setCommentsList(response.data.contents);
                 setIsOpen(false);
