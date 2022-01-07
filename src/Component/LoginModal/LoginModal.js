@@ -121,6 +121,7 @@ const LoginModal = ( props ) => {
         axios
             .get(`https://waflog.kro.kr/oauth2/authorization/github`)
             .then((response) => {
+                console.log("github login");
                 console.log(response);
             })
             .catch((error) => {

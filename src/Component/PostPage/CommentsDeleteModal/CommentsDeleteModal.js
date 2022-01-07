@@ -36,6 +36,7 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
                 setIsOpen(false);
                 // history.push(`/post/@${params.userId}/${params.postUrl}`);
                 console.log(`/post/@${params.userId}/${params.postUrl}`);
+                toast.success("댓글이 삭제되었습니다.");
             })
             .catch((error) => {
                  toast.error("댓글 삭제 오류");

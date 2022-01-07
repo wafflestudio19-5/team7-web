@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="merge modification" />
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="postpage reactmarkdown plugin">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsDeleteModal/CommentsDeleteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsDeleteModal/CommentsDeleteModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641580309020</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="postpage reactmarkdown plugin">
+      <created>1641580878371</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1641580878371</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +161,7 @@
     <MESSAGE value="social login links" />
     <MESSAGE value="error modified" />
     <MESSAGE value="merge modification" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge modification" />
+    <MESSAGE value="postpage reactmarkdown plugin" />
+    <option name="LAST_COMMIT_MESSAGE" value="postpage reactmarkdown plugin" />
   </component>
 </project>

@@ -328,7 +328,7 @@ const PostPage = () => {
             {postResponse.prevPost !== null ? (
               <a
                 className="post-prev-box"
-                href={`/@${postResponse.user.userId}/${postResponse.prevPost.url}`}
+                href={`/post/@${postResponse.user.userId}/${postResponse.prevPost.url}`}
               >
                 <div className="post-prev-arrow-wrapper">
                   <AiOutlineArrowLeft className="post-prev-arrow-ico" />
@@ -350,7 +350,7 @@ const PostPage = () => {
             {postResponse.nextPost !== null ? (
               <a
                 className="post-next-box"
-                href={`/@${postResponse.user.userId}/${postResponse.nextPost.url}`}
+                href={`/post/@${postResponse.user.userId}/${postResponse.nextPost.url}`}
               >
                 <div className="post-next-arrow-wrapper">
                   <AiOutlineArrowRight className="post-prev-arrow-ico" />

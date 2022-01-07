@@ -306,6 +306,7 @@
   -webkit-box-align: center;
   align-items: center;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 .post-prev-arrow-wrapper {
@@ -373,6 +374,7 @@
   align-items: center;
   text-decoration: none;
   flex-direction: row-reverse;
+  box-sizing: border-box;
 }
 
 .post-next-arrow-wrapper {
