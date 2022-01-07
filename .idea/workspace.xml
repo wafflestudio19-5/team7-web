@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="comment modify">
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" afterDir="false" />
     </list>
@@ -55,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641561470357</updated>
-      <workItem from="1641561472471" duration="2698000" />
+      <workItem from="1641561472471" duration="6509000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>
@@ -78,7 +78,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641563303399</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="social login links">
+      <created>1641564194079</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641564194079</updated>
+    </task>
+    <task id="LOCAL-00005" summary="error modified">
+      <created>1641564355751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641564355751</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +112,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new git repo" />
     <MESSAGE value="comment modify" />
-    <option name="LAST_COMMIT_MESSAGE" value="comment modify" />
+    <MESSAGE value="social login links" />
+    <MESSAGE value="error modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="error modified" />
   </component>
 </project>
