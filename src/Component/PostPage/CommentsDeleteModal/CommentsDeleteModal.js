@@ -29,6 +29,7 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
             .then((response) => {
                 setCommentsCount(response.data.count);
                 setCommentsList(response.data.contents);
+                setIsOpen(false);
                 toast.success("댓글이 삭제되었습니다.");
             })
             .catch((error) => {
