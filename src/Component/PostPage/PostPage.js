@@ -6,7 +6,11 @@ import dayjs from "dayjs";
 import ReactMarkdown from "react-markdown";
 import Header from "../MainPage/Header/Header";
 import { BsLink45Deg } from "react-icons/bs";
-import { AiFillHome } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+} from "react-icons/ai";
 import { GrMail } from "react-icons/gr";
 import { GoMarkGithub } from "react-icons/go";
 import { BsFacebook } from "react-icons/bs";
@@ -306,6 +310,52 @@ const PostPage = () => {
           ) : (
             <div />
           )}
+        </div>
+
+        <div className="post-order-section">
+          <div className="post-prev-section">
+            {postResponse.prevPost !== null ? (
+              <a
+                className="post-prev-box"
+                href={`/@${postResponse.user.userId}/${postResponse.prevPost.url}`}
+              >
+                <div className="post-prev-arrow-wrapper">
+                  <AiOutlineArrowLeft className="post-prev-arrow-ico" />
+                </div>
+
+                <div className="post-prev-text-wrapper">
+                  <div className="post-prev-text-description">이전 포스트</div>
+                  <h3 className="post-prev-text-title">
+                    {postResponse.prevPost.title}
+                  </h3>
+                </div>
+              </a>
+            ) : (
+              <div />
+            )}
+          </div>
+
+          <div className="post-next-section">
+            {postResponse.nextPost !== null ? (
+              <a
+                className="post-next-box"
+                href={`/@${postResponse.user.userId}/${postResponse.nextPost.url}`}
+              >
+                <div className="post-next-arrow-wrapper">
+                  <AiOutlineArrowRight className="post-prev-arrow-ico" />
+                </div>
+
+                <div className="post-next-text-wrapper">
+                  <div className="post-next-text-description">다음 포스트</div>
+                  <h3 className="post-next-text-title">
+                    {postResponse.nextPost.title}
+                  </h3>
+                </div>
+              </a>
+            ) : (
+              <div />
+            )}
+          </div>
         </div>
 
         <div className="post-comments-section">

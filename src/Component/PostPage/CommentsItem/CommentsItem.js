@@ -15,7 +15,7 @@ const CommentsItem = ({
   setUpdateComment,
 }) => {
   const history = useHistory();
-  const { token } = useSessionContext();
+  const { userId, token } = useSessionContext();
   const [isModifying, setIsModifying] = useState(false);
   const [modifyInput, setModifyInput] = useState(item.rootComment.content);
 
