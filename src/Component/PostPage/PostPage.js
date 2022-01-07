@@ -186,7 +186,10 @@ const PostPage = () => {
         <div className="post-title">{postResponse.title}</div>
         <div className="post-information-section">
           <span className="post-user-id">
-            <a href={"/@" + postResponse.user.userId}>
+            <a
+              className="post-user-id-href"
+              href={"/@" + postResponse.user.userId}
+            >
               {postResponse.user.userId}
             </a>
           </span>
@@ -236,7 +239,10 @@ const PostPage = () => {
           </a>
           <div className="post-user-text">
             <div className="post-user-name">
-              <a href={"/@" + postResponse.user.userId}>
+              <a
+                className="post-user-name-href"
+                href={"/@" + postResponse.user.userId}
+              >
                 {postResponse.user.name}
               </a>
             </div>
