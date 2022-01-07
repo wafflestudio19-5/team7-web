@@ -38,6 +38,193 @@ const dummyData = [
       userId: "219ydh"
     }
   }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  },
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  },
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  },
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+  ,
+
+  {
+    comments: 0,
+    createAt: "2022-01-06T19:51:34.859255",
+    id: 11,
+    likes: 0,
+    summary: "123",
+    thumbnail: "",
+    title: "231",
+    url: "321",
+    user:{
+      id: 8,
+      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh"
+    }
+  }
+
+
+
 ];
 
 const MainPage = () => {
@@ -77,7 +264,7 @@ const MainPage = () => {
     const scrollHeight = trendingPostRef.current.scrollHeight;
     const clientHeight = trendingPostRef.current.clientHeight;
 
-    if (scrollHeight - scrollTop - clientHeight === 0) {
+    if (scrollHeight - scrollTop - clientHeight < 10) {
       console.log("BOTTOM!!!!!")
       console.log(trendingPostPage);
       if (!(trendingPostPage === null)) {
@@ -112,7 +299,7 @@ const MainPage = () => {
       />
 
       <ul className={"PostList"}>
-        {trendingPostList.map((item) => (
+        {dummyData.map((item) => (
           <PostItem item={item} key={item.id} />
         ))}
       </ul>
