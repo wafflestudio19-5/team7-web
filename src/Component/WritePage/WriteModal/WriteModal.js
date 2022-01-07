@@ -74,7 +74,7 @@ const WriteModal = ( props ) => {
                     thumbnail: "",
                     summary: summaryIn,
                     private: !isPublic,
-                    url: `/post/@${userId}/` + url,
+                    url: url,
                 },
                 {
                     headers: {
