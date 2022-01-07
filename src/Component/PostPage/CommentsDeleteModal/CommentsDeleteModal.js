@@ -5,8 +5,9 @@ import './CommentsDeleteModal.scss';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSessionContext } from "../../../Context/SessionContext";
+import dayjs from "dayjs";
 
-const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setCommentsCount, setCommentsList } ) => {
+const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setCommentsCount, setCommentsList, setUpdateComment } ) => {
 
     Modal.setAppElement('#root');
 
@@ -31,8 +32,9 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
             .then((response) => {
                 // setCommentsCount(response.data.count);
                 // setCommentsList(response.data.contents);
+                setUpdateComment(dayjs());
                 setIsOpen(false);
-                history.push(`/post/@${params.userId}/${params.postUrl}`);
+                // history.push(`/post/@${params.userId}/${params.postUrl}`);
                 console.log(`/post/@${params.userId}/${params.postUrl}`);
             })
             .catch((error) => {

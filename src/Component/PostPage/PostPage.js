@@ -6,7 +6,11 @@ import dayjs from "dayjs";
 import ReactMarkdown from "react-markdown";
 import Header from "../MainPage/Header/Header";
 import { BsLink45Deg } from "react-icons/bs";
-import { AiFillHome } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+} from "react-icons/ai";
 import { GrMail } from "react-icons/gr";
 import { GoMarkGithub } from "react-icons/go";
 import { BsFacebook } from "react-icons/bs";
@@ -17,6 +21,14 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
 import { useSessionContext } from "../../Context/SessionContext";
 import CommentsDeleteModal from "./CommentsDeleteModal/CommentsDeleteModal";
+
+import Prism from "prismjs";
+import "prismjs/themes/prism.css";
+
+import "@toast-ui/editor/dist/toastui-editor.css";
+
+import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
+import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 
 const dataFormat = {
   comments: [],
@@ -55,7 +67,7 @@ const commentsData = [
         userId: "abc",
         image: "https://picsum.photos/id/2/200",
       },
-      content: "이것은 예시 댓글입니다!",
+      content: "수정할 내용을 입력하세요.",
       depth: 2,
       createdAt: "2021-12-29T17:33:43",
     },
@@ -116,6 +128,7 @@ const PostPage = () => {
   const [commentInput, setCommentInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [targetCommentId, setTargetCommentId] = useState();
+  const [updateComment, setUpdateComment] = useState();
 
   const currentUrl = window.location.href;
 
@@ -160,6 +173,7 @@ const PostPage = () => {
   };
 
   useEffect(() => {
+    console.log("POSTPAGE REFRESH");
     axios
       .get(
         `https://waflog.kro.kr/api/v1/post/@${params.userId}/${params.postUrl}`
@@ -173,12 +187,9 @@ const PostPage = () => {
       .catch((error) => {
         history.push("/error"); // 백엔드 404 response 필요!!
       });
-  }, []);
+  }, [updateComment]);
 
   console.log(postResponse);
-
-  console.log("token");
-  console.log(token);
 
   return (
     <div className="postpage">
@@ -226,7 +237,10 @@ const PostPage = () => {
           </div>
         </div>
 
-        <ReactMarkdown className="post-content">
+        <ReactMarkdown
+          className="post-content"
+          plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
+        >
           {postResponse.content}
         </ReactMarkdown>
       </div>
@@ -309,6 +323,52 @@ const PostPage = () => {
           )}
         </div>
 
+        <div className="post-order-section">
+          <div className="post-prev-section">
+            {postResponse.prevPost !== null ? (
+              <a
+                className="post-prev-box"
+                href={`/@${postResponse.user.userId}/${postResponse.prevPost.url}`}
+              >
+                <div className="post-prev-arrow-wrapper">
+                  <AiOutlineArrowLeft className="post-prev-arrow-ico" />
+                </div>
+
+                <div className="post-prev-text-wrapper">
+                  <div className="post-prev-text-description">이전 포스트</div>
+                  <h3 className="post-prev-text-title">
+                    {postResponse.prevPost.title}
+                  </h3>
+                </div>
+              </a>
+            ) : (
+              <div />
+            )}
+          </div>
+
+          <div className="post-next-section">
+            {postResponse.nextPost !== null ? (
+              <a
+                className="post-next-box"
+                href={`/@${postResponse.user.userId}/${postResponse.nextPost.url}`}
+              >
+                <div className="post-next-arrow-wrapper">
+                  <AiOutlineArrowRight className="post-prev-arrow-ico" />
+                </div>
+
+                <div className="post-next-text-wrapper">
+                  <div className="post-next-text-description">다음 포스트</div>
+                  <h3 className="post-next-text-title">
+                    {postResponse.nextPost.title}
+                  </h3>
+                </div>
+              </a>
+            ) : (
+              <div />
+            )}
+          </div>
+        </div>
+
         <div className="post-comments-section">
           <h4 className="post-comments-count">{commentsCount}개의 댓글</h4>
 
@@ -334,6 +394,7 @@ const PostPage = () => {
                 setTargetCommentId={setTargetCommentId}
                 postId={postId}
                 setCommentsList={setCommentsList}
+                setUpdateComment={setUpdateComment}
               />
             ))}
           </ul>
@@ -347,6 +408,7 @@ const PostPage = () => {
         targetCommentId={targetCommentId}
         setCommentsCount={setCommentsCount}
         setCommentsList={setCommentsList}
+        setUpdateComment={setUpdateComment}
       ></CommentsDeleteModal>
     </div>
   );

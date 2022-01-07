@@ -1,9 +1,9 @@
 import "./CommentsItem.scss";
 import { useHistory } from "react-router-dom";
-import dayjs from "dayjs";
 import { useSessionContext } from "../../../Context/SessionContext";
 import { useState } from "react";
 import axios from "axios";
+import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
 const CommentsItem = ({
@@ -12,15 +12,16 @@ const CommentsItem = ({
   setTargetCommentId,
   postId,
   setCommentsList,
+  setUpdateComment,
 }) => {
-
   const history = useHistory();
-  const { token } = useSessionContext();
+  const { userId, token } = useSessionContext();
   const [isModifying, setIsModifying] = useState(false);
   const [modifyInput, setModifyInput] = useState(item.rootComment.content);
 
   const handleModify = () => {
     setIsModifying(true);
+    console.log(item.rootComment.content);
   };
 
   const handleDelete = () => {
@@ -44,8 +45,9 @@ const CommentsItem = ({
         }
       )
       .then((response) => {
-        setCommentsList(response.data.contents);
+        setUpdateComment(dayjs());
         setIsModifying(false);
+        toast.success("댓글이 수정되었습니다.");
       })
       .catch((error) => {
         toast.error("댓글 수정 오류");
@@ -78,8 +80,7 @@ const CommentsItem = ({
           </div>
         </div>
 
-        {/*userId === item.rootComment.user.userId*/}
-        {true ? (
+        { userId === item.rootComment.user.userId ? (
           <div className="comments-actions">
             <button className="comments-actions-button" onClick={handleModify}>
               수정
