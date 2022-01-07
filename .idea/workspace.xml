@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="new git repo">
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="comment modify">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsDeleteModal/CommentsDeleteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsDeleteModal/CommentsDeleteModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641561470357</updated>
-      <workItem from="1641561472471" duration="1748000" />
+      <workItem from="1641561472471" duration="2698000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>
@@ -75,7 +71,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641561649137</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="comment modify">
+      <created>1641563303399</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641563303399</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +97,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new git repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="new git repo" />
+    <MESSAGE value="comment modify" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment modify" />
   </component>
 </project>
