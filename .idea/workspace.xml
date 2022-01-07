@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="merge modification">
-      <change beforePath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Component/SocialLogin" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
