@@ -36,6 +36,7 @@ const LoginPage = () => {
                 toast.error("잘못된 요청입니다. 다시 시도해주세요.",{
                     autoClose: 4000,
                 });
+                history.replace('');
             });
     }, []);
 
