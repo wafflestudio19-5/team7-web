@@ -12,25 +12,25 @@ const SocialLogin = () => {
     const history = useHistory();
     const {handleLogin} = useSessionContext();
 
-    /*useEffect(() => {
-        const registerCode = URLSearch.get("code");
-        const email = URLSearch.get("email")
-        console.log(registerCode);
+    useEffect(() => {
+        const registerToken = URLSearch.get("token");
+        console.log(registerToken);
 
         axios
-            .post(`https://waflog.kro.kr/api/v1/auth/verify/login`, {
-                    token: registerCode,
-                    email: email,
+            .get(`https://waflog.kro.kr/api/v1/user/me`, {
+                    headers: {
+                        Authentication: registerToken,
+                    },
             },
                 {withCredentials: true}
             )
             .then((response) => {
-                handleLogin(response.data.user.id, response.data.user.userId, response.data.user.image, response.data.token);
+                //handleLogin(response.data.user.id, response.data.user.userId, response.data.user.image, response.data.token);
                 toast.success("로그인을 성공했습니다.",{
                     autoClose: 4000,
                 });
                 console.log(response.data);
-                history.replace('');
+                //history.replace('');
             })
             .catch((error) => {
                 toast.error("잘못된 요청입니다. 다시 시도해주세요.",{
@@ -38,7 +38,7 @@ const SocialLogin = () => {
                 });
                 history.replace('');
             });
-    }, []);*/
+    }, []);
 
     return(
         <div className="loginpage">
