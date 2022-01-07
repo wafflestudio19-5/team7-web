@@ -117,6 +117,19 @@ const LoginModal = ( props ) => {
         }
     }
 
+    const handleGithubLogin = () => {
+        axios
+            .get(`https://waflog.kro.kr/oauth2/authorization/github`)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    }
+
+
     return(
         <Modal className="login-modal" isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
             <ToastContainer/>
@@ -141,10 +154,10 @@ const LoginModal = ( props ) => {
                     }
 
                     <h2 className="login-modal-social">소셜 계정으로 로그인</h2>
-                    <a className="login-github" href="https://v2.velog.io/api/v2/auth/social/redirect/github?next=/">
+                    <a className="login-github" href="https://waflog.kro.kr/oauth2/authorization/github">
                         <img className="github-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png" alt="git"/>
                     </a>
-                    <a className="login-google" href="https://v2.velog.io/api/v2/auth/social/redirect/google?next=/">
+                    <a className="login-google" href="http://waflog.kro.kr/oauth2/authorization/google">
                         <img className="google-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/120px-Google_%22G%22_Logo.svg.png" alt="G" />
                     </a>
                     <a className="login-facebook" href="https://v2.velog.io/api/v2/auth/social/redirect/facebook?next=/search">
@@ -174,10 +187,10 @@ const LoginModal = ( props ) => {
                         </div>
                     }
                     <h2 className="login-modal-social">소셜 계정으로 회원가입</h2>
-                    <a className="login-github" href="https://v2.velog.io/api/v2/auth/social/redirect/github?next=/">
+                    <a className="login-github" onClick={handleGithubLogin}>
                         <img className="github-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png" alt="git"/>
                     </a>
-                    <a className="login-google" href="https://v2.velog.io/api/v2/auth/social/redirect/google?next=/">
+                    <a className="login-google" href="http://waflog.kro.kr/oauth2/authorization/google">
                         <img className="google-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/120px-Google_%22G%22_Logo.svg.png" alt="G" />
                     </a>
                     <a className="login-facebook" href="https://v2.velog.io/api/v2/auth/social/redirect/facebook?next=/search">

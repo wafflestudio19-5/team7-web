@@ -332,6 +332,8 @@ const PostPage = () => {
                 key={item.id}
                 setIsOpen={setIsOpen}
                 setTargetCommentId={setTargetCommentId}
+                postId={postId}
+                setCommentsList={setCommentsList}
               />
             ))}
           </ul>

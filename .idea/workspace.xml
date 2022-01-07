@@ -1,36 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="cloudfront test">
-<<<<<<< HEAD
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/Component/ErrorPage/ErrorPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/ErrorPage/ErrorPage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" afterDir="false" />
->>>>>>> 819e72887e73375a7fcde8a38537419f831869ca
+      <change beforePath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-        <option value="SCSS File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -40,25 +18,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="master" />
-      </list>
-    </option>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/App.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/MainPage/MainPage.js" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectId" id="22NWDG32KnTRRAf0CEwhsSqz5UY" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="23N4zDqzczstMt1Qypi7Sftv172" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,23 +27,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="SCSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets" />
-      <recent name="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar" />
-      <recent name="$PROJECT_DIR$/src/Component/MainPage/PostItem" />
-    </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -103,127 +50,49 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ff758253-354a-411d-95dd-f14d4ac6afd5" name="Changes" comment="" />
-      <created>1639678404071</created>
+      <changelist id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="" />
+      <created>1641561470357</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1639678404071</updated>
-      <workItem from="1639678406065" duration="2803000" />
-      <workItem from="1639828719582" duration="32000" />
-      <workItem from="1639829636329" duration="6023000" />
-      <workItem from="1640343471765" duration="239000" />
-      <workItem from="1640344653160" duration="13594000" />
-      <workItem from="1640438021449" duration="1869000" />
-      <workItem from="1640439897481" duration="6183000" />
-      <workItem from="1640597735346" duration="2876000" />
-      <workItem from="1640617668572" duration="2548000" />
+      <updated>1641561470357</updated>
+      <workItem from="1641561472471" duration="6509000" />
     </task>
-    <task id="LOCAL-00001" summary="checkout branch">
-      <created>1639678608563</created>
+    <task id="LOCAL-00001" summary="new git repo">
+      <created>1641561603979</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1639678608563</updated>
+      <updated>1641561603979</updated>
     </task>
-    <task id="LOCAL-00002" summary="merged two to one">
-      <created>1639679283888</created>
+    <task id="LOCAL-00002" summary="new git repo">
+      <created>1641561649137</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1639679283888</updated>
+      <updated>1641561649137</updated>
     </task>
-    <task id="LOCAL-00003" summary="writepage">
-      <created>1640271780165</created>
+    <task id="LOCAL-00003" summary="comment modify">
+      <created>1641563303399</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1640271780165</updated>
+      <updated>1641563303399</updated>
     </task>
-    <task id="LOCAL-00004" summary="writepage">
-      <created>1640271808608</created>
+    <task id="LOCAL-00004" summary="social login links">
+      <created>1641564194079</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1640271808608</updated>
+      <updated>1641564194079</updated>
     </task>
-    <task id="LOCAL-00005" summary="header width, write button">
-      <created>1640274952358</created>
+    <task id="LOCAL-00005" summary="error modified">
+      <created>1641564355751</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1640274952358</updated>
+      <updated>1641564355751</updated>
     </task>
-    <task id="LOCAL-00006" summary="header width, write button">
-      <created>1640275079607</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1640275079607</updated>
-    </task>
-    <task id="LOCAL-00007" summary="postlist top position changed">
-      <created>1640275583945</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1640275583945</updated>
-    </task>
-    <task id="LOCAL-00008" summary="search icon changed">
-      <created>1640275844269</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1640275844269</updated>
-    </task>
-    <task id="LOCAL-00009" summary="search icon changed">
-      <created>1640275918954</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1640275918954</updated>
-    </task>
-    <task id="LOCAL-00010" summary="backend connection test">
-      <created>1640438425256</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1640438425256</updated>
-    </task>
-    <task id="LOCAL-00011" summary="api connection complete, recent page made">
-      <created>1640446366371</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1640446366371</updated>
-    </task>
-    <task id="LOCAL-00012" summary=".DS_store removed">
-      <created>1640590611579</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1640590611579</updated>
-    </task>
-    <task id="LOCAL-00013" summary="writepage toast ui fail">
-      <created>1640597903154</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1640597903154</updated>
-    </task>
-    <task id="LOCAL-00014" summary="cloudfront test">
-      <created>1640599029210</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1640599029210</updated>
-    </task>
-    <task id="LOCAL-00015" summary="cloudfront test">
-      <created>1640599448333</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1640599448333</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,25 +108,12 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="checkout branch" />
-    <MESSAGE value="merged two to one" />
-    <MESSAGE value="writepage" />
-    <MESSAGE value="header width, write button" />
-    <MESSAGE value="postlist top position changed" />
-    <MESSAGE value="search icon changed" />
-    <MESSAGE value="search icon shadow" />
-    <MESSAGE value="backend connection test" />
-    <MESSAGE value="api connection complete, recent page made" />
-    <MESSAGE value=".DS_store removed" />
-    <MESSAGE value="writepage toast ui fail" />
-    <MESSAGE value="cloudfront test" />
-    <option name="LAST_COMMIT_MESSAGE" value="cloudfront test" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="new git repo" />
+    <MESSAGE value="comment modify" />
+    <MESSAGE value="social login links" />
+    <MESSAGE value="error modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="error modified" />
   </component>
 </project>

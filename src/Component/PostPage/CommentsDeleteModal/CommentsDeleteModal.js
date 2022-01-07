@@ -32,7 +32,8 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
                 // setCommentsCount(response.data.count);
                 // setCommentsList(response.data.contents);
                 setIsOpen(false);
-                history.replace(`/post/@${params.userId}/${params.postUrl}`);
+                history.push(`/post/@${params.userId}/${params.postUrl}`);
+                console.log(`/post/@${params.userId}/${params.postUrl}`);
             })
             .catch((error) => {
                  toast.error("댓글 삭제 오류");
