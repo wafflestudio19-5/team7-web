@@ -120,7 +120,7 @@ const PostPage = () => {
   const currentUrl = window.location.href;
 
   const handleLike = () => {
-    toast.success("좋아요 실행");
+    // toast.success("좋아요 실행");
   };
 
   const handleLink = () => {
@@ -176,6 +176,9 @@ const PostPage = () => {
   }, []);
 
   console.log(postResponse);
+
+  console.log("token");
+  console.log(token);
 
   return (
     <div className="postpage">
