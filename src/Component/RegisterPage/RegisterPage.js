@@ -70,9 +70,8 @@ const RegisterPage = () => {
           }
         )
         .then((response) => {
-          history.push("/");
           toast.success("회원가입이 완료되었습니다.");
-
+          history.push("/");
         })
         .catch((error) => {
             setRegisterError(4);
