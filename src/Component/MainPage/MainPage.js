@@ -112,7 +112,7 @@ const MainPage = () => {
       />
 
       <ul className={"PostList"}>
-        {dummyData.map((item) => (
+        {trendingPostList.map((item) => (
           <PostItem item={item} key={item.id} />
         ))}
       </ul>
