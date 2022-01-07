@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
 import { useSessionContext } from "../../Context/SessionContext";
+import CommentsDeleteModal from "./CommentsDeleteModal/CommentsDeleteModal";
 
 const dataFormat = {
   comments: [],
@@ -99,7 +100,7 @@ const commentsData = [
         createdAt: "2021-12-29T17:33:43",
       },
     ],
-  }
+  },
 ];
 
 const PostPage = () => {
@@ -113,6 +114,8 @@ const PostPage = () => {
   const [commentsCount, setCommentsCount] = useState(0);
   const [commentsList, setCommentsList] = useState(commentsData);
   const [commentInput, setCommentInput] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [targetCommentId, setTargetCommentId] = useState();
 
   const currentUrl = window.location.href;
 
@@ -134,28 +137,27 @@ const PostPage = () => {
 
   const handleComment = () => {
     axios
-        .post(
-            `https://waflog.kro.kr/api/v1/post/${postId}/comment`,
-            {
-              content : commentInput
-            },
-            {
-              headers: {
-                Authentication: token
-              }
-            }
-        )
-        .then((response) => {
-          setCommentInput("");
-          setCommentsCount(response.data.count);
-          setCommentsList(response.data.contents);
-          toast.success("댓글이 작성되었습니다.");
-        })
-        .catch((error) => {
-          toast.error("댓글 작성 오류");
-        });
-
-  }
+      .post(
+        `https://waflog.kro.kr/api/v1/post/${postId}/comment`,
+        {
+          content: commentInput,
+        },
+        {
+          headers: {
+            Authentication: token,
+          },
+        }
+      )
+      .then((response) => {
+        setCommentInput("");
+        setCommentsCount(response.data.count);
+        setCommentsList(response.data.contents);
+        toast.success("댓글이 작성되었습니다.");
+      })
+      .catch((error) => {
+        toast.error("댓글 작성 오류");
+      });
+  };
 
   useEffect(() => {
     axios
@@ -177,144 +179,158 @@ const PostPage = () => {
 
   return (
     <div className="postpage">
-      <div id={"scroller"}>
-        <ToastContainer />
-        <Header pageTitle={postResponse.user.pageTitle} />
+      <ToastContainer />
+      <Header pageTitle={postResponse.user.pageTitle} />
 
-        <div className="post-main-section">
-          <div className="post-title">{postResponse.title}</div>
-          <div className="post-information-section">
-            <span className="post-user-id">
-              <a>{postResponse.user.userId}</a>
-            </span>
-            <span className="post-separator">·</span>
-            <span className="post-datetime">
-              {dayjs(postResponse.createdAt).format("YYYY년 MM월 DD일")}
-            </span>
+      <div className="post-main-section">
+        <div className="post-title">{postResponse.title}</div>
+        <div className="post-information-section">
+          <span className="post-user-id">
+            <a>{postResponse.user.userId}</a>
+          </span>
+          <span className="post-separator">·</span>
+          <span className="post-datetime">
+            {dayjs(postResponse.createdAt).format("YYYY년 MM월 DD일")}
+          </span>
 
-            <div className="post-like-section">
-              <div className="post-like-wrapper" onClick={handleLike}>
-                <svg
-                  className={"icon-heart"}
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path className={"icon-heart-path"} />
-                </svg>
+          <div className="post-like-section">
+            <div className="post-like-wrapper" onClick={handleLike}>
+              <svg
+                className={"icon-heart"}
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path className={"icon-heart-path"} />
+              </svg>
+            </div>
+            <div className="post-like-count">{postResponse.likes}</div>
+
+            <CopyToClipboard text={currentUrl}>
+              <div className="post-like-wrapper" onClick={handleLink}>
+                <BsLink45Deg className="icon-link" />
               </div>
-              <div className="post-like-count">{postResponse.likes}</div>
+            </CopyToClipboard>
 
-              <CopyToClipboard text={currentUrl}>
-                <div className="post-like-wrapper" onClick={handleLink}>
-                  <BsLink45Deg className="icon-link" />
-                </div>
-              </CopyToClipboard>
-
-              <div className="post-scroll-top" onClick={scrollToTop}>
-                TOP
-              </div>
+            <div className="post-scroll-top" onClick={scrollToTop}>
+              TOP
             </div>
           </div>
-
-          <ReactMarkdown className="post-content">
-            {postResponse.content}
-          </ReactMarkdown>
         </div>
 
-        <div className="post-user-section">
-          <div className="post-user-info">
-            <img
-              className="post-user-image"
-              src={postResponse.user.image}
-              alt="유저 이미지"
-            />
-            <div className="post-user-text">
-              <div className="post-user-name">
-                <a>{postResponse.user.name}</a>
-              </div>
-              <div className="post-user-intro">
-                {postResponse.user.shortIntro}
-              </div>
+        <ReactMarkdown className="post-content">
+          {postResponse.content}
+        </ReactMarkdown>
+      </div>
+
+      <div className="post-user-section">
+        <div className="post-user-info">
+          <img
+            className="post-user-image"
+            src={postResponse.user.image}
+            alt="유저 이미지"
+          />
+          <div className="post-user-text">
+            <div className="post-user-name">
+              <a>{postResponse.user.name}</a>
+            </div>
+            <div className="post-user-intro">
+              {postResponse.user.shortIntro}
             </div>
           </div>
-          <div className="post-user-division" />
-          <div className="post-user-sns">
-            {postResponse.user.githubId !== "" ? (
-              <a
-                className={"href-sns"}
-                href={`https://github.com/${postResponse.user.githubId}`}
-              >
-                <GoMarkGithub className={"icon-sns"} />
-              </a>
-            ) : (
-              <div />
-            )}
+        </div>
+        <div className="post-user-division" />
+        <div className="post-user-sns">
+          {postResponse.user.githubId !== "" ? (
+            <a
+              className={"href-sns"}
+              href={`https://github.com/${postResponse.user.githubId}`}
+            >
+              <GoMarkGithub className={"icon-sns"} />
+            </a>
+          ) : (
+            <div />
+          )}
 
-            {postResponse.user.facebookId !== "" ? (
-              <a
-                className={"href-sns"}
-                href={`https://facebook.com/${postResponse.user.facebookId}`}
-              >
-                <BsFacebook className={"icon-sns"} />
-              </a>
-            ) : (
-              <div />
-            )}
+          {postResponse.user.facebookId !== "" ? (
+            <a
+              className={"href-sns"}
+              href={`https://facebook.com/${postResponse.user.facebookId}`}
+            >
+              <BsFacebook className={"icon-sns"} />
+            </a>
+          ) : (
+            <div />
+          )}
 
-            {postResponse.user.twitterId !== "" ? (
-              <a
-                className={"href-sns"}
-                href={`https://twitter.com/${postResponse.user.twitterId}`}
-              >
-                <BsTwitter className={"icon-sns"} />
-              </a>
-            ) : (
-              <div />
-            )}
+          {postResponse.user.twitterId !== "" ? (
+            <a
+              className={"href-sns"}
+              href={`https://twitter.com/${postResponse.user.twitterId}`}
+            >
+              <BsTwitter className={"icon-sns"} />
+            </a>
+          ) : (
+            <div />
+          )}
 
-            {postResponse.user.homepage !== "" ? (
-              <a className={"href-sns"} href={postResponse.user.homepage}>
-                <AiFillHome className={"icon-sns"} />
-              </a>
-            ) : (
-              <div />
-            )}
+          {postResponse.user.homepage !== "" ? (
+            <a className={"href-sns"} href={postResponse.user.homepage}>
+              <AiFillHome className={"icon-sns"} />
+            </a>
+          ) : (
+            <div />
+          )}
 
-            {postResponse.user.publicEmail !== "" ? (
-              <a
-                className={"href-sns"}
-                href={"mailto:" + postResponse.user.publicEmail}
-              >
-                <GrMail className={"icon-sns"} />
-              </a>
-            ) : (
-              <div />
-            )}
+          {postResponse.user.publicEmail !== "" ? (
+            <a
+              className={"href-sns"}
+              href={"mailto:" + postResponse.user.publicEmail}
+            >
+              <GrMail className={"icon-sns"} />
+            </a>
+          ) : (
+            <div />
+          )}
+        </div>
+
+        <div className="post-comments-section">
+          <h4 className="post-comments-count">{commentsCount}개의 댓글</h4>
+
+          <textarea
+            className="post-comments-input"
+            placeholder="댓글을 입력하세요."
+            value={commentInput}
+            onChange={(e) => setCommentInput(e.target.value)}
+          />
+
+          <div className="post-comments-button-wrapper">
+            <button className="post-comments-button" onClick={handleComment}>
+              댓글 작성
+            </button>
           </div>
 
-          <div className="post-comments-section">
-            <h4 className="post-comments-count">{commentsCount}개의 댓글</h4>
-
-            <textarea
-              className="post-comments-input"
-              placeholder="댓글을 입력하세요."
-              value={commentInput}
-              onChange={(e) => setCommentInput(e.target.value)}
-            />
-
-            <div className="post-comments-button-wrapper">
-              <button className="post-comments-button" onClick={handleComment}>댓글 작성</button>
-            </div>
-
-            <ul className={"post-comments-list"}>
-              {commentsList.map((item) => (
-                <CommentsItem item={item} key={item.id} />
-              ))}
-            </ul>
-          </div>
+          <ul className={"post-comments-list"}>
+            {commentsList.map((item) => (
+              <CommentsItem
+                item={item}
+                key={item.id}
+                setIsOpen={setIsOpen}
+                setTargetCommentId={setTargetCommentId}
+              />
+            ))}
+          </ul>
         </div>
       </div>
+
+      <CommentsDeleteModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        postId={postId}
+        targetCommentId={targetCommentId}
+        setCommentsCount = {setCommentsCount}
+        setCommentsList = {setCommentsList}
+      ></CommentsDeleteModal>
     </div>
   );
 };
