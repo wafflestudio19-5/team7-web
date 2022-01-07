@@ -171,7 +171,7 @@ const PostPage = () => {
         setCommentsList(response.data.comments.contents);
       })
       .catch((error) => {
-        // history.push("/error"); // 백엔드 404 response 필요!!
+        history.push("/error"); // 백엔드 404 response 필요!!
       });
   }, []);
 
