@@ -55,12 +55,13 @@
       cursor: pointer;
     }
   }
+
   .search-icon{
     position: absolute;
     top: 6px;
     height: 22px;
     width: 22px;
-    right: 275px;
+    right: 260px;
     padding: 10px;
     cursor: pointer;
   }
@@ -70,7 +71,29 @@
     top: 6px;
     height: 22px;
     width: 22px;
-    right: 275px;
+    right: 260px;
+    padding: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: rgba(218, 218, 218, 0.3);
+  }
+
+  .search-icon-unlogin{
+    position: absolute;
+    top: 6px;
+    height: 22px;
+    width: 22px;
+    right: 120px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .search-icon-unlogin:hover{
+    position: absolute;
+    top: 6px;
+    height: 22px;
+    width: 22px;
+    right: 120px;
     padding: 10px;
     border-radius: 25px;
     cursor: pointer;
@@ -88,7 +111,7 @@
 
   .btn-write{
     position: absolute;
-    right: 160px;
+    right: 145px;
     top: 10px;
     height: 2rem;
     padding-left: 1rem;
@@ -107,7 +130,7 @@
 
   .btn-write:hover{
     position: absolute;
-    right: 160px;
+    right: 145px;
     top: 10px;
     height: 2rem;
     padding-left: 1rem;

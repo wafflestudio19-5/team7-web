@@ -1,12 +1,19 @@
 import "./CommentsItem.scss";
 import { useHistory } from "react-router-dom";
 import dayjs from "dayjs";
+import { useSessionContext } from "../../../Context/SessionContext";
 
-const CommentsItem = ({ item }) => {
+const CommentsItem = ({ item, setIsOpen, setTargetCommentId }) => {
   const history = useHistory();
+  const { userId } = useSessionContext();
 
-  const handlePostClick = () => {
+  const handleModify = () => {
     history.push("/post/@" + item.user.userId + "/" + item.url);
+  };
+
+  const handleDelete = () => {
+    setTargetCommentId(item.rootComment.id);
+    setIsOpen(false);
   };
 
   return (
@@ -30,9 +37,18 @@ const CommentsItem = ({ item }) => {
               </a>
             </div>
             <div className="comments-info-date">
-                {dayjs(item.rootComment.createdAt).format("YYYY년 MM월 DD일")}
+              {dayjs(item.rootComment.createdAt).format("YYYY년 MM월 DD일")}
             </div>
           </div>
+
+          {userId === item.rootComment.user.userId ? (
+            <div className="comments-actions">
+              <span onClick={handleModify}>수정</span>
+              <span onClick={handleDelete}>삭제</span>
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
       </div>
       <div className="comments-content">{item.rootComment.content}</div>
