@@ -6,7 +6,7 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSessionContext } from "../../../Context/SessionContext";
 
-const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setCommentsCount,setCommentsList } ) => {
+const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setCommentsCount, setCommentsList } ) => {
 
     Modal.setAppElement('#root');
 

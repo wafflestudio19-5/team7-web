@@ -35,8 +35,8 @@ const Header = ({ pageTitle }) => {
   const handleOption = () => {
     setOption(!option);
   };
-  const handleWalog = () => {
-    history.push("./@" + userId);
+  const handleWaflog = () => {
+    history.push("/@" + userId);
   };
 
   if (
@@ -152,8 +152,8 @@ const Header = ({ pageTitle }) => {
         ) : null}
         {option ? (
           <div className="custom-select">
-            <div className="op-1" onClick={handleWalog}>
-              내 와로그
+            <div className="op-1" onClick={handleWaflog}>
+              내 와플로그
             </div>
             <div className="op-2">설정</div>
             <div className="op-3" onClick={handleLogOut}>
