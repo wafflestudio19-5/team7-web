@@ -65,16 +65,19 @@ const Header = ({ pageTitle }) => {
             </button>
           </>
         ) : (
-            <>
-            <IoSearchOutline className="search-icon-unlogin" onClick={handleSearch} />
-          <button
-            className="btn-login"
-            onClick={handleLogin}
-            disabled={isLogin}
-          >
-            로그인
-          </button>
-            </>
+          <>
+            <IoSearchOutline
+              className="search-icon-unlogin"
+              onClick={handleSearch}
+            />
+            <button
+              className="btn-login"
+              onClick={handleLogin}
+              disabled={isLogin}
+            >
+              로그인
+            </button>
+          </>
         )}
         {isLogin ? (
           <div className="user-box">
@@ -114,19 +117,27 @@ const Header = ({ pageTitle }) => {
         <div className="page-title" onClick={handlePageTitle}>
           {pageTitle}
         </div>
-        <IoSearchOutline className="search-icon" onClick={handleSearch} />
         {isLogin ? (
-          <button className="btn-write" onClick={handleWrite}>
-            새 글 작성
-          </button>
+          <>
+            <IoSearchOutline className="search-icon" onClick={handleSearch} />
+            <button className="btn-write" onClick={handleWrite}>
+              새 글 작성
+            </button>
+          </>
         ) : (
-          <button
-            className="btn-login"
-            onClick={handleLogin}
-            disabled={isLogin}
-          >
-            로그인
-          </button>
+          <>
+            <IoSearchOutline
+              className="search-icon-unlogin"
+              onClick={handleSearch}
+            />
+            <button
+              className="btn-login"
+              onClick={handleLogin}
+              disabled={isLogin}
+            >
+              로그인
+            </button>
+          </>
         )}
         {isLogin ? (
           <div className="user-box">
