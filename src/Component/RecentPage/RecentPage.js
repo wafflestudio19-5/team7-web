@@ -123,12 +123,13 @@ const RecentPage = () => {
     const clientHeight = recentPostRef.current.clientHeight;
 
     if (scrollHeight - scrollTop - clientHeight === 0) {
+      console.log("BOTTOM!!!!!");
       if (!(recentPostPage === null)) {
         axios
           .get("https://waflog.kro.kr/api/v1/post/recent", {
             params: {
               page: recentPostPage,
-              size: 6
+              size: 12
             }
           })
           .then((response) => {
