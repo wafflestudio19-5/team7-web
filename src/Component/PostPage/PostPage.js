@@ -173,7 +173,7 @@ const PostPage = () => {
   };
 
   useEffect(() => {
-    console.log("POSTPAGE REFRESH");
+    // console.log("POSTPAGE REFRESH");
     axios
       .get(
         `https://waflog.kro.kr/api/v1/post/@${params.userId}/${params.postUrl}`
@@ -188,8 +188,6 @@ const PostPage = () => {
         history.push("/error"); // 백엔드 404 response 필요!!
       });
   }, [updateComment]);
-
-  console.log(postResponse);
 
   return (
     <div className="postpage">

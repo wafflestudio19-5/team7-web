@@ -80,7 +80,6 @@ const MainPage = () => {
 
     if (scrollHeight - scrollTop - clientHeight < 20) {
       console.log("BOTTOM!!!!!")
-      console.log(trendingPostPage);
       if (!(trendingPostPage === null)) {
         axios
           .get("https://waflog.kro.kr/api/v1/post/trend", {
