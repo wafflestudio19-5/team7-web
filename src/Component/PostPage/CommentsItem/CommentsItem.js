@@ -80,7 +80,7 @@ const CommentsItem = ({
           </div>
         </div>
 
-        { id === item.rootComment.user.id ? (
+        { parseInt(id) === item.rootComment.user.id ? (
           <div className="comments-actions">
             <button className="comments-actions-button" onClick={handleModify}>
               수정

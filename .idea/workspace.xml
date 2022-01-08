@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="merge modification">
-      <change afterPath="$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.scss" afterDir="false" />
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="scroll bottom recognition-4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -84,6 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1641561470357</updated>
       <workItem from="1641561472471" duration="6509000" />
+      <workItem from="1641611306829" duration="2223000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>
@@ -153,6 +155,10 @@
     <MESSAGE value="merge modification" />
     <MESSAGE value="pagination search posts increased" />
     <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
+    <MESSAGE value="scroll bottom recognition" />
+    <MESSAGE value="scroll bottom recognition-2" />
+    <MESSAGE value="scroll bottom recognition-3" />
+    <MESSAGE value="scroll bottom recognition-4" />
+    <option name="LAST_COMMIT_MESSAGE" value="scroll bottom recognition-4" />
   </component>
 </project>
