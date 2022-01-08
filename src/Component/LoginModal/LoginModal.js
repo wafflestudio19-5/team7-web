@@ -144,12 +144,8 @@ const LoginModal = ( props ) => {
                     <a className="login-github" href="https://waflog.kro.kr/oauth2/authorization/github">
                         <img className="github-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png" alt="git"/>
                     </a>
-                    <a className="login-google" href="http://waflog.kro.kr/oauth2/authorization/google">
-                        <img className="google-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/120px-Google_%22G%22_Logo.svg.png" alt="G" />
-                    </a>
-                    <a className="login-facebook" href="https://v2.velog.io/api/v2/auth/social/redirect/facebook?next=/search">
-                        <img className="facebook-img" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="f" />
-                    </a>
+
+
                     <div className="select-box">
                         <span className="select-text">아직 회원이 아니신가요?</span>
                         <div className="select-type" onClick={handleType}>회원가입</div>
