@@ -47,7 +47,7 @@ const WritePage = () => {
         setIsOpen(true);
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (editorRef.current) {
             editorRef.current.getInstance().removeHook("addImageBlobHook");
             editorRef.current
@@ -67,14 +67,14 @@ const WritePage = () => {
                             }
                         );
                         callback(url, "alt text");
-                    })();*/
+                    })();
 
                     return false;
                 });
         }
 
         return () => {};
-    }, [editorRef]);
+    }, [editorRef]);*/
 
     return (
         <div>
