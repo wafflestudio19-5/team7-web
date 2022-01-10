@@ -26,7 +26,7 @@ const SocialLogin = () => {
             )
             .then((response) => {
                 handleLogin(response.data.id, response.data.userId, response.data.image, registerToken);
-                toast.success("로그인을 성공했습니다.",{
+                toast.success("로그인되었습니다.",{
                     autoClose: 4000,
                 });
                 console.log(response.data);

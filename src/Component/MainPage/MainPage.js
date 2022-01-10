@@ -42,7 +42,7 @@ const dummyData = [
 ];
 
 const MainPage = () => {
-  const [trendPeriod, setTrendPeriod] = useState(7);
+  const [trendPeriod, setTrendPeriod] = useState(localStorage.getItem('period') === null ?  7 :  parseInt(localStorage.getItem('period')));
   const [trendingPostList, setTrendingPostList] = useState([]);
   const [trendingPostPage, setTrendingPostPage] = useState(0);
 
