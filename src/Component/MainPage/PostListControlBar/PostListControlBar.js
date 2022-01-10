@@ -21,6 +21,7 @@ const PostListControlBar = ({ trendPeriod, setTrendPeriod, setTrendingPostPage }
     const selectText = langSelect.options[langSelect.selectedIndex].text;
     setTrendPeriod(selectValue);
     setTrendingPostPage(0);
+    localStorage.setItem('period', selectValue);
     console.log(selectValue);
   };
 

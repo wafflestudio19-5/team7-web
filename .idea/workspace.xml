@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostListControlBar/PostListControlBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,18 +33,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Component/RegisterPage/RegisterPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SettingPage/SettingPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/PostPage/PostPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/SettingPage/SettingPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/LoginPage/LoginPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Context/SessionContext.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Context/SessionContext.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/PostPage/PostPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/RegisterPage/RegisterPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="23N4zDqzczstMt1Qypi7Sftv172" />
   <component name="ProjectViewState">
@@ -85,6 +88,7 @@
       <updated>1641561470357</updated>
       <workItem from="1641561472471" duration="6509000" />
       <workItem from="1641607889161" duration="283000" />
+      <workItem from="1641804129486" duration="1203000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>
@@ -154,6 +158,8 @@
     <MESSAGE value="merge modification" />
     <MESSAGE value="pagination search posts increased" />
     <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
+    <MESSAGE value="bug" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;src/Component/LoginModal/LoginModal.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;src/Component/LoginModal/LoginModal.js" />
   </component>
 </project>
