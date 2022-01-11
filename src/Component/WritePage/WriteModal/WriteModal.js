@@ -43,9 +43,9 @@ const WriteModal = (props) => {
     axios.post(`/api/v1/image`,{
       image: formData
     },{
-      'Content-Type': 'multipart/form-data',
       headers: {
         Authentication: token,
+        'Content-Type': 'multipart/form-data'
       },
     })
         .then((res) => {
