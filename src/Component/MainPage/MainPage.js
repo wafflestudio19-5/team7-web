@@ -47,6 +47,7 @@ const MainPage = () => {
   const [trendingPostPage, setTrendingPostPage] = useState(0);
 
   useEffect(() => {
+    console.log(trendPeriod);
     axios
       .get("https://waflog.kro.kr/api/v1/post/trend", {
         params: {

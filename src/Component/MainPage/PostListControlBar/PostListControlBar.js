@@ -19,9 +19,9 @@ const PostListControlBar = ({ trendPeriod, setTrendPeriod, setTrendingPostPage }
     const selectValue = langSelect.options[langSelect.selectedIndex].value;
     // select element에서 선택된 option의 text가 저장된다.
     const selectText = langSelect.options[langSelect.selectedIndex].text;
+    localStorage.setItem('period', selectValue);
     setTrendPeriod(selectValue);
     setTrendingPostPage(0);
-    localStorage.setItem('period', selectValue);
     console.log(selectValue);
   };
 
@@ -58,7 +58,7 @@ const PostListControlBar = ({ trendPeriod, setTrendPeriod, setTrendingPostPage }
             : "PeriodSelectBox-hidden"
         }
         name="Period"
-        defaultValue={"7"}
+        defaultValue={`${trendPeriod}`}
         onChange={handlePeriod}
       >
         <option value="0">오늘</option>

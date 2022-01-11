@@ -21,6 +21,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
 import { useSessionContext } from "../../Context/SessionContext";
 import CommentsDeleteModal from "./CommentsDeleteModal/CommentsDeleteModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
@@ -126,7 +127,8 @@ const PostPage = () => {
   const [commentsCount, setCommentsCount] = useState(0);
   const [commentsList, setCommentsList] = useState(commentsData);
   const [commentInput, setCommentInput] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [targetCommentId, setTargetCommentId] = useState();
   const [updateComment, setUpdateComment] = useState();
 
@@ -168,7 +170,9 @@ const PostPage = () => {
         toast.success("댓글이 작성되었습니다.");
       })
       .catch((error) => {
-        toast.error("댓글 작성 오류");
+        console.log(error);
+        toast.error("먼저 로그인해주세요.");
+        setIsLoginOpen(true);
       });
   };
 
@@ -185,6 +189,7 @@ const PostPage = () => {
         setCommentsList(response.data.comments.contents);
       })
       .catch((error) => {
+        console.log(error);
         history.push("/error"); // 백엔드 404 response 필요!!
       });
   }, [updateComment]);
@@ -388,7 +393,7 @@ const PostPage = () => {
               <CommentsItem
                 item={item}
                 key={item.id}
-                setIsOpen={setIsOpen}
+                setIsDeleteOpen={setIsDeleteOpen}
                 setTargetCommentId={setTargetCommentId}
                 postId={postId}
                 setCommentsList={setCommentsList}
@@ -400,14 +405,18 @@ const PostPage = () => {
       </div>
 
       <CommentsDeleteModal
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        isDeleteOpen={isDeleteOpen}
+        setIsDeleteOpen={setIsDeleteOpen}
         postId={postId}
         targetCommentId={targetCommentId}
         setCommentsCount={setCommentsCount}
         setCommentsList={setCommentsList}
         setUpdateComment={setUpdateComment}
-      ></CommentsDeleteModal>
+      />
+
+
+      <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen}/>
+
     </div>
   );
 };

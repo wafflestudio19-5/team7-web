@@ -1,7 +1,6 @@
 import './ProfilePage.scss';
 import { ToastContainer, toast } from "react-toastify";
 import { useParams, useHistory } from "react-router-dom";
-import SearchItem from '../SearchPage/SearchItem/SearchItem';
 import Header from '../MainPage/Header/Header';
 
 const ProfilePage = () => {
