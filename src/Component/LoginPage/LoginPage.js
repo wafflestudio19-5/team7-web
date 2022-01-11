@@ -22,8 +22,7 @@ const LoginPage = () => {
         {
           token: registerCode,
           email: email,
-        },
-        { withCredentials: true }
+        }
       )
       .then((response) => {
         handleLogin(

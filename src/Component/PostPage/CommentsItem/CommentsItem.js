@@ -36,7 +36,7 @@ const CommentsItem = ({
   const completeModify = () => {
     axios
       .put(
-        `https://waflog.kro.kr/api/v1/post/${postId}/comment/${item.rootComment.id}`,
+        `/api/v1/post/${postId}/comment/${item.rootComment.id}`,
         { content: modifyInput },
         {
           headers: {

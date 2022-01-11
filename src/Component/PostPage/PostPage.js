@@ -151,18 +151,20 @@ const PostPage = () => {
   };
 
   const handleComment = () => {
-    axios.defaults.xsrfCookieName = 'csrftoken';
-    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+    axios.defaults.xsrfCookieName = "csrftoken";
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
     axios
       .post(
-        `api/v1/post/${postId}/comment`,
+        `/api/v1/post/${postId}/comment`,
+        {
+          content: commentInput,
+        },
         {
           headers: {
             Authentication: token,
           },
-          content: commentInput,
-        },
+        }
       )
       .then((response) => {
         setCommentInput("");
@@ -180,9 +182,7 @@ const PostPage = () => {
   useEffect(() => {
     // console.log("POSTPAGE REFRESH");
     axios
-      .get(
-        `api/v1/post/@${params.userId}/${params.postUrl}`
-      )
+      .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
       .then((response) => {
         setPostResponse(response.data);
         setPostId(response.data.id);
@@ -415,9 +415,7 @@ const PostPage = () => {
         setUpdateComment={setUpdateComment}
       />
 
-
-      <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen}/>
-
+      <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </div>
   );
 };

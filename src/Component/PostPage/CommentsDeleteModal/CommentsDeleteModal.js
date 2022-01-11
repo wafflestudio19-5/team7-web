@@ -22,7 +22,7 @@ const CommentsDeleteModal = ( { isDeleteOpen, setIsDeleteOpen, postId, targetCom
     const handleDelete = () => {
         axios
             .delete(
-                `https://waflog.kro.kr/api/v1/post/${postId}/comment/${targetCommentId}`,
+                `/api/v1/post/${postId}/comment/${targetCommentId}`,
                 {
                     headers: {
                         Authentication: token,
