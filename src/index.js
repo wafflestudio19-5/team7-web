@@ -1,9 +1,12 @@
 import React from 'react';
+import axios from "axios";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {SessionProvider} from "./Context/SessionContext";
+axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/' : 'https://waflog.kro.kr/';
+
 
 ReactDOM.render(
   <React.StrictMode>

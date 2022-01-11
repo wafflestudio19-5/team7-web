@@ -151,17 +151,18 @@ const PostPage = () => {
   };
 
   const handleComment = () => {
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+
     axios
       .post(
-        `https://waflog.kro.kr/api/v1/post/${postId}/comment`,
-        {
-          content: commentInput,
-        },
+        `api/v1/post/${postId}/comment`,
         {
           headers: {
             Authentication: token,
           },
-        }
+          content: commentInput,
+        },
       )
       .then((response) => {
         setCommentInput("");
@@ -180,7 +181,7 @@ const PostPage = () => {
     // console.log("POSTPAGE REFRESH");
     axios
       .get(
-        `https://waflog.kro.kr/api/v1/post/@${params.userId}/${params.postUrl}`
+        `api/v1/post/@${params.userId}/${params.postUrl}`
       )
       .then((response) => {
         setPostResponse(response.data);
