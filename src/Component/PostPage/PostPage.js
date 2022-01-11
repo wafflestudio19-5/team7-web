@@ -120,7 +120,7 @@ const PostPage = () => {
   const params = useParams();
   const history = useHistory();
 
-  const { token } = useSessionContext();
+  const { token, isLogin } = useSessionContext();
 
   const [postResponse, setPostResponse] = useState(dataFormat);
   const [postId, setPostId] = useState();
@@ -131,11 +131,35 @@ const PostPage = () => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [targetCommentId, setTargetCommentId] = useState();
   const [updateComment, setUpdateComment] = useState();
+  const [isLike, setIsLike] = useState(false);
 
   const currentUrl = window.location.href;
 
   const handleLike = () => {
     // toast.success("좋아요 실행");
+
+    axios
+      .post(
+        `/api/v1/${postId}/like`,
+        {},
+        {
+          headers: {
+            Authentication: token,
+          },
+        }
+      )
+      .then((response) => {
+        if (isLike === false) {
+          setIsLike(true);
+        } else {
+          setIsLike(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("먼저 로그인해주세요.");
+        setIsLoginOpen(true);
+      });
   };
 
   const handleLink = () => {
@@ -188,6 +212,25 @@ const PostPage = () => {
         setPostId(response.data.id);
         setCommentsCount(response.data.comments.count);
         setCommentsList(response.data.comments.contents);
+
+        if (isLogin === true) {
+          axios
+            .get(`api/v1/post/${response.data.id}/like/current`, {
+              headers: {
+                Authentication: token,
+              },
+            })
+            .then((response) => {
+              console.log(response);
+              if (response.data === true) {
+                setIsLike(true);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              history.push("/error"); // 백엔드 404 response 필요!!
+            });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -218,14 +261,25 @@ const PostPage = () => {
 
           <div className="post-like-section">
             <div className="post-like-wrapper" onClick={handleLike}>
-              <svg
-                className={"icon-heart"}
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path className={"icon-heart-path"} />
-              </svg>
+              {isLike === true ? (
+                <svg
+                  className={"icon-heart"}
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path className={"icon-heart-path"} />
+                </svg>
+              ) : (
+                <svg
+                  className={"icon-heart-unlike"}
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path className={"icon-heart-path"} />
+                </svg>
+              )}
             </div>
             <div className="post-like-count">{postResponse.likes}</div>
 
