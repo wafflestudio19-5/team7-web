@@ -30,7 +30,7 @@ const LoginModal = (props) => {
       setDisable(true);
 
       axios
-        .post(`https://waflog.kro.kr/api/v1/auth/user/login`, {
+        .post(`api/v1/auth/user/login`, {
           email: emailInput,
         })
         .then((response) => {
@@ -68,7 +68,7 @@ const LoginModal = (props) => {
       setDisable(true);
 
       axios
-        .post(`https://waflog.kro.kr/api/v1/auth/user`, {
+        .post(`api/v1/auth/user`, {
           email: emailInput,
         })
         .then((response) => {

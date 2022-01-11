@@ -48,7 +48,7 @@ const MainPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://waflog.kro.kr/api/v1/post/trend", {
+      .get("api/v1/post/trend", {
         params: {
           page: 0,
           size: 12,

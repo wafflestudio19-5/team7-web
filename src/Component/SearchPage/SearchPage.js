@@ -27,7 +27,7 @@ const SearchPage = () => {
 
     useEffect(() => {
         axios
-            .get(`https://waflog.kro.kr/api/v1/post/search`, {
+            .get(`api/v1/post/search`, {
                 params: {
                     keyword: tag,
                     page: 0,
@@ -67,7 +67,7 @@ const SearchPage = () => {
         if (scrollHeight - scrollTop - clientHeight < 10) {
             if (!(searchPageNumber === null)) {
                 axios
-                    .get("https://waflog.kro.kr/api/v1/post/search", {
+                    .get("api/v1/post/search", {
                         params: {
                             keyword: tag,
                             page: searchPageNumber,

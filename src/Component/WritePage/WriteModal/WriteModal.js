@@ -66,8 +66,11 @@ const WriteModal = ( props ) => {
         setIsOpen(false);
     }
     const handleSubmit = () => {
+        if(title === "" || title.length === 0 || title === null){
+
+        }
         axios
-            .post(`https://waflog.kro.kr/api/v1/post`,
+            .post(`api/v1/post`,
                 {
                     title: title,
                     content: contents,

@@ -94,7 +94,7 @@ const RecentPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://waflog.kro.kr/api/v1/post/recent", {
+      .get("api/v1/post/recent", {
         params: {
           page: 0,
           size: 12
@@ -126,7 +126,7 @@ const RecentPage = () => {
       console.log("BOTTOM!!!!!");
       if (!(recentPostPage === null)) {
         axios
-          .get("https://waflog.kro.kr/api/v1/post/recent", {
+          .get("api/v1/post/recent", {
             params: {
               page: recentPostPage,
               size: 12
