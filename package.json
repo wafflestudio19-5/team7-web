@@ -54,5 +54,5 @@
     "prettier": "2.4.1",
     "react": "^17.0.2"
   },
-  "proxy" : "https://waflog.kro.kr/"
+  "proxy": "https://waflog.kro.kr/"
 }
