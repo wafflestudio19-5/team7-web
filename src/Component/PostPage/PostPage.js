@@ -149,7 +149,11 @@ const PostPage = () => {
         }
       )
       .then((response) => {
-        setIsLike(true);
+        if (isLike === false) {
+          setIsLike(true);
+        } else {
+          setIsLike(false);
+        }
       })
       .catch((error) => {
         console.log(error);

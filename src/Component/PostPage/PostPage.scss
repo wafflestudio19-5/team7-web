@@ -90,6 +90,10 @@
     cursor: pointer;
   }
 
+  .post-like-wrapper:hover {
+    border-color: black;
+  }
+
   .post-like-count {
     margin-top: 0.5rem;
     color: rgb(73, 80, 87);
@@ -108,7 +112,7 @@
   .icon-heart-unlike {
     width: 1.5rem;
     height: 1.5rem;
-    color: rgba(206, 206, 206, 0.7);
+    color: rgba(145, 145, 145, 0.7);
   }
 
   .icon-heart-path {
@@ -170,6 +174,10 @@
     //margin-right: 0.5rem;
   }
 
+  .post-like-wrapper:hover {
+    border-color: black;
+  }
+
   .post-like-count {
     width: 1.5rem;
     text-align: center;
@@ -190,7 +198,7 @@
   .icon-heart-unlike {
     width: 1rem;
     height: 1rem;
-    color: rgba(206, 206, 206, 0.7);
+    color: rgba(145, 145, 145, 0.7);
   }
 
   .icon-heart-path {
