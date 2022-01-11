@@ -46,7 +46,7 @@ const RegisterPage = () => {
       setRegisterError(2);
     } else {
       axios
-        .post(`https://waflog.kro.kr/api/v1/auth/user/info`, {
+        .post(`/api/v1/auth/user/info`, {
           email: registerEmail,
           name: registerName,
           userId: registerId,

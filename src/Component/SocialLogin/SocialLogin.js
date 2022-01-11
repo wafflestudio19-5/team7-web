@@ -17,7 +17,7 @@ const SocialLogin = () => {
         console.log(registerToken);
 
         axios
-            .get(`https://waflog.kro.kr/api/v1/user/me`, {
+            .get(`/api/v1/user/me`, {
                     headers: {
                         Authentication: registerToken,
                     },

@@ -27,7 +27,7 @@ const SearchPage = () => {
 
     useEffect(() => {
         axios
-            .get(`api/v1/post/search`, {
+            .get(`/api/v1/post/search`, {
                 params: {
                     keyword: tag,
                     page: 0,

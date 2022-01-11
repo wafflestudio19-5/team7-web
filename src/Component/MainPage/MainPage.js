@@ -49,7 +49,7 @@ const MainPage = () => {
   useEffect(() => {
     console.log(trendPeriod);
     axios
-      .get("api/v1/post/trend", {
+      .get("/api/v1/post/trend", {
         params: {
           page: 0,
           size: 12,
@@ -83,7 +83,7 @@ const MainPage = () => {
       console.log("BOTTOM!!!!!")
       if (!(trendingPostPage === null)) {
         axios
-          .get("https://waflog.kro.kr/api/v1/post/trend", {
+          .get("/api/v1/post/trend", {
             params: {
               page: trendingPostPage,
               size: 12,
