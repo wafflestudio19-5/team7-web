@@ -20,9 +20,11 @@ const WriteModal = (props) => {
 
   const [thumbImgBase64, setThumbImgBase64] = useState(""); // 파일 base64
   const [thumbImgFile, setThumbImgFile] = useState(null); //파일
+  const [thumbUrl, setThumbUrl] = useState("");
 
   const handleThumbnailFile = (event) => {
     const reader = new FileReader();
+    const formData = new FormData();
 
     reader.onloadend = () => {
       // 2. 읽기가 완료되면 아래코드가 실행됩니다.
@@ -35,7 +37,24 @@ const WriteModal = (props) => {
       reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
       setThumbImgFile(event.target.files[0]); // 파일 상태 업데이트
       console.log(event.target.files[0]);
+      formData.append('thumbnailImg',event.target.files[0]);
     }
+
+    axios.post(`/api/v1/image`,{
+      image: formData
+    },{
+      'Content-Type': 'multipart/form-data',
+      headers: {
+        Authentication: token,
+      },
+    })
+        .then((res) => {
+          setThumbUrl(res.data.url);
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
 
   const logoImgInput = useRef({});
@@ -64,37 +83,53 @@ const WriteModal = (props) => {
     setIsOpen(false);
   };
   const handleSubmit = () => {
-    if (title === "" || title.length === 0 || title === null) {
-    }
-    axios
-      .post(
-        `/api/v1/post`,
-        {
-          title: title,
-          content: contents,
-          thumbnail: "",
-          summary: summaryIn,
-          private: !isPublic,
-          url: url,
-        },
-        {
-          headers: {
-            Authentication: token,
-          },
-        }
-      )
-      .then((response) => {
-        history.push("");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("로그인이 만료되었습니다.", {
-          autoClose: 3000,
-        });
-        toast.error("다시 로그인 해주세요.", {
-          autoClose: 3000,
-        });
+    const urlPattern = /^[a-zA-Zㄱ-힣0-9-_,][a-zA-Zㄱ-힣0-9-_, ]*$/;
+
+    if(!url.match(urlPattern) || url.length >= 100){
+      toast.error("올바르지 않은 url입니다.", {
+        autoClose: 3000,
       });
+      setUrl("");
+      return;
+    }
+
+    if (title === "" || title.length === 0) {
+      toast.error("제목이 비었습니다.", {
+        autoClose: 3000,
+      });
+    }
+    else{
+      axios
+          .post(
+              `/api/v1/post`,
+              {
+                title: title,
+                content: contents,
+                thumbnail: "",
+                summary: summaryIn,
+                private: !isPublic,
+                url: url,
+              },
+              {
+                headers: {
+                  Authentication: token,
+                },
+              }
+          )
+          .then((response) => {
+            history.push("");
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error(error.errorMessage, {
+              autoClose: 3000,
+            });
+            toast.error(error.detail, {
+              autoClose: 3000,
+            });
+          });
+    }
+
   };
   const handleThumbnail = (e) => {
     e.preventDefault();
@@ -165,6 +200,7 @@ const WriteModal = (props) => {
           </button>
         </div>
         <h2 className="url-title">URL 설정</h2>
+        <h5 className="url-check">한글 영어 공백만 사용한 100자 이내의 문자열만 가능합니다.</h5>
         <div className="url-box">
           <div className="username-box">/@{userId}/</div>
           <input className="url-input" value={url} onChange={handleUrl} />
