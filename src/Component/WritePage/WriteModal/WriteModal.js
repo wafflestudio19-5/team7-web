@@ -45,7 +45,6 @@ const WriteModal = (props) => {
     },{
       headers: {
         Authentication: token,
-        'Content-Type': 'multipart/form-data'
       },
     })
         .then((res) => {
