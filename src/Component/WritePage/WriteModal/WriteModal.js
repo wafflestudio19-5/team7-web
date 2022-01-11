@@ -86,6 +86,7 @@ const WriteModal = ( props ) => {
                 history.push("");
             })
             .catch((error) => {
+                console.log(error);
                 toast.error("로그인이 만료되었습니다.",{
                     autoClose: 3000,
                 });

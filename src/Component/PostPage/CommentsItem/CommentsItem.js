@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const CommentsItem = ({
   item,
-  setIsOpen,
+  setIsDeleteOpen,
   setTargetCommentId,
   postId,
   setCommentsList,
@@ -26,7 +26,7 @@ const CommentsItem = ({
 
   const handleDelete = () => {
     setTargetCommentId(item.rootComment.id);
-    setIsOpen(true);
+    setIsDeleteOpen(true);
   };
 
   const cancelModify = () => {

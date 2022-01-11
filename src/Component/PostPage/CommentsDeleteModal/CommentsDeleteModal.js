@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSessionContext } from "../../../Context/SessionContext";
 import dayjs from "dayjs";
 
-const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setCommentsCount, setCommentsList, setUpdateComment } ) => {
+const CommentsDeleteModal = ( { isDeleteOpen, setIsDeleteOpen, postId, targetCommentId, setCommentsCount, setCommentsList, setUpdateComment } ) => {
 
     Modal.setAppElement('#root');
 
@@ -16,7 +16,7 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
     const { token } = useSessionContext();
 
     const handleCancel = () => {
-        setIsOpen(false);
+        setIsDeleteOpen(false);
     }
 
     const handleDelete = () => {
@@ -33,7 +33,7 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
                 // setCommentsCount(response.data.count);
                 // setCommentsList(response.data.contents);
                 setUpdateComment(dayjs());
-                setIsOpen(false);
+                setIsDeleteOpen(false);
                 // history.push(`/post/@${params.userId}/${params.postUrl}`);
                 console.log(`/post/@${params.userId}/${params.postUrl}`);
                 toast.success("댓글이 삭제되었습니다.");
@@ -44,7 +44,7 @@ const CommentsDeleteModal = ( { isOpen, setIsOpen, postId, targetCommentId, setC
     }
 
     return(
-        <Modal className="comments-delete-modal" isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+        <Modal className="comments-delete-modal" isDeleteOpen={isDeleteOpen} onRequestClose={() => setIsDeleteOpen(false)}>
             <ToastContainer/>
             <div className="comments-delete-modal-box">
                 <h3 className="comments-delete-modal-title">

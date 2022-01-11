@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSessionContext } from "../../Context/SessionContext";
 
 const RegisterPage = () => {
   const params = useParams();
   const history = useHistory();
   const URLSearch = new URLSearchParams(window.location.search);
+
+  const { handleLogin } = useSessionContext();
 
   const [registerName, setRegisterName] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -18,20 +21,8 @@ const RegisterPage = () => {
   const [registerToken, setRegisterToken] = useState("");
 
   useEffect(() => {
-    const registerCode = URLSearch.get("code");
-
-    axios
-      .get(`https://waflog.kro.kr/api/v1/auth/verify`, {
-        params: {
-          token: registerCode,
-        },
-      })
-      .then((response) => {
-        console.log(registerCode);
-        setRegisterEmail(response.data.email);
-        setRegisterToken(response.headers.authentication);
-      })
-      .catch((error) => {});
+    setRegisterEmail(URLSearch.get("email"));
+    setRegisterToken(URLSearch.get("token"));
   }, []);
 
   const handleCancel = () => {
@@ -55,26 +46,20 @@ const RegisterPage = () => {
       setRegisterError(2);
     } else {
       axios
-        .post(
-          `https://waflog.kro.kr/api/v1/auth/user/info`,
-          {
-            email: registerEmail,
-            name: registerName,
-            userId: registerId,
-            shortIntro: registerIntro
-          },
-          {
-            headers: {
-              Authentication: registerToken,
-            },
-          }
-        )
+        .post(`https://waflog.kro.kr/api/v1/auth/user/info`, {
+          email: registerEmail,
+          name: registerName,
+          userId: registerId,
+          shortIntro: registerIntro,
+          token: registerToken,
+        })
         .then((response) => {
+          handleLogin(response.data.user.id, response.data.user.userId, response.data.user.image, response.data.token);
           toast.success("회원가입이 완료되었습니다.");
           history.push("/");
         })
         .catch((error) => {
-            setRegisterError(4);
+          setRegisterError(4);
         });
     }
   };
