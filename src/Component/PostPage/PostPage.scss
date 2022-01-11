@@ -105,6 +105,12 @@
     color: red;
   }
 
+  .icon-heart-unlike {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: rgba(206, 206, 206, 0.7);
+  }
+
   .icon-heart-path {
     fill: currentcolor;
     d: path("M 18 1 l -6 4 l -6 -4 l -6 5 v 7 l 12 10 l 12 -10 v -7 Z");
@@ -179,6 +185,12 @@
     width: 1rem;
     height: 1rem;
     color: red;
+  }
+
+  .icon-heart-unlike {
+    width: 1rem;
+    height: 1rem;
+    color: rgba(206, 206, 206, 0.7);
   }
 
   .icon-heart-path {
