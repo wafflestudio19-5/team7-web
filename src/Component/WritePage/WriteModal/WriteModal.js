@@ -59,9 +59,9 @@ const WriteModal = (props) => {
           toast.error("썸네일 업로드에 실패했습니다.", {
             autoClose: 3000,
           });
-          toast.error("다시 로그인 해주세요.", {
-            autoClose: 3000,
-          });
+          setThumbImgBase64("");
+          setThumbImgFile(null);
+          setThumbUrl("");
           console.log(error);
         });
   };
