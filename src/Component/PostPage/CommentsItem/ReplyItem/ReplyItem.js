@@ -86,6 +86,7 @@ const ReplyItem = ({
       .then((response) => {
         setRereplyInput("");
         setUpdateComment(dayjs());
+        setIsRereplying(false);
         toast.success("댓글이 작성되었습니다.");
       })
       .catch((error) => {
@@ -159,7 +160,7 @@ const ReplyItem = ({
 
       {replyItem.depth === 1 ? (
         <>
-          <div className="reply-button-main" onClick={handleShowRereply}>
+          <div className="reply-button-show" onClick={handleShowRereply}>
             {isRereplying === true ? (
               <>
                 <AiOutlineMinusSquare className="reply-icon-plus" />
