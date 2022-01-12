@@ -50,9 +50,18 @@ const WriteModal = (props) => {
     })
         .then((res) => {
           setThumbUrl(res.data.url);
+          toast.success("썸네일 업로드에 성공했습니다.", {
+            autoClose: 3000,
+          });
           console.log(res.data);
         })
         .catch((error) => {
+          toast.error("썸네일 업로드에 실패했습니다.", {
+            autoClose: 3000,
+          });
+          toast.error("다시 로그인 해주세요.", {
+            autoClose: 3000,
+          });
           console.log(error);
         });
   };
@@ -105,7 +114,7 @@ const WriteModal = (props) => {
               {
                 title: title,
                 content: contents,
-                thumbnail: "",
+                thumbnail: thumbUrl,
                 summary: summaryIn,
                 private: !isPublic,
                 url: url,
