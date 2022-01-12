@@ -60,9 +60,8 @@ const WritePage = () => {
                     console.log("이미지 감지");
                     (async () => {
                         const formData = new FormData();
-                        formData.append("image", blob);
+                        formData.append('image', blob);
 
-                        axios.defaults.withCredentials = true;
                         const { data: url } = await axios.post(`/api/v1/image`,
                             formData,
                             {
@@ -71,13 +70,15 @@ const WritePage = () => {
                                     'Content-Type': 'multipart/form-data'
                                 },
                             }
-                        );
-                        callback(url, "alt text");
+                        )
+                            .then((res) => {
+                                console.log(res.data);
+                                callback(res.data.url, "alt text");
+                            });
                     })();
                     return false;
                 });
         }
-
         return () => {};
     }, [editorRef]);
 
