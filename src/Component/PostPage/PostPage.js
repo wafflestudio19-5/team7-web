@@ -140,7 +140,7 @@ const PostPage = () => {
 
     axios
       .post(
-        `/api/v1/${postId}/like`,
+        `/api/v1/post/${postId}/like`,
         {},
         {
           headers: {

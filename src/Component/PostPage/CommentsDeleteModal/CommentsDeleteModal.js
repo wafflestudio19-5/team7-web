@@ -44,7 +44,7 @@ const CommentsDeleteModal = ( { isDeleteOpen, setIsDeleteOpen, postId, targetCom
     }
 
     return(
-        <Modal className="comments-delete-modal" isDeleteOpen={isDeleteOpen} onRequestClose={() => setIsDeleteOpen(false)}>
+        <Modal className="comments-delete-modal" isOpen={isDeleteOpen} onRequestClose={() => setIsDeleteOpen(false)}>
             <ToastContainer/>
             <div className="comments-delete-modal-box">
                 <h3 className="comments-delete-modal-title">
