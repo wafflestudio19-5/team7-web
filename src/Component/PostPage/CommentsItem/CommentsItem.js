@@ -5,6 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import { toast } from "react-toastify";
+import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
+import ReplyItem from "./ReplyItem/ReplyItem";
 
 const CommentsItem = ({
   item,
@@ -13,11 +15,14 @@ const CommentsItem = ({
   postId,
   setCommentsList,
   setUpdateComment,
+  setIsLoginOpen,
 }) => {
   const history = useHistory();
   const { id, token } = useSessionContext();
   const [isModifying, setIsModifying] = useState(false);
   const [modifyInput, setModifyInput] = useState(item.rootComment.content);
+  const [showReply, setShowReply] = useState(false);
+  const [replyInput, setReplyInput] = useState("");
 
   const handleModify = () => {
     setIsModifying(true);
@@ -54,6 +59,42 @@ const CommentsItem = ({
       });
   };
 
+  const handleShowReply = () => {
+    if (showReply === true) {
+      setShowReply(false);
+    } else {
+      setShowReply(true);
+    }
+  };
+
+  const handleComment = () => {
+    axios.defaults.xsrfCookieName = "csrftoken";
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+
+    axios
+        .post(
+            `/api/v1/post/${postId}/comment`,
+            {
+              parentComment: item.rootComment.id,
+              content: replyInput,
+            },
+            {
+              headers: {
+                Authentication: token,
+              },
+            }
+        )
+        .then((response) => {
+          setReplyInput("");
+          toast.success("댓글이 작성되었습니다.");
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("먼저 로그인해주세요.");
+          setIsLoginOpen(true);
+        });
+  };
+
   return (
     <div className="comments-item">
       <div className="comments-info-section">
@@ -80,7 +121,7 @@ const CommentsItem = ({
           </div>
         </div>
 
-        { parseInt(id) === item.rootComment.user.id ? (
+        {parseInt(id) === item.rootComment.user.id ? (
           <div className="comments-actions">
             <button className="comments-actions-button" onClick={handleModify}>
               수정
@@ -121,6 +162,62 @@ const CommentsItem = ({
       ) : (
         <div className="comments-content">{item.rootComment.content}</div>
       )}
+
+      <div className="reply-section">
+        <div className="reply-button-main" onClick={handleShowReply}>
+          {showReply === true ? (
+            <>
+              <AiOutlineMinusSquare className="reply-icon-plus" />
+              <span>숨기기</span>
+            </>
+          ) : (
+            <>
+              <AiOutlinePlusSquare className="reply-icon-plus" />
+              {item.replies.count === 0 ? (
+                <span>답글 달기</span>
+              ) : (
+                <span>{item.replies.count}개의 답글</span>
+              )}
+            </>
+          )}
+        </div>
+
+        {showReply === true ? (
+          <>
+            <ul className="reply-list">
+              {item.replies.contents.map((replyItem) => (
+                <ReplyItem
+                  replyItem={replyItem}
+                  key={replyItem.id}
+                  setTargetCommentId={setTargetCommentId}
+                  setIsDeleteOpen={setIsDeleteOpen}
+                  setUpdateComment={setUpdateComment}
+                  postId={postId}
+                  setIsLoginOpen={setIsLoginOpen}
+                  parentCommentId={item.rootComment.id}
+                />
+              ))}
+
+              <div className="reply-space"/>
+
+              <textarea
+                  className="post-comments-input"
+                  placeholder="댓글을 입력하세요."
+                  value={replyInput}
+                  onChange={(e) => setReplyInput(e.target.value)}
+              />
+
+              <div className="post-comments-button-wrapper">
+                <button className="post-comments-button" onClick={handleComment}>
+                  댓글 작성
+                </button>
+              </div>
+            </ul>
+          </>
+        ) : (
+          <div />
+        )}
+      </div>
     </div>
   );
 };

@@ -208,6 +208,7 @@ const PostPage = () => {
     axios
       .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
       .then((response) => {
+        console.log(response);
         setPostResponse(response.data);
         setPostId(response.data.id);
         setCommentsCount(response.data.comments.count);
@@ -449,6 +450,7 @@ const PostPage = () => {
                 item={item}
                 key={item.id}
                 setIsDeleteOpen={setIsDeleteOpen}
+                setIsLoginOpen={setIsLoginOpen}
                 setTargetCommentId={setTargetCommentId}
                 postId={postId}
                 setCommentsList={setCommentsList}
