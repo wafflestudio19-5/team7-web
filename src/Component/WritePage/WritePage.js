@@ -62,7 +62,7 @@ const WritePage = () => {
                         const formData = new FormData();
                         formData.append('image', blob);
 
-                        const { url: url } = await axios.post(`/api/v1/image`,
+                        const { data: url } = await axios.post(`/api/v1/image`,
                             formData,
                             {
                                 headers: {
@@ -74,7 +74,7 @@ const WritePage = () => {
                             .then((res) => {
                                 console.log(res.data);
                             });
-                        callback(url, "alt text");
+                        callback(url.url, "alt text");
                     })();
                     return false;
                 });
