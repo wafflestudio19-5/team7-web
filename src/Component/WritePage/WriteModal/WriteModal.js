@@ -37,11 +37,11 @@ const WriteModal = (props) => {
       reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
       setThumbImgFile(event.target.files[0]); // 파일 상태 업데이트
       console.log(event.target.files[0]);
-      formData.append('thumbnailImg',event.target.files[0]);
+      formData.append('image',event.target.files[0]);
     }
 
     axios.post(`/api/v1/image`,{
-      formData
+      image: formData
     },{
       headers: {
         Authentication: token,
