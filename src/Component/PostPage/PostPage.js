@@ -225,7 +225,6 @@ const PostPage = () => {
               },
             })
             .then((response) => {
-              console.log(response);
               if (response.data === true) {
                 setIsLike(true);
               }
