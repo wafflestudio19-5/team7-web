@@ -40,9 +40,9 @@ const WriteModal = (props) => {
       formData.append('image',event.target.files[0]);
     }
 
-    axios.post(`/api/v1/image`,{
+    axios.post(`/api/v1/image`,
       formData
-    },{
+    ,{
       headers: {
         Authentication: token,
         'Content-Type': 'multipart/form-data'
