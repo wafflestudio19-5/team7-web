@@ -41,7 +41,7 @@ const WriteModal = (props) => {
     }
 
     axios.post(`/api/v1/image`,{
-      formData
+      image: event.target.files[0]
     },{
       headers: {
         Authentication: token,
