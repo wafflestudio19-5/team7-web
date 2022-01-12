@@ -73,13 +73,12 @@ const WritePage = () => {
                         )
                             .then((res) => {
                                 console.log(res.data);
+                                callback(res.data.url, "alt text");
                             });
-                        callback(url.url, "alt text");
                     })();
                     return false;
                 });
         }
-
         return () => {};
     }, [editorRef]);
 
