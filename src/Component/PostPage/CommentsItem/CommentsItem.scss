@@ -128,7 +128,7 @@
   margin-right: 0.3rem;
 }
 
-.reply-button-main {
+.reply-button-show {
   display: inline-flex;
   -webkit-box-align: center;
   align-items: center;
@@ -146,5 +146,27 @@
 }
 
 .reply-space {
-  margin-top: 3rem;
+  margin-top: 2rem;
+}
+.reply-button-write {
+  cursor: pointer;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid rgb(18, 184, 134);
+  display: flex;
+  outline: none;
+  color: rgb(18, 184, 134);
+  width: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: 600;
+  background: white;
+}
+
+.reply-button-write:hover {
+  color: white;
+  background: rgb(18, 184, 134);
 }

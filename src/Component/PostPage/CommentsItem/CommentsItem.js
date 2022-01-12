@@ -23,6 +23,7 @@ const CommentsItem = ({
   const [modifyInput, setModifyInput] = useState(item.rootComment.content);
   const [showReply, setShowReply] = useState(false);
   const [replyInput, setReplyInput] = useState("");
+  const [isReplying, setIsReplying] = useState(false);
 
   const handleModify = () => {
     setIsModifying(true);
@@ -67,33 +68,42 @@ const CommentsItem = ({
     }
   };
 
+  const handleReplying = () => {
+    if (isReplying === true) {
+      setIsReplying(false);
+    } else {
+      setIsReplying(true);
+    }
+  };
+
   const handleComment = () => {
     axios.defaults.xsrfCookieName = "csrftoken";
     axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
     axios
-        .post(
-            `/api/v1/post/${postId}/comment`,
-            {
-              parentComment: item.rootComment.id,
-              content: replyInput,
-            },
-            {
-              headers: {
-                Authentication: token,
-              },
-            }
-        )
-        .then((response) => {
-          setReplyInput("");
-          setUpdateComment(dayjs());
-          toast.success("댓글이 작성되었습니다.");
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error("먼저 로그인해주세요.");
-          setIsLoginOpen(true);
-        });
+      .post(
+        `/api/v1/post/${postId}/comment`,
+        {
+          parentComment: item.rootComment.id,
+          content: replyInput,
+        },
+        {
+          headers: {
+            Authentication: token,
+          },
+        }
+      )
+      .then((response) => {
+        setReplyInput("");
+        setUpdateComment(dayjs());
+        setIsReplying(false);
+        toast.success("댓글이 작성되었습니다.");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("먼저 로그인해주세요.");
+        setIsLoginOpen(true);
+      });
   };
 
   return (
@@ -165,7 +175,7 @@ const CommentsItem = ({
       )}
 
       <div className="reply-section">
-        <div className="reply-button-main" onClick={handleShowReply}>
+        <div className="reply-button-show" onClick={handleShowReply}>
           {showReply === true ? (
             <>
               <AiOutlineMinusSquare className="reply-icon-plus" />
@@ -199,20 +209,37 @@ const CommentsItem = ({
                 />
               ))}
 
-              <div className="reply-space"/>
+              <div className="reply-space" />
 
-              <textarea
-                  className="post-comments-input"
-                  placeholder="댓글을 입력하세요."
-                  value={replyInput}
-                  onChange={(e) => setReplyInput(e.target.value)}
-              />
-
-              <div className="post-comments-button-wrapper">
-                <button className="post-comments-button" onClick={handleComment}>
-                  댓글 작성
+              {isReplying === false ? (
+                <button className="reply-button-write" onClick={handleReplying}>
+                  답글 작성하기
                 </button>
-              </div>
+              ) : (
+                <>
+                  <textarea
+                    className="post-comments-input"
+                    placeholder="댓글을 입력하세요."
+                    value={replyInput}
+                    onChange={(e) => setReplyInput(e.target.value)}
+                  />
+
+                  <div className="post-comments-button-wrapper">
+                    <button
+                      className="reply-button-cancel"
+                      onClick={handleReplying}
+                    >
+                      취소
+                    </button>
+                    <button
+                      className="post-comments-button"
+                      onClick={handleComment}
+                    >
+                      댓글 작성
+                    </button>
+                  </div>
+                </>
+              )}
             </ul>
           </>
         ) : (
