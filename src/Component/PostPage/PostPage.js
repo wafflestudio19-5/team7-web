@@ -298,9 +298,9 @@ const PostPage = () => {
           </div>
         </div>
 
-        {tagData.length !== 0 ? (
+        {postResponse.tags.length !== 0 ? (
           <ul className="post-tag-list">
-            {tagData.map((item) => (
+            {postResponse.tags.map((item) => (
                 <div className="post-tag-item">{item}</div>
             ))}
           </ul>

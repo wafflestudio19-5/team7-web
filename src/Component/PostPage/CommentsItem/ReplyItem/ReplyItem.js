@@ -157,38 +157,47 @@ const ReplyItem = ({
         <div className="reply-content">{replyItem.content}</div>
       )}
 
-      <div className="reply-button-main" onClick={handleShowRereply}>
-        {(isRereplying && replyItem.depth === 1) === true ? (
-          <>
-            <AiOutlineMinusSquare className="reply-icon-plus" />
-            <span>숨기기</span>
-          </>
-        ) : (
-          <>
-            <AiOutlinePlusSquare className="reply-icon-plus" />
-
-            <span>답글 달기</span>
-          </>
-        )}
-      </div>
-
-      {(isRereplying && replyItem.depth === 1) === true ? (
+      {replyItem.depth === 1 ? (
         <>
-          <div className="rereply">
-            <div className="rereply-space" />
-            <textarea
-              className="post-comments-input"
-              placeholder="댓글을 입력하세요."
-              value={rereplyInput}
-              onChange={(e) => setRereplyInput(e.target.value)}
-            />
+          <div className="reply-button-main" onClick={handleShowRereply}>
+            {isRereplying === true ? (
+              <>
+                <AiOutlineMinusSquare className="reply-icon-plus" />
+                <span>숨기기</span>
+              </>
+            ) : (
+              <>
+                <AiOutlinePlusSquare className="reply-icon-plus" />
 
-            <div className="post-comments-button-wrapper">
-              <button className="post-comments-button" onClick={handleComment}>
-                댓글 작성
-              </button>
-            </div>
+                <span>답글 달기</span>
+              </>
+            )}
           </div>
+
+          {isRereplying === true ? (
+            <>
+              <div className="rereply">
+                <div className="rereply-space" />
+                <textarea
+                  className="post-comments-input"
+                  placeholder="댓글을 입력하세요."
+                  value={rereplyInput}
+                  onChange={(e) => setRereplyInput(e.target.value)}
+                />
+
+                <div className="post-comments-button-wrapper">
+                  <button
+                    className="post-comments-button"
+                    onClick={handleComment}
+                  >
+                    댓글 작성
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div />
+          )}
         </>
       ) : (
         <div />
