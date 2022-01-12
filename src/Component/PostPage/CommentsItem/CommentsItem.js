@@ -63,14 +63,12 @@ const CommentsItem = ({
   const handleShowReply = () => {
     if (showReply === true) {
       setShowReply(false);
+      setIsReplying(false);
     } else {
       setShowReply(true);
-    }
-    if (item.replies.length === 0) {
-      setIsReplying(true);
-    }
-    if (isReplying === true) {
-      setIsReplying(false);
+      if (item.replies.length === 0) {
+        setIsReplying(true);
+      }
     }
   };
 
