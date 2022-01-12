@@ -11,10 +11,16 @@ const SearchItem = ({ item }) => {
 
   return (
     <div className="search-item">
-      <div className="user-info">
-        <img className="user-profile" src={item.user.image} alt="저자 이미지" />
-        <div className="user-name">{item.user.userId}</div>
-      </div>
+      <a className="search-user-info-href" href={"/@" + item.user.userId}>
+        <div className="user-info">
+          <img
+            className="user-profile"
+            src={item.user.image}
+            alt="저자 이미지"
+          />
+          <div className="user-name">{item.user.userId}</div>
+        </div>
+      </a>
       {item.thumbnail === null || item.thumbnail === "" ? (
         <div />
       ) : (

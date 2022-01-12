@@ -30,6 +30,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
+import ReplyItem from "./CommentsItem/ReplyItem/ReplyItem";
 
 const dataFormat = {
   comments: [],
@@ -116,6 +117,8 @@ const commentsData = [
   },
 ];
 
+const tagData = ["asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf"]
+
 const PostPage = () => {
   const params = useParams();
   const history = useHistory();
@@ -137,7 +140,6 @@ const PostPage = () => {
 
   const handleLike = () => {
     // toast.success("좋아요 실행");
-
     axios
       .post(
         `/api/v1/post/${postId}/like`,
@@ -154,6 +156,7 @@ const PostPage = () => {
         } else {
           setIsLike(false);
         }
+        setUpdateComment(dayjs());
       })
       .catch((error) => {
         console.log(error);
@@ -295,6 +298,16 @@ const PostPage = () => {
             </div>
           </div>
         </div>
+
+        {tagData.length !== 0 ? (
+          <ul className="post-tag-list">
+            {tagData.map((item) => (
+                <div className="post-tag-item">{item}</div>
+            ))}
+          </ul>
+        ) : (
+          <div />
+        )}
 
         <ReactMarkdown
           className="post-content"

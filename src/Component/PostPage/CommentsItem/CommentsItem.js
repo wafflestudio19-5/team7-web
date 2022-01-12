@@ -86,6 +86,7 @@ const CommentsItem = ({
         )
         .then((response) => {
           setReplyInput("");
+          setUpdateComment(dayjs());
           toast.success("댓글이 작성되었습니다.");
         })
         .catch((error) => {

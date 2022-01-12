@@ -31,7 +31,7 @@ const PostItem = ({ item }) => {
         </p>
       </div>
       <div className={"PostSubSection"}>
-        <a className={"PostAuthorInfo"}>
+        <a className={"PostAuthorInfo"} href={"/@" + item.user.userId}>
           <img
             className={"PostAuthorImg"}
             src={item.user.image}

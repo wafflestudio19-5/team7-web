@@ -5,6 +5,7 @@ import { useSessionContext } from "../../../../Context/SessionContext";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 
 const ReplyItem = ({
   replyItem,
@@ -13,11 +14,14 @@ const ReplyItem = ({
   setUpdateComment,
   postId,
   setIsLoginOpen,
+  parentCommentId,
 }) => {
   const { id, token } = useSessionContext();
 
   const [isReplyModifying, setIsReplyModifying] = useState(false);
   const [modifyInput, setModifyInput] = useState(replyItem.content);
+  const [isRereplying, setIsRereplying] = useState(false);
+  const [rereplyInput, setRereplyInput] = useState("");
 
   const handleModify = () => {
     setIsReplyModifying(true);
@@ -54,75 +58,141 @@ const ReplyItem = ({
       });
   };
 
+  const handleShowRereply = () => {
+    if (isRereplying === true) {
+      setIsRereplying(false);
+    } else {
+      setIsRereplying(true);
+    }
+  };
+
+  const handleComment = () => {
+    axios.defaults.xsrfCookieName = "csrftoken";
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+
+    axios
+      .post(
+        `/api/v1/post/${postId}/comment`,
+        {
+          parentComment: parentCommentId,
+          content: rereplyInput,
+        },
+        {
+          headers: {
+            Authentication: token,
+          },
+        }
+      )
+      .then((response) => {
+        setRereplyInput("");
+        setUpdateComment(dayjs());
+        toast.success("댓글이 작성되었습니다.");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("먼저 로그인해주세요.");
+        setIsLoginOpen(true);
+      });
+  };
 
   return (
-    <div className="reply-item">
+    <div className={replyItem.depth === 1 ? "reply-item" : "rereply-item"}>
       <div className="reply-info">
-        <div className="comments-info-profile">
+        <div className="reply-info-profile">
           <a href={"/@" + replyItem.user.userId}>
             <img
-              className="comments-info-image"
+              className="reply-info-image"
               src={replyItem.user.image}
               alt={"유저 이미지"}
             />
           </a>
-          <div className="comments-info-detail">
-            <div className="comments-info-userId">
+          <div className="reply-info-detail">
+            <div className="reply-info-userId">
               <a
-                className="comments-info-userId-href"
+                className="reply-info-userId-href"
                 href={"/@" + replyItem.user.userId}
               >
                 {replyItem.user.userId}
               </a>
             </div>
-            <div className="comments-info-date">
+            <div className="reply-info-date">
               {dayjs(replyItem.createdAt).format("YYYY년 MM월 DD일")}
             </div>
           </div>
         </div>
-      </div>
 
-      {parseInt(id) === replyItem.user.id ? (
-        <div className="comments-actions">
-          <button className="comments-actions-button" onClick={handleModify}>
-            수정
-          </button>
-          <button className="comments-actions-button" onClick={handleDelete}>
-            삭제
-          </button>
-        </div>
-      ) : (
-        <div />
-      )}
+        {parseInt(id) === replyItem.user.id ? (
+          <div className="reply-actions">
+            <button className="reply-actions-button" onClick={handleModify}>
+              수정
+            </button>
+            <button className="reply-actions-button" onClick={handleDelete}>
+              삭제
+            </button>
+          </div>
+        ) : (
+          <div />
+        )}
+      </div>
 
       {isReplyModifying ? (
         <>
           <textarea
-            className="post-comments-input"
+            className="reply-input"
             placeholder="댓글을 입력하세요."
             value={modifyInput}
             onChange={(e) => setModifyInput(e.target.value)}
           />
 
-          <div className="post-comments-button-wrapper">
-            <button
-              className="post-comments-button-cancel"
-              onClick={cancelModify}
-            >
+          <div className="reply-button-wrapper">
+            <button className="reply-button-cancel" onClick={cancelModify}>
               취소
             </button>
-            <button
-              className="post-comments-button-modify"
-              onClick={completeModify}
-            >
+            <button className="reply-button-modify" onClick={completeModify}>
               댓글 수정
             </button>
           </div>
         </>
       ) : (
-        <div className="comments-content">{replyItem.content}</div>
+        <div className="reply-content">{replyItem.content}</div>
       )}
 
+      <div className="reply-button-main" onClick={handleShowRereply}>
+        {(isRereplying && replyItem.depth === 1) === true ? (
+          <>
+            <AiOutlineMinusSquare className="reply-icon-plus" />
+            <span>숨기기</span>
+          </>
+        ) : (
+          <>
+            <AiOutlinePlusSquare className="reply-icon-plus" />
+
+            <span>답글 달기</span>
+          </>
+        )}
+      </div>
+
+      {(isRereplying && replyItem.depth === 1) === true ? (
+        <>
+          <div className="rereply">
+            <div className="rereply-space" />
+            <textarea
+              className="post-comments-input"
+              placeholder="댓글을 입력하세요."
+              value={rereplyInput}
+              onChange={(e) => setRereplyInput(e.target.value)}
+            />
+
+            <div className="post-comments-button-wrapper">
+              <button className="post-comments-button" onClick={handleComment}>
+                댓글 작성
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div />
+      )}
     </div>
   );
 };
