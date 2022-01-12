@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="rereply created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/MainPage/PostItem/PostItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MainPage/PostItem/PostItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchPage/SearchItem/SearchItem.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641580309020</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="rereply created">
+      <created>1642006866015</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642006866015</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +172,7 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
     <MESSAGE value="bug" />
     <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;src/Component/LoginModal/LoginModal.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;src/Component/LoginModal/LoginModal.js" />
+    <MESSAGE value="rereply created" />
+    <option name="LAST_COMMIT_MESSAGE" value="rereply created" />
   </component>
 </project>
