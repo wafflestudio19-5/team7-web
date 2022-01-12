@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/CommentsItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/CommentsItem/ReplyItem/ReplyItem.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,17 +33,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/PostPage/PostPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/RegisterPage/RegisterPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SettingPage/SettingPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/LoginPage/LoginPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Context/SessionContext.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/SettingPage/SettingPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/LoginPage/LoginPage.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Context/SessionContext.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/PostPage/PostPage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Component/RegisterPage/RegisterPage.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="23N4zDqzczstMt1Qypi7Sftv172" />
