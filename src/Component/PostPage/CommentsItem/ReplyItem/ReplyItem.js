@@ -74,7 +74,7 @@ const ReplyItem = ({
       .post(
         `/api/v1/post/${postId}/comment`,
         {
-          parentComment: parentCommentId,
+          parentComment: replyItem.id,
           content: rereplyInput,
         },
         {
