@@ -21,8 +21,12 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineEnter } from "react-icons/ai"
+import {toast} from "react-toastify";
+import {useSessionContext} from "../../Context/SessionContext";
 
 const WritePage = () => {
+
+    const { handleLogout, isLogin, userId, token } = useSessionContext();
 
     const titleRef = createRef();
     const editorRef = createRef();
@@ -47,34 +51,35 @@ const WritePage = () => {
         setIsOpen(true);
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (editorRef.current) {
             editorRef.current.getInstance().removeHook("addImageBlobHook");
             editorRef.current
                 .getInstance()
                 .addHook("addImageBlobHook", (blob, callback) => {
                     console.log("이미지 감지");
-                    /*(async () => {
-                        let formData = new FormData();
-                        formData.append("file", blob);
+                    (async () => {
+                        const formData = new FormData();
+                        formData.append("image", blob);
 
                         axios.defaults.withCredentials = true;
-                        const { data: url } = await axios.post(
-                            `${backUrl}image.do`,
+                        const { data: url } = await axios.post(`/api/v1/image`,
                             formData,
                             {
-                                header: { "content-type": "multipart/formdata" },
+                                headers: {
+                                    Authentication: token,
+                                    'Content-Type': 'multipart/form-data'
+                                },
                             }
                         );
                         callback(url, "alt text");
                     })();
-
                     return false;
                 });
         }
 
         return () => {};
-    }, [editorRef]);*/
+    }, [editorRef]);
 
     return (
         <div>
