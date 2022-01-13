@@ -139,7 +139,7 @@ const WritePage = () => {
                     </div>
                     <Editor
                         previewStyle="vertical"
-                        height="60vh"
+                        height="75vh"
                         initialEditType="markdown"
                         placeholder="내용을 입력하세요."
                         ref={editorRef}

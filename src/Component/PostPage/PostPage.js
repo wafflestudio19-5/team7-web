@@ -324,7 +324,6 @@ const PostPage = () => {
           className="post-content"
           escapeHtml={false}
           renderers={{image: BlogImage}}
-          source="![Espen](https://espen.codes/assets/img/avatar-colored.jpg)"
         >
           {source.content}
         </ReactMarkdown>
