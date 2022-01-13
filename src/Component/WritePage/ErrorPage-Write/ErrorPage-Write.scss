@@ -1,0 +1,51 @@
+.errorpage {
+  position: absolute;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.error-image {
+  position: absolute;
+  top: 25%;
+  left: calc(50% - 10rem);
+  width: 20rem;
+  height: auto;
+}
+
+.text-nothing {
+  position: absolute;
+  top: calc(25% + 160px);
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  white-space: pre;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 2.5rem;
+  color: rgb(52, 58, 64);
+  margin-top: 2rem;
+}
+
+.btn-returnhome {
+  position: absolute;
+  top: calc(25% + 290px);
+  left: calc(50% - 3rem);
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(18, 184, 134);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.125rem;
+  width: 6rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+}

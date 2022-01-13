@@ -130,10 +130,10 @@ const WriteModal = (props) => {
           })
           .catch((error) => {
             console.log(error);
-            toast.error(error.errorMessage, {
+            toast.error(error.data.errorMessage, {
               autoClose: 3000,
             });
-            toast.error(error.detail, {
+            toast.error(error.data.detail, {
               autoClose: 3000,
             });
           });
