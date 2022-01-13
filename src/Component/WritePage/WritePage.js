@@ -25,7 +25,6 @@ import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineEnter } from "react-icons/ai"
 import {toast} from "react-toastify";
 import {useSessionContext} from "../../Context/SessionContext";
-import imageCompression from "browser-image-compression";
 
 const WritePage = () => {
 
@@ -61,17 +60,8 @@ const WritePage = () => {
                 .getInstance()
                 .addHook("addImageBlobHook", (blob, callback) => {
                     (async () => {
-                        const file = blob;
-
-                        const options = {
-                            maxWidthOrHeight: 768
-                        }
-                        const compressed = imageCompression(file,options);
-
-                        console.log(compressed);
-
                         const formData = new FormData();
-                        formData.append('image', compressed);
+                        formData.append('image', blob);
 
                         const res = await axios.post(`/api/v1/image`,
                             formData,
@@ -84,8 +74,13 @@ const WritePage = () => {
                         )
                             .then((res) => {
                                 console.log(res.data);
-                                callback(res.data.url, "alt text");
-                            });
+                                callback(res.data.url + " =768x", "alt text");
+                            })
+                            .catch((error) => {
+                                toast.error("이미지 업로드에 실패했습니다.", {
+                                    autoClose: 3000,
+                                });
+                            })
                     })();
                     return false;
                 });
