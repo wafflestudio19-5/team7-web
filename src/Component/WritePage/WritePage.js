@@ -27,10 +27,6 @@ import {toast} from "react-toastify";
 import {useSessionContext} from "../../Context/SessionContext";
 import PostItem from "../MainPage/PostItem/PostItem";
 
-const tagForm = {
-    id : "",
-    tag : "",
-}
 const WritePage = () => {
 
     const { handleLogout, isLogin, userId, token } = useSessionContext();
@@ -122,7 +118,7 @@ const WritePage = () => {
 
     return (
         <div>
-            {!isLogin ?
+            {isLogin ?
                 <div>
                     <textarea
                         placeholder="제목을 입력하세요."
