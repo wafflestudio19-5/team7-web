@@ -1,6 +1,6 @@
 .title-style{
   font-size: 2.75rem;
-  height: auto;
+  height: 90px;
   width: 90%;
   resize: none;
   line-height: 1.5;
@@ -10,7 +10,49 @@
   color: rgb(33, 37, 41);
   padding-left: 40px;
   padding-top: 20px;
-  margin-bottom: -60px;
+  margin-bottom: 5px;
+}
+
+.tag-box{
+  color: rgb(52, 58, 64);
+  font-size: 1.125rem;
+  margin-left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .tag-input{
+    display: inline-flex;
+    outline: none;
+    cursor: text;
+    font-size: 1.125rem;
+    line-height: 2rem;
+    margin-bottom: 0.75rem;
+    min-width: 8rem;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    padding: 1px 2px;
+    color: (black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+  }
+
+  .tag-style{
+    font-size: 1rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 2rem;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: rgb(241, 243, 245);
+    color: rgb(12, 166, 120);
+    margin-right: 0.75rem;
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+    animation: 0.125s ease-in-out 0s 1 normal forwards running iMKika;
+  }
 }
 
 .btn-box{

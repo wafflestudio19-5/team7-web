@@ -133,7 +133,27 @@ const PostPage = () => {
   const [updateComment, setUpdateComment] = useState();
   const [isLike, setIsLike] = useState(false);
 
+  const [source, setSource] = useState(dataFormat);
+
   const currentUrl = window.location.href;
+
+  useEffect(() => {
+    console.log("POSTPAGE REFRESH");
+    axios
+        .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
+        .then((response) => {
+          setPostResponse(response.data);
+          setSource(response.data);
+          setPostId(response.data.id);
+          setCommentsCount(response.data.comments.count);
+          setCommentsList(response.data.comments.contents);
+          console.log(source.content);
+        })
+        .catch((error) => {
+          console.log(error);
+          history.push("/error"); // 백엔드 404 response 필요!!
+        });
+  }, []);
 
   const handleLike = () => {
     // toast.success("좋아요 실행");
@@ -240,7 +260,7 @@ const PostPage = () => {
   }, [updateComment]);
 
   const BlogImage = (props) => {
-    return <img {...props} style={{ maxWidth: "100%" }} />
+    return <img {...props} style={{ width: '60px' }} />
   }
 
   return (
@@ -302,10 +322,11 @@ const PostPage = () => {
 
         <ReactMarkdown
           className="post-content"
-          plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
+          escapeHtml={false}
           renderers={{image: BlogImage}}
+          source="![Espen](https://espen.codes/assets/img/avatar-colored.jpg)"
         >
-          {postResponse.content}
+          {source.content}
         </ReactMarkdown>
       </div>
 
