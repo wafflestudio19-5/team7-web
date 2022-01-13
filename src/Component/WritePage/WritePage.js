@@ -3,6 +3,8 @@ import axios from "axios";
 import {useHistory} from "react-router-dom";
 import './WritePage.scss';
 import WriteModal from './WriteModal/WriteModal';
+import ErrorPageWrite from "./ErrorPage-Write/ErrorPage-Write";
+
 
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
@@ -23,6 +25,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineEnter } from "react-icons/ai"
 import {toast} from "react-toastify";
 import {useSessionContext} from "../../Context/SessionContext";
+import imageCompression from "browser-image-compression";
 
 const WritePage = () => {
 
@@ -57,12 +60,20 @@ const WritePage = () => {
             editorRef.current
                 .getInstance()
                 .addHook("addImageBlobHook", (blob, callback) => {
-                    console.log("이미지 감지");
                     (async () => {
-                        const formData = new FormData();
-                        formData.append('image', blob);
+                        const file = blob;
 
-                        const { data: url } = await axios.post(`/api/v1/image`,
+                        const options = {
+                            maxWidthOrHeight: 768
+                        }
+                        const compressed = imageCompression(file,options);
+
+                        console.log(compressed);
+
+                        const formData = new FormData();
+                        formData.append('image', compressed);
+
+                        const res = await axios.post(`/api/v1/image`,
                             formData,
                             {
                                 headers: {
@@ -84,33 +95,40 @@ const WritePage = () => {
 
     return (
         <div>
-            <textarea
-                placeholder="제목을 입력하세요."
-                className="title-style"
-                ref={titleRef}
-                value={title}
-                onChange={handleTitle}
-            />
-            <Editor
-                previewStyle="vertical"
-                height="80vh"
-                initialEditType="markdown"
-                placeholder="내용을 입력하세요."
-                ref={editorRef}
-                plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
-                onChange={onChangeEditorTextHandler}
-            />
-            <div className="btn-box">
-                <button className="out-btn" onClick={handleOut}>
-                    <BiArrowBack className="out-icon"/>
-                    <span>나가기</span>
-                </button>
-                <button className="submit-btn" onClick={handleSubmit}>
-                    업로드
-                    <AiOutlineEnter className="submit-icon"/>
-                </button>
-            </div>
-            <WriteModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents}/>
+            {isLogin ?
+                <div>
+                    <textarea
+                        placeholder="제목을 입력하세요."
+                        className="title-style"
+                        ref={titleRef}
+                        value={title}
+                        onChange={handleTitle}
+                    />
+                    <Editor
+                        previewStyle="vertical"
+                        height="80vh"
+                        initialEditType="markdown"
+                        placeholder="내용을 입력하세요."
+                        ref={editorRef}
+                        plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
+                        onChange={onChangeEditorTextHandler}
+                    />
+                    <div className="btn-box">
+                        <button className="out-btn" onClick={handleOut}>
+                            <BiArrowBack className="out-icon"/>
+                            <span>나가기</span>
+                        </button>
+                        <button className="submit-btn" onClick={handleSubmit}>
+                            업로드
+                            <AiOutlineEnter className="submit-icon"/>
+                        </button>
+                    </div>
+                    <WriteModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents}/>
+                </div>
+                :
+                <ErrorPageWrite/>
+                }
+
         </div>
     )
 }

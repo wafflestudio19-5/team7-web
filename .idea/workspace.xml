@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified" />
+    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
+      <change afterPath="$PROJECT_DIR$/src/Component/WritePage/ErrorPage-Write/ErrorPage-Write.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/WritePage/ErrorPage-Write/ErrorPage-Write.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +54,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Component/SocialLogin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Component/WritePage" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -57,6 +63,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Component/WritePage" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -88,7 +99,7 @@
       <workItem from="1641888584781" duration="5546000" />
       <workItem from="1641912480130" duration="1014000" />
       <workItem from="1641914037468" duration="3290000" />
-      <workItem from="1642003696059" duration="3352000" />
+      <workItem from="1642003696059" duration="6026000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>
