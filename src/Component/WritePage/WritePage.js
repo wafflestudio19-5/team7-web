@@ -25,6 +25,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineEnter } from "react-icons/ai"
 import {toast} from "react-toastify";
 import {useSessionContext} from "../../Context/SessionContext";
+import PostItem from "../MainPage/PostItem/PostItem";
 
 const WritePage = () => {
 
@@ -37,6 +38,9 @@ const WritePage = () => {
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [tag, setTag] = useState("");
+    const [tagList, setTagList] = useState([]);
+    const [tagId, setTagId] = useState(0);
 
     const onChangeEditorTextHandler = () => {
         setContents(editorRef.current.getInstance().getMarkdown());
@@ -44,6 +48,31 @@ const WritePage = () => {
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
+    }
+
+    const handleTagInput = (e) => {
+        if(e.target.value.substr(e.target.value.length - 1, 1) === ','){
+            const tagForm = {
+                id : tagId,
+                tag : e.target.value.substr(0, e.target.value.length - 1)
+            };
+
+            if(tagList.some(tag => tag.tag === tagForm.tag)){
+                setTag("");
+            }
+            else{
+                setTagList(tagList.concat(tagForm));
+                setTag("");
+                setTagId(Number(tagId) + 1);
+            }
+        }
+        else{
+            setTag(e.target.value);
+        }
+    }
+
+    const handleDeleteTag = (item) => {
+        setTagList(tagList.filter((tag) => tag.id !== item.id));
     }
 
     const handleOut = () => {
@@ -73,8 +102,7 @@ const WritePage = () => {
                             }
                         )
                             .then((res) => {
-                                console.log(res.data);
-                                callback(res.data.url + " =768x", "alt text");
+                                callback(res.data.url, "alt text");
                             })
                             .catch((error) => {
                                 toast.error("이미지 업로드에 실패했습니다.", {
@@ -99,9 +127,15 @@ const WritePage = () => {
                         value={title}
                         onChange={handleTitle}
                     />
+                    <div className="tag-box">
+                        {tagList.map((item) => (
+                            <div className="tag-style" key={item.id} onClick={() => handleDeleteTag(item)}>{item.tag}</div>
+                        ))}
+                        <input placeholder="태그를 입력하세요" tabIndex="2" className="tag-input" value={tag} onChange={handleTagInput}/>
+                    </div>
                     <Editor
                         previewStyle="vertical"
-                        height="80vh"
+                        height="75vh"
                         initialEditType="markdown"
                         placeholder="내용을 입력하세요."
                         ref={editorRef}
