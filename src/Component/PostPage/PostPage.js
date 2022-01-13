@@ -239,6 +239,10 @@ const PostPage = () => {
       });
   }, [updateComment]);
 
+  const BlogImage = (props) => {
+    return <img {...props} style={{ maxWidth: "100%" }} />
+  }
+
   return (
     <div className="postpage">
       <ToastContainer />
@@ -299,6 +303,7 @@ const PostPage = () => {
         <ReactMarkdown
           className="post-content"
           plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
+          renderers={{image: BlogImage}}
         >
           {postResponse.content}
         </ReactMarkdown>
