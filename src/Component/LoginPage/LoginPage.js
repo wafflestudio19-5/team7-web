@@ -12,7 +12,7 @@ const LoginPage = () => {
   const { handleLogin } = useSessionContext();
 
   useEffect(() => {
-    const registerCode = URLSearch.get("code");
+    const registerCode = URLSearch.get("token");
     const email = URLSearch.get("email");
     console.log(registerCode);
 
