@@ -26,8 +26,8 @@ const RegisterPage = () => {
 
     axios
         .post(`/api/v1/auth/verify`, {
-          email: registerEmail,
-          token: registerToken
+          email: URLSearch.get("email"),
+          token: URLSearch.get("token")
         })
         .then((response) => {
         })

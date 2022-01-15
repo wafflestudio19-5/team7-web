@@ -25,9 +25,31 @@
   word-break: break-word;
 }
 
+.post-control {
+  display: flex;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  margin-bottom: -1.25rem;
+}
+
+.post-control-button {
+  padding: 0px;
+  margin-left: 0.5rem;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: inherit;
+  cursor: pointer;
+  color: rgb(134, 142, 150);
+}
+
+.post-control-button:hover {
+  color: #383838;
+}
+
 .post-information-section {
   font-size: 1rem;
-  color: rgb(73, 80, 87);
+  color: black;
 }
 
 .post-user-id {
