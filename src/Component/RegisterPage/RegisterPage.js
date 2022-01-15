@@ -25,7 +25,7 @@ const RegisterPage = () => {
     setRegisterToken(URLSearch.get("token"));
 
     axios
-        .get(`/api/v1/auth/verify`, {
+        .post(`/api/v1/auth/verify`, {
           email: registerEmail,
           token: registerToken
         })
