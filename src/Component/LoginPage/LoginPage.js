@@ -12,15 +12,15 @@ const LoginPage = () => {
   const { handleLogin } = useSessionContext();
 
   useEffect(() => {
-    const registerCode = URLSearch.get("token");
+    const registerToken = URLSearch.get("token");
     const email = URLSearch.get("email");
-    console.log(registerCode);
+    console.log(registerToken);
 
     axios
       .post(
         `https://waflog.kro.kr/api/v1/auth/verify/login`,
         {
-          token: registerCode,
+          token: registerToken,
           email: email,
         }
       )
