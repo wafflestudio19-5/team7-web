@@ -23,6 +23,18 @@ const RegisterPage = () => {
   useEffect(() => {
     setRegisterEmail(URLSearch.get("email"));
     setRegisterToken(URLSearch.get("token"));
+
+    axios
+        .get(`/api/v1/auth/verify`, {
+          email: registerEmail,
+          token: registerToken
+        })
+        .then((response) => {
+        })
+        .catch((error) => {
+          history.push("/");
+          toast.error("잘못된 접근입니다.")
+        });
   }, []);
 
   const handleCancel = () => {
