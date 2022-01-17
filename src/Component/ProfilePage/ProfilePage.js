@@ -30,22 +30,9 @@ const ProfilePage = () => {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 setUserName(response.data.name);
                 setUserImg(response.data.image);
                 setUserShort(response.data.shortIntro);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-        axios
-            .get(`/api/v1/user/@${params.userId}/about`, {
-                params: {
-                },
-            })
-            .then((response) => {
-                console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);
