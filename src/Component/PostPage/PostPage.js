@@ -21,6 +21,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
 import { useSessionContext } from "../../Context/SessionContext";
 import CommentsDeleteModal from "./CommentsDeleteModal/CommentsDeleteModal";
+import PostDeleteModal from "./PostDeleteModal/PostDeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
 
 import Prism from "prismjs";
@@ -132,7 +133,7 @@ const PostPage = () => {
   const params = useParams();
   const history = useHistory();
 
-  const { token, isLogin, userId } = useSessionContext();
+  const { token, isLogin, id } = useSessionContext();
 
   const [postResponse, setPostResponse] = useState(dataFormat);
   const [postId, setPostId] = useState();
@@ -173,7 +174,7 @@ const PostPage = () => {
   }
 
   const handlePostDelete = () => {
-    toast.success("삭제 구현 중");
+    setIsPostDeleteOpen(true);
   }
 
   const handleLike = () => {
@@ -291,10 +292,10 @@ const PostPage = () => {
       <div className="post-main-section">
         <div className="post-title">{postResponse.title}</div>
 
-        {postResponse.user.userId === parseInt(userId) ? (
+        {postResponse.user.id === parseInt(id) ? (
           <div className="post-control">
-            <button className="post-control-button">수정</button>
-            <button className="post-control-button">삭제</button>
+            <button className="post-control-button" onClick={handlePostModify}>수정</button>
+            <button className="post-control-button" onClick={handlePostDelete}>삭제</button>
           </div>
         ) : (
           <div />
@@ -536,11 +537,11 @@ const PostPage = () => {
         setUpdateComment={setUpdateComment}
       />
 
-      {/*<PostDeleteModal*/}
-      {/*    isPostDeleteOpen={isPostDeleteOpen}*/}
-      {/*    setIsPostDeleteOpen={setIsPostDeleteOpen}*/}
-      {/*    postUrl={postId}*/}
-      {/*/>*/}
+      <PostDeleteModal
+          isPostDeleteOpen={isPostDeleteOpen}
+          setIsPostDeleteOpen={setIsPostDeleteOpen}
+          postUrl={postResponse.url}
+      />
 
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </div>
