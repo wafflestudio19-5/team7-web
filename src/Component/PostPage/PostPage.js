@@ -21,6 +21,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
 import { useSessionContext } from "../../Context/SessionContext";
 import CommentsDeleteModal from "./CommentsDeleteModal/CommentsDeleteModal";
+import PostDeleteModal from "./PostDeleteModal/PostDeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
 
 import Prism from "prismjs";
@@ -117,13 +118,22 @@ const commentsData = [
   },
 ];
 
-const tagData = ["asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf", "asadfasdf"]
+const tagData = [
+  "asadfasdf",
+  "asadfasdf",
+  "asadfasdf",
+  "asadfasdf",
+  "asadfasdf",
+  "asadfasdf",
+  "asadfasdf",
+  "asadfasdf",
+];
 
 const PostPage = () => {
   const params = useParams();
   const history = useHistory();
 
-  const { token, isLogin } = useSessionContext();
+  const { token, isLogin, id } = useSessionContext();
 
   const [postResponse, setPostResponse] = useState(dataFormat);
   const [postId, setPostId] = useState();
@@ -135,6 +145,7 @@ const PostPage = () => {
   const [targetCommentId, setTargetCommentId] = useState();
   const [updateComment, setUpdateComment] = useState();
   const [isLike, setIsLike] = useState(false);
+  const [isPostDeleteOpen, setIsPostDeleteOpen] = useState(false);
 
   const [source, setSource] = useState(dataFormat);
 
@@ -143,20 +154,28 @@ const PostPage = () => {
   useEffect(() => {
     console.log("POSTPAGE REFRESH");
     axios
-        .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
-        .then((response) => {
-          setPostResponse(response.data);
-          setSource(response.data);
-          setPostId(response.data.id);
-          setCommentsCount(response.data.comments.count);
-          setCommentsList(response.data.comments.contents);
-          console.log(source.content);
-        })
-        .catch((error) => {
-          console.log(error);
-          history.push("/error"); // 백엔드 404 response 필요!!
-        });
+      .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
+      .then((response) => {
+        setPostResponse(response.data);
+        setSource(response.data);
+        setPostId(response.data.id);
+        setCommentsCount(response.data.comments.count);
+        setCommentsList(response.data.comments.contents);
+        console.log(source.content);
+      })
+      .catch((error) => {
+        console.log(error);
+        history.push("/error"); // 백엔드 404 response 필요!!
+      });
   }, []);
+
+  const handlePostModify = () => {
+    toast.success("수정 구현 중");
+  }
+
+  const handlePostDelete = () => {
+    setIsPostDeleteOpen(true);
+  }
 
   const handleLike = () => {
     // toast.success("좋아요 실행");
@@ -262,8 +281,8 @@ const PostPage = () => {
   }, [updateComment]);
 
   const BlogImage = (props) => {
-    return <img {...props} style={{ width: '60px' }} />
-  }
+    return <img {...props} style={{ width: "60px" }} />;
+  };
 
   return (
     <div className="postpage">
@@ -272,6 +291,16 @@ const PostPage = () => {
 
       <div className="post-main-section">
         <div className="post-title">{postResponse.title}</div>
+
+        {postResponse.user.id === parseInt(id) ? (
+          <div className="post-control">
+            <button className="post-control-button" onClick={handlePostModify}>수정</button>
+            <button className="post-control-button" onClick={handlePostDelete}>삭제</button>
+          </div>
+        ) : (
+          <div />
+        )}
+
         <div className="post-information-section">
           <span className="post-user-id">
             <a
@@ -325,7 +354,7 @@ const PostPage = () => {
         {postResponse.tags.length !== 0 ? (
           <ul className="post-tag-list">
             {postResponse.tags.map((item) => (
-                <div className="post-tag-item">{item}</div>
+              <div className="post-tag-item">{item}</div>
             ))}
           </ul>
         ) : (
@@ -335,7 +364,7 @@ const PostPage = () => {
         <ReactMarkdown
           className="post-content"
           escapeHtml={false}
-          renderers={{image: BlogImage}}
+          renderers={{ image: BlogImage }}
         >
           {source.content}
         </ReactMarkdown>
@@ -506,6 +535,12 @@ const PostPage = () => {
         setCommentsCount={setCommentsCount}
         setCommentsList={setCommentsList}
         setUpdateComment={setUpdateComment}
+      />
+
+      <PostDeleteModal
+          isPostDeleteOpen={isPostDeleteOpen}
+          setIsPostDeleteOpen={setIsPostDeleteOpen}
+          postUrl={postResponse.url}
       />
 
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
