@@ -2,6 +2,8 @@ import Header from "../MainPage/Header/Header";
 import { useHistory } from "react-router-dom";
 import { useSessionContext } from "../../Context/SessionContext";
 import './SettingPage.scss';
+import {useEffect} from "react";
+import axios from "axios";
 
 const SettingPage = () => {
 
@@ -11,6 +13,20 @@ const SettingPage = () => {
     const handleReturnHome = () => {
         history.push("");
     };
+
+    useEffect(() => {
+        axios
+            .get(`/api/v1/user/@${userId}`, {
+                params: {
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    })
 
     return(
         <div className="contents">
