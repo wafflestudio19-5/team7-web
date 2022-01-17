@@ -16,7 +16,7 @@ const WriteModal = (props) => {
   const [summaryIn, setSummaryIn] = useState("");
   const [summaryOver, setSummaryOver] = useState(false);
   const [isPublic, setIsPublic] = useState(true);
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(`${title}`);
 
   const [thumbImgBase64, setThumbImgBase64] = useState(""); // 파일 base64
   const [thumbImgFile, setThumbImgFile] = useState(null); //파일
@@ -130,9 +130,7 @@ const WriteModal = (props) => {
           })
           .catch((error) => {
             console.log(error);
-            toast.error(error.data.errorMessage, {
-              autoClose: 3000,
-            });
+            console.log(error.data);
             toast.error(error.data.detail, {
               autoClose: 3000,
             });
