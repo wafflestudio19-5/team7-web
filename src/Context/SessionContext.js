@@ -9,20 +9,20 @@ export const SessionProvider = ({ children }) => {
     
     const history = useHistory();
 
-    //const [isLogin, setIsLogin] = useState(localStorage.getItem('token') !== null);
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(localStorage.getItem('token') !== null);
+    //const [isLogin, setIsLogin] = useState(true);
 
-    //const [token, setToken] = useState(localStorage.getItem('token') === null ?  null :  localStorage.getItem('token'));
-    const [token, setToken] = useState("Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDI0NDQzMzgsImlhdCI6MTY0MjQwODMzOCwiZW1haWwiOiJoaGhkZGR5eXk5MTJAbmF2ZXIuY29tIn0.WtwXDk_2PaAmiqDiCWgZ-eDPLezxlO06JIqJ21AcZqg");
+    const [token, setToken] = useState(localStorage.getItem('token') === null ?  null :  localStorage.getItem('token'));
+    //const [token, setToken] = useState("Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDI0NDQzMzgsImlhdCI6MTY0MjQwODMzOCwiZW1haWwiOiJoaGhkZGR5eXk5MTJAbmF2ZXIuY29tIn0.WtwXDk_2PaAmiqDiCWgZ-eDPLezxlO06JIqJ21AcZqg");
 
-    //const [id, setId] = useState(localStorage.getItem('id') === null ?  "" :  localStorage.getItem('id'));
-    const [id, setId] = useState("20");
+    const [id, setId] = useState(localStorage.getItem('id') === null ?  "" :  localStorage.getItem('id'));
+    //const [id, setId] = useState("20");
 
-    //const [userId, setUserId] = useState(localStorage.getItem('userId') === null ?  "" :  localStorage.getItem('userId'));
-    const [userId, setUserId] = useState("idplace");
+    const [userId, setUserId] = useState(localStorage.getItem('userId') === null ?  "" :  localStorage.getItem('userId'));
+    //const [userId, setUserId] = useState("idplace");
 
-    //const [userImg, setUserImg] = useState(localStorage.getItem('userImg') === null ?  "" :  localStorage.getItem('userImg'));
-    const [userImg, setUserImg] = useState("https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75");
+    const [userImg, setUserImg] = useState(localStorage.getItem('userImg') === null ?  "" :  localStorage.getItem('userImg'));
+    //const [userImg, setUserImg] = useState("https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75");
 
     useEffect(() => {
         localStorage.setItem('token',token);
