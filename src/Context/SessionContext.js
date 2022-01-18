@@ -1,65 +1,142 @@
-import {createContext, useContext, useEffect, useState} from "react";
+import { createContext, useContext, useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
+import dayjs from "dayjs";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {};
 
 const SessionContext = createContext(initialState);
 
 export const SessionProvider = ({ children }) => {
-    
-    const history = useHistory();
+  const history = useHistory();
 
-    const [isLogin, setIsLogin] = useState(localStorage.getItem('token') !== null);
-    //const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(
+    localStorage.getItem("token") !== null
+  );
+  //const [isLogin, setIsLogin] = useState(true);
 
-    const [token, setToken] = useState(localStorage.getItem('token') === null ?  null :  localStorage.getItem('token'));
-    //const [token, setToken] = useState("Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDE5MjgwNzgsImlhdCI6MTY0MTg5MjA3OCwiZW1haWwiOiJna3NlaGRkdXE5MTJAZ21haWwuY29tIn0.2oBMwUeo0J5hpN8uHQRU5HgDCSXa-W0RocYxUd2cjeY");
+  const [token, setToken] = useState(
+    localStorage.getItem("token") === null
+      ? null
+      : localStorage.getItem("token")
+  );
+  //const [token, setToken] = useState("Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDE5MjgwNzgsImlhdCI6MTY0MTg5MjA3OCwiZW1haWwiOiJna3NlaGRkdXE5MTJAZ21haWwuY29tIn0.2oBMwUeo0J5hpN8uHQRU5HgDCSXa-W0RocYxUd2cjeY");
 
-    const [id, setId] = useState(localStorage.getItem('id') === null ?  "" :  localStorage.getItem('id'));
-    //const [id, setId] = useState("20");
+  const [id, setId] = useState(
+    localStorage.getItem("id") === null ? "" : localStorage.getItem("id")
+  );
+  //const [id, setId] = useState("20");
 
-    const [userId, setUserId] = useState(localStorage.getItem('userId') === null ?  "" :  localStorage.getItem('userId'));
-    //const [userId, setUserId] = useState("idplace");
+  const [userId, setUserId] = useState(
+    localStorage.getItem("userId") === null
+      ? ""
+      : localStorage.getItem("userId")
+  );
+  //const [userId, setUserId] = useState("idplace");
 
-    const [userImg, setUserImg] = useState(localStorage.getItem('userImg') === null ?  "" :  localStorage.getItem('userImg'));
-    //const [userImg, setUserImg] = useState("https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75");
+  const [userImg, setUserImg] = useState(
+    localStorage.getItem("userImg") === null
+      ? ""
+      : localStorage.getItem("userImg")
+  );
+  //const [userImg, setUserImg] = useState("https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75");
 
-    /*useEffect(() => {
-        localStorage.setItem('token',token);
-        localStorage.setItem('id',id);
-        localStorage.setItem('userId',userId);
-        localStorage.setItem('userImg',userImg);
-    },)*/
+  //자동 로그아웃 타이머
+  const [count, setCount] = useState(0);
 
-    const handleLogin = (id, userid, img, token) =>{
-        localStorage.setItem('token',token);
-        localStorage.setItem('id',id);
-        localStorage.setItem('userId',userid);
-        localStorage.setItem('userImg',img);
-        setToken(localStorage.getItem('token'));
-        setIsLogin(true);
-        setId(id);
-        setUserId(userid);
-        setUserImg(img);
+  useInterval(() => {
+    // Your custom logic here
+    setCount(count + 1);
+  }, 600000);
+
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+
+  // 자동 로그아웃 처리
+  useEffect(() => {
+    // console.log("CHECK1");
+
+    if (localStorage.getItem("token") !== null) {
+      // console.log("CHECK2");
+      if (localStorage.getItem("loginTime") !== null) {
+        const date1 = dayjs();
+        const date2 = localStorage.getItem("loginTime");
+
+        if (date1.diff(date2, "hour") >= 1) {
+          // console.log("CHECK3")
+          toast.success("자동 로그아웃 되었습니다.");
+          handleLogout();
+        } else {
+          // console.log("CHECK4")
+          axios
+            .post(
+              `/api/v1/verify/logout`,
+              {},
+              {
+                headers: {
+                  Authentication: token,
+                },
+              }
+            )
+            .then((response) => {})
+            .catch((error) => {
+              toast.error("다시 로그인해주세요.");
+              handleLogout();
+            });
+        }
+      }
     }
-    const handleLogout = () =>{
-        localStorage.removeItem('token');
-        localStorage.removeItem('id');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('userImg');
-        setIsLogin(false);
-        setToken(null);
-        setUserId("");
-        setUserImg("");
-    }
+  }, [count]);
 
-    return (
-        <SessionContext.Provider
-            value={{isLogin, token, id, userId, userImg, handleLogin,handleLogout}}
-        >
-            {children}
-        </SessionContext.Provider>
-    );
+  const handleLogin = (id, userid, img, token) => {
+    localStorage.setItem("token", token);
+    localStorage.setItem("id", id);
+    localStorage.setItem("userId", userid);
+    localStorage.setItem("userImg", img);
+    localStorage.setItem("loginTime", dayjs());
+    setToken(localStorage.getItem("token"));
+    setIsLogin(true);
+    setId(id);
+    setUserId(userid);
+    setUserImg(img);
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userImg");
+    localStorage.removeItem("loginTime");
+    setIsLogin(false);
+    setToken(null);
+    setUserId("");
+    setUserImg("");
+  };
+
+  return (
+    <SessionContext.Provider
+      value={{ isLogin, token, id, userId, userImg, handleLogin, handleLogout }}
+    >
+      {children}
+    </SessionContext.Provider>
+  );
 };
 
 export const useSessionContext = () => useContext(SessionContext);

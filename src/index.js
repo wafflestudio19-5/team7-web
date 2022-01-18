@@ -5,11 +5,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {SessionProvider} from "./Context/SessionContext";
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/' : 'https://waflog.kro.kr/';
 
 
 ReactDOM.render(
   <React.StrictMode>
+      <ToastContainer/>
       <SessionProvider>
           <App />
       </SessionProvider>

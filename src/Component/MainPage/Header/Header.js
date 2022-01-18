@@ -108,7 +108,7 @@ const Header = ({ pageTitle }) => {
             </div>
           </div>
         ) : null}
-        <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
+        <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}/>
       </div>
     );
   } else {

@@ -4,7 +4,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import axios from "axios";
 import './SocialLogin.scss';
 import {useSessionContext} from "../../Context/SessionContext";
-import {ToastContainer, toast} from 'react-toastify';
+import { toast} from 'react-toastify';
 
 const SocialLogin = () => {
     const URLSearch = new URLSearchParams(window.location.search);
@@ -42,7 +42,6 @@ const SocialLogin = () => {
 
     return(
         <div className="loginpage">
-            <ToastContainer/>
             <div className="login-title">소셜로그인 중입니다.</div>
             <div>
                 <BiLoaderAlt className="login-img"/>

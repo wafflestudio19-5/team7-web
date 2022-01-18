@@ -2,8 +2,7 @@ import Modal from 'react-modal';
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import './PostDeleteModal.scss';
-import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useSessionContext } from "../../../Context/SessionContext";
 
 const PostDeleteModal = ( { isPostDeleteOpen, setIsPostDeleteOpen, postUrl } ) => {
@@ -39,22 +38,21 @@ const PostDeleteModal = ( { isPostDeleteOpen, setIsPostDeleteOpen, postUrl } ) =
     }
 
     return(
-        <Modal className="comments-delete-modal" isOpen={isPostDeleteOpen} onRequestClose={() => setIsPostDeleteOpen(false)}>
-            <ToastContainer/>
-            <div className="comments-delete-modal-box">
-                <h3 className="comments-delete-modal-title">
+        <Modal className="post-delete-modal" isOpen={isPostDeleteOpen} onRequestClose={() => setIsPostDeleteOpen(false)}>
+            <div className="post-delete-modal-box">
+                <h3 className="post-delete-modal-title">
                     게시글 삭제
                 </h3>
 
-                <div className="comments-delete-modal-message">
+                <div className="post-delete-modal-message">
                     게시글을 정말로 삭제하시겠습니까?
                 </div>
 
-                <div className="comments-delete-modal-button-area">
-                    <button className="comments-delete-modal-button-cancel" onClick={handleCancel}>
+                <div className="post-delete-modal-button-area">
+                    <button className="post-delete-modal-button-cancel" onClick={handleCancel}>
                         취소
                     </button>
-                    <button className="comments-delete-modal-button-delete" onClick={handleDelete}>
+                    <button className="post-delete-modal-button-delete" onClick={handleDelete}>
                         삭제
                     </button>
 

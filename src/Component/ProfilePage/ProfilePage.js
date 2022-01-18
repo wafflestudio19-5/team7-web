@@ -1,5 +1,5 @@
 import './ProfilePage.scss';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import {useParams, useHistory, useLocation} from "react-router-dom";
 import Header from '../MainPage/Header/Header';
 import UserPost from "./UserPost/UserPost";
@@ -98,7 +98,6 @@ const ProfilePage = () => {
 
     return(
         <div className="profilepage" ref={postPageRef} onScroll={handleScroll}>
-            <ToastContainer/>
             <Header pageTitle={`${params.userId}.log`}/>
             <div className="all-container">
                 <div className="main-profile">

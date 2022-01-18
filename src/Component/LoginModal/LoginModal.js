@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 import "./LoginModal.scss";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const LoginModal = (props) => {
   const { isOpen, setIsOpen } = props;
@@ -117,7 +116,6 @@ const LoginModal = (props) => {
       isOpen={isOpen}
       onRequestClose={() => setIsOpen(false)}
     >
-      <ToastContainer />
       {isUser ? (
         <div>
           <h1 className="login-modal-title">로그인</h1>

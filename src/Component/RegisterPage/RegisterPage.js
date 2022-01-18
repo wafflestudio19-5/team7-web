@@ -2,8 +2,7 @@ import "./RegisterPage.scss";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { useSessionContext } from "../../Context/SessionContext";
 
 const RegisterPage = () => {
@@ -78,7 +77,6 @@ const RegisterPage = () => {
 
   return (
     <div className="registerpage">
-      <ToastContainer />
       <div className="register-section">
         <h1 className="register-welcome">환영합니다!</h1>
         <div className="register-description">
