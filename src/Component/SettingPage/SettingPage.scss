@@ -152,6 +152,39 @@
           background: none;
           cursor: pointer;
         }
+
+        .write-short{
+          display: block;
+          margin-top: 10px;
+          border: 1px solid rgb(222, 226, 230);
+          background: white;
+          padding: 0.5rem;
+          color: rgb(73, 80, 87);
+          font-size: 1rem;
+          line-height: 1rem;
+          outline: none;
+          border-radius: 4px;
+          width: 90%;
+        }
+
+        .write{
+          display: inline-flex;
+          margin-top: 10px;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          font-weight: bold;
+          cursor: pointer;
+          outline: none;
+          border: none;
+          background: rgb(18, 184, 134);
+          color: white;
+          border-radius: 4px;
+          padding: 10px 1.25rem;
+          height: 2rem;
+          font-size: 1rem;
+        }
       }
     }
 
@@ -167,9 +200,138 @@
         box-sizing: inherit;
         border-top: 1px solid rgb(233, 236, 239);
 
+        .wrapper{
+          display: flex;
+
+          .title-wrapper{
+            width: 9.5rem;
+            flex-shrink: 0;
+
+            .list-title{
+              width: 9.5rem;
+              flex-shrink: 0;
+              line-height: 1.5;
+              color: rgb(52, 58, 64);
+              margin: 0px;
+              font-size: 1.125rem;
+              font-weight: bold;
+            }
+          }
+
+          .info-block{
+            flex: 1 1 0%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+
+            .contents{
+              flex: 1 1 0%;
+              font-size: 1rem;
+              color: rgb(73, 80, 87);
+              line-height: 1.5;
+
+              .social-form{
+                width: 25rem;
+
+                .social-list{
+                  display: flex;
+                  -webkit-box-align: center;
+                  align-items: center;
+                  margin-bottom: 15px;
+
+                  .social-icon{
+                    width: 1rem;
+                    height: 1rem;
+                    font-size: 1rem;
+                    margin-right: 0.5rem;
+                    flex-shrink: 0;
+                  }
+
+                  .facebook-div{
+                    flex: 1 1 0%;
+                    display: flex;
+                    border: 1px solid rgb(222, 226, 230);
+                    background: white;
+                    padding: 0.5rem;
+                    color: rgb(73, 80, 87);
+                    font-size: 1rem;
+                    line-height: 1rem;
+                    outline: none;
+                    border-radius: 4px;
+                    height: 2.25rem;
+                    -webkit-box-align: center;
+                    align-items: center;
+
+                    .facebook-input{
+                      padding: 0px;
+                      border: 0px;
+                      outline: none;
+                      font-size: 1rem;
+                      line-height: 1;
+                      flex: 1 1 0%;
+                      width: 100%;
+                    }
+                  }
+
+                  .social-input{
+                    display: block;
+                    border: 1px solid rgb(222, 226, 230);
+                    background: white;
+                    padding: 0.5rem;
+                    color: rgb(73, 80, 87);
+                    font-size: 1rem;
+                    line-height: 1rem;
+                    outline: none;
+                    border-radius: 4px;
+                    width: 100%;
+                  }
+                }
+
+                .btn-wrapper{
+                  margin-top: 1.5rem;
+                  display: flex;
+                  -webkit-box-pack: end;
+                  justify-content: flex-end;
+
+                  .social-save{
+                    display: inline-flex;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    cursor: pointer;
+                    outline: none;
+                    border: none;
+                    background: rgb(18, 184, 134);
+                    color: white;
+                    border-radius: 4px;
+                    padding: 0px 1.25rem;
+                    height: 2rem;
+                    font-size: 1rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+
         .list-style{
           display: flex;
           box-sizing: inherit;
+
+          .insert{
+            outline: none;
+            padding: 0px;
+            border: none;
+            display: inline;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: rgb(18, 184, 134);
+            text-decoration: underline;
+            background: none;
+            cursor: pointer;
+          }
 
           .list-title{
             width: 9.5rem;
