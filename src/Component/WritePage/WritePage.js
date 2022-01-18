@@ -92,7 +92,7 @@ const WritePage = () => {
                         const formData = new FormData();
                         formData.append('image', blob);
 
-                        const res = await axios.post(`/api/v1/image`,
+                        const res = await axios.post(`/api/v1/image?url=""`,
                             formData,
                             {
                                 headers: {
