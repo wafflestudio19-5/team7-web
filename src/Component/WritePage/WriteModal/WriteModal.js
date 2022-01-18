@@ -40,7 +40,7 @@ const WriteModal = (props) => {
       formData.append('image',event.target.files[0]);
     }
 
-    axios.post(`/api/v1/image`,
+    axios.post(`/api/v1/image?url=${url}`,
       formData
     ,{
       headers: {
@@ -131,9 +131,6 @@ const WriteModal = (props) => {
           .catch((error) => {
             console.log(error);
             console.log(error.data);
-            toast.error(error.data.detail, {
-              autoClose: 3000,
-            });
           });
     }
 
