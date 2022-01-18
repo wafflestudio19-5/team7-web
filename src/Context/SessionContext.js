@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import dayjs from "dayjs";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -72,37 +71,22 @@ export const SessionProvider = ({ children }) => {
 
   // 자동 로그아웃 처리
   useEffect(() => {
-    // console.log("CHECK1");
-
     if (localStorage.getItem("token") !== null) {
-      // console.log("CHECK2");
-      if (localStorage.getItem("loginTime") !== null) {
-        const date1 = dayjs();
-        const date2 = localStorage.getItem("loginTime");
-
-        if (date1.diff(date2, "hour") >= 1) {
-          // console.log("CHECK3")
-          toast.success("자동 로그아웃 되었습니다.");
+      axios
+        .post(
+          `/api/v1/verify/logout`,
+          {},
+          {
+            headers: {
+              Authentication: token,
+            },
+          }
+        )
+        .then((response) => {})
+        .catch((error) => {
+          toast.success("자동 로그아웃되었습니다.");
           handleLogout();
-        } else {
-          // console.log("CHECK4")
-          axios
-            .post(
-              `/api/v1/verify/logout`,
-              {},
-              {
-                headers: {
-                  Authentication: token,
-                },
-              }
-            )
-            .then((response) => {})
-            .catch((error) => {
-              toast.error("다시 로그인해주세요.");
-              handleLogout();
-            });
-        }
-      }
+        });
     }
   }, [count]);
 
@@ -111,7 +95,6 @@ export const SessionProvider = ({ children }) => {
     localStorage.setItem("id", id);
     localStorage.setItem("userId", userid);
     localStorage.setItem("userImg", img);
-    localStorage.setItem("loginTime", dayjs());
     setToken(localStorage.getItem("token"));
     setIsLogin(true);
     setId(id);
@@ -123,7 +106,6 @@ export const SessionProvider = ({ children }) => {
     localStorage.removeItem("id");
     localStorage.removeItem("userId");
     localStorage.removeItem("userImg");
-    localStorage.removeItem("loginTime");
     setIsLogin(false);
     setToken(null);
     setUserId("");
