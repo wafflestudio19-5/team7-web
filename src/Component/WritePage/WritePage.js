@@ -92,7 +92,7 @@ const WritePage = () => {
                         const formData = new FormData();
                         formData.append('image', blob);
 
-                        const res = await axios.post(`/api/v1/image`,
+                        const res = await axios.post(`/api/v1/image?url=""`,
                             formData,
                             {
                                 headers: {
@@ -131,7 +131,7 @@ const WritePage = () => {
                         {tagList.map((item) => (
                             <div className="tag-style" key={item.id} onClick={() => handleDeleteTag(item)}>{item.tag}</div>
                         ))}
-                        <input placeholder="태그를 입력하세요" tabIndex="2" className="tag-input" value={tag} onChange={handleTagInput}/>
+                        <input placeholder="태그를 입력하세요. 쉼표를 사용해 태그를 구분 할 수 있습니다." tabIndex="2" className="tag-input" value={tag} onChange={handleTagInput}/>
                     </div>
                     <Editor
                         previewStyle="vertical"
