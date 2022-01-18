@@ -6,7 +6,7 @@ import { BsImage, BsFileEarmarkLock } from "react-icons/bs";
 import { GoGlobe } from "react-icons/go";
 import axios from "axios";
 import { useSessionContext } from "../../../Context/SessionContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const WriteModal = (props) => {
   const { handleLogout, isLogin, userId, token } = useSessionContext();
@@ -148,7 +148,6 @@ const WriteModal = (props) => {
       isOpen={isOpen}
       onRequestClose={() => setIsOpen(false)}
     >
-      <ToastContainer />
       <div className="left-box">
         <h2 className="preview-title">포스트 미리보기</h2>
         <div className="thumbnail-box">

@@ -15,8 +15,7 @@ import { GrMail } from "react-icons/gr";
 import { GoMarkGithub } from "react-icons/go";
 import { BsFacebook } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import CommentsItem from "./CommentsItem/CommentsItem";
 import { useSessionContext } from "../../Context/SessionContext";
@@ -286,7 +285,6 @@ const PostPage = () => {
 
   return (
     <div className="postpage">
-      <ToastContainer />
       <Header pageTitle={postResponse.user.pageTitle} />
 
       <div className="post-main-section">

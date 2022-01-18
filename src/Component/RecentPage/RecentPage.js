@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import Header from "../MainPage/Header/Header";
 import PostListControlBar from "../MainPage/PostListControlBar/PostListControlBar";
 import PostItem from "../MainPage/PostItem/PostItem";
+import {useSessionContext} from "../../Context/SessionContext";
 
 // 더미 데이터
 const dummyData2 = [
@@ -89,6 +90,9 @@ const dummyData2 = [
 ];
 
 const RecentPage = () => {
+
+  const { isLogin, token } = useSessionContext();
+
   const [recentPostList, setRecentPostList] = useState([]);
   const [recentPostPage, setRecentPostPage] = useState(0);
 
@@ -98,6 +102,9 @@ const RecentPage = () => {
         params: {
           page: 0,
           size: 12
+        },
+        headers: {
+          Authentication: token
         }
       })
       .then((response) => {
@@ -130,6 +137,9 @@ const RecentPage = () => {
             params: {
               page: recentPostPage,
               size: 12
+            },
+            headers: {
+              Authentication: token
             }
           })
           .then((response) => {

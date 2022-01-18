@@ -2,8 +2,7 @@ import Modal from 'react-modal';
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import './CommentsDeleteModal.scss';
-import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {toast} from 'react-toastify';
 import { useSessionContext } from "../../../Context/SessionContext";
 import dayjs from "dayjs";
 
@@ -45,7 +44,6 @@ const CommentsDeleteModal = ( { isDeleteOpen, setIsDeleteOpen, postId, targetCom
 
     return(
         <Modal className="comments-delete-modal" isOpen={isDeleteOpen} onRequestClose={() => setIsDeleteOpen(false)}>
-            <ToastContainer/>
             <div className="comments-delete-modal-box">
                 <h3 className="comments-delete-modal-title">
                     댓글 삭제
