@@ -40,7 +40,7 @@ const WriteModal = (props) => {
       formData.append('image',event.target.files[0]);
     }
 
-    axios.post(`/api/v1/image?url=${url}`,
+    axios.post(`/api/v1/image?url=`,
       formData
     ,{
       headers: {
