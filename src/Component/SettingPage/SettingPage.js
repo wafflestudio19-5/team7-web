@@ -135,14 +135,15 @@ const SettingPage = () => {
     const handleSaveShort = () => {
         axios
             .put(`/api/v1/user/profile`, {
-                headers: {
-                    Authentication: token,
-                },
                 params:{
                     name: userName,
                     shortIntro: userShort,
                 },
-            },)
+            },{
+                headers: {
+                    Authentication: token,
+                },
+            })
             .then((response) => {
                 toast.success("저장을 성공했습니다.", {
                     autoClose: 3000,
