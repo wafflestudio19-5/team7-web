@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const WriteModal = (props) => {
   const { handleLogout, isLogin, userId, token } = useSessionContext();
-  const { isOpen, setIsOpen, title, contents } = props;
+  const { isOpen, setIsOpen, title, contents, tagList } = props;
   const history = useHistory();
 
   const [summaryIn, setSummaryIn] = useState("");
@@ -94,6 +94,14 @@ const WriteModal = (props) => {
   const handleSubmit = () => {
     const urlPattern = /^[a-zA-Zㄱ-힣0-9-_,][a-zA-Zㄱ-힣0-9-_, ]*$/;
 
+    const tags = [];
+
+    for(const i in tagList ){
+      tags.push(tagList[i].tag);
+    }
+
+    console.log(tags);
+
     if(!url.match(urlPattern) || url.length >= 100){
       toast.error("올바르지 않은 url입니다.", {
         autoClose: 3000,
@@ -118,6 +126,7 @@ const WriteModal = (props) => {
                 summary: summaryIn,
                 private: !isPublic,
                 url: url,
+                tags: tags
               },
               {
                 headers: {
@@ -129,8 +138,10 @@ const WriteModal = (props) => {
             history.push("");
           })
           .catch((error) => {
+            toast.error("업로드에 실패했습니다.", {
+              autoClose: 3000,
+            });
             console.log(error);
-            console.log(error.data);
           });
     }
 
