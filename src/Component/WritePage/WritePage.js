@@ -131,8 +131,9 @@ const WritePage = () => {
                         {tagList.map((item) => (
                             <div className="tag-style" key={item.id} onClick={() => handleDeleteTag(item)}>{item.tag}</div>
                         ))}
-                        <input placeholder="태그를 입력하세요. 쉼표를 사용해 태그를 구분 할 수 있습니다." tabIndex="2" className="tag-input" value={tag} onChange={handleTagInput}/>
+                        <input placeholder="태그를 입력하세요." tabIndex="2" className="tag-input" value={tag} onChange={handleTagInput}/>
                     </div>
+                    <div className="tag-guide">쉼표를 사용해 태그를 구분 할 수 있습니다. 태그를 클릭 시 삭제 가능합니다.</div>
                     <Editor
                         previewStyle="vertical"
                         height="75vh"
@@ -152,7 +153,7 @@ const WritePage = () => {
                             <AiOutlineEnter className="submit-icon"/>
                         </button>
                     </div>
-                    <WriteModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents}/>
+                    <WriteModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents} tagList={tagList}/>
                 </div>
                 :
                 <ErrorPageWrite/>
