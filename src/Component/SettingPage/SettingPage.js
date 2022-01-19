@@ -78,7 +78,6 @@ const SettingPage = () => {
                 },{
                     headers: {
                         Authentication: token,
-                        'Content-Type': 'multipart/form-data'
                     },
                 })
                     .then((res) => {
@@ -136,10 +135,8 @@ const SettingPage = () => {
     const handleSaveShort = () => {
         axios
             .put(`/api/v1/user/profile`, {
-                params:{
-                    name: userName,
-                    shortIntro: userShort,
-                },
+                name: userName,
+                shortIntro: userShort,
             },{
                 headers: {
                     Authentication: token,
@@ -185,17 +182,16 @@ const SettingPage = () => {
     const handleSaveSocial = () => {
         axios
             .put(`/api/v1/user/social`, {
+                publicEmail : userEmail,
+                githubId : userGit,
+                facebookId : userFace,
+                twitterId : userTwit,
+                homepage : userHome,
+            },{
                 headers: {
                     Authentication: token,
-                },
-                params:{
-                    publicEmail : userEmail,
-                    githubId : userGit,
-                    facebookId : userFace,
-                    twitterId : userTwit,
-                    homepage : userHome
-                },
-            },)
+                }
+            })
             .then((response) => {
                 toast.success("저장을 성공했습니다.", {
                     autoClose: 3000,
