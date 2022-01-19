@@ -73,15 +73,7 @@ export const SessionProvider = ({ children }) => {
   useEffect(() => {
     if (localStorage.getItem("token") !== null) {
       axios
-        .post(
-          `/api/v1/verify/logout`,
-          {},
-          {
-            headers: {
-              Authentication: token,
-            },
-          }
-        )
+        .post(`/api/v1/verify/logout`, { token: token })
         .then((response) => {})
         .catch((error) => {
           toast.success("자동 로그아웃되었습니다.");
