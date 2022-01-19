@@ -72,6 +72,29 @@ const SettingPage = () => {
                     autoClose: 3000,
                 });
                 console.log(res.data);
+
+                axios.put(`/api/v1/user/image`,{
+                    image: thumbUrl
+                },{
+                    headers: {
+                        Authentication: token,
+                        'Content-Type': 'multipart/form-data'
+                    },
+                })
+                    .then((res) => {
+                        toast.success("프로필 변경에 성공했습니다.", {
+                            autoClose: 3000,
+                        });
+                        setUserImg(thumbUrl);
+                        console.log(res.data);
+                    })
+                    .catch((error) => {
+                        toast.error("프로필 변경에 실패했습니다.", {
+                            autoClose: 3000,
+                        });
+                        console.log(error);
+                    });
+
             })
             .catch((error) => {
                 toast.error("프로필 업로드에 실패했습니다.", {
@@ -80,28 +103,6 @@ const SettingPage = () => {
                 setThumbImgBase64("");
                 setThumbImgFile(null);
                 setThumbUrl("");
-                console.log(error);
-            });
-
-        axios.put(`/api/v1/user/image`,{
-            image: thumbUrl
-        },{
-            headers: {
-                Authentication: token,
-                'Content-Type': 'multipart/form-data'
-            },
-        })
-            .then((res) => {
-                toast.success("프로필 변경에 성공했습니다.", {
-                    autoClose: 3000,
-                });
-                setUserImg(thumbUrl);
-                console.log(res.data);
-            })
-            .catch((error) => {
-                toast.error("프로필 변경에 실패했습니다.", {
-                    autoClose: 3000,
-                });
                 console.log(error);
             });
     };
@@ -311,7 +312,7 @@ const SettingPage = () => {
                                         </div>
                                         <div className="info-block">
                                             <div className="contents">
-                                                <form className="social-form">
+                                                <div className="social-form">
                                                     <div className="social-list">
                                                         <AiTwotoneMail className="social-icon"/>
                                                         <input className="social-input" placeholder="이메일을 입력하세요." value={userEmail} onChange={handleEmail}/>
@@ -338,7 +339,7 @@ const SettingPage = () => {
                                                     <div  className="btn-wrapper">
                                                         <button className="social-save" onClick={handleSaveSocial}>저장</button>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
