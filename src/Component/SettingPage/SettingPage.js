@@ -67,16 +67,16 @@ const SettingPage = () => {
                 },
             })
             .then((res) => {
-                setThumbUrl(res.data.url);
+                //console.log(response.data);
                 toast.success("프로필 업로드에 성공했습니다.", {
                     autoClose: 3000,
                 });
 
-                console.log(res.data);
+                console.log(res.data.url);
                 console.log(thumbUrl);
 
                 axios.put(`/api/v1/user/image`,{
-                    image: thumbUrl
+                    image: res.data.url
                 },{
                     headers: {
                         Authentication: token,
@@ -86,7 +86,7 @@ const SettingPage = () => {
                         toast.success("프로필 변경에 성공했습니다.", {
                             autoClose: 3000,
                         });
-                        setUserImg(thumbUrl);
+                        setUserImg(res.data.url);
                         console.log(res.data);
                     })
                     .catch((error) => {
@@ -203,7 +203,7 @@ const SettingPage = () => {
                 });
                 console.log(response.data);
 
-                axios
+                /*axios
                     .get(`/api/v1/user/setting`, {
                         headers: {
                             Authentication: token,
@@ -211,10 +211,11 @@ const SettingPage = () => {
                     })
                     .then((response) => {
                         setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                        console.log(response.data);
                     })
                     .catch((error) => {
                         console.log(error);
-                    });
+                    });*/
 
             })
             .catch((error) => {
