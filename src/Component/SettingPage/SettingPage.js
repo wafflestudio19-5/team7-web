@@ -71,7 +71,9 @@ const SettingPage = () => {
                 toast.success("프로필 업로드에 성공했습니다.", {
                     autoClose: 3000,
                 });
+
                 console.log(res.data);
+                console.log(thumbUrl);
 
                 axios.put(`/api/v1/user/image`,{
                     image: thumbUrl
@@ -133,6 +135,8 @@ const SettingPage = () => {
         setWriteShort(true);
     }
     const handleSaveShort = () => {
+        console.log(userName);
+        console.log(userShort);
         axios
             .put(`/api/v1/user/profile`, {
                 name: userName,
@@ -180,6 +184,7 @@ const SettingPage = () => {
         setUserHome(e.target.value);
     }
     const handleSaveSocial = () => {
+
         axios
             .put(`/api/v1/user/social`, {
                 publicEmail : userEmail,
@@ -196,7 +201,21 @@ const SettingPage = () => {
                 toast.success("저장을 성공했습니다.", {
                     autoClose: 3000,
                 });
-                console.log(response);
+                console.log(response.data);
+
+                axios
+                    .get(`/api/v1/user/setting`, {
+                        headers: {
+                            Authentication: token,
+                        },
+                    })
+                    .then((response) => {
+                        setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
             })
             .catch((error) => {
                 toast.error("저장을 실패했습니다.", {
@@ -204,6 +223,7 @@ const SettingPage = () => {
                 });
                 console.log(error);
             });
+
         setInSocial(false);
     }
 
@@ -249,6 +269,7 @@ const SettingPage = () => {
             })
             .then((response) => {
                 setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);
