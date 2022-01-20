@@ -432,7 +432,7 @@ const SettingPage = () => {
                                                         null
                                                     }
                                                     <div  className="btn-wrapper">
-                                                        <button className="social-save" onClick={handleSaveSocial}>저장</button>
+                                                        <button className="insert" onClick={handleInSocial}>정보 추가</button>
                                                     </div>
                                                 </div>
                                             </div>
