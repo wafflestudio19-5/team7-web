@@ -163,6 +163,9 @@ const SettingPage = () => {
     const handleUserShort = (e) => {
         setUserShort(e.target.value);
     }
+    const handleUserName = (e) => {
+        setUserName(e.target.value);
+    }
 
 
     const handleInSocial = () => {
@@ -301,7 +304,7 @@ const SettingPage = () => {
                             </div>
                             {writeShort ?
                                 <div className="info-area">
-                                    <h2>userName</h2>
+                                    <input placeholder="이름" className="write-name" value={userName} onChange={handleUserName}/>
                                     <input placeholder="한 줄 소개" className="write-short" value={userShort} onChange={handleUserShort}/>
                                     <button className="write" onClick={handleSaveShort}>저장</button>
                                 </div>
