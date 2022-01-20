@@ -105,6 +105,20 @@ const SettingPage = () => {
                 setThumbUrl("");
                 console.log(error);
             });
+
+        axios
+            .get(`/api/v1/user/setting`, {
+                headers: {
+                    Authentication: token,
+                },
+            })
+            .then((response) => {
+                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
     const handleUserImgChange = (e) => {
         e.preventDefault();
@@ -127,6 +141,20 @@ const SettingPage = () => {
                 toast.error("삭제를 실패했습니다.", {
                     autoClose: 3000,
                 });
+                console.log(error);
+            });
+
+        axios
+            .get(`/api/v1/user/setting`, {
+                headers: {
+                    Authentication: token,
+                },
+            })
+            .then((response) => {
+                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                console.log(response.data);
+            })
+            .catch((error) => {
                 console.log(error);
             });
     }
@@ -160,6 +188,20 @@ const SettingPage = () => {
                 toast.error("저장을 실패했습니다.", {
                     autoClose: 3000,
                 });
+                console.log(error);
+            });
+
+        axios
+            .get(`/api/v1/user/setting`, {
+                headers: {
+                    Authentication: token,
+                },
+            })
+            .then((response) => {
+                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                console.log(response.data);
+            })
+            .catch((error) => {
                 console.log(error);
             });
         setWriteShort(false);
@@ -204,13 +246,11 @@ const SettingPage = () => {
 
         axios
             .put(`/api/v1/user/social`,{
-                    params:{
-                        publicEmail : userEmail,
-                        githubId : userGit,
-                        facebookId : userFace,
-                        twitterId : userTwit,
-                        homepage : userHome,
-                    }
+                publicEmail : userEmail,
+                    githubId : userGit,
+                    facebookId : userFace,
+                    twitterId : userTwit,
+                    homepage : userHome,
                 }
                 ,{
                 headers: {
