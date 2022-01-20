@@ -30,6 +30,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
+import remarkGfm from "remark-gfm";
 
 const dataFormat = {
   comments: [],
@@ -259,10 +260,6 @@ const PostPage = () => {
       });
   }, [updateComment]);
 
-  const BlogImage = (props) => {
-    return <img {...props} style={{ width: '60px' }} />
-  }
-
   return (
     <div className="postpage">
       <ToastContainer />
@@ -322,8 +319,16 @@ const PostPage = () => {
 
         <ReactMarkdown
           className="post-content"
-          escapeHtml={false}
-          renderers={{image: BlogImage}}
+          remarkPlugins={[remarkGfm]}
+          components={{img({ node, ...props }) {
+              return (
+                  <img
+                      style={{ maxWidth: "60vw" }}
+                      src={props.src.replace("../../../../public/", "/")}
+                      alt="MarkdownRenderer__Image"
+                  />
+              );
+            },}}
         >
           {source.content}
         </ReactMarkdown>
