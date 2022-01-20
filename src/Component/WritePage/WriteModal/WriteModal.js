@@ -9,7 +9,7 @@ import { useSessionContext } from "../../../Context/SessionContext";
 import { toast } from "react-toastify";
 
 const WriteModal = (props) => {
-  const { handleLogout, isLogin, userId, token } = useSessionContext();
+  const { handleLogout, isLogin, userId, token, imgTag } = useSessionContext();
   const { isOpen, setIsOpen, title, contents, tagList } = props;
   const history = useHistory();
 
@@ -116,6 +116,7 @@ const WriteModal = (props) => {
       });
     }
     else{
+      console.log(imgTag);
       axios
           .post(
               `/api/v1/post`,
@@ -127,7 +128,8 @@ const WriteModal = (props) => {
                   summary: summaryIn,
                   private: !isPublic,
                   url: url,
-                  tags: tags
+                  tags: tags,
+                  images: imgTag
                 }
               },
               {
