@@ -149,6 +149,7 @@ const SettingPage = () => {
                     name: userName,
                     shortIntro: userShort
                 },
+            },{
                 headers: {
                     Authentication: token,
                 },
@@ -206,13 +207,20 @@ const SettingPage = () => {
         console.log(dataForm);
 
         axios
-            .put(`/api/v1/user/social`,
-                dataForm
+            .put(`/api/v1/user/social`,{
+                    params:{
+                        publicEmail : userEmail,
+                        githubId : userGit,
+                        facebookId : userFace,
+                        twitterId : userTwit,
+                        homepage : userHome,
+                    }
+                }
                 ,{
                 headers: {
                     Authentication: token,
                 },
-            },{withCredentials: true})
+            })
             .then((response) => {
                 toast.success("저장을 성공했습니다.", {
                     autoClose: 3000,
