@@ -41,6 +41,7 @@ const WritePage = () => {
     const [tag, setTag] = useState("");
     const [tagList, setTagList] = useState([]);
     const [tagId, setTagId] = useState(0);
+    const [imgTag, setImgTag] = useState([]);
 
     const onChangeEditorTextHandler = () => {
         setContents(editorRef.current.getInstance().getMarkdown());
@@ -102,6 +103,9 @@ const WritePage = () => {
                             }
                         )
                             .then((res) => {
+                                const imgTagForm = { token : res.data.token};
+                                setImgTag(imgTag.concat(imgTagForm));
+
                                 callback(res.data.url, "alt text");
                             })
                             .catch((error) => {
@@ -153,7 +157,7 @@ const WritePage = () => {
                             <AiOutlineEnter className="submit-icon"/>
                         </button>
                     </div>
-                    <WriteModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents} tagList={tagList}/>
+                    <WriteModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents} tagList={tagList} imgTag={imgTag}/>
                 </div>
                 :
                 <ErrorPageWrite/>

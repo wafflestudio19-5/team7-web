@@ -9,12 +9,12 @@ import { AiTwotoneMail, AiOutlineGithub, AiOutlineTwitter, AiFillFacebook, AiFil
 
 const SettingPage = () => {
 
-    const { handleLogout, id, isLogin, userId, token } = useSessionContext();
+    const { handleLogout, id, isLogin, userId, token, setUserImg } = useSessionContext();
     const history = useHistory();
 
     const userImgInput = useRef({});
 
-    const [userImg, setUserImg] = useState("");
+    const [userImg, setUserCImg] = useState("");
     const [userName, setUserName] = useState("testName");
     const [userShort, setUserShort] = useState("");
 
@@ -85,7 +85,9 @@ const SettingPage = () => {
                         toast.success("프로필 변경에 성공했습니다.", {
                             autoClose: 3000,
                         });
+                        setUserCImg(response.data.image);
                         setUserImg(response.data.image);
+                        localStorage.setItem("userImg", response.data.image);
                         console.log(response.data);
                     })
                     .catch((error) => {
@@ -121,7 +123,9 @@ const SettingPage = () => {
                 toast.success("삭제를 성공했습니다.", {
                     autoClose: 3000,
                 });
+                setUserCImg(response.data.image);
                 setUserImg(response.data.image);
+                localStorage.setItem("userImg", response.data.image);
                 console.log(response);
             })
             .catch((error) => {
@@ -189,15 +193,14 @@ const SettingPage = () => {
     }
     const handleSaveSocial = () => {
 
-        const dataForm = {
-            publicEmail : userEmail,
-            githubId : userGit,
-            facebookId : userFace,
-            twitterId : userTwit,
-            homepage : userHome,
-        }
+        const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-        console.log(dataForm);
+        if(!userEmail.match(regExp)){
+            toast.error("올바르지 않은 이메일 형식입니다.", {
+                autoClose: 3000,
+            });
+            return;
+        }
 
         axios
             .put(`/api/v1/user/social`,{
@@ -213,15 +216,27 @@ const SettingPage = () => {
                 },
             })
             .then((response) => {
-                toast.success("저장을 성공했습니다.", {
+                console.log(response.data);
+                toast.success("저장중입니다.", {
                     autoClose: 3000,
                 });
-                console.log(response.data);
-                setUserEmail(response.data.publicEmail);
-                setUserGit(response.data.githubId);
-                setUserFace(response.data.facebookId);
-                setUserTwit(response.data.twitterId);
-                setUserHome(response.data.homepage);
+
+                axios
+                    .get(`/api/v1/user/setting`, {
+                        headers: {
+                            Authentication: token,
+                        },
+                    })
+                    .then((response) => {
+                        toast.success("저장을 성공했습니다.", {
+                            autoClose: 3000,
+                        });
+                        setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                        console.log(response.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             })
             .catch((error) => {
                 toast.error("저장을 실패했습니다.", {
@@ -240,7 +255,7 @@ const SettingPage = () => {
     }
 
     const setSetting = (image, name, short, email, home, g, f, t) => {
-        setUserImg(image);
+        setUserCImg(image);
         setUserName(name);
         setUserShort(short);
         setUserEmail(email);
@@ -368,63 +383,63 @@ const SettingPage = () => {
                                     </div>
                                 </div>
                                 :
-                                (!eE && !eG && !eH && !eF && !eT) ?
-                                    <div className="custom-list">
-                                        <div className="list-style">
+                                <div className="custom-list">
+                                    <div className="wrapper">
+                                        <div className="title-wrapper">
                                             <div className="list-title">소셜 정보</div>
-                                            <button className="insert" onClick={handleInSocial}>정보 추가</button>
                                         </div>
-                                        <div className="explanation">포스트 및 블로그에서 보여지는 프로필에 공개되는 소셜 정보입니다.</div>
-                                    </div>
-                                    :
-                                    <div className="custom-list">
-                                        <div className="list-style">
-                                            <div className="list-title">소셜 정보</div>
-                                            <button className="insert" onClick={handleInSocial}>정보 추가</button>
+                                        <div className="info-block">
+                                            <div className="contents">
+                                                <div className="social-form">
+                                                    {eE ?
+                                                        <div className="social-list">
+                                                            <AiTwotoneMail className="social-icon"/>
+                                                            <span>{userEmail}</span>
+                                                        </div>
+                                                        :
+                                                        null
+                                                    }
+                                                    {eG ?
+                                                        <div className="social-list">
+                                                            <AiOutlineGithub className="social-icon"/>
+                                                            <span>{userGit}</span>
+                                                        </div>
+                                                        :
+                                                        null
+                                                    }
+                                                    {eT ?
+                                                        <div className="social-list">
+                                                            <AiOutlineTwitter className="social-icon"/>
+                                                            <span>{userTwit}</span>
+                                                        </div>
+                                                        :
+                                                        null
+                                                    }
+                                                    {eF ?
+                                                        <div className="social-list">
+                                                            <AiFillFacebook className="social-icon"/>
+                                                            <span>{userFace}</span>
+                                                        </div>
+                                                        :
+                                                        null
+                                                    }
+                                                    {eH ?
+                                                        <div className="social-list">
+                                                            <AiFillHome className="social-icon"/>
+                                                            <span>{userHome}</span>
+                                                        </div>
+                                                        :
+                                                        null
+                                                    }
+                                                    <div  className="btn-wrapper">
+                                                        <button className="insert" onClick={handleInSocial}>정보 추가</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        {eE ?
-                                            <div className="social-list">
-                                                <AiTwotoneMail className="social-icon"/>
-                                                <span>{userEmail}</span>
-                                            </div>
-                                            :
-                                            null
-                                        }
-                                        {eG ?
-                                            <div className="social-list">
-                                                <AiOutlineGithub className="social-icon"/>
-                                                <span>{userGit}</span>
-                                            </div>
-                                            :
-                                            null
-                                        }
-                                        {eT ?
-                                            <div className="social-list">
-                                                <AiOutlineTwitter className="social-icon"/>
-                                                <span>{userTwit}</span>
-                                            </div>
-                                            :
-                                            null
-                                        }
-                                        {eF ?
-                                            <div className="social-list">
-                                                <AiFillFacebook className="social-icon"/>
-                                                <span>{userFace}</span>
-                                            </div>
-                                            :
-                                            null
-                                        }
-                                        {eH ?
-                                            <div className="social-list">
-                                                <AiFillHome className="social-icon"/>
-                                                <span>{userHome}</span>
-                                            </div>
-                                            :
-                                            null
-                                        }
                                     </div>
+                                </div>
                             }
-
 
                             <div className="custom-list">
                                 <div className="list-style">
