@@ -136,13 +136,19 @@ const SettingPage = () => {
         setWriteShort(true);
     }
     const handleSaveShort = () => {
-        console.log(userName);
-        console.log(userShort);
+
+        const dataForm = {
+            name: userName,
+            shortIntro: userShort
+        }
+        console.log(dataForm);
+
         axios
-            .put(`/api/v1/user/profile`, {
-                name: userName,
-                shortIntro: userShort,
-            },{
+            .put(`/api/v1/user/profile`,{
+                params:{
+                    name: userName,
+                    shortIntro: userShort
+                },
                 headers: {
                     Authentication: token,
                 },
@@ -206,7 +212,7 @@ const SettingPage = () => {
                 headers: {
                     Authentication: token,
                 },
-            })
+            },{withCredentials: true})
             .then((response) => {
                 toast.success("저장을 성공했습니다.", {
                     autoClose: 3000,
