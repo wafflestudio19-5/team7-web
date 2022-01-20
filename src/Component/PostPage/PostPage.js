@@ -31,6 +31,8 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import ReplyItem from "./CommentsItem/ReplyItem/ReplyItem";
+import remarkGfm from "remark-gfm";
+import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 
 const dataFormat = {
   comments: [],
@@ -334,8 +336,16 @@ const PostPage = () => {
 
         <ReactMarkdown
           className="post-content"
-          escapeHtml={false}
-          renderers={{image: BlogImage}}
+          remarkPlugins={[remarkGfm, [codeSyntaxHighlight, { highlighter: Prism }]]}
+          components={{img({ node, ...props }) {
+              return (
+                  <img
+                      style={{ maxWidth: "60vw" }}
+                      src={props.src.replace("../../../../public/", "/")}
+                      alt="MarkdownRenderer__Image"
+                  />
+              );
+            },}}
         >
           {source.content}
         </ReactMarkdown>
