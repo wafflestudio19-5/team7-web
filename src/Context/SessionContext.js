@@ -24,12 +24,12 @@ export const SessionProvider = ({ children }) => {
     const [userImg, setUserImg] = useState(localStorage.getItem('userImg') === null ?  "" :  localStorage.getItem('userImg'));
     //const [userImg, setUserImg] = useState("https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75");
 
-    /*useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('token',token);
         localStorage.setItem('id',id);
         localStorage.setItem('userId',userId);
         localStorage.setItem('userImg',userImg);
-    },)*/
+    },)
 
     const handleLogin = (id, userid, img, token) =>{
         localStorage.setItem('token',token);
