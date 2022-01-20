@@ -81,12 +81,12 @@ const SettingPage = () => {
                         Authentication: token,
                     },
                 })
-                    .then((res) => {
+                    .then((response) => {
                         toast.success("프로필 변경에 성공했습니다.", {
                             autoClose: 3000,
                         });
-                        setUserImg(res.data.url);
-                        console.log(res.data);
+                        setUserImg(response.data.image);
+                        console.log(response.data);
                     })
                     .catch((error) => {
                         toast.error("프로필 변경에 실패했습니다.", {
@@ -105,20 +105,6 @@ const SettingPage = () => {
                 setThumbUrl("");
                 console.log(error);
             });
-
-        axios
-            .get(`/api/v1/user/setting`, {
-                headers: {
-                    Authentication: token,
-                },
-            })
-            .then((response) => {
-                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
     };
     const handleUserImgChange = (e) => {
         e.preventDefault();
@@ -135,6 +121,7 @@ const SettingPage = () => {
                 toast.success("삭제를 성공했습니다.", {
                     autoClose: 3000,
                 });
+                setUserImg(response.data.image);
                 console.log(response);
             })
             .catch((error) => {
@@ -143,31 +130,11 @@ const SettingPage = () => {
                 });
                 console.log(error);
             });
-
-        axios
-            .get(`/api/v1/user/setting`, {
-                headers: {
-                    Authentication: token,
-                },
-            })
-            .then((response) => {
-                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
     }
     const handleWriteShort = () => {
         setWriteShort(true);
     }
     const handleSaveShort = () => {
-
-        const dataForm = {
-            name: userName,
-            shortIntro: userShort
-        }
-        console.log(dataForm);
 
         axios
             .put(`/api/v1/user/profile`,{
@@ -183,25 +150,13 @@ const SettingPage = () => {
                     autoClose: 3000,
                 });
                 console.log(response);
+                setUserName(response.data.name);
+                setUserShort(response.data.shortIntro);
             })
             .catch((error) => {
                 toast.error("저장을 실패했습니다.", {
                     autoClose: 3000,
                 });
-                console.log(error);
-            });
-
-        axios
-            .get(`/api/v1/user/setting`, {
-                headers: {
-                    Authentication: token,
-                },
-            })
-            .then((response) => {
-                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
-                console.log(response.data);
-            })
-            .catch((error) => {
                 console.log(error);
             });
         setWriteShort(false);
@@ -246,7 +201,7 @@ const SettingPage = () => {
 
         axios
             .put(`/api/v1/user/social`,{
-                publicEmail : userEmail,
+                    publicEmail : userEmail,
                     githubId : userGit,
                     facebookId : userFace,
                     twitterId : userTwit,
@@ -262,21 +217,11 @@ const SettingPage = () => {
                     autoClose: 3000,
                 });
                 console.log(response.data);
-
-                /*axios
-                    .get(`/api/v1/user/setting`, {
-                        headers: {
-                            Authentication: token,
-                        },
-                    })
-                    .then((response) => {
-                        setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
-                        console.log(response.data);
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });*/
-
+                setUserEmail(response.data.publicEmail);
+                setUserGit(response.data.githubId);
+                setUserFace(response.data.facebookId);
+                setUserTwit(response.data.twitterId);
+                setUserHome(response.data.homepage);
             })
             .catch((error) => {
                 toast.error("저장을 실패했습니다.", {
