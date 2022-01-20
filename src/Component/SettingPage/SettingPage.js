@@ -15,7 +15,7 @@ const SettingPage = () => {
     const userImgInput = useRef({});
 
     const [userImg, setUserImg] = useState("");
-    const [userName, setUserName] = useState("");
+    const [userName, setUserName] = useState("testName");
     const [userShort, setUserShort] = useState("");
 
 
@@ -196,6 +196,8 @@ const SettingPage = () => {
             twitterId : userTwit,
             homepage : userHome,
         }
+
+        console.log(dataForm);
 
         axios
             .put(`/api/v1/user/social`,
