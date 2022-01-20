@@ -336,7 +336,7 @@ const PostPage = () => {
 
         <ReactMarkdown
           className="post-content"
-          remarkPlugins={[remarkGfm, [codeSyntaxHighlight, { highlighter: Prism }]]}
+          remarkPlugins={[remarkGfm]}
           components={{img({ node, ...props }) {
               return (
                   <img
