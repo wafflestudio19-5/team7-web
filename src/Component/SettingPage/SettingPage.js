@@ -139,8 +139,10 @@ const SettingPage = () => {
         console.log(userShort);
         axios
             .put(`/api/v1/user/profile`, {
-                name: userName,
-                shortIntro: userShort,
+                params:{
+                    name: userName,
+                    shortIntro: userShort,
+                }
             },{
                 headers: {
                     Authentication: token,
@@ -190,14 +192,16 @@ const SettingPage = () => {
 
         axios
             .put(`/api/v1/user/social`, {
-                publicEmail : userEmail,
-                githubId : userGit,
-                facebookId : userFace,
-                twitterId : userTwit,
-                homepage : userHome,
             },{
                 headers: {
                     Authentication: token,
+                },
+                params:{
+                    publicEmail : userEmail,
+                    githubId : userGit,
+                    facebookId : userFace,
+                    twitterId : userTwit,
+                    homepage : userHome,
                 }
             })
             .then((response) => {
