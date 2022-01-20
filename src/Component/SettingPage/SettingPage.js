@@ -75,9 +75,7 @@ const SettingPage = () => {
                 console.log(res.data.url);
 
                 axios.put(`/api/v1/user/image`,{
-                    params:{
-                        image: res.data.url
-                    }
+                    image: res.data.url
                 },{
                     headers: {
                         Authentication: token,
@@ -145,10 +143,8 @@ const SettingPage = () => {
 
         axios
             .put(`/api/v1/user/profile`,{
-                params:{
-                    name: userName,
-                    shortIntro: userShort
-                },
+                name: userName,
+                shortIntro: userShort
             },{
                 headers: {
                     Authentication: token,
