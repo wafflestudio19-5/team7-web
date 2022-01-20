@@ -153,6 +153,23 @@
           cursor: pointer;
         }
 
+        .write-name{
+          display: block;
+          font-size: 1.5rem;
+          font-weight: 600;
+          border: 1px solid rgb(222, 226, 230);
+          background: white;
+          padding: 0.5rem;
+          color: rgb(73, 80, 87);
+          line-height: 1rem;
+          outline: none;
+          border-radius: 4px;
+          width: 90%;
+        }
+        .write-name:focus{
+          border: 1px solid rgb(33, 37, 41);
+        }
+
         .write-short{
           display: block;
           margin-top: 10px;
@@ -165,6 +182,9 @@
           outline: none;
           border-radius: 4px;
           width: 90%;
+        }
+        .write-short:focus{
+          border: 1px solid rgb(33, 37, 41);
         }
 
         .write{
