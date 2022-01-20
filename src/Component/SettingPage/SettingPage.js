@@ -73,7 +73,6 @@ const SettingPage = () => {
                 });
 
                 console.log(res.data.url);
-                console.log(thumbUrl);
 
                 axios.put(`/api/v1/user/image`,{
                     image: res.data.url
@@ -139,10 +138,8 @@ const SettingPage = () => {
         console.log(userShort);
         axios
             .put(`/api/v1/user/profile`, {
-                params:{
-                    name: userName,
-                    shortIntro: userShort,
-                }
+                name: userName,
+                shortIntro: userShort,
             },{
                 headers: {
                     Authentication: token,
@@ -192,10 +189,6 @@ const SettingPage = () => {
 
         axios
             .put(`/api/v1/user/social`, {
-            },{
-                headers: {
-                    Authentication: token,
-                },
                 params:{
                     publicEmail : userEmail,
                     githubId : userGit,
@@ -203,6 +196,10 @@ const SettingPage = () => {
                     twitterId : userTwit,
                     homepage : userHome,
                 }
+            },{
+                headers: {
+                    Authentication: token,
+                },
             })
             .then((response) => {
                 toast.success("저장을 성공했습니다.", {
