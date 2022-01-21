@@ -37,6 +37,33 @@ const SettingPage = () => {
     const [thumbImgFile, setThumbImgFile] = useState(null); //파일
     const [thumbUrl, setThumbUrl] = useState("");
 
+    const setSetting = (image, name, short, email, home, g, f, t) => {
+        setUserCImg(image);
+        setUserName(name);
+        setUserShort(short);
+        setUserEmail(email);
+        setUserHome(home);
+        setUserGit(g);
+        setUserFace(f);
+        setUserTwit(t);
+
+        if(email !== null && email !== ""){
+            setEE(true);
+        }
+        if(g !== null && g !== ""){
+            setEG(true);
+        }
+        if(f !== null && f !== ""){
+            setEF(true);
+        }
+        if(t !== null && t !== ""){
+            setET(true);
+        }
+        if(home !== null && home !== ""){
+            setEH(true);
+        }
+    }
+
     const handleReturnHome = () => {
         history.push("");
     };
@@ -252,33 +279,6 @@ const SettingPage = () => {
 
     const handleResign = () => {
 
-    }
-
-    const setSetting = (image, name, short, email, home, g, f, t) => {
-        setUserCImg(image);
-        setUserName(name);
-        setUserShort(short);
-        setUserEmail(email);
-        setUserHome(home);
-        setUserGit(g);
-        setUserFace(f);
-        setUserTwit(t);
-
-        if(email !== null && email !== ""){
-            setEE(true);
-        }
-        if(g !== null && g !== ""){
-            setEG(true);
-        }
-        if(f !== null && f !== ""){
-            setEF(true);
-        }
-        if(t !== null && t !== ""){
-            setET(true);
-        }
-        if(home !== null && home !== ""){
-            setEH(true);
-        }
     }
 
     useEffect(() => {
