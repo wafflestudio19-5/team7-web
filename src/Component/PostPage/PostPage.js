@@ -171,11 +171,11 @@ const PostPage = () => {
 
   const handlePostModify = () => {
     toast.success("수정 구현 중");
-  }
+  };
 
   const handlePostDelete = () => {
     setIsPostDeleteOpen(true);
-  }
+  };
 
   const handleLike = () => {
     // toast.success("좋아요 실행");
@@ -248,7 +248,11 @@ const PostPage = () => {
   useEffect(() => {
     // console.log("POSTPAGE REFRESH");
     axios
-      .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
+      .get(`api/v1/post/@${params.userId}/${params.postUrl}`, {
+        headers: {
+          Authentication: token,
+        },
+      })
       .then((response) => {
         console.log(response);
         setPostResponse(response.data);
@@ -293,8 +297,12 @@ const PostPage = () => {
 
         {postResponse.user.id === parseInt(id) ? (
           <div className="post-control">
-            <button className="post-control-button" onClick={handlePostModify}>수정</button>
-            <button className="post-control-button" onClick={handlePostDelete}>삭제</button>
+            <button className="post-control-button" onClick={handlePostModify}>
+              수정
+            </button>
+            <button className="post-control-button" onClick={handlePostDelete}>
+              삭제
+            </button>
           </div>
         ) : (
           <div />
@@ -353,7 +361,7 @@ const PostPage = () => {
         {postResponse.tags.length !== 0 ? (
           <ul className="post-tag-list">
             {postResponse.tags.map((item) => (
-              <div className="post-tag-item">{item}</div>
+              <div className="post-tag-item">{item.tag}</div>
             ))}
           </ul>
         ) : (
@@ -362,16 +370,21 @@ const PostPage = () => {
 
         <ReactMarkdown
           className="post-content"
-          remarkPlugins={[remarkGfm, [codeSyntaxHighlight, { highlighter: Prism }]]}
-          components={{img({ node, ...props }) {
+          remarkPlugins={[
+            remarkGfm,
+            [codeSyntaxHighlight, { highlighter: Prism }],
+          ]}
+          components={{
+            img({ node, ...props }) {
               return (
-                  <img
-                      style={{ maxWidth: "60vw" }}
-                      src={props.src.replace("../../../../public/", "/")}
-                      alt="MarkdownRenderer__Image"
-                  />
+                <img
+                  style={{ maxWidth: "60vw" }}
+                  src={props.src.replace("../../../../public/", "/")}
+                  alt="MarkdownRenderer__Image"
+                />
               );
-            },}}
+            },
+          }}
         >
           {source.content}
         </ReactMarkdown>
@@ -545,9 +558,9 @@ const PostPage = () => {
       />
 
       <PostDeleteModal
-          isPostDeleteOpen={isPostDeleteOpen}
-          setIsPostDeleteOpen={setIsPostDeleteOpen}
-          postUrl={postResponse.url}
+        isPostDeleteOpen={isPostDeleteOpen}
+        setIsPostDeleteOpen={setIsPostDeleteOpen}
+        postUrl={postResponse.url}
       />
 
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />

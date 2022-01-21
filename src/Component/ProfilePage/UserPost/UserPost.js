@@ -12,7 +12,7 @@ const UserPost = ({ item }) => {
     };
 
     return (
-        <div className="search-item">
+        <div className="userpost-item">
             {item.thumbnail === null || item.thumbnail === "" ? (
                 <div />
             ) : (
