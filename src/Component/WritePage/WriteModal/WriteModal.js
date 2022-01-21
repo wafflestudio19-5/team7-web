@@ -94,13 +94,14 @@ const WriteModal = (props) => {
   const handleSubmit = () => {
     const urlPattern = /^[a-zA-Zㄱ-힣0-9-_,][a-zA-Zㄱ-힣0-9-_, ]*$/;
 
-    const tags = [];
+    /*const tags = [];
 
     for(const i in tagList ){
       tags.push(tagList[i].tag);
     }
 
-    console.log(tags);
+    console.log(tags);*/
+    console.log(tagList);
 
     if(!url.match(urlPattern) || url.length >= 100){
       toast.error("올바르지 않은 url입니다.", {
@@ -116,7 +117,6 @@ const WriteModal = (props) => {
       });
     }
     else{
-      console.log(imgTag);
       axios
           .post(
               `/api/v1/post`,
@@ -127,7 +127,7 @@ const WriteModal = (props) => {
                 summary: summaryIn,
                 private: !isPublic,
                 url: url,
-                tags: tags,
+                tags: tagList,
                 images: imgTag
               },
               {

@@ -47,20 +47,35 @@ const SettingPage = () => {
         setUserFace(f);
         setUserTwit(t);
 
-        if(email !== null && email !== ""){
+        if(email !== null && email !== "" && email.length !== 0){
             setEE(true);
+        }
+        else{
+            setEE(false);
         }
         if(g !== null && g !== ""){
             setEG(true);
         }
+        else{
+            setEG(false);
+        }
         if(f !== null && f !== ""){
             setEF(true);
+        }
+        else{
+            setEF(false);
         }
         if(t !== null && t !== ""){
             setET(true);
         }
+        else{
+            setET(false);
+        }
         if(home !== null && home !== ""){
             setEH(true);
+        }
+        else{
+            setEH(false);
         }
     }
 
@@ -295,7 +310,7 @@ const SettingPage = () => {
             .catch((error) => {
                 console.log(error);
             });
-    },[])
+    },[]);
 
     return(
         <div className="contents">
