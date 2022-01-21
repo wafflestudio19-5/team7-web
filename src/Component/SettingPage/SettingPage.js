@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import { AiTwotoneMail, AiOutlineGithub, AiOutlineTwitter, AiFillFacebook, AiFillHome } from "react-icons/ai";
+import UserDeleteModal from "./UserDeleteModal/UserDeleteModal";
 
 const SettingPage = () => {
 
@@ -13,6 +14,8 @@ const SettingPage = () => {
     const history = useHistory();
 
     const userImgInput = useRef({});
+
+    const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
     const [userImg, setUserCImg] = useState("");
     const [userName, setUserName] = useState("testName");
@@ -293,7 +296,7 @@ const SettingPage = () => {
 
 
     const handleResign = () => {
-
+        setIsDeleteOpen(true);
     }
 
     useEffect(() => {
@@ -488,6 +491,10 @@ const SettingPage = () => {
                     </button>
                 </div>
             }
+            <UserDeleteModal
+                isDeleteOpen={isDeleteOpen}
+                setIsDeleteOpen={setIsDeleteOpen}
+            />
         </div>
     )
 };

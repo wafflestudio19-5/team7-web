@@ -1,0 +1,83 @@
+.comments-delete-modal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 25;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.comments-delete-modal-box {
+  width: 25rem;
+  border-radius: 4px;
+  background: white;
+  padding: 2rem 1.5rem;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+  animation: 0.4s ease-in-out 0s 1 normal forwards running hwrkPK;
+}
+
+.comments-delete-modal-title {
+  margin: 0px;
+  font-size: 1.5rem;
+  color: rgb(52, 58, 64);
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.comments-delete-modal-message {
+  line-height: 1.5;
+  font-size: 1rem;
+  color: rgb(73, 80, 87);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  white-space: pre-wrap;
+}
+
+.comments-delete-modal-button-area {
+  margin-top: 2rem;
+  display: flex;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+
+.comments-delete-modal-button-cancel {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(233, 236, 239);
+  color: rgb(73, 80, 87);
+  border-radius: 4px;
+  padding: 0px 1.25rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.comments-delete-modal-button-delete {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(18, 184, 134);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.25rem;
+  margin-left: 0.5rem;
+  height: 2rem;
+  font-size: 1rem;
+}
