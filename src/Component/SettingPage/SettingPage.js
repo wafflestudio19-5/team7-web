@@ -195,7 +195,7 @@ const SettingPage = () => {
 
         const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-        if(!userEmail.match(regExp)){
+        if(!userEmail.match(regExp) && (userEmail !== "")){
             toast.error("올바르지 않은 이메일 형식입니다.", {
                 autoClose: 3000,
             });
@@ -432,7 +432,7 @@ const SettingPage = () => {
                                                         null
                                                     }
                                                     <div  className="btn-wrapper">
-                                                        <button className="insert" onClick={handleInSocial}>정보 추가</button>
+                                                        <button className="social-save" onClick={handleInSocial}>정보 추가</button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -103,7 +103,9 @@ const WritePage = () => {
                             }
                         )
                             .then((res) => {
-                                const imgTagForm = { token : res.data.token};
+                                console.log("이미지 토큰 데이터 테스트");
+                                console.log(res.data.token);
+                                const imgTagForm = { "token" : res.data.token };
                                 setImgTag(imgTag.concat(imgTagForm));
 
                                 callback(res.data.url, "alt text");
