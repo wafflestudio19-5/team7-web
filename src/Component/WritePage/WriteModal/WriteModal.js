@@ -9,8 +9,8 @@ import { useSessionContext } from "../../../Context/SessionContext";
 import { toast } from "react-toastify";
 
 const WriteModal = (props) => {
-  const { handleLogout, isLogin, userId, token, imgTag } = useSessionContext();
-  const { isOpen, setIsOpen, title, contents, tagList } = props;
+  const { handleLogout, isLogin, userId, token } = useSessionContext();
+  const { isOpen, setIsOpen, title, contents, tagList, imgTag } = props;
   const history = useHistory();
 
   const [summaryIn, setSummaryIn] = useState("");
@@ -129,7 +129,7 @@ const WriteModal = (props) => {
                   private: !isPublic,
                   url: url,
                   tags: tags,
-                  images: imgTag
+                  images: imgTag,
                 }
               },
               {
