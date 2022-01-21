@@ -105,22 +105,42 @@
       }
     }
 
-    .userpost-list{
-      width: 700px;
+
+    @media (min-width: 769px){
+      .userpost-list{
+        position: absolute;
+        top: 500px;
+        width: 768px;
+        height: auto;
+        left: calc((100% - 768px) / 2);
+        height: auto;
+        //border: solid;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        padding-inline-start: 0px;
+      }
+
+
     }
 
-    .search-list{
-      top: 260px;
-      left: 3%;
-      width: 94%;
-      height: auto;
-      //border: solid;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      margin-block-start: 0em;
-      margin-block-end: 0em;
-      padding-inline-start: 0px;
+    @media (max-width: 768px){
+      .userpost-list{
+        position: absolute;
+        top: 500px;
+        left: 3%;
+        width: 94%;
+        height: auto;
+        //border: solid;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        padding-inline-start: 0px;
+      }
     }
 
     .user-search{

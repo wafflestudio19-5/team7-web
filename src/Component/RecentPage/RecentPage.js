@@ -5,7 +5,8 @@ import { useHistory } from "react-router-dom";
 import Header from "../MainPage/Header/Header";
 import PostListControlBar from "../MainPage/PostListControlBar/PostListControlBar";
 import PostItem from "../MainPage/PostItem/PostItem";
-import {useSessionContext} from "../../Context/SessionContext";
+import { useSessionContext } from "../../Context/SessionContext";
+import { BiLoaderAlt } from "react-icons/bi";
 
 // 더미 데이터
 const dummyData2 = [
@@ -40,11 +41,11 @@ const dummyData2 = [
     title: "클라우드프론트 배포방법",
     summary: "클라우드프론트 배포방법에 대해",
     postImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     date: "2021년 12월 7일",
     comments: 7,
     authorImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     author: "이와플",
     likes: 65,
   },
@@ -53,11 +54,11 @@ const dummyData2 = [
     title: "클라우드프론트 배포방법",
     summary: "클라우드프론트 배포방법에 대해",
     postImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     date: "2021년 12월 7일",
     comments: 7,
     authorImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     author: "이와플",
     likes: 65,
   },
@@ -66,11 +67,11 @@ const dummyData2 = [
     title: "클라우드프론트 배포방법",
     summary: "클라우드프론트 배포방법에 대해",
     postImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     date: "2021년 12월 7일",
     comments: 7,
     authorImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     author: "이와플",
     likes: 65,
   },
@@ -79,41 +80,41 @@ const dummyData2 = [
     title: "클라우드프론트 배포방법",
     summary: "클라우드프론트 배포방법에 대해",
     postImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     date: "2021년 12월 7일",
     comments: 7,
     authorImg:
-        "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+      "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     author: "이와플",
     likes: 65,
   },
 ];
 
 const RecentPage = () => {
-
   const { isLogin, token } = useSessionContext();
 
   const [recentPostList, setRecentPostList] = useState([]);
   const [recentPostPage, setRecentPostPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("/api/v1/post/recent", {
         params: {
           page: 0,
-          size: 12
+          size: 12,
         },
         headers: {
-          Authentication: token
-        }
+          Authentication: token,
+        },
       })
       .then((response) => {
         console.log(response);
+        setIsLoading(false);
         setRecentPostList(response.data.content);
         if (response.data.last === true) {
           setRecentPostPage(null);
-        }
-        else{
+        } else {
           setRecentPostPage(1);
         }
       })
@@ -136,11 +137,11 @@ const RecentPage = () => {
           .get("/api/v1/post/recent", {
             params: {
               page: recentPostPage,
-              size: 12
+              size: 12,
             },
             headers: {
-              Authentication: token
-            }
+              Authentication: token,
+            },
           })
           .then((response) => {
             setRecentPostList(recentPostList.concat(response.data.content));
@@ -161,11 +162,18 @@ const RecentPage = () => {
       <Header />
       <PostListControlBar />
 
-      <ul className={"PostList"}>
-        {recentPostList.map((item) => (
-          <PostItem item={item} key={item.id} />
-        ))}
-      </ul>
+      {isLoading ? (
+        <div className="loading-section">
+          <BiLoaderAlt className="loading-icon" />
+          <div className={"loading-text"}>로딩 중입니다.</div>
+        </div>
+      ) : (
+        <ul className={"PostList"}>
+          {recentPostList.map((item) => (
+            <PostItem item={item} key={item.id} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

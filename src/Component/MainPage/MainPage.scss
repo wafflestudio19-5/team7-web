@@ -7,6 +7,44 @@
   overflow: scroll;
 }
 
+.loading-section {
+  position: absolute;
+  width: 200px;
+  left: calc(50% - 100px);
+  top: calc(50% - 50px);
+}
+
+.loading-icon{
+  @keyframes rotator {
+    0% {
+      -webkit-transform: rotate(-45deg) translateZ(0);
+      transform: rotate(-45deg) translateZ(0);
+    }
+    100% {
+      -webkit-transform: rotate(315deg) translateZ(0);
+      transform: rotate(315deg) translateZ(0);
+    }
+  }
+  position: absolute;
+  color: #888888;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+  animation-name: rotator;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+}
+
+.loading-text {
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  text-align: center;
+  color: #888888;
+  font-size: 1.5rem;
+
+}
+
 @media(min-width: 1057px) {
   .PostList {
     position: absolute;

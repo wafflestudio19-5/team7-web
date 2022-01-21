@@ -4,6 +4,7 @@ import "./MainPage.scss";
 import PostItem from "./PostItem/PostItem";
 import PostListControlBar from "./PostListControlBar/PostListControlBar";
 import Header from "./Header/Header";
+import { BiLoaderAlt } from "react-icons/bi";
 
 // 더미 데이터
 const dummyData = [
@@ -13,14 +14,16 @@ const dummyData = [
     id: 11,
     likes: 0,
     summary: "123",
-    thumbnail: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+    thumbnail:
+      "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
     title: "231",
     url: "321",
-    user:{
+    user: {
       id: 8,
-      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
-      userId: "219ydh"
-    }
+      image:
+        "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh",
+    },
   },
 
   {
@@ -32,19 +35,24 @@ const dummyData = [
     thumbnail: "",
     title: "231",
     url: "321",
-    user:{
+    user: {
       id: 8,
-      image: "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
-      userId: "219ydh"
-    }
-  }
-
+      image:
+        "https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75",
+      userId: "219ydh",
+    },
+  },
 ];
 
 const MainPage = () => {
-  const [trendPeriod, setTrendPeriod] = useState(localStorage.getItem('period') === null ?  7 :  parseInt(localStorage.getItem('period')));
+  const [trendPeriod, setTrendPeriod] = useState(
+    localStorage.getItem("period") === null
+      ? 7
+      : parseInt(localStorage.getItem("period"))
+  );
   const [trendingPostList, setTrendingPostList] = useState([]);
   const [trendingPostPage, setTrendingPostPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     console.log(trendPeriod);
@@ -53,17 +61,17 @@ const MainPage = () => {
         params: {
           page: 0,
           size: 12,
-          date: trendPeriod
-        }
+          date: trendPeriod,
+        },
       })
       .then((response) => {
         console.log(response);
+        setIsLoading(false);
         setTrendingPostList(response.data.content);
 
         if (response.data.last === true) {
           setTrendingPostPage(null);
-        }
-        else{
+        } else {
           setTrendingPostPage(1);
         }
       })
@@ -80,15 +88,15 @@ const MainPage = () => {
     const clientHeight = trendingPostRef.current.clientHeight;
 
     if (scrollHeight - scrollTop - clientHeight < 20) {
-      console.log("BOTTOM!!!!!")
+      console.log("BOTTOM!!!!!");
       if (!(trendingPostPage === null)) {
         axios
           .get("/api/v1/post/trend", {
             params: {
               page: trendingPostPage,
               size: 12,
-              date: trendPeriod
-            }
+              date: trendPeriod,
+            },
           })
           .then((response) => {
             setTrendingPostList(trendingPostList.concat(response.data.content));
@@ -112,11 +120,18 @@ const MainPage = () => {
         setTrendingPostPage={setTrendingPostPage}
       />
 
-      <ul className={"PostList"}>
-        {trendingPostList.map((item) => (
-          <PostItem item={item} key={item.id} />
-        ))}
-      </ul>
+      {isLoading ? (
+        <div className="loading-section">
+          <BiLoaderAlt className="loading-icon" />
+          <div className={"loading-text"}>로딩 중입니다.</div>
+        </div>
+      ) : (
+        <ul className={"PostList"}>
+          {trendingPostList.map((item) => (
+            <PostItem item={item} key={item.id} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

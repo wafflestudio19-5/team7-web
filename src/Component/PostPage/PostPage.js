@@ -32,6 +32,7 @@ import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import ReplyItem from "./CommentsItem/ReplyItem/ReplyItem";
 import remarkGfm from "remark-gfm";
+import { BiLoaderAlt } from "react-icons/bi";
 
 const dataFormat = {
   comments: [],
@@ -146,6 +147,7 @@ const PostPage = () => {
   const [updateComment, setUpdateComment] = useState();
   const [isLike, setIsLike] = useState(false);
   const [isPostDeleteOpen, setIsPostDeleteOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [source, setSource] = useState(dataFormat);
 
@@ -171,11 +173,11 @@ const PostPage = () => {
 
   const handlePostModify = () => {
     toast.success("수정 구현 중");
-  }
+  };
 
   const handlePostDelete = () => {
     setIsPostDeleteOpen(true);
-  }
+  };
 
   const handleLike = () => {
     // toast.success("좋아요 실행");
@@ -248,9 +250,14 @@ const PostPage = () => {
   useEffect(() => {
     // console.log("POSTPAGE REFRESH");
     axios
-      .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
+      .get(`api/v1/post/@${params.userId}/${params.postUrl}`, {
+        headers: {
+          Authentication: token,
+        },
+      })
       .then((response) => {
         console.log(response);
+        setIsLoading(false);
         setPostResponse(response.data);
         setPostId(response.data.id);
         setCommentsCount(response.data.comments.count);
@@ -288,251 +295,282 @@ const PostPage = () => {
     <div className="postpage">
       <Header pageTitle={postResponse.user.pageTitle} />
 
-      <div className="post-main-section">
-        <div className="post-title">{postResponse.title}</div>
-
-        {postResponse.user.id === parseInt(id) ? (
-          <div className="post-control">
-            <button className="post-control-button" onClick={handlePostModify}>수정</button>
-            <button className="post-control-button" onClick={handlePostDelete}>삭제</button>
-          </div>
-        ) : (
-          <div />
-        )}
-
-        <div className="post-information-section">
-          <span className="post-user-id">
-            <a
-              className="post-user-id-href"
-              href={"/@" + postResponse.user.userId}
-            >
-              {postResponse.user.userId}
-            </a>
-          </span>
-          <span className="post-separator">·</span>
-          <span className="post-datetime">
-            {dayjs(postResponse.createdAt).format("YYYY년 MM월 DD일")}
-          </span>
-
-          <div className="post-like-section">
-            <div className="post-like-wrapper" onClick={handleLike}>
-              {isLike === true ? (
-                <svg
-                  className={"icon-heart"}
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path className={"icon-heart-path"} />
-                </svg>
-              ) : (
-                <svg
-                  className={"icon-heart-unlike"}
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path className={"icon-heart-path"} />
-                </svg>
-              )}
-            </div>
-            <div className="post-like-count">{postResponse.likes}</div>
-
-            <CopyToClipboard text={currentUrl}>
-              <div className="post-like-wrapper" onClick={handleLink}>
-                <BsLink45Deg className="icon-link" />
-              </div>
-            </CopyToClipboard>
-
-            <div className="post-scroll-top" onClick={scrollToTop}>
-              TOP
-            </div>
-          </div>
+      {isLoading ? (
+        <div className="loading-section">
+          <BiLoaderAlt className="loading-icon" />
+          <div className={"loading-text"}>로딩 중입니다.</div>
         </div>
+      ) : (
+        <>
+          <div className="post-main-section">
+            <div className="post-title">{postResponse.title}</div>
 
-        {postResponse.tags.length !== 0 ? (
-          <ul className="post-tag-list">
-            {postResponse.tags.map((item) => (
-              <div className="post-tag-item">{item}</div>
-            ))}
-          </ul>
-        ) : (
-          <div />
-        )}
+            {postResponse.user.id === parseInt(id) ? (
+              <div className="post-control">
+                <button
+                  className="post-control-button"
+                  onClick={handlePostModify}
+                >
+                  수정
+                </button>
+                <button
+                  className="post-control-button"
+                  onClick={handlePostDelete}
+                >
+                  삭제
+                </button>
+              </div>
+            ) : (
+              <div />
+            )}
 
-        <ReactMarkdown
-          className="post-content"
-          remarkPlugins={[remarkGfm, [codeSyntaxHighlight, { highlighter: Prism }]]}
-          components={{img({ node, ...props }) {
-              return (
-                  <img
+            <div className="post-information-section">
+              <span className="post-user-id">
+                <a
+                  className="post-user-id-href"
+                  href={"/@" + postResponse.user.userId}
+                >
+                  {postResponse.user.userId}
+                </a>
+              </span>
+              <span className="post-separator">·</span>
+              <span className="post-datetime">
+                {dayjs(postResponse.createdAt).format("YYYY년 MM월 DD일")}
+              </span>
+
+              <div className="post-like-section">
+                <div className="post-like-wrapper" onClick={handleLike}>
+                  {isLike === true ? (
+                    <svg
+                      className={"icon-heart"}
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path className={"icon-heart-path"} />
+                    </svg>
+                  ) : (
+                    <svg
+                      className={"icon-heart-unlike"}
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path className={"icon-heart-path"} />
+                    </svg>
+                  )}
+                </div>
+                <div className="post-like-count">{postResponse.likes}</div>
+
+                <CopyToClipboard text={currentUrl}>
+                  <div className="post-like-wrapper" onClick={handleLink}>
+                    <BsLink45Deg className="icon-link" />
+                  </div>
+                </CopyToClipboard>
+
+                <div className="post-scroll-top" onClick={scrollToTop}>
+                  TOP
+                </div>
+              </div>
+            </div>
+
+            {postResponse.tags.length !== 0 ? (
+              <ul className="post-tag-list">
+                {postResponse.tags.map((item) => (
+                  <div className="post-tag-item">{item.tag}</div>
+                ))}
+              </ul>
+            ) : (
+              <div />
+            )}
+
+            <ReactMarkdown
+              className="post-content"
+              remarkPlugins={[
+                remarkGfm,
+                [codeSyntaxHighlight, { highlighter: Prism }],
+              ]}
+              components={{
+                img({ node, ...props }) {
+                  return (
+                    <img
                       style={{ maxWidth: "60vw" }}
                       src={props.src.replace("../../../../public/", "/")}
                       alt="MarkdownRenderer__Image"
-                  />
-              );
-            },}}
-        >
-          {source.content}
-        </ReactMarkdown>
-      </div>
+                    />
+                  );
+                },
+              }}
+            >
+              {source.content}
+            </ReactMarkdown>
+          </div>
 
-      <div className="post-user-section">
-        <div className="post-user-info">
-          <a href={"/@" + postResponse.user.userId}>
-            <img
-              className="post-user-image"
-              src={postResponse.user.image}
-              alt="유저 이미지"
-            />
-          </a>
-          <div className="post-user-text">
-            <div className="post-user-name">
-              <a
-                className="post-user-name-href"
-                href={"/@" + postResponse.user.userId}
-              >
-                {postResponse.user.name}
+          <div className="post-user-section">
+            <div className="post-user-info">
+              <a href={"/@" + postResponse.user.userId}>
+                <img
+                  className="post-user-image"
+                  src={postResponse.user.image}
+                  alt="유저 이미지"
+                />
               </a>
+              <div className="post-user-text">
+                <div className="post-user-name">
+                  <a
+                    className="post-user-name-href"
+                    href={"/@" + postResponse.user.userId}
+                  >
+                    {postResponse.user.name}
+                  </a>
+                </div>
+                <div className="post-user-intro">
+                  {postResponse.user.shortIntro}
+                </div>
+              </div>
             </div>
-            <div className="post-user-intro">
-              {postResponse.user.shortIntro}
+            <div className="post-user-division" />
+            <div className="post-user-sns">
+              {postResponse.user.githubId !== "" ? (
+                <a
+                  className={"href-sns"}
+                  href={`https://github.com/${postResponse.user.githubId}`}
+                >
+                  <GoMarkGithub className={"icon-sns"} />
+                </a>
+              ) : (
+                <div />
+              )}
+
+              {postResponse.user.facebookId !== "" ? (
+                <a
+                  className={"href-sns"}
+                  href={`https://facebook.com/${postResponse.user.facebookId}`}
+                >
+                  <BsFacebook className={"icon-sns"} />
+                </a>
+              ) : (
+                <div />
+              )}
+
+              {postResponse.user.twitterId !== "" ? (
+                <a
+                  className={"href-sns"}
+                  href={`https://twitter.com/${postResponse.user.twitterId}`}
+                >
+                  <BsTwitter className={"icon-sns"} />
+                </a>
+              ) : (
+                <div />
+              )}
+
+              {postResponse.user.homepage !== "" ? (
+                <a className={"href-sns"} href={postResponse.user.homepage}>
+                  <AiFillHome className={"icon-sns"} />
+                </a>
+              ) : (
+                <div />
+              )}
+
+              {postResponse.user.publicEmail !== "" ? (
+                <a
+                  className={"href-sns"}
+                  href={"mailto:" + postResponse.user.publicEmail}
+                >
+                  <GrMail className={"icon-sns"} />
+                </a>
+              ) : (
+                <div />
+              )}
             </div>
-          </div>
-        </div>
-        <div className="post-user-division" />
-        <div className="post-user-sns">
-          {postResponse.user.githubId !== "" ? (
-            <a
-              className={"href-sns"}
-              href={`https://github.com/${postResponse.user.githubId}`}
-            >
-              <GoMarkGithub className={"icon-sns"} />
-            </a>
-          ) : (
-            <div />
-          )}
 
-          {postResponse.user.facebookId !== "" ? (
-            <a
-              className={"href-sns"}
-              href={`https://facebook.com/${postResponse.user.facebookId}`}
-            >
-              <BsFacebook className={"icon-sns"} />
-            </a>
-          ) : (
-            <div />
-          )}
+            <div className="post-order-section">
+              <div className="post-prev-section">
+                {postResponse.prevPost !== null ? (
+                  <a
+                    className="post-prev-box"
+                    href={`/post/@${postResponse.user.userId}/${postResponse.prevPost.url}`}
+                  >
+                    <div className="post-prev-arrow-wrapper">
+                      <AiOutlineArrowLeft className="post-prev-arrow-ico" />
+                    </div>
 
-          {postResponse.user.twitterId !== "" ? (
-            <a
-              className={"href-sns"}
-              href={`https://twitter.com/${postResponse.user.twitterId}`}
-            >
-              <BsTwitter className={"icon-sns"} />
-            </a>
-          ) : (
-            <div />
-          )}
+                    <div className="post-prev-text-wrapper">
+                      <div className="post-prev-text-description">
+                        이전 포스트
+                      </div>
+                      <h3 className="post-prev-text-title">
+                        {postResponse.prevPost.title}
+                      </h3>
+                    </div>
+                  </a>
+                ) : (
+                  <div />
+                )}
+              </div>
 
-          {postResponse.user.homepage !== "" ? (
-            <a className={"href-sns"} href={postResponse.user.homepage}>
-              <AiFillHome className={"icon-sns"} />
-            </a>
-          ) : (
-            <div />
-          )}
+              <div className="post-next-section">
+                {postResponse.nextPost !== null ? (
+                  <a
+                    className="post-next-box"
+                    href={`/post/@${postResponse.user.userId}/${postResponse.nextPost.url}`}
+                  >
+                    <div className="post-next-arrow-wrapper">
+                      <AiOutlineArrowRight className="post-prev-arrow-ico" />
+                    </div>
 
-          {postResponse.user.publicEmail !== "" ? (
-            <a
-              className={"href-sns"}
-              href={"mailto:" + postResponse.user.publicEmail}
-            >
-              <GrMail className={"icon-sns"} />
-            </a>
-          ) : (
-            <div />
-          )}
-        </div>
+                    <div className="post-next-text-wrapper">
+                      <div className="post-next-text-description">
+                        다음 포스트
+                      </div>
+                      <h3 className="post-next-text-title">
+                        {postResponse.nextPost.title}
+                      </h3>
+                    </div>
+                  </a>
+                ) : (
+                  <div />
+                )}
+              </div>
+            </div>
 
-        <div className="post-order-section">
-          <div className="post-prev-section">
-            {postResponse.prevPost !== null ? (
-              <a
-                className="post-prev-box"
-                href={`/post/@${postResponse.user.userId}/${postResponse.prevPost.url}`}
-              >
-                <div className="post-prev-arrow-wrapper">
-                  <AiOutlineArrowLeft className="post-prev-arrow-ico" />
-                </div>
+            <div className="post-comments-section">
+              <h4 className="post-comments-count">{commentsCount}개의 댓글</h4>
 
-                <div className="post-prev-text-wrapper">
-                  <div className="post-prev-text-description">이전 포스트</div>
-                  <h3 className="post-prev-text-title">
-                    {postResponse.prevPost.title}
-                  </h3>
-                </div>
-              </a>
-            ) : (
-              <div />
-            )}
-          </div>
-
-          <div className="post-next-section">
-            {postResponse.nextPost !== null ? (
-              <a
-                className="post-next-box"
-                href={`/post/@${postResponse.user.userId}/${postResponse.nextPost.url}`}
-              >
-                <div className="post-next-arrow-wrapper">
-                  <AiOutlineArrowRight className="post-prev-arrow-ico" />
-                </div>
-
-                <div className="post-next-text-wrapper">
-                  <div className="post-next-text-description">다음 포스트</div>
-                  <h3 className="post-next-text-title">
-                    {postResponse.nextPost.title}
-                  </h3>
-                </div>
-              </a>
-            ) : (
-              <div />
-            )}
-          </div>
-        </div>
-
-        <div className="post-comments-section">
-          <h4 className="post-comments-count">{commentsCount}개의 댓글</h4>
-
-          <textarea
-            className="post-comments-input"
-            placeholder="댓글을 입력하세요."
-            value={commentInput}
-            onChange={(e) => setCommentInput(e.target.value)}
-          />
-
-          <div className="post-comments-button-wrapper">
-            <button className="post-comments-button" onClick={handleComment}>
-              댓글 작성
-            </button>
-          </div>
-
-          <ul className={"post-comments-list"}>
-            {commentsList.map((item) => (
-              <CommentsItem
-                item={item}
-                key={item.id}
-                setIsDeleteOpen={setIsDeleteOpen}
-                setIsLoginOpen={setIsLoginOpen}
-                setTargetCommentId={setTargetCommentId}
-                postId={postId}
-                setCommentsList={setCommentsList}
-                setUpdateComment={setUpdateComment}
+              <textarea
+                className="post-comments-input"
+                placeholder="댓글을 입력하세요."
+                value={commentInput}
+                onChange={(e) => setCommentInput(e.target.value)}
               />
-            ))}
-          </ul>
-        </div>
-      </div>
+
+              <div className="post-comments-button-wrapper">
+                <button
+                  className="post-comments-button"
+                  onClick={handleComment}
+                >
+                  댓글 작성
+                </button>
+              </div>
+
+              <ul className={"post-comments-list"}>
+                {commentsList.map((item) => (
+                  <CommentsItem
+                    item={item}
+                    key={item.id}
+                    setIsDeleteOpen={setIsDeleteOpen}
+                    setIsLoginOpen={setIsLoginOpen}
+                    setTargetCommentId={setTargetCommentId}
+                    postId={postId}
+                    setCommentsList={setCommentsList}
+                    setUpdateComment={setUpdateComment}
+                  />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </>
+      )}
 
       <CommentsDeleteModal
         isDeleteOpen={isDeleteOpen}
@@ -545,9 +583,9 @@ const PostPage = () => {
       />
 
       <PostDeleteModal
-          isPostDeleteOpen={isPostDeleteOpen}
-          setIsPostDeleteOpen={setIsPostDeleteOpen}
-          postUrl={postResponse.url}
+        isPostDeleteOpen={isPostDeleteOpen}
+        setIsPostDeleteOpen={setIsPostDeleteOpen}
+        postUrl={postResponse.url}
       />
 
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
