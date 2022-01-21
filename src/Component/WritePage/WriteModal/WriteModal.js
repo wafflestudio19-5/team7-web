@@ -121,16 +121,14 @@ const WriteModal = (props) => {
           .post(
               `/api/v1/post`,
               {
-                params:{
-                  title: title,
-                  content: contents,
-                  thumbnail: thumbUrl,
-                  summary: summaryIn,
-                  private: !isPublic,
-                  url: url,
-                  tags: tags,
-                  images: imgTag,
-                }
+                title: title,
+                content: contents,
+                thumbnail: thumbUrl,
+                summary: summaryIn,
+                private: !isPublic,
+                url: url,
+                tags: tags,
+                images: imgTag
               },
               {
                 headers: {
