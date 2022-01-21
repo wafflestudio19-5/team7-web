@@ -295,6 +295,29 @@ const SettingPage = () => {
     const handleResign = () => {
 
     }
+    const confirmResign = () => {
+        axios
+            .delete(`/api/v1/user/me`, {
+                headers: {
+                    Authentication: token,
+                },
+            })
+            .then((response) => {
+                toast.success("삭제를 성공했습니다.", {
+                    autoClose: 3000,
+                });
+                setUserCImg(response.data.image);
+                setUserImg(response.data.image);
+                localStorage.setItem("userImg", response.data.image);
+                console.log(response);
+            })
+            .catch((error) => {
+                toast.error("삭제를 실패했습니다.", {
+                    autoClose: 3000,
+                });
+                console.log(error);
+            });
+    }
 
     useEffect(() => {
         axios
