@@ -286,7 +286,8 @@ const PostPage = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.errorCode);
+        toast.error(error.detail);
         history.push("/error"); // 백엔드 404 response 필요!!
       });
   }, [updateComment]);
