@@ -179,6 +179,10 @@ const PostPage = () => {
     setIsPostDeleteOpen(true);
   };
 
+  const handleTag = (tagUrl) => {
+    history.push(`/tag/${tagUrl}`)
+  };
+
   const handleLike = () => {
     // toast.success("좋아요 실행");
     axios
@@ -377,7 +381,9 @@ const PostPage = () => {
             {postResponse.tags.length !== 0 ? (
               <ul className="post-tag-list">
                 {postResponse.tags.map((item) => (
-                  <div className="post-tag-item">{item.tag}</div>
+                    <a className="post-tag-href" href={`/tag/${item.url}`}>
+                  <div className="post-tag-item">{item.name}</div>
+                    </a>
                 ))}
               </ul>
             ) : (

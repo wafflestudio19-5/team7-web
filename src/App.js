@@ -11,6 +11,8 @@ import LoginPage from "./Component/LoginPage/LoginPage";
 import SocialLogin from "./Component/SocialLogin/SocialLogin";
 import ProfilePage from "./Component/ProfilePage/ProfilePage";
 import SettingPage from "./Component/SettingPage/SettingPage";
+import TagPage from "./Component/TagPage/TagPage";
+import TagTotalPage from "./Component/TagTotalPage/TagTotalPage";
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
                 <Route path="/email-login" component={LoginPage} exact={true}/>
                 <Route path="/social" component={SocialLogin} exact={true}/>
                 <Route path="/setting" component={SettingPage} exact={true}/>
+                <Route path={"/tag/:tagUrl"} component={TagPage} exact={true}/>
+                <Route path={"/tag"} component={TagTotalPage} exact={true}/>
                 <Route path="/" component={MainPage} exact={true}/>
                 <Redirect to="/"/>
             </Switch>
