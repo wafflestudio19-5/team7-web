@@ -401,7 +401,7 @@ const PostPage = () => {
                 img({ node, ...props }) {
                   return (
                     <img
-                      style={{ maxWidth: "60vw" }}
+                      style={{ maxWidth: "100%" }}
                       src={props.src.replace("../../../../public/", "/")}
                       alt="MarkdownRenderer__Image"
                     />

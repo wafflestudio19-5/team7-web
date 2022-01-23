@@ -33,6 +33,7 @@ const SettingPage = () => {
     const [userFace, setUserFace] = useState("");
     const [userTwit, setUserTwit] = useState("");
     const [userHome, setUserHome] = useState("");
+    const [userAccountEmail, setUserAccountEmail] = useState("");
 
     const [writeShort, setWriteShort] = useState(false);
 
@@ -40,7 +41,7 @@ const SettingPage = () => {
     const [thumbImgFile, setThumbImgFile] = useState(null); //파일
     const [thumbUrl, setThumbUrl] = useState("");
 
-    const setSetting = (image, name, short, email, home, g, f, t) => {
+    const setSetting = (image, name, short, email, home, g, f, t, aEmail) => {
         setUserCImg(image);
         setUserName(name);
         setUserShort(short);
@@ -49,6 +50,7 @@ const SettingPage = () => {
         setUserGit(g);
         setUserFace(f);
         setUserTwit(t);
+        setUserAccountEmail(aEmail);
 
         if(email !== null && email !== "" && email.length !== 0){
             setEE(true);
@@ -276,7 +278,7 @@ const SettingPage = () => {
                         toast.success("저장을 성공했습니다.", {
                             autoClose: 3000,
                         });
-                        setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                        setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId, response.data.email);
                         console.log(response.data);
                     })
                     .catch((error) => {
@@ -307,7 +309,7 @@ const SettingPage = () => {
                 },
             })
             .then((response) => {
-                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId);
+                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId, response.data.email);
                 console.log(response.data);
             })
             .catch((error) => {
@@ -462,7 +464,7 @@ const SettingPage = () => {
                             <div className="custom-list">
                                 <div className="list-style">
                                     <div className="list-title">이메일 주소</div>
-                                    <div className="list-info">{userEmail}</div>
+                                    <div className="list-info">{userAccountEmail}</div>
                                 </div>
                                 <div className="explanation">회원 인증 또는 시스템에서 발송하는 이메일을 수신하는 주소입니다.</div>
                             </div>
