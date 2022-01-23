@@ -149,7 +149,6 @@ const PostPage = () => {
   const [isLike, setIsLike] = useState(false);
   const [isPostDeleteOpen, setIsPostDeleteOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [modifyUrlId, setModifyUrlId] = useState();
 
   const currentUrl = window.location.href;
 
@@ -205,12 +204,12 @@ const PostPage = () => {
           }
         })
         .then((response) => {
-          history.push(`update/${response.data.id}`);
+          history.push({pathname:`update/${response.data.id}`, props:{postResponse}});
         })
         .catch((error) => {
           console.log(error);
           console.log(error.errorCode);
-          history.push("/error"); // 백엔드 404 response 필요!!
+          // history.push("/error"); // 백엔드 404 response 필요!!
         });
   }
 
@@ -590,8 +589,6 @@ const PostPage = () => {
       />
 
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
-
-      <UpdatePage postResponse={postResponse} />
     </div>
   );
 };
