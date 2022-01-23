@@ -15,7 +15,7 @@
     position: absolute;
     top: 100px;
     left: 16px;
-    width: 1056px;
+    width: calc(100% - 16px);
     height: 48px;
     //border: solid;
     display: flex;
