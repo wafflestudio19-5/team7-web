@@ -22,6 +22,7 @@ import { useSessionContext } from "../../Context/SessionContext";
 import CommentsDeleteModal from "./CommentsDeleteModal/CommentsDeleteModal";
 import PostDeleteModal from "./PostDeleteModal/PostDeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
+import UpdatePage from "../UpdatePage/UpdatePage";
 
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
@@ -148,6 +149,7 @@ const PostPage = () => {
   const [isLike, setIsLike] = useState(false);
   const [isPostDeleteOpen, setIsPostDeleteOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [modifyUrlId, setModifyUrlId] = useState();
 
   const currentUrl = window.location.href;
 
@@ -193,9 +195,24 @@ const PostPage = () => {
       });
   }, [updateComment]);
 
+
   const handlePostModify = () => {
     toast.success("수정 구현 중");
-  };
+    axios
+        .post(`api/v1/post/token?url=${postResponse.url}`, {
+          headers: {
+            Authentication: token,
+          }
+        })
+        .then((response) => {
+          history.push(`update/${response.data.id}`);
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log(error.errorCode);
+          history.push("/error"); // 백엔드 404 response 필요!!
+        });
+  }
 
   const handlePostDelete = () => {
     setIsPostDeleteOpen(true);
@@ -253,7 +270,7 @@ const PostPage = () => {
         {
           headers: {
             Authentication: token,
-          },
+          }
         }
       )
       .then((response) => {
@@ -573,6 +590,8 @@ const PostPage = () => {
       />
 
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
+
+      <UpdatePage postResponse={postResponse} />
     </div>
   );
 };
