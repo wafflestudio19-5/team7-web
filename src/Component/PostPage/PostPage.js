@@ -196,9 +196,8 @@ const PostPage = () => {
 
 
   const handlePostModify = () => {
-    toast.success("수정 구현 중");
     axios
-        .post(`api/v1/post/token?url=${postResponse.url}`, {
+        .post(`api/v1/post/token?url=${postResponse.url}`, {},{
           headers: {
             Authentication: token,
           }
