@@ -203,7 +203,7 @@ const PostPage = () => {
           }
         })
         .then((response) => {
-          history.push({pathname:`update/${response.data.id}`, props:{postResponse}});
+          history.push({pathname:`/update/${response.data.id}`, props:{postResponse}});
         })
         .catch((error) => {
           console.log(error);
