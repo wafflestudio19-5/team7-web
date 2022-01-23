@@ -149,27 +149,49 @@ const PostPage = () => {
   const [isPostDeleteOpen, setIsPostDeleteOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [source, setSource] = useState(dataFormat);
-
   const currentUrl = window.location.href;
 
   useEffect(() => {
-    console.log("POSTPAGE REFRESH");
+    // console.log("POSTPAGE REFRESH");
     axios
-      .get(`api/v1/post/@${params.userId}/${params.postUrl}`)
+      .get(`api/v1/post/@${params.userId}/${params.postUrl}`, {
+        headers: {
+          Authentication: token,
+        },
+      })
       .then((response) => {
+        console.log(response);
+        setIsLoading(false);
         setPostResponse(response.data);
-        setSource(response.data);
         setPostId(response.data.id);
         setCommentsCount(response.data.comments.count);
         setCommentsList(response.data.comments.contents);
-        console.log(source.content);
+
+        if (isLogin === true) {
+          axios
+            .get(`api/v1/post/${response.data.id}/like/current`, {
+              headers: {
+                Authentication: token,
+              }
+            })
+            .then((response) => {
+              if (response.data === true) {
+                setIsLike(true);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              console.log(error.errorCode);
+              history.push("/error"); // 백엔드 404 response 필요!!
+            });
+        }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.errorCode);
+        toast.error(error.detail);
         history.push("/error"); // 백엔드 404 response 필요!!
       });
-  }, []);
+  }, [updateComment]);
 
   const handlePostModify = () => {
     toast.success("수정 구현 중");
@@ -177,10 +199,6 @@ const PostPage = () => {
 
   const handlePostDelete = () => {
     setIsPostDeleteOpen(true);
-  };
-
-  const handleTag = (tagUrl) => {
-    history.push(`/tag/${tagUrl}`)
   };
 
   const handleLike = () => {
@@ -250,47 +268,6 @@ const PostPage = () => {
         setIsLoginOpen(true);
       });
   };
-
-  useEffect(() => {
-    // console.log("POSTPAGE REFRESH");
-    axios
-      .get(`api/v1/post/@${params.userId}/${params.postUrl}`, {
-        headers: {
-          Authentication: token,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        setIsLoading(false);
-        setPostResponse(response.data);
-        setPostId(response.data.id);
-        setCommentsCount(response.data.comments.count);
-        setCommentsList(response.data.comments.contents);
-
-        if (isLogin === true) {
-          axios
-            .get(`api/v1/post/${response.data.id}/like/current`, {
-              headers: {
-                Authentication: token,
-              },
-            })
-            .then((response) => {
-              if (response.data === true) {
-                setIsLike(true);
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-              history.push("/error"); // 백엔드 404 response 필요!!
-            });
-        }
-      })
-      .catch((error) => {
-        console.log(error.errorCode);
-        toast.error(error.detail);
-        history.push("/error"); // 백엔드 404 response 필요!!
-      });
-  }, [updateComment]);
 
   const BlogImage = (props) => {
     return <img {...props} style={{ width: "60px" }} />;
@@ -382,9 +359,9 @@ const PostPage = () => {
             {postResponse.tags.length !== 0 ? (
               <ul className="post-tag-list">
                 {postResponse.tags.map((item) => (
-                    <a className="post-tag-href" href={`/tag/${item.url}`}>
-                  <div className="post-tag-item">{item.name}</div>
-                    </a>
+                  <a className="post-tag-href" href={`/tag/${item.url}`}>
+                    <div className="post-tag-item">{item.name}</div>
+                  </a>
                 ))}
               </ul>
             ) : (
@@ -409,7 +386,7 @@ const PostPage = () => {
                 },
               }}
             >
-              {source.content}
+              {postResponse.content}
             </ReactMarkdown>
           </div>
 
