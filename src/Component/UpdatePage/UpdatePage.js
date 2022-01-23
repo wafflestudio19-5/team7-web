@@ -27,7 +27,7 @@ import {toast} from "react-toastify";
 import {useSessionContext} from "../../Context/SessionContext";
 import PostItem from "../MainPage/PostItem/PostItem";
 
-const UpdatePage = ({postResponse}) => {
+const UpdatePage = ({location}) => {
 
     const { handleLogout, isLogin, userId, token } = useSessionContext();
 
@@ -36,12 +36,12 @@ const UpdatePage = ({postResponse}) => {
     const history = useHistory();
     const params = useParams();
 
-    const [title, setTitle] = useState(postResponse.title);
-    const [contents, setContents] = useState(postResponse.content);
+    const [title, setTitle] = useState(location.props.postResponse.title);
+    const [contents, setContents] = useState(location.props.postResponse.content);
     const [isOpen, setIsOpen] = useState(false);
     const [tag, setTag] = useState("");
-    const [tagList, setTagList] = useState(postResponse.tags);
-    const [tagId, setTagId] = useState(postResponse.tags.length);
+    const [tagList, setTagList] = useState(location.props.postResponse.tags);
+    const [tagId, setTagId] = useState(location.props.postResponse.tags.length);
     const [imgTag, setImgTag] = useState([]);
 
     const onChangeEditorTextHandler = () => {
@@ -86,7 +86,7 @@ const UpdatePage = ({postResponse}) => {
 
     useEffect(() => {
         console.log("Update Page");
-        console.log(postResponse);
+        console.log(location.props.postResponse);
 
         if (editorRef.current) {
             editorRef.current.getInstance().removeHook("addImageBlobHook");
