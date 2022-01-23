@@ -25,7 +25,7 @@ const UserPost = ({ item }) => {
                 <div className="summary">{item.summary}</div>
                 <div className="tags">
                     {(item.tags).map((elements) => (
-                        <a className="tags-contents" href={`/tag/${elements.url}`}>
+                        <a className="tags-contents" href={`/tag/${elements.url}`} key={elements.id}>
                             {elements.name}
                         </a>
                     ))}
