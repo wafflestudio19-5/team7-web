@@ -73,6 +73,20 @@
         margin-top: 20px;
         width: 768px;
         height: 35px;
+        color: rgb(173, 181, 189);
+        display: flex;
+
+        .user-link-social{
+          color: inherit;
+          display: block;
+          margin-left: 5px;
+
+          .user-social-icon{
+            cursor: pointer;
+            width: 2rem;
+            height: 2rem;
+          }
+        }
       }
 
     }
@@ -178,6 +192,38 @@
         outline: 0px;
         min-width: 0px;
         background-color: #f8f9fa;
+      }
+    }
+
+    .tag-menubar{
+      position: absolute;
+      width: 11.5rem;
+      left: 5px;
+      box-sizing: inherit;
+
+      .tag-wrapper{
+        box-sizing: inherit;
+
+        .tag-title{
+          font-size: 1rem;
+          line-height: 1.5;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid rgb(173, 181, 189);
+          margin-bottom: 1rem;
+          color: rgb(73, 80, 87);
+          font-weight: bold;
+          box-sizing: inherit;
+        }
+
+        .tag-contents{
+          padding-left: 0px;
+          box-sizing: inherit;
+          list-style-type: disc;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+        }
       }
     }
 
