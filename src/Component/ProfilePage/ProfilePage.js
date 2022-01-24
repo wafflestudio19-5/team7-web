@@ -287,7 +287,7 @@ const ProfilePage = () => {
                 null
             }
             {eH ?
-                <a className="user-link-social" target="_blank" href={`https://${userHome}`} >
+                <a className="user-link-social" target="_blank" href={`${userHome}`} >
                   <AiFillHome className="user-social-icon"/>
                 </a>
                 :
