@@ -34,7 +34,7 @@ function App() {
                 <Route path="/setting" component={SettingPage} exact={true}/>
                 <Route path={"/tag/:tagUrl"} component={TagPage} exact={true}/>
                 <Route path={"/tag"} component={TagTotalPage} exact={true}/>
-                <Route path={"/update/:urlId"} component={UpdatePage} exact={true}/>
+                <Route path={"/update/@:userId/:postUrl"} component={UpdatePage} exact={true}/>
                 <Route path="/" component={MainPage} exact={true}/>
                 <Redirect to="/"/>
             </Switch>
