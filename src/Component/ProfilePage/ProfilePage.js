@@ -16,9 +16,11 @@ const ProfilePage = () => {
   const URLSearch = new URLSearchParams(search);
   const postPageRef = useRef({});
   const initialParams = URLSearch.get("q") === null ? "" : URLSearch.get("q");
-  const { handleLogout, id, isLogin, userId, token } = useSessionContext();
+  const initialTag = URLSearch.get("tag") === null ? "" : URLSearch.get("tag");
+  const { token } = useSessionContext();
 
   const [word, setWord] = useState(initialParams);
+  const [searchTag, setSearchTag] = useState(initialTag);
   const [userName, setUserName] = useState("");
   const [userImg, setUserImg] = useState("");
   const [userShort, setUserShort] = useState("");
@@ -37,6 +39,7 @@ const ProfilePage = () => {
   const [userHome, setUserHome] = useState("");
 
   const [tagMenuList, setTagMenuList] = useState([]);
+  const [totalTag, setTotalTag] = useState("");
 
   const setUserLink = (email, home, g, f, t) => {
     setUserEmail(email);
@@ -94,37 +97,87 @@ const ProfilePage = () => {
         .catch((error) => {
           console.log(error);
         });
+
+    axios
+        .get(`/api/v1/user/@${params.userId}/tags`, {
+          headers: {
+            Authentication: token,
+          },
+          params: {},
+        })
+        .then((response) => {
+          console.log("tag data");
+          console.log(response.data);
+          setTagMenuList(response.data.contents);
+          setTotalTag(response.data.count);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   },[]);
 
   useEffect(() => {
 
-    axios
-      .get(`/api/v1/user/@${params.userId}/search`, {
-        headers: {
-          Authentication: token,
-        },
-        params: {
-          keyword: word,
-          page: 0,
-          size: 6,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        setUserPost([]);
-        setUserPost(response.data.content);
-        if (response.data.last === true) {
-          setPostPageNumber(null);
-        } else {
-          setPostPageNumber(1);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if(searchTag !== ""){
+      axios
+          .get(`/api/v1/user/@${params.userId}/tag/${searchTag}`, {
+            headers: {
+              Authentication: token,
+            },
+            params: {
+              keyword: word,
+              page: 0,
+              size: 6,
+            },
+          })
+          .then((response) => {
+            console.log(response.data);
+            setUserPost([]);
+            setUserPost(response.data.content);
+            if (response.data.last === true) {
+              setPostPageNumber(null);
+            } else {
+              setPostPageNumber(1);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
+    else{
+      axios
+          .get(`/api/v1/user/@${params.userId}/search`, {
+            headers: {
+              Authentication: token,
+            },
+            params: {
+              keyword: word,
+              page: 0,
+              size: 6,
+            },
+          })
+          .then((response) => {
+            console.log(response.data);
+            setUserPost([]);
+            setUserPost(response.data.content);
+            if (response.data.last === true) {
+              setPostPageNumber(null);
+            } else {
+              setPostPageNumber(1);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
+
+
   }, [params]);
 
   const handleWord = (e) => {
+    if(searchTag !== ""){
+      setSearchTag("");
+    }
     setWord(e.target.value);
     history.replace(`/@${params.userId}?q=${e.target.value}`);
   };
@@ -136,26 +189,51 @@ const ProfilePage = () => {
 
     if (scrollHeight - scrollTop - clientHeight < 10) {
       if (!(postPageNumber === null)) {
-        axios
-          .get(`/api/v1/user/@${params.userId}/search`, {
-            headers: {
-              Authentication: token,
-            },
-            params: {
-              keyword: word,
-              page: postPageNumber,
-              size: 6,
-            },
-          })
-          .then((response) => {
-            setUserPost(userPost.concat(response.data.content));
-            if (response.data.last === true) {
-              setPostPageNumber(null);
-            } else {
-              setPostPageNumber(postPageNumber + 1);
-            }
-            console.log(userPost);
-          });
+        if(searchTag !== ""){
+          axios
+              .get(`/api/v1/user/@${params.userId}/tag/${searchTag}`, {
+                headers: {
+                  Authentication: token,
+                },
+                params: {
+                  keyword: word,
+                  page: postPageNumber,
+                  size: 6,
+                },
+              })
+              .then((response) => {
+                setUserPost(userPost.concat(response.data.content));
+                if (response.data.last === true) {
+                  setPostPageNumber(null);
+                } else {
+                  setPostPageNumber(postPageNumber + 1);
+                }
+                console.log(userPost);
+              });
+        }
+        else{
+          axios
+              .get(`/api/v1/user/@${params.userId}/search`, {
+                headers: {
+                  Authentication: token,
+                },
+                params: {
+                  keyword: word,
+                  page: postPageNumber,
+                  size: 6,
+                },
+              })
+              .then((response) => {
+                setUserPost(userPost.concat(response.data.content));
+                if (response.data.last === true) {
+                  setPostPageNumber(null);
+                } else {
+                  setPostPageNumber(postPageNumber + 1);
+                }
+                console.log(userPost);
+              });
+        }
+
       }
     }
   };
@@ -218,8 +296,14 @@ const ProfilePage = () => {
           </div>
         </div>
         <div className="post-type">
+          <div className="select-type-on">
+            <a className="type-btn-on" href={`/@${params.userId}`} aria-current="page">글 목록</a>
+          </div>
           <div className="select-type">
-            <a className="type-btn">글 목록</a>
+            <a className="type-btn" href={`/@${params.userId}/series`}>시리즈</a>
+          </div>
+          <div className="select-type">
+            <a className="type-btn" href={`/@${params.userId}/about`}>소개</a>
           </div>
         </div>
         <div className="user-search">
@@ -242,7 +326,16 @@ const ProfilePage = () => {
           <div className="tag-wrapper">
             <div className="tag-title">태그 목록</div>
             <ul className="tag-contents">
-              ㅇ
+              <div className="tag-menu-list">
+                <a className="tag-href" href={`/@${params.userId}`}>전체 보기</a>
+                <span className="tag-number">({totalTag})</span>
+              </div>
+              {tagMenuList.map((item) => (
+                  <li className="tag-menu-list" item={item} key={item.id}>
+                    <a className="tag-href" href={`/@${params.userId}?tag=${item.url}`}>{item.name}</a>
+                    <span className="tag-number"> ({item.count})</span>
+                  </li>
+              ))}
             </ul>
           </div>
         </div>

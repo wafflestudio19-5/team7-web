@@ -21,14 +21,13 @@ const UserDeleteModal = ({ isDeleteOpen, setIsDeleteOpen } ) => {
     const handleDelete = () => {
         axios
             .delete(
-                `/api/v1/user/me`,
-                {
+                `/api/v1/user/me`, {
                     headers: {
                         Authentication: token,
                     }
-                }
-            )
+                })
             .then((response) => {
+                console.log(response);
                 handleLogout();
                 toast.success("탈퇴를 성공하였습니다.");
             })
