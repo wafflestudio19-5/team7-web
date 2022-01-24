@@ -28,7 +28,7 @@ const AboutPage = () => {
     const [userTwit, setUserTwit] = useState("");
     const [userHome, setUserHome] = useState("");
 
-    const [isMe, setIsMe] = useState(true);
+    const [isMe, setIsMe] = useState(false);
     const [userLong, setUserLong] = useState("");
     const [eL, setEL] = useState(false);
 

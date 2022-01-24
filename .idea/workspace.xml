@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
-      <change afterPath="$PROJECT_DIR$/src/Component/AboutPage/AboutPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/AboutPage/AboutPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/AboutPage/AboutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/AboutPage/AboutPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SettingPage/UserDeleteModal/UserDeleteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SettingPage/UserDeleteModal/UserDeleteModal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,7 @@
       <workItem from="1642672330947" duration="4942000" />
       <workItem from="1642694357975" duration="5598000" />
       <workItem from="1642954414945" duration="1379000" />
-      <workItem from="1643008325136" duration="2804000" />
+      <workItem from="1643008325136" duration="6686000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>
