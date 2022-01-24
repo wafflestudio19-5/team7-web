@@ -78,7 +78,6 @@ const ProfilePage = () => {
   }
 
   useEffect(() => {
-    console.log(URLSearch);
     axios
         .get(`/api/v1/user/@${params.userId}`, {
           headers: {
