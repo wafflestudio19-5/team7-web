@@ -259,7 +259,9 @@
   background: rgb(241, 243, 245);
   padding-left: 1rem;
   padding-right: 1rem;
-  height: 2rem;
+  height: auto;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   border-radius: 1rem;
   display: inline-flex;
   -webkit-box-align: center;
