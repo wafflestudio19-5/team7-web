@@ -103,8 +103,27 @@
 }
 
 .tags {
-  height: 50px;
+  height: auto;
   width: 100%;
+
+  .tags-contents{
+    margin-bottom: 0.875rem;
+    background: rgb(241, 243, 245);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: auto;
+    border-radius: 1rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 0.875rem;
+    color: rgb(12, 166, 120);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
 }
 
 .sub-info {

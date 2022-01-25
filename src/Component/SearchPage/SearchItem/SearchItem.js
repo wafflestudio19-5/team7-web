@@ -32,9 +32,15 @@ const SearchItem = ({ item }) => {
       <div className="post-mainsection" onClick={handlePostClick}>
         <div className="title">{item.title}</div>
         <div className="summary">{item.summary}</div>
-        <div className="tags">
 
+        <div className="tags">
+          {(item.tags).map((elements) => (
+              <a className="tags-contents" href={`/tag/${elements.url}`} key={elements.id}>
+                {elements.name}
+              </a>
+          ))}
         </div>
+
         <div className="sub-info">
           {dayjs(item.createAt).format("YYYY년 MM월 DD일")} · {item.comments}
           개의 댓글

@@ -12,6 +12,7 @@ const TagPage = () => {
   const params = useParams();
   const tagPageRef = useRef({});
 
+  const [totalPostNumber, setTotalPostNumber] = useState(0);
   const [tagPostList, setTagPostList] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,11 +23,12 @@ const TagPage = () => {
       .get(`/api/v1/tag/${params.tagUrl}`, {
         params: {
           page: 0,
-          size: 6,
+          size: 10,
         },
       })
       .then((response) => {
         console.log(response);
+        setTotalPostNumber(response.data.totalElements);
         setTagPostList(response.data.content);
         setIsSearching(true);
         setIsLoading(false);
@@ -53,7 +55,7 @@ const TagPage = () => {
           .get(`/api/v1/tag/${params.tagUrl}`, {
             params: {
               page: searchPageNumber,
-              size: 6,
+              size: 10,
             },
           })
           .then((response) => {
@@ -72,29 +74,31 @@ const TagPage = () => {
     <div className="tagpage" ref={tagPageRef} onScroll={handleScroll}>
       <Header pageTitle={"Waflog"} />
 
-      <h1 className="tag-title"># {params.tagUrl}</h1>
+      <div className="tag-main-section">
+        <h1 className="tag-title"># {params.tagUrl}</h1>
 
-      {isLoading ? (
-        <div className="loading-section">
-          <BiLoaderAlt className="loading-icon" />
-          <div className={"loading-text"}>검색 중입니다.</div>
-        </div>
-      ) : (
-        <>
-          {isSearching ? (
-            <div className="tag-search-info">
-              총 <b>{tagPostList.length}개</b>의 포스트를 찾았습니다.
-            </div>
-          ) : (
-            <div className="tag-search-info">검색결과가 없습니다.</div>
-          )}
-          <ul className="tag-post-list">
-            {tagPostList.map((item) => (
-              <SearchItem item={item} key={item.id} />
-            ))}
-          </ul>
-        </>
-      )}
+        {isLoading ? (
+          <div className="loading-section">
+            <BiLoaderAlt className="loading-icon" />
+            <div className={"loading-text"}>검색 중입니다.</div>
+          </div>
+        ) : (
+          <>
+            {isSearching ? (
+              <div className="tag-search-info">
+                총 <b>{totalPostNumber}개</b>의 포스트를 찾았습니다.
+              </div>
+            ) : (
+              <div className="tag-search-info">검색결과가 없습니다.</div>
+            )}
+            <ul className="tag-post-list">
+              {tagPostList.map((item) => (
+                <SearchItem item={item} key={item.id} />
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </div>
   );
 };

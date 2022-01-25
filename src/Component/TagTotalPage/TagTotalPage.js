@@ -12,6 +12,7 @@ const TagTotalPage = () => {
   const params = useParams();
   const tagPageRef = useRef({});
 
+  const [totalTagNumber, setTotalTagNumber] = useState(0);
   const [tagList, setTagList] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,13 +20,15 @@ const TagTotalPage = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/v1/tag`, {
+      .get(`/api/v1/tag?sort=name`, {
         params: {
           page: 0,
+          size: 100
         },
       })
       .then((response) => {
         console.log(response);
+        setTotalTagNumber(response.data.totalElements);
         setTagList(response.data.content);
         setIsSearching(true);
         setIsLoading(false);
@@ -52,6 +55,7 @@ const TagTotalPage = () => {
           .get(`/api/v1/tag`, {
             params: {
               page: searchPageNumber,
+              size: 100
             },
           })
           .then((response) => {
@@ -70,7 +74,7 @@ const TagTotalPage = () => {
     <div className="tagtotalpage" ref={tagPageRef} onScroll={handleScroll}>
       <Header pageTitle={"Waflog"} />
 
-      <h1 className="tag-title">전체 태그</h1>
+      <h1 className="tag-title">전체 태그 목록</h1>
 
       {isLoading ? (
         <div className="loading-section">
@@ -81,7 +85,7 @@ const TagTotalPage = () => {
         <>
           {isSearching ? (
             <div className="tag-search-info">
-              총 <b>{tagList.length}개</b>의 태그를 찾았습니다.
+              총 <b>{totalTagNumber}개</b>의 태그를 찾았습니다.
             </div>
           ) : (
             <div className="tag-search-info">검색결과가 없습니다.</div>

@@ -32,7 +32,7 @@ const RegisterPage = () => {
         })
         .catch((error) => {
           history.push("/");
-          toast.error("잘못된 접근입니다.")
+          toast.error("잘못된 접근입니다.");
         });
   }, []);
 

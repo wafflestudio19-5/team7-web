@@ -69,7 +69,7 @@ const UpdatePage = ({location}) => {
     const [postResponse, setPostResponse] = useState(dataFormat);
 
     const [title, setTitle] = useState("");
-    const [contents, setContents] = useState("");
+    const [contents, setContents] = useState(location.postContent);
     const [isOpen, setIsOpen] = useState(false);
     const [tag, setTag] = useState("");
     const [tagList, setTagList] = useState([]);
@@ -152,7 +152,7 @@ const UpdatePage = ({location}) => {
                 console.log(error);
                 history.push("/error"); // 백엔드 404 response 필요!!
             });
-    },[])
+    },[]);
 
 
     useEffect(() => {
@@ -216,7 +216,6 @@ const UpdatePage = ({location}) => {
                         previewStyle="vertical"
                         height="75vh"
                         initialEditType="markdown"
-                        placeholder="내용을 입력하세요."
                         ref={editorRef}
                         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
                         initialValue={contents}
