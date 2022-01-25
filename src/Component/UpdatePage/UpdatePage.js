@@ -140,7 +140,7 @@ const UpdatePage = ({location}) => {
             });
 
         axios
-            .post(`api/v1/post/token?url=${postResponse.url}`, {},{
+            .post(`api/v1/post/token?url=${params.postUrl}`, {},{
                 headers: {
                     Authentication: token,
                 }
