@@ -128,34 +128,67 @@ const WriteModal = (props) => {
       });
     }
     else{
-      axios
-          .post(
-              `/api/v1/post`,
-              {
-                title: title,
-                content: contents,
-                thumbnail: thumbUrl,
-                summary: summaryIn,
-                private: !isPublic,
-                url: url,
-                tags: tags,
-                images: imgTag
-              },
-              {
-                headers: {
-                  Authentication: token,
+      if(selectSeries === ""){
+        axios
+            .post(
+                `/api/v1/post`,
+                {
+                  title: title,
+                  content: contents,
+                  thumbnail: thumbUrl,
+                  summary: summaryIn,
+                  private: !isPublic,
+                  url: url,
+                  tags: tags,
+                  images: imgTag
                 },
-              }
-          )
-          .then((response) => {
-            history.push("");
-          })
-          .catch((error) => {
-            toast.error("업로드에 실패했습니다.", {
-              autoClose: 3000,
+                {
+                  headers: {
+                    Authentication: token,
+                  },
+                }
+            )
+            .then((response) => {
+              history.push("");
+            })
+            .catch((error) => {
+              toast.error("업로드에 실패했습니다.", {
+                autoClose: 3000,
+              });
+              console.log(error);
             });
-            console.log(error);
-          });
+      }
+      else{
+        axios
+            .post(
+                `/api/v1/post`,
+                {
+                  title: title,
+                  content: contents,
+                  thumbnail: thumbUrl,
+                  summary: summaryIn,
+                  private: !isPublic,
+                  url: url,
+                  tags: tags,
+                  images: imgTag,
+                  seriesName: selectSeries,
+                },
+                {
+                  headers: {
+                    Authentication: token,
+                  },
+                }
+            )
+            .then((response) => {
+              history.push("");
+            })
+            .catch((error) => {
+              toast.error("업로드에 실패했습니다.", {
+                autoClose: 3000,
+              });
+              console.log(error);
+            });
+      }
     }
 
   };
@@ -167,14 +200,14 @@ const WriteModal = (props) => {
   const handleOpenSeries = () => {
     setOpenSeries(true);
     axios
-        .get(`/api/v1/user/@handy912/series`, {
+        .get(`/api/v1/user/@${userId}/series`, {
           params: {
           },
         })
         .then((response) => {
+          console.log(response);
           setUserSeriesList(response.data.content);
           //setUserSeriesList(["123","123412","er3aw","123","123412","er3aw","123","123412","er3aw","123","123412","er3aw"]);
-          console.log(response);
         });
   };
   const handleInSeries = (e) => {
@@ -281,7 +314,7 @@ const WriteModal = (props) => {
               </div>
               <ul className="series-list-wrapper">
                 {userSeriesList.map((item) => (
-                    <li className={`series-list ${item===selectSeries ? 'on': ''}`} onClick={() => handleSelectSeries(item)}>{item}</li>
+                    <li className={`series-list ${item.name===selectSeries ? 'on': ''}`} onClick={() => handleSelectSeries(item.name)} key={item.id}>{item.name}</li>
                 ))}
               </ul>
 

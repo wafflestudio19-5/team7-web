@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WritePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Context/SessionContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/SessionContext.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +107,7 @@
       <workItem from="1642672330947" duration="4942000" />
       <workItem from="1642694357975" duration="5598000" />
       <workItem from="1642954414945" duration="1379000" />
-      <workItem from="1643105907958" duration="7876000" />
+      <workItem from="1643105907958" duration="10241000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>

@@ -10,10 +10,10 @@ const SessionContext = createContext(initialState);
 export const SessionProvider = ({ children }) => {
   const history = useHistory();
 
-  const [isLogin, setIsLogin] = useState(
+  /*const [isLogin, setIsLogin] = useState(
     localStorage.getItem("token") !== null
-  );
-  //const [isLogin, setIsLogin] = useState(true);
+  );*/
+  const [isLogin, setIsLogin] = useState(true);
 
   const [token, setToken] = useState(
     localStorage.getItem("token") === null
