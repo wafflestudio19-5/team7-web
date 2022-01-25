@@ -195,11 +195,11 @@ const AboutPage = () => {
                     <div className="select-type">
                         <a className="type-btn" href={`/@${params.userId}`} aria-current="page">글 목록</a>
                     </div>
-                    <div className="select-type" href={`/@${params.userId}/series`}>
-                        <a className="type-btn">시리즈</a>
+                    <div className="select-type">
+                        <a className="type-btn" href={`/@${params.userId}/series`}>시리즈</a>
                     </div>
-                    <div className="select-type-on" href={`/@${params.userId}/about`}>
-                        <a className="type-btn-on">소개</a>
+                    <div className="select-type-on">
+                        <a className="type-btn-on" href={`/@${params.userId}/about`}>소개</a>
                     </div>
                 </div>
                 <div className="about">
