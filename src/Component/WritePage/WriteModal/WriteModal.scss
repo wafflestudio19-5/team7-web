@@ -148,6 +148,162 @@
       color: gray;
     }
 
+    .series-title {
+      margin-top: 30px;
+      margin-left: 20px;
+      margin-bottom: 5px;
+    }
+
+    .series-box{
+      display: flex;
+      background: white;
+      box-shadow: rgb(0 0 0 / 5%) 0px 0px 4px 0px;
+      margin-left: 20px;
+      margin-right: 5px;
+      padding: 0.5rem 0.825rem;
+
+      .name-wrapper{
+        min-width: 0px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        background: white;
+        font-size: 1.125rem;
+        line-height: 1;
+        color: rgb(73, 80, 87);
+        flex: 1 1 0%;
+
+        .name{
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+
+      .series-btn-set{
+        outline: none;
+        margin: 0px;
+        padding: 1px 6px;
+        color: white;
+        background: rgb(18, 184, 134);
+        font-size: 1.25rem;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+
+        .series-img-set{
+          stroke: currentcolor;
+          fill: currentcolor;
+          stroke-width: 0;
+          height: 1em;
+          width: 1em;
+        }
+      }
+
+      .series-btn{
+        background: white;
+        height: 2rem;
+        width: 100%;
+        border-radius: 4px;
+
+        border: none;
+        outline: none;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        color: rgb(32, 201, 151);
+        font-size: 1.125rem;
+        font-weight: bold;
+        cursor: pointer;
+
+        .series-img{
+          width: 24px;
+          height: 24px;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .series-box-set {
+      display: flex;
+      height: 48px;
+      background: white;
+      box-shadow: rgb(0 0 0 / 5%) 0px 0px 4px 0px;
+      margin-left: 20px;
+      margin-right: 5px;
+
+      .name-wrapper {
+        min-width: 0px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        background: white;
+        font-size: 1.125rem;
+        line-height: 1;
+        color: rgb(73, 80, 87);
+        flex: 1 1 0%;
+
+        .name {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+
+      .series-btn-set {
+        outline: none;
+        margin: 0px;
+        width: 50px;
+        padding: 1px 6px;
+        color: white;
+        background: rgb(18, 184, 134);
+        font-size: 1.25rem;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+
+        .series-img-set {
+          stroke: currentcolor;
+          fill: currentcolor;
+          stroke-width: 0;
+          height: 1em;
+          width: 1em;
+        }
+      }
+    }
+
+    .series-delete{
+      margin-top: 8px;
+      display: flex;
+      -webkit-box-pack: end;
+      justify-content: flex-end;
+
+      .series-delete-btn{
+        outline: none;
+        border: none;
+        background: none;
+        font-size: 1rem;
+        color: rgb(255, 107, 107);
+        padding: 0px;
+        margin-right: 4px;
+        cursor: pointer;
+      }
+    }
+
     .set-box {
       position: relative;
       width: 380px;
@@ -296,11 +452,11 @@
     }
 
     .btn-box {
-      position: absolute;
+      position: relative;
+      margin-top: 40px;
       display: flex;
       -webkit-box-pack: end;
       justify-content: flex-end;
-      bottom: 30px;
       width: 380px;
 
       .btn-cancle {
@@ -338,6 +494,121 @@
         padding: 0px 1.125rem;
         height: 2.5rem;
         font-size: 1.125rem;
+      }
+
+      .btn-submit.none {
+        cursor: not-allowed;
+        background: rgb(222, 226, 230);
+        color: rgb(173, 181, 189);
+        margin-left: 30px;
+        display: inline-flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        font-weight: bold;
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        padding: 0px 1.125rem;
+        height: 2.5rem;
+        font-size: 1.125rem;
+      }
+    }
+
+    .series-contents{
+      display: flex;
+      margin-left: 20px;
+      width: 360px;
+      flex: 1 1 0%;
+      flex-direction: column;
+      border-radius: 2px;
+      box-shadow: rgb(0 0 0 / 3%) 0px 0px 4px 0px;
+      overflow: hidden;
+
+
+      .series-input-wrapper-out{
+        box-sizing: inherit;
+        display: block;
+
+        .series-input-wrapper-in{
+          background: rgb(233, 236, 239);
+          padding: 1rem;
+          height: 2rem;
+          transition: all 0.125s ease-in 0s;
+          box-sizing: inherit;
+          display: block;
+          margin-top: 0rem;
+        }
+
+        .series-btn-wrapper-in{
+          display: flex;
+          -webkit-box-pack: end;
+          justify-content: flex-end;
+          background: rgb(233, 236, 239);
+          padding: 1rem;
+          transition: all 0.125s ease-in 0s;
+          box-sizing: inherit;
+
+          .series-input{
+            height: 30px;
+            width: 250px;
+            border-radius: 2px;
+            border: none;
+            outline: none;
+            box-shadow: rgb(0 0 0 / 3%) 0px 0px 4px 0px;
+            color: rgb(52, 58, 64);
+            cursor: text;
+          }
+
+          .series-btn-add{
+            display: inline-flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            background: rgb(18, 184, 134);
+            color: white;
+            border-radius: 4px;
+            margin-left: 20px;
+            padding: 0px 0.25rem;
+            height: 2rem;
+            font-size: 0.825rem;
+            width: 55px;
+          }
+        }
+
+
+      }
+    }
+
+    .series-list-wrapper{
+      height: 275px;
+      margin: 0px;
+      padding-left: 0px;
+      overflow-y: auto;
+      list-style: none;
+      background: white;
+      display: block;
+
+      .series-list{
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+        line-height: 1;
+        color: rgb(73, 80, 87);
+        border-bottom: 1px solid rgb(233, 236, 239);
+      }
+      .series-list.on{
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+        line-height: 1;
+        border-bottom: 1px solid rgb(233, 236, 239);
+        background: rgb(18, 184, 134);
+        color: white;
       }
     }
 

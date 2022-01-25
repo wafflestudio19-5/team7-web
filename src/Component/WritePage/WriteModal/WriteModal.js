@@ -3,7 +3,9 @@ import { useHistory, useParams, useLocation } from "react-router-dom";
 import Modal from "react-modal";
 import "./WriteModal.scss";
 import { BsImage, BsFileEarmarkLock } from "react-icons/bs";
+import { BiListPlus } from "react-icons/bi";
 import { GoGlobe } from "react-icons/go";
+import { AiFillSetting } from "react-icons/ai"
 import axios from "axios";
 import { useSessionContext } from "../../../Context/SessionContext";
 import { toast } from "react-toastify";
@@ -21,6 +23,12 @@ const WriteModal = (props) => {
   const [thumbImgBase64, setThumbImgBase64] = useState(""); // 파일 base64
   const [thumbImgFile, setThumbImgFile] = useState(null); //파일
   const [thumbUrl, setThumbUrl] = useState("");
+
+  const [openSeries, setOpenSeries] = useState(false);
+  const [userSeriesList, setUserSeriesList] = useState([]);
+  const [inSeries, setInSeries] = useState("");
+
+  const [selectSeries, setSelectSeries] = useState("");
 
   const handleThumbnailFile = (event) => {
     const reader = new FileReader();
@@ -91,6 +99,10 @@ const WriteModal = (props) => {
   const handleCancle = () => {
     setIsOpen(false);
   };
+  const handleSeriesCancle = () => {
+    setOpenSeries(false);
+    setSelectSeries("");
+  }
   const handleSubmit = () => {
     const urlPattern = /^[a-zA-Zㄱ-힣0-9-_,][a-zA-Zㄱ-힣0-9-_, ]*$/;
 
@@ -152,6 +164,66 @@ const WriteModal = (props) => {
     logoImgInput.current.click();
   };
 
+  const handleOpenSeries = () => {
+    setOpenSeries(true);
+    axios
+        .get(`/api/v1/user/@handy912/series`, {
+          params: {
+          },
+        })
+        .then((response) => {
+          setUserSeriesList(response.data.content);
+          //setUserSeriesList(["123","123412","er3aw","123","123412","er3aw","123","123412","er3aw","123","123412","er3aw"]);
+          console.log(response);
+        });
+  };
+  const handleInSeries = (e) => {
+    setInSeries(e.target.value);
+  };
+  const handleAddSeries = () => {
+    const urlPattern = /^[a-zA-Zㄱ-힣0-9-_,][a-zA-Zㄱ-힣0-9-_, ]*$/;
+
+    if(!inSeries.match(urlPattern) || inSeries.length >= 100 || inSeries === ""){
+      toast.error("올바르지 않은 시리즈 이름입니다.", {
+        autoClose: 3000,
+      });
+      setUrl("");
+      return;
+    }
+
+    axios
+        .post(
+            `/api/v1/user/series`,
+            {
+              name: inSeries
+            },
+            {
+              headers: {
+                Authentication: token,
+              },
+            }
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          setInSeries("");
+          toast.error(error.response.detail, {
+            autoClose: 3000,
+          });
+          console.log(error.response);
+        });
+  }
+  const handleSelectSeries = (item) => {
+    setSelectSeries(item);
+  }
+  const handleConfirmSeries = () => {
+    setOpenSeries(false);
+  }
+  const handleDeleteSelect = () => {
+    setSelectSeries("");
+  }
+
   Modal.setAppElement("#root");
 
   return (
@@ -196,39 +268,95 @@ const WriteModal = (props) => {
         </div>
       </div>
       <div className="line-center"></div>
-      <div className="right-box">
-        <h2 className="open-title">공개설정</h2>
-        <div className="set-box">
-          <button
-            className={`public-btn ${isPublic ? "" : "not"}`}
-            onClick={handlePublic}
-          >
-            <GoGlobe className="public-icon" />
-            전체 공개
-          </button>
-          <button
-            className={`private-btn ${isPublic ? "not" : ""}`}
-            onClick={handlePrivate}
-          >
-            <BsFileEarmarkLock className="private-icon" />
-            비공개
-          </button>
-        </div>
-        <h2 className="url-title">URL 설정</h2>
-        <h5 className="url-check">한글 영어 공백만 사용한 100자 이내의 문자열만 가능합니다.</h5>
-        <div className="url-box">
-          <div className="username-box">/@{userId}/</div>
-          <input className="url-input" value={url} onChange={handleUrl} />
-        </div>
-        <div className="btn-box">
-          <button className="btn-cancle" onClick={handleCancle}>
-            취소
-          </button>
-          <button className="btn-submit" onClick={handleSubmit}>
-            출간하기
-          </button>
-        </div>
-      </div>
+      {openSeries ?
+          <div className="right-box">
+            <h2 className="open-title">시리즈 설정</h2>
+
+            <div className="series-contents">
+              <div className="series-input-wrapper-out">
+                <div className="series-btn-wrapper-in">
+                  <input className="series-input" placeholder="새로운 시리즈 이름을 입력하세요" value={inSeries} onChange={handleInSeries}/>
+                  <button className="series-btn-add" onClick={handleAddSeries}>추가</button>
+                </div>
+              </div>
+              <ul className="series-list-wrapper">
+                {userSeriesList.map((item) => (
+                    <li className={`series-list ${item===selectSeries ? 'on': ''}`} onClick={() => handleSelectSeries(item)}>{item}</li>
+                ))}
+              </ul>
+
+            </div>
+
+            <div className="btn-box">
+              <button className="btn-cancle" onClick={handleSeriesCancle}>
+                취소
+              </button>
+              <button className={`btn-submit ${selectSeries === "" ? 'none' : ''}`} onClick={handleConfirmSeries} disabled={selectSeries === ""}>
+                선택하기
+              </button>
+            </div>
+          </div>
+          :
+          <div className="right-box">
+            <h2 className="open-title">공개설정</h2>
+            <div className="set-box">
+              <button
+                  className={`public-btn ${isPublic ? "" : "not"}`}
+                  onClick={handlePublic}
+              >
+                <GoGlobe className="public-icon" />
+                전체 공개
+              </button>
+              <button
+                  className={`private-btn ${isPublic ? "not" : ""}`}
+                  onClick={handlePrivate}
+              >
+                <BsFileEarmarkLock className="private-icon" />
+                비공개
+              </button>
+            </div>
+            <h2 className="url-title">URL 설정</h2>
+            <h5 className="url-check">한글 영어 공백만 사용한 100자 이내의 문자열만 가능합니다.</h5>
+            <div className="url-box">
+              <div className="username-box">/@{userId}/</div>
+              <input className="url-input" value={url} onChange={handleUrl} />
+            </div>
+            <h2 className="series-title">시리즈 설정</h2>
+            {selectSeries === "" ?
+                <div className="series-box">
+                  <button className="series-btn" onClick={handleOpenSeries}>
+                    <BiListPlus className="series-img"/>
+                    시리즈에 추가하기
+                  </button>
+                </div>
+                :
+                <div className="series-box-set">
+                  <div className="name-wrapper">
+                    <div className="name">{selectSeries}</div>
+                  </div>
+                  <button className="series-btn-set" onClick={handleOpenSeries}>
+                    <AiFillSetting className="series-img-set"/>
+                  </button>
+                </div>
+            }
+            {selectSeries === "" ?
+                null
+                :
+                <div className="series-delete">
+                  <button className="series-delete-btn" onClick={handleDeleteSelect}>시리즈에서 제거</button>
+                </div>
+            }
+            <div className="btn-box">
+              <button className="btn-cancle" onClick={handleCancle}>
+                취소
+              </button>
+              <button className="btn-submit" onClick={handleSubmit}>
+                출간하기
+              </button>
+            </div>
+          </div>
+      }
+
     </Modal>
   );
 };
