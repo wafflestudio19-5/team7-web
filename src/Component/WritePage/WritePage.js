@@ -52,6 +52,18 @@ const WritePage = () => {
     }
 
     const handleTagInput = (e) => {
+        const urlPattern = /^[a-zA-Zㄱ-힣0-9-_,][a-zA-Zㄱ-힣0-9-_, ]*$/;
+
+        if(e.target.value === ""){
+
+        }
+        else if(!e.target.value.match(urlPattern)){
+            toast.error("사용 불가능한 태그입니다.", {
+                autoClose: 3000,
+            });
+            return;
+        }
+
         if(e.target.value.substr(e.target.value.length - 1, 1) === ','){
             const tagForm = {
                 id : tagId,
