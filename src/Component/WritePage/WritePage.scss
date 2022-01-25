@@ -47,10 +47,12 @@
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
-    height: 2rem;
+    height: auto;
     border-radius: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     background: rgb(241, 243, 245);
     color: rgb(12, 166, 120);
     margin-right: 0.75rem;
