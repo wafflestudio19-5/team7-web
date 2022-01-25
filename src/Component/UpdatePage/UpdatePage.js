@@ -56,7 +56,7 @@ const dataFormat = {
     },
 };
 
-const UpdatePage = () => {
+const UpdatePage = ({location}) => {
 
     const { handleLogout, isLogin, userId, token } = useSessionContext();
 
@@ -69,7 +69,7 @@ const UpdatePage = () => {
     const [postResponse, setPostResponse] = useState(dataFormat);
 
     const [title, setTitle] = useState("");
-    const [contents, setContents] = useState("");
+    const [contents, setContents] = useState(location.postContent);
     const [isOpen, setIsOpen] = useState(false);
     const [tag, setTag] = useState("");
     const [tagList, setTagList] = useState([]);

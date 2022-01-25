@@ -173,7 +173,7 @@ const PostPage = () => {
             .get(`api/v1/post/${response.data.id}/like/current`, {
               headers: {
                 Authentication: token,
-              }
+              },
             })
             .then((response) => {
               if (response.data === true) {
@@ -194,10 +194,12 @@ const PostPage = () => {
       });
   }, [updateComment]);
 
-
   const handlePostModify = () => {
-    history.push(`/update/@${params.userId}/${params.postUrl}`);
-  }
+    history.push({
+      pathname: `/update/@${params.userId}/${params.postUrl}`,
+      props: { postContent: postResponse.content },
+    });
+  };
 
   const handlePostDelete = () => {
     setIsPostDeleteOpen(true);
@@ -255,7 +257,7 @@ const PostPage = () => {
         {
           headers: {
             Authentication: token,
-          }
+          },
         }
       )
       .then((response) => {
