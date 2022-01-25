@@ -144,7 +144,7 @@
     }
 
 
-    @media (min-width: 769px){
+    @media (min-width: 1135px){
       .userpost-list{
         position: absolute;
         top: 500px;
@@ -165,10 +165,9 @@
 
     }
 
-    @media (max-width: 768px){
+    @media (max-width: 1136px){
       .userpost-list{
-        position: absolute;
-        top: 500px;
+        position: relative;
         left: 3%;
         width: 94%;
         height: auto;
@@ -221,61 +220,180 @@
       }
     }
 
-    .tag-menubar{
-      position: absolute;
-      width: 8rem;
-      left: 15px;
-      box-sizing: inherit;
+    @media (max-width: 1135px) {
+      .tag-menubar{
+        position: relative;
+        width: 100%;
+        display: block;
 
-      .tag-wrapper{
-        box-sizing: inherit;
-
-        .tag-title{
-          font-size: 1rem;
-          line-height: 1.5;
-          padding-bottom: 0.5rem;
-          border-bottom: 1px solid rgb(173, 181, 189);
-          margin-bottom: 1rem;
-          color: rgb(73, 80, 87);
-          font-weight: bold;
+        .tag-wrapper{
           box-sizing: inherit;
-        }
 
-        .tag-contents{
-          padding-left: 0px;
-          box-sizing: inherit;
-          list-style-type: disc;
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          margin-inline-start: 0px;
-          margin-inline-end: 0px;
+          .tag-title{
+            display: none;
+          }
 
-          .tag-menu-list{
-            color: rgb(52, 58, 64);
-            font-size: 0.875rem;
-            line-height: 1.5;
-            display: list-item;
-            text-align: -webkit-match-parent;
+          .tag-contents{
+            display: flex;
+            overflow-x: auto;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            margin-bottom: 0.5rem;
             list-style: none;
 
-            .tag-href{
-              font-size: 0.875rem;
-              color: inherit;
+            .tag-menu-list{
+              flex-shrink: 0;
+              height: 1.5rem;
+              font-size: 0.75rem;
+              border-radius: 0.75rem;
+              padding-left: 0.75rem;
+              padding-right: 0.75rem;
+              background: rgb(241, 243, 245);
+              color: rgb(52, 58, 64);
+              display: flex;
+              -webkit-box-align: center;
+              align-items: center;
               line-height: 1.5;
-              list-style: none;
-              cursor: pointer;
               text-decoration: none;
+              margin-left: 0.5rem;
+
+              .tag-href{
+                font-size: 0.875rem;
+                color: inherit;
+                line-height: 1.5;
+                list-style: none;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .tag-number{
+                margin-left: 0.2rem;
+                font-size: 0.875rem;
+                color: rgb(134, 142, 150);
+                font-weight: normal;
+                list-style: none;
+                cursor: pointer;
+              }
             }
-            .tag-number{
-              margin-left: 0.2rem;
-              color: rgb(134, 142, 150);
-              font-weight: normal;
-              list-style: none;
+
+            .tag-menu-list.on{
+              flex-shrink: 0;
+              height: 1.5rem;
+              font-size: 0.75rem;
+              border-radius: 0.75rem;
+              padding-left: 0.75rem;
+              padding-right: 0.75rem;
+              display: flex;
+              -webkit-box-align: center;
+              align-items: center;
+              line-height: 1.5;
+              background: rgb(18, 184, 134);
+              color: white;
+              text-decoration: none;
+              margin-left: 0.5rem;
+
+              .tag-href{
+                font-size: 0.875rem;
+                color: inherit;
+                line-height: 1.5;
+                list-style: none;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .tag-number{
+                color: white;
+                opacity: 0.8;
+                list-style: none;
+                line-height: 1.5;
+                cursor: pointer;
+              }
             }
           }
         }
       }
     }
+    @media (min-width: 1136px) {
+      .tag-menubar{
+        position: absolute;
+        width: 129px;
+        left: 15px;
+        box-sizing: inherit;
+
+        .tag-wrapper{
+          box-sizing: inherit;
+
+          .tag-title{
+            font-size: 1rem;
+            line-height: 1.5;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgb(173, 181, 189);
+            margin-bottom: 1rem;
+            color: rgb(73, 80, 87);
+            font-weight: bold;
+            box-sizing: inherit;
+          }
+
+          .tag-contents{
+            padding-left: 0px;
+            box-sizing: inherit;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+
+            .tag-menu-list{
+              color: rgb(52, 58, 64);
+              font-size: 0.875rem;
+              line-height: 1.5;
+              display: list-item;
+              text-align: -webkit-match-parent;
+              list-style: none;
+
+              .tag-href{
+                font-size: 0.875rem;
+                color: inherit;
+                line-height: 1.5;
+                list-style: none;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .tag-number{
+                margin-left: 0.2rem;
+                color: rgb(134, 142, 150);
+                font-weight: normal;
+                list-style: none;
+              }
+            }
+
+            .tag-menu-list.on{
+              color: rgb(32, 201, 151);
+              font-size: 0.875rem;
+              font-weight: bold;
+              line-height: 1.5;
+              display: list-item;
+              text-align: -webkit-match-parent;
+              list-style: none;
+
+              .tag-href{
+                font-size: 0.875rem;
+                color: inherit;
+                line-height: 1.5;
+                list-style: none;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .tag-number{
+                margin-left: 0.2rem;
+                color: rgb(134, 142, 150);
+                font-weight: normal;
+                list-style: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
 
   }
 

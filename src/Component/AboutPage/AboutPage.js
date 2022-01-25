@@ -37,7 +37,7 @@ const AboutPage = () => {
     const [longValue, setLongValue] = useState("");
 
     const setUser = (currentId, long) => {
-        if(currentId === id){
+        if(Number(currentId) === Number(id)){
             setIsMe(true);
         }
         else{

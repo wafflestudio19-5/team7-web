@@ -238,6 +238,13 @@ const ProfilePage = () => {
     }
   };
 
+  const handleTotalTag = () => {
+    window.location.href=`/@${params.userId}`;
+  }
+  const handleTag = (url) => {
+    window.location.href=`/@${params.userId}?tag=${url}`;
+  }
+
   return (
     <div className="profilepage" ref={postPageRef} onScroll={handleScroll}>
       <Header pageTitle={`${params.userId}.log`} />
@@ -317,21 +324,16 @@ const ProfilePage = () => {
             />
           </div>
         </div>
-        <ul className="userpost-list">
-          {userPost.map((item) => (
-            <UserPost item={item} userId={params.userId} key={item.id} />
-          ))}
-        </ul>
         <div className="tag-menubar">
           <div className="tag-wrapper">
             <div className="tag-title">태그 목록</div>
             <ul className="tag-contents">
-              <div className="tag-menu-list">
+              <li className={`tag-menu-list ${ searchTag === "" ? 'on' : ''}`} onClick={handleTotalTag}>
                 <a className="tag-href" href={`/@${params.userId}`}>전체 보기</a>
                 <span className="tag-number">({totalTag})</span>
-              </div>
+              </li>
               {tagMenuList.map((item) => (
-                  <li className="tag-menu-list" item={item} key={item.id}>
+                  <li className={`tag-menu-list ${item.url === searchTag ? 'on' : ''}`} item={item} key={item.id} onClick={() => handleTag(item.url)}>
                     <a className="tag-href" href={`/@${params.userId}?tag=${item.url}`}>{item.name}</a>
                     <span className="tag-number"> ({item.count})</span>
                   </li>
@@ -339,6 +341,11 @@ const ProfilePage = () => {
             </ul>
           </div>
         </div>
+        <ul className="userpost-list">
+          {userPost.map((item) => (
+            <UserPost item={item} userId={params.userId} key={item.id} />
+          ))}
+        </ul>
       </div>
     </div>
   );
