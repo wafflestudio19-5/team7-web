@@ -15,7 +15,7 @@ const UpdateModal = (props) => {
     const [summaryIn, setSummaryIn] = useState("");
     const [summaryOver, setSummaryOver] = useState(false);
     const [isPublic, setIsPublic] = useState(true);
-    const [url, setUrl] = useState(`${title}`);
+    const [url, setUrl] = useState(title);
 
     const [thumbImgBase64, setThumbImgBase64] = useState(""); // 파일 base64
     const [thumbImgFile, setThumbImgFile] = useState(null); //파일
