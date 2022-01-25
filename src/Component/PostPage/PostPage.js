@@ -196,20 +196,7 @@ const PostPage = () => {
 
 
   const handlePostModify = () => {
-    axios
-        .post(`api/v1/post/token?url=${postResponse.url}`, {},{
-          headers: {
-            Authentication: token,
-          }
-        })
-        .then((response) => {
-          history.push({pathname:`/update/${response.data.id}`, props:{postResponse}});
-        })
-        .catch((error) => {
-          console.log(error);
-          console.log(error.errorCode);
-          // history.push("/error"); // 백엔드 404 response 필요!!
-        });
+    history.push(`/update/@${params.userId}/${params.postUrl}`);
   }
 
   const handlePostDelete = () => {

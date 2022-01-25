@@ -27,6 +27,35 @@ import {toast} from "react-toastify";
 import {useSessionContext} from "../../Context/SessionContext";
 import PostItem from "../MainPage/PostItem/PostItem";
 
+
+const dataFormat = {
+    comments: [],
+    content: "",
+    createdAt: "",
+    id: 0,
+    likes: 0,
+    nextPost: {},
+    prevPost: {},
+    seriesPosts: null,
+    tags: [],
+    thumbnail: "",
+    title: "",
+    url: "",
+    user: {
+        facebookId: "",
+        githubId: "",
+        homepage: "",
+        id: 0,
+        image: "",
+        name: "",
+        pageTitle: "",
+        publicEmail: "",
+        shortIntro: "",
+        twitterId: "",
+        userId: "",
+    },
+};
+
 const UpdatePage = ({location}) => {
 
     const { handleLogout, isLogin, userId, token } = useSessionContext();
@@ -36,13 +65,17 @@ const UpdatePage = ({location}) => {
     const history = useHistory();
     const params = useParams();
 
-    const [title, setTitle] = useState(location.props.postResponse.title);
-    const [contents, setContents] = useState(location.props.postResponse.content);
+
+    const [postResponse, setPostResponse] = useState(dataFormat);
+
+    const [title, setTitle] = useState("");
+    const [contents, setContents] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [tag, setTag] = useState("");
-    const [tagList, setTagList] = useState(location.props.postResponse.tags);
-    const [tagId, setTagId] = useState(location.props.postResponse.tags.length);
+    const [tagList, setTagList] = useState([]);
+    const [tagId, setTagId] = useState(0);
     const [imgTag, setImgTag] = useState([]);
+    const [urlId, setUrlId] = useState("");
 
     const onChangeEditorTextHandler = () => {
         setContents(editorRef.current.getInstance().getMarkdown());
@@ -56,10 +89,10 @@ const UpdatePage = ({location}) => {
         if(e.target.value.substr(e.target.value.length - 1, 1) === ','){
             const tagForm = {
                 id : tagId,
-                tag : e.target.value.substr(0, e.target.value.length - 1)
+                name : e.target.value.substr(0, e.target.value.length - 1)
             };
 
-            if(tagList.some(tag => tag.tag === tagForm.tag)){
+            if(tagList.some(tag => tag.name === tagForm.name)){
                 setTag("");
             }
             else{
@@ -86,8 +119,43 @@ const UpdatePage = ({location}) => {
 
     useEffect(() => {
         console.log("Update Page");
-        console.log(location.props.postResponse);
 
+        axios
+            .get(`api/v1/post/@${params.userId}/${params.postUrl}`, {
+                headers: {
+                    Authentication: token,
+                }
+            })
+            .then((response) => {
+                console.log(response);
+                setPostResponse(response.data);
+                setTitle(response.data.title);
+                setContents(response.data.content);
+                setTagList(response.data.tags);
+                setTagId(response.data.tags.length);
+            })
+            .catch((error) => {
+                console.log(error);
+                history.push("/error"); // 백엔드 404 response 필요!!
+            });
+
+        axios
+            .post(`api/v1/post/token?url=${postResponse.url}`, {},{
+                headers: {
+                    Authentication: token,
+                }
+            })
+            .then((response) => {
+                setUrlId(response.data.id);
+            })
+            .catch((error) => {
+                console.log(error);
+                history.push("/error"); // 백엔드 404 response 필요!!
+            });
+    },[])
+
+
+    useEffect(() => {
         if (editorRef.current) {
             editorRef.current.getInstance().removeHook("addImageBlobHook");
             editorRef.current
@@ -139,7 +207,7 @@ const UpdatePage = ({location}) => {
                     />
                     <div className="tag-box">
                         {tagList.map((item) => (
-                            <div className="tag-style" key={item.id} onClick={() => handleDeleteTag(item)}>{item.tag}</div>
+                            <div className="tag-style" key={item.id} onClick={() => handleDeleteTag(item)}>{item.name}</div>
                         ))}
                         <input placeholder="태그를 입력하세요." tabIndex="2" className="tag-input" value={tag} onChange={handleTagInput}/>
                     </div>
@@ -151,6 +219,7 @@ const UpdatePage = ({location}) => {
                         placeholder="내용을 입력하세요."
                         ref={editorRef}
                         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
+                        initialValue={contents}
                         onChange={onChangeEditorTextHandler}
                     />
                     <div className="btn-box">
@@ -163,7 +232,7 @@ const UpdatePage = ({location}) => {
                             <AiOutlineEnter className="submit-icon"/>
                         </button>
                     </div>
-                    <UpdateModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents} tagList={tagList} imgTag={imgTag} urlId={params.urlId}/>
+                    <UpdateModal isOpen={isOpen} setIsOpen={setIsOpen} title={title} contents={contents} tagList={tagList} imgTag={imgTag} urlId={urlId}/>
                 </div>
                 :
                 <ErrorPageWrite/>
