@@ -128,10 +128,10 @@ const UpdatePage = ({location}) => {
             })
             .then((response) => {
                 console.log(response);
+                console.log(location.postContent);
                 setPostResponse(response.data);
                 setTitle(response.data.title);
                 setContents(response.data.content);
-                editorRef.current.getInstance.setMarkdown(response.data.content);
                 setTagList(response.data.tags);
                 setTagId(response.data.tags.length);
             })
@@ -219,7 +219,7 @@ const UpdatePage = ({location}) => {
                         initialEditType="markdown"
                         ref={editorRef}
                         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
-                        initialValue={contents}
+                        initialValue={location.postContent}
                         onChange={onChangeEditorTextHandler}
                     />
                     <div className="btn-box">
