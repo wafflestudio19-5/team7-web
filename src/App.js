@@ -15,6 +15,7 @@ import TagPage from "./Component/TagPage/TagPage";
 import TagTotalPage from "./Component/TagTotalPage/TagTotalPage";
 import UpdatePage from "./Component/UpdatePage/UpdatePage";
 import AboutPage from "./Component/AboutPage/AboutPage";
+import SeriesPage from "./Component/SeriesPage/SeriesPage";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/error" component={ErrorPage} exact={true}/>
                 <Route path="/@:userId" component={ProfilePage} exact={true}/>
                 <Route path="/@:userId/about" component={AboutPage} exact={true}/>
+                <Route path="/@:userId/series" component={SeriesPage} exact={true}/>
                 <Route path="/post/@:userId/:postUrl" component={PostPage} exact={true}/>
                 <Route path="/register" component={RegisterPage} exact={true}/>
                 <Route path="/email-login" component={LoginPage} exact={true}/>
