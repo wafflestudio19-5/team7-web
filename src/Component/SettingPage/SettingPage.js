@@ -322,7 +322,7 @@ const SettingPage = () => {
             <ToastContainer />
             {isLogin ?
                 <div className="setting-page">
-                    <Header />
+                    <Header pageTitle={"Waflog"} />
                     <div className="main">
                         <div className="info">
                             <div className="thumbnail-area">

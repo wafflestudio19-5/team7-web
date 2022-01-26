@@ -128,6 +128,7 @@ const UpdatePage = ({location}) => {
             })
             .then((response) => {
                 console.log(response);
+                console.log(location.postContent);
                 setPostResponse(response.data);
                 setTitle(response.data.title);
                 setContents(response.data.content);
