@@ -128,6 +128,7 @@ const WriteModal = (props) => {
       });
     }
     else{
+      console.log(selectSeries);
       if(selectSeries === ""){
         axios
             .post(
@@ -155,7 +156,10 @@ const WriteModal = (props) => {
               toast.error("업로드에 실패했습니다.", {
                 autoClose: 3000,
               });
-              console.log(error);
+              toast.error(error.response.data.detail, {
+                autoClose: 3000,
+              });
+              console.log(error.response);
             });
       }
       else{
@@ -184,6 +188,9 @@ const WriteModal = (props) => {
             })
             .catch((error) => {
               toast.error("업로드에 실패했습니다.", {
+                autoClose: 3000,
+              });
+              toast.error(error.response.data.detail, {
                 autoClose: 3000,
               });
               console.log(error.response);
@@ -254,7 +261,7 @@ const WriteModal = (props) => {
         .catch((error) => {
           setInSeries("");
           setSelectSeries("");
-          toast.error(error.response.detail, {
+          toast.error(error.response.data.detail, {
             autoClose: 3000,
           });
           console.log(error.response);
