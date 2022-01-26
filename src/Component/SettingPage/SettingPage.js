@@ -264,9 +264,9 @@ const SettingPage = () => {
             })
             .then((response) => {
                 console.log(response.data);
-                toast.success("저장중입니다.", {
-                    autoClose: 3000,
-                });
+                // toast.success("저장중입니다.", {
+                //     autoClose: 3000,
+                // });
 
                 axios
                     .get(`/api/v1/user/setting`, {
