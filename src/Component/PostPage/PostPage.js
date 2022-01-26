@@ -38,6 +38,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 
 import MarkdownPreview from "@uiw/react-markdown-preview";
+// import MDEditor from '@uiw/react-md-editor';
 
 const dataFormat = {
   comments: [],
@@ -418,6 +419,12 @@ const PostPage = () => {
               className="post-content"
               source={postResponse.content}
             />
+
+            {/*<MDEditor*/}
+            {/*    value={postResponse.content}*/}
+            {/*    // onChange={setPostContent}*/}
+            {/*/>*/}
+
           </div>
 
           <div className="post-user-section">
