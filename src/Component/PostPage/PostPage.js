@@ -1,6 +1,6 @@
 import "./PostPage.scss";
 import { useParams, useHistory } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, createRef } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import ReactMarkdown from "react-markdown";
@@ -27,6 +27,7 @@ import UpdatePage from "../UpdatePage/UpdatePage";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 
+import { Editor, Viewer } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
@@ -34,6 +35,9 @@ import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import ReplyItem from "./CommentsItem/ReplyItem/ReplyItem";
 import remarkGfm from "remark-gfm";
 import { BiLoaderAlt } from "react-icons/bi";
+import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
+
+import MarkdownPreview from "@uiw/react-markdown-preview";
 
 const dataFormat = {
   comments: [],
@@ -138,6 +142,7 @@ const PostPage = () => {
   const { token, isLogin, id } = useSessionContext();
 
   const [postResponse, setPostResponse] = useState(dataFormat);
+  const [postContent, setPostContent] = useState("");
   const [postId, setPostId] = useState();
   const [commentsCount, setCommentsCount] = useState(0);
   const [commentsList, setCommentsList] = useState(commentsData);
@@ -151,6 +156,8 @@ const PostPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const currentUrl = window.location.href;
+
+  const viewerRef = createRef();
 
   useEffect(() => {
     // console.log("POSTPAGE REFRESH");
@@ -372,26 +379,45 @@ const PostPage = () => {
               <div />
             )}
 
-            <ReactMarkdown
+            {/*<ReactMarkdown*/}
+            {/*  className="post-content"*/}
+            {/*  remarkPlugins={[*/}
+            {/*    remarkGfm,*/}
+            {/*    [codeSyntaxHighlight, { highlighter: Prism }],*/}
+            {/*  ]}*/}
+            {/*  components={{*/}
+            {/*    span({ node, children, ...props }){*/}
+            {/*      return(<div><span {...props}>{children}</span></div>);*/}
+            {/*    },*/}
+
+            {/*    // 인용문*/}
+            {/*    blockquote({ node, children, ...props }) {*/}
+            {/*      return (*/}
+            {/*          <div className={"post-blockquote"}*/}
+            {/*              {...props}*/}
+            {/*          >*/}
+            {/*            {children}*/}
+            {/*          </div>*/}
+            {/*      );*/}
+            {/*    },*/}
+            {/*    img({ node, ...props }) {*/}
+            {/*      return (*/}
+            {/*        <img*/}
+            {/*          style={{ maxWidth: "100%" }}*/}
+            {/*          src={props.src.replace("../../../../public/", "/")}*/}
+            {/*          alt="MarkdownRenderer__Image"*/}
+            {/*        />*/}
+            {/*      );*/}
+            {/*    },*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  {postResponse.content}*/}
+            {/*</ReactMarkdown>*/}
+
+            <MarkdownPreview
               className="post-content"
-              remarkPlugins={[
-                remarkGfm,
-                [codeSyntaxHighlight, { highlighter: Prism }],
-              ]}
-              components={{
-                img({ node, ...props }) {
-                  return (
-                    <img
-                      style={{ maxWidth: "100%" }}
-                      src={props.src.replace("../../../../public/", "/")}
-                      alt="MarkdownRenderer__Image"
-                    />
-                  );
-                },
-              }}
-            >
-              {postResponse.content}
-            </ReactMarkdown>
+              source={postResponse.content}
+            />
           </div>
 
           <div className="post-user-section">

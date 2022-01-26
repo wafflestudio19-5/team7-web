@@ -5,6 +5,27 @@
   height: 100vh;
 }
 
+
+
+.post-content-viewer{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 200px;
+  height: 200px;
+  border: solid;
+  z-index: 20;
+}
+
+.post-blockquote {
+  background: #f6f6f6;
+  padding: 1px 15px;
+  border-style: solid;
+  border-width: 0px 0px 0px 4px;
+  border-color: #a6a5a5;
+  color: #838383;
+}
+
 @media (min-width: 769px) {
   .post-main-section {
     width: 768px;
@@ -13,6 +34,11 @@
     margin-right: auto;
     margin-top: 10rem;
     //border: solid;
+  }
+
+  .post-content {
+    width: 100%;
+    margin-top: 50px;
   }
 }
 
@@ -23,6 +49,11 @@
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 10rem;
+  }
+
+  .post-content {
+    width: 90%;
+    margin-top: 50px;
   }
 }
 
@@ -89,9 +120,7 @@
 .post-datetime {
 }
 
-.post-content {
-  margin-top: 50px;
-}
+
 
 @media (min-width: 1024px) {
   .post-like-section {

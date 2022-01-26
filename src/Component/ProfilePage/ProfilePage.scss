@@ -85,6 +85,12 @@
             cursor: pointer;
             width: 2rem;
             height: 2rem;
+            margin-right: 0.2rem;
+          }
+
+          .user-social-icon:hover{
+            color: black;
+            transition: 0.2s;
           }
         }
       }
