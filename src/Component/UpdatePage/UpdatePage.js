@@ -131,6 +131,7 @@ const UpdatePage = ({location}) => {
                 setPostResponse(response.data);
                 setTitle(response.data.title);
                 setContents(response.data.content);
+                editorRef.current.getInstance.setMarkdown(response.data.content);
                 setTagList(response.data.tags);
                 setTagId(response.data.tags.length);
             })
