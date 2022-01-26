@@ -186,7 +186,7 @@ const WriteModal = (props) => {
               toast.error("업로드에 실패했습니다.", {
                 autoClose: 3000,
               });
-              console.log(error);
+              console.log(error.response);
             });
       }
     }
@@ -205,9 +205,8 @@ const WriteModal = (props) => {
           },
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
           setUserSeriesList(response.data.content);
-          //setUserSeriesList(["123","123412","er3aw","123","123412","er3aw","123","123412","er3aw","123","123412","er3aw"]);
         });
   };
   const handleInSeries = (e) => {
@@ -220,7 +219,7 @@ const WriteModal = (props) => {
       toast.error("올바르지 않은 시리즈 이름입니다.", {
         autoClose: 3000,
       });
-      setUrl("");
+      setInSeries("");
       return;
     }
 
@@ -237,12 +236,25 @@ const WriteModal = (props) => {
             }
         )
         .then((response) => {
-          console.log(response);
+          axios
+              .get(`/api/v1/user/@${userId}/series`, {
+                params: {
+                },
+              })
+              .then((response) => {
+                console.log(response.data);
+                setUserSeriesList(response.data.content);
+              });
+          setSelectSeries(inSeries);
+          setInSeries("");
+          toast.success("시리즈 추가에 성공했습니다.", {
+            autoClose: 2000,
+          });
         })
         .catch((error) => {
           setInSeries("");
           setSelectSeries("");
-          toast.error(`${error.response.detail}`, {
+          toast.error(error.response.detail, {
             autoClose: 3000,
           });
           console.log(error.response);

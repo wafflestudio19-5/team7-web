@@ -28,12 +28,14 @@ const UserDeleteModal = ({ isDeleteOpen, setIsDeleteOpen } ) => {
                 })
             .then((response) => {
                 console.log(response);
+                history.push("");
                 handleLogout();
                 toast.success("탈퇴를 성공하였습니다.");
                 setIsDeleteOpen(false);
                 history.push("/");
             })
             .catch((error) => {
+                console.log(error.response);
                  toast.error("탈퇴 오류");
             });
     }
