@@ -241,7 +241,8 @@ const WriteModal = (props) => {
         })
         .catch((error) => {
           setInSeries("");
-          toast.error(error.response.detail, {
+          setSelectSeries("");
+          toast.error(`${error.response.detail}`, {
             autoClose: 3000,
           });
           console.log(error.response);
