@@ -27,6 +27,7 @@ const CommentsItem = ({
 
   const handleModify = () => {
     setIsModifying(true);
+    setModifyInput(item.rootComment.content);
     console.log(item.rootComment.content);
   };
 
