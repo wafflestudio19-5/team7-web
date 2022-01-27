@@ -19,6 +19,9 @@ import SeriesPage from "./Component/SeriesPage/SeriesPage";
 import SavesPage from "./Component/SavesPage/SavesPage";
 import SavePostPage from "./Component/SavePostPage/SavePostPage";
 
+
+import SeriesItemPage from "./Component/SeriesPage/SeriesItemPage/SeriesItemPage";
+
 function App() {
 
     return (
@@ -31,6 +34,7 @@ function App() {
                 <Route path="/@:userId" component={ProfilePage} exact={true}/>
                 <Route path="/@:userId/about" component={AboutPage} exact={true}/>
                 <Route path="/@:userId/series" component={SeriesPage} exact={true}/>
+                <Route path="/@:userId/series/:name/:id" component={SeriesItemPage} exact={true}/>
                 <Route path="/post/@:userId/:postUrl" component={PostPage} exact={true}/>
                 <Route path="/register" component={RegisterPage} exact={true}/>
                 <Route path="/email-login" component={LoginPage} exact={true}/>

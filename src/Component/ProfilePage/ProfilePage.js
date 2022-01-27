@@ -95,6 +95,7 @@ const ProfilePage = () => {
           setUserLink(response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId)
         })
         .catch((error) => {
+          history.replace("/error");
           console.log(error);
         });
 
