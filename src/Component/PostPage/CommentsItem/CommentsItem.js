@@ -67,7 +67,7 @@ const CommentsItem = ({
       setIsReplying(false);
     } else {
       setShowReply(true);
-      if (item.replies.length === 0) {
+      if (item.replies.count === 0) {
         setIsReplying(true);
       }
     }
