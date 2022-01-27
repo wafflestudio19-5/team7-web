@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
-      <change afterPath="$PROJECT_DIR$/src/Component/SeriesPage/SeriesItemPage/SeriesItemPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/SeriesPage/SeriesItemPage/SeriesItemPage.js.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProfilePage/ProfilePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/SeriesPage/SeriesPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SeriesPage/SeriesPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Context/SessionContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/SessionContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SeriesPage/SeriesItemPage/SeriesItemPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SeriesPage/SeriesItemPage/SeriesItemPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +107,7 @@
       <workItem from="1643105907958" duration="13371000" />
       <workItem from="1643266148101" duration="3740000" />
       <workItem from="1643270406389" duration="3307000" />
-      <workItem from="1643297603847" duration="1850000" />
+      <workItem from="1643297603847" duration="2187000" />
     </task>
     <task id="LOCAL-00001" summary="new git repo">
       <created>1641561603979</created>
