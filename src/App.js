@@ -16,6 +16,8 @@ import TagTotalPage from "./Component/TagTotalPage/TagTotalPage";
 import UpdatePage from "./Component/UpdatePage/UpdatePage";
 import AboutPage from "./Component/AboutPage/AboutPage";
 import SeriesPage from "./Component/SeriesPage/SeriesPage";
+import SavesPage from "./Component/SavesPage/SavesPage";
+import SavePostPage from "./Component/SavePostPage/SavePostPage";
 
 function App() {
 
@@ -37,6 +39,8 @@ function App() {
                 <Route path={"/tag/:tagUrl"} component={TagPage} exact={true}/>
                 <Route path={"/tag"} component={TagTotalPage} exact={true}/>
                 <Route path={"/update/@:userId/:postUrl"} component={UpdatePage} exact={true}/>
+                <Route path={"/saves"} component={SavesPage} exact={true}/>
+                <Route path={"/save/:saveToken"} component={SavePostPage} exact={true}/>
                 <Route path="/" component={MainPage} exact={true}/>
                 <Redirect to="/"/>
             </Switch>

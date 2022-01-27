@@ -1,0 +1,138 @@
+@media (min-width: 769px) {
+  .search-item {
+    width: 768px;
+    height: auto;
+    left: calc((100% - 768px) / 2);
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border-bottom: 2px solid gainsboro;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-item {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+    font-size: 25px;
+    margin-top: 1rem;
+    border-bottom: 2px solid gainsboro;
+    cursor: pointer;
+  }
+}
+
+.search-user-info-href {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-info {
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+
+  .user-profile {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    margin-right: 1rem;
+    background: rgb(248, 249, 250);
+    object-fit: cover;
+    border-radius: 1.5rem;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
+  }
+  .user-name {
+    height: auto;
+    width: auto;
+    font-size: 0.875rem;
+    color: rgb(33, 37, 41);
+    font-weight: bold;
+    margin-left: 5px;
+    text-decoration: none;
+  }
+}
+
+.thumbnail {
+  position: relative;
+  top: 20px;
+  width: 100%;
+  height: 50%;
+  //border: solid;
+
+  .thumbnail-img {
+    width: 100%;
+    height: 400px;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.post-mainsection {
+  position: relative;
+  top: 15px;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  height: auto;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  word-break: keep-all;
+}
+
+.summary {
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: rgb(73, 80, 87);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.tags {
+  height: auto;
+  width: 100%;
+
+  .tags-contents{
+    margin-bottom: 0.875rem;
+    background: rgb(241, 243, 245);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: auto;
+    border-radius: 1rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 0.875rem;
+    color: rgb(12, 166, 120);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
+.sub-info {
+  height: auto;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: rgb(134, 142, 150);
+}

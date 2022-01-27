@@ -136,6 +136,7 @@ const tagData = [
   "asadfasdf",
 ];
 
+
 const PostPage = () => {
   const params = useParams();
   const history = useHistory();
@@ -203,10 +204,11 @@ const PostPage = () => {
   }, [updateComment]);
 
   const handlePostModify = () => {
-    history.push({
-      pathname: `/update/@${params.userId}/${params.postUrl}`,
-      props: { postContent: postResponse.content },
-    });
+    history.push(`/update/@${params.userId}/${params.postUrl}`);
+    // history.push({
+    //   pathname: `/update/@${params.userId}/${params.postUrl}`,
+    //   props: { postContent: postResponse.content },
+    // });
   };
 
   const handlePostDelete = () => {

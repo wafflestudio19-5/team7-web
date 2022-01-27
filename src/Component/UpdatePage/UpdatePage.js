@@ -56,7 +56,7 @@ const dataFormat = {
     },
 };
 
-const UpdatePage = ({location}) => {
+const UpdatePage = () => {
 
     const { handleLogout, isLogin, userId, token } = useSessionContext();
 
@@ -69,7 +69,7 @@ const UpdatePage = ({location}) => {
     const [postResponse, setPostResponse] = useState(dataFormat);
 
     const [title, setTitle] = useState("");
-    const [contents, setContents] = useState(location.postContent);
+    const [contents, setContents] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [tag, setTag] = useState("");
     const [tagList, setTagList] = useState([]);
@@ -128,7 +128,7 @@ const UpdatePage = ({location}) => {
             })
             .then((response) => {
                 console.log(response);
-                console.log(location.postContent);
+                localStorage.setItem("tempContent", response.data.content);
                 setPostResponse(response.data);
                 setTitle(response.data.title);
                 setContents(response.data.content);
@@ -219,7 +219,7 @@ const UpdatePage = ({location}) => {
                         initialEditType="markdown"
                         ref={editorRef}
                         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
-                        initialValue={location.postContent}
+                        initialValue={localStorage.getItem("tempContent")}
                         onChange={onChangeEditorTextHandler}
                     />
                     <div className="btn-box">
