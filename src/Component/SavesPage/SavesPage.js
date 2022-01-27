@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import "./SavesPage.scss";
 import Header from "../MainPage/Header/Header";
-import SearchItem from "../SearchPage/SearchItem/SearchItem";
+import SavePostItem from "./SavePostItem/SavePostItem";
 import { BiLoaderAlt } from "react-icons/bi";
 import {useSessionContext} from "../../Context/SessionContext";
 
@@ -19,6 +19,7 @@ const SavesPage = () => {
     const [isSearching, setIsSearching] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [searchPageNumber, setSearchPageNumber] = useState(0);
+    const [updateSavePost, setUpdateSavePost] = useState();
 
     useEffect(() => {
         axios
@@ -47,7 +48,7 @@ const SavesPage = () => {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, [updateSavePost]);
 
     const handleScroll = () => {
         const scrollTop = savesPageRef.current.scrollTop;
@@ -98,7 +99,7 @@ const SavesPage = () => {
                         )}
                         <ul className="saves-post-list">
                             {savesPostList.map((item) => (
-                                <SearchItem item={item} key={item.id} />
+                                <SavePostItem item={item} key={item.id} setUpdateSavePost={setUpdateSavePost} />
                             ))}
                         </ul>
                     </>

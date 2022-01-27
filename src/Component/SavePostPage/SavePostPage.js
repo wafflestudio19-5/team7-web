@@ -2,7 +2,7 @@ import React, { useState, createRef, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 // import './WritePage.scss';
-import UpdateModal from "./UpdateModal/UpdateModal";
+import WriteModal from "../WritePage/WriteModal/WriteModal";
 import ErrorPageWrite from "../WritePage/ErrorPage-Write/ErrorPage-Write";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
@@ -24,8 +24,6 @@ import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineEnter } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useSessionContext } from "../../Context/SessionContext";
-import PostItem from "../MainPage/PostItem/PostItem";
-import WriteModal from "../WritePage/WriteModal/WriteModal";
 
 const dataFormat = {
   comments: [],

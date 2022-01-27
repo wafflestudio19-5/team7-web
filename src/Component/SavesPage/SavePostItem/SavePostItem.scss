@@ -136,3 +136,19 @@
   margin-bottom: 20px;
   color: rgb(134, 142, 150);
 }
+
+.save-post-delete-button {
+  float: right;
+  margin-right: 0.5rem;
+  padding: 0px;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: inherit;
+  cursor: pointer;
+  color: rgb(134, 142, 150);
+}
+
+.save-post-delete-button:hover {
+  color: #383838;
+}

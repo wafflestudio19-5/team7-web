@@ -1,13 +1,37 @@
 import "./SavePostItem.scss";
 import { useHistory } from "react-router-dom";
 import dayjs from "dayjs";
+import { toast } from "react-toastify";
+import axios from "axios";
+import {useSessionContext} from "../../../Context/SessionContext";
 
-const SavePostItem = ({ item }) => {
+const SavePostItem = ({ item, setUpdateSavePost }) => {
     const history = useHistory();
+
+    const { token } = useSessionContext();
 
     const handlePostClick = () => {
         history.push("/save/" + item.token);
     };
+
+    const handleDelete = () => {
+        axios
+            .delete(
+                `/api/v1/save?id=${item.token}`,
+                {
+                    headers: {
+                        Authentication: token
+                    }
+                }
+            )
+            .then((response) => {
+                toast.success("임시 글이 삭제되었습니다.");
+                setUpdateSavePost(dayjs());
+            })
+            .catch((error) => {
+                toast.error("임시 글 삭제 오류");
+            });
+    }
 
     return (
         <div className="search-item">
@@ -41,9 +65,11 @@ const SavePostItem = ({ item }) => {
                 </div>
 
                 <div className="sub-info">
-                    {dayjs(item.createAt).format("YYYY년 MM월 DD일")} · {item.comments}
-                    개의 댓글
+                    {dayjs(item.createAt).format("YYYY년 MM월 DD일")}
+
+                    <button className={"save-post-delete-button"} onClick={handleDelete}>삭제</button>
                 </div>
+
             </div>
         </div>
     );
