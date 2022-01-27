@@ -18,8 +18,6 @@ import AboutPage from "./Component/AboutPage/AboutPage";
 import SeriesPage from "./Component/SeriesPage/SeriesPage";
 import SavesPage from "./Component/SavesPage/SavesPage";
 import SavePostPage from "./Component/SavePostPage/SavePostPage";
-
-
 import SeriesItemPage from "./Component/SeriesPage/SeriesItemPage/SeriesItemPage";
 
 function App() {

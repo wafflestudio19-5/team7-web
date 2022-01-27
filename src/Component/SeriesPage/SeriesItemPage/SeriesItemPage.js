@@ -27,7 +27,7 @@ const SeriesItemPage = () => {
 
     useEffect(() => {
         axios
-            .get(`/api/v1/user/@${params.userId}/series/${params.name}`, {
+            .get(`/api/v1/user/@${params.userId}/series/@${params.name}`, {
                 params: {
                 },
                 headers: {

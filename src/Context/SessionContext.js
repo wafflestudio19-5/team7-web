@@ -15,12 +15,12 @@ export const SessionProvider = ({ children }) => {
   );
   //const [isLogin, setIsLogin] = useState(true);
 
-  const [token, setToken] = useState(
+  /*const [token, setToken] = useState(
     localStorage.getItem("token") === null
       ? null
       : localStorage.getItem("token")
-  );
-  //const [token, setToken] = useState("Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDMzMTU5NjIsImlhdCI6MTY0MzI3OTk2MiwiZW1haWwiOiJoYW5keTkxMkBuYXZlci5jb20ifQ.ykwk6BbtvQ_svhVhUWU54QXSlqUXXtTuXefprvqc4JI");
+  );*/
+  const [token, setToken] = useState("Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDMzMTU5NjIsImlhdCI6MTY0MzI3OTk2MiwiZW1haWwiOiJoYW5keTkxMkBuYXZlci5jb20ifQ.ykwk6BbtvQ_svhVhUWU54QXSlqUXXtTuXefprvqc4JI");
 
   const [id, setId] = useState(
     localStorage.getItem("id") === null ? "" : localStorage.getItem("id")
