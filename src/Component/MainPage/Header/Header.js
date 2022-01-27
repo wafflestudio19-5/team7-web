@@ -46,6 +46,11 @@ const Header = ({ pageTitle }) => {
     setOption(false);
   };
 
+  const handleSaves = () => {
+    history.push("/saves");
+    setOption(false);
+  }
+
   if (
     window.location.pathname === "/" ||
     window.location.pathname === "/recent" ||
@@ -102,8 +107,11 @@ const Header = ({ pageTitle }) => {
             <div className="op-1" onClick={handleWaflog}>
               내 와플로그
             </div>
-            <div className="op-2" onClick={handleSetting}>설정</div>
-            <div className="op-3" onClick={handleLogOut}>
+            <div className="op-2" onClick={handleSaves}>
+              임시 글
+            </div>
+            <div className="op-3" onClick={handleSetting}>설정</div>
+            <div className="op-4" onClick={handleLogOut}>
               로그아웃
             </div>
           </div>

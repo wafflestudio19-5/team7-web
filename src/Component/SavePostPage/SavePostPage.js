@@ -1,9 +1,9 @@
 import React, { useState, createRef, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import "./WritePage.scss";
-import WriteModal from "./WriteModal/WriteModal";
-import ErrorPageWrite from "./ErrorPage-Write/ErrorPage-Write";
+import { useHistory, useParams } from "react-router-dom";
+// import './WritePage.scss';
+import WriteModal from "../WritePage/WriteModal/WriteModal";
+import ErrorPageWrite from "../WritePage/ErrorPage-Write/ErrorPage-Write";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
@@ -24,14 +24,44 @@ import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineEnter } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useSessionContext } from "../../Context/SessionContext";
-import PostItem from "../MainPage/PostItem/PostItem";
 
-const WritePage = () => {
+const dataFormat = {
+  comments: [],
+  content: "",
+  createdAt: "",
+  id: 0,
+  likes: 0,
+  nextPost: {},
+  prevPost: {},
+  seriesPosts: null,
+  tags: [],
+  thumbnail: "",
+  title: "",
+  url: "",
+  user: {
+    facebookId: "",
+    githubId: "",
+    homepage: "",
+    id: 0,
+    image: "",
+    name: "",
+    pageTitle: "",
+    publicEmail: "",
+    shortIntro: "",
+    twitterId: "",
+    userId: "",
+  },
+};
+
+const SavePostPage = () => {
   const { handleLogout, isLogin, userId, token } = useSessionContext();
 
   const titleRef = createRef();
   const editorRef = createRef();
   const history = useHistory();
+  const params = useParams();
+
+  const [postResponse, setPostResponse] = useState(dataFormat);
 
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
@@ -40,6 +70,7 @@ const WritePage = () => {
   const [tagList, setTagList] = useState([]);
   const [tagId, setTagId] = useState(0);
   const [imgTag, setImgTag] = useState([]);
+  const [urlId, setUrlId] = useState("");
 
   const onChangeEditorTextHandler = () => {
     setContents(editorRef.current.getInstance().getMarkdown());
@@ -50,23 +81,13 @@ const WritePage = () => {
   };
 
   const handleTagInput = (e) => {
-    const urlPattern = /^[a-zA-Zㄱ-힣0-9-_,][a-zA-Zㄱ-힣0-9-_, ]*$/;
-
-    if (e.target.value === "") {
-    } else if (!e.target.value.match(urlPattern)) {
-      toast.error("사용 불가능한 태그입니다.", {
-        autoClose: 3000,
-      });
-      return;
-    }
-
     if (e.target.value.substr(e.target.value.length - 1, 1) === ",") {
       const tagForm = {
         id: tagId,
-        tag: e.target.value.substr(0, e.target.value.length - 1),
+        name: e.target.value.substr(0, e.target.value.length - 1),
       };
 
-      if (tagList.some((tag) => tag.tag === tagForm.tag)) {
+      if (tagList.some((tag) => tag.name === tagForm.name)) {
         setTag("");
       } else {
         setTagList(tagList.concat(tagForm));
@@ -96,38 +117,81 @@ const WritePage = () => {
     console.log(tags);
 
     axios
-      .post(
-        `/api/v1/post`,
-        {
-          title: title,
-          content: contents,
-          tags: tags,
-          images: imgTag,
-        },
-        {
-          headers: {
-            Authentication: token,
-          },
-        }
-      )
-      .then((response) => {
-        history.push("");
-        toast.success("임시저장되었습니다.", { autoClose: 3000 });
-      })
-      .catch((error) => {
-        toast.error("임시저장에 실패했습니다.", {
-          autoClose: 3000,
+        .put(
+            `/api/v1/post`,
+            {
+              token: params.saveToken,
+              title: title,
+              content: contents,
+              tags: tags,
+              images: imgTag,
+            },
+            {
+              headers: {
+                Authentication: token,
+              },
+            }
+        )
+        .then((response) => {
+          history.push("");
+          toast.success("임시저장되었습니다.", { autoClose: 3000 });
+        })
+        .catch((error) => {
+          toast.error("임시저장에 실패했습니다.", {
+            autoClose: 3000,
+          });
+          toast.error(error.response.data.detail, {
+            autoClose: 3000,
+          });
+          console.log(error.response);
         });
-        toast.error(error.response.data.detail, {
-          autoClose: 3000,
-        });
-        console.log(error.response);
-      });
   };
 
   const handleSubmit = () => {
     setIsOpen(true);
   };
+
+  useEffect(() => {
+    console.log("SavePost Page");
+
+    axios
+      .get(`api/v1/save?id=${params.saveToken}`, {
+        headers: {
+          Authentication: token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("tempContent", response.data.content);
+        setPostResponse(response.data);
+        setTitle(response.data.title);
+        setContents(response.data.content);
+        setTagList(response.data.tags);
+        setTagId(response.data.tags.length);
+      })
+      .catch((error) => {
+        console.log(error);
+        history.push("/error"); // 백엔드 404 response 필요!!
+      });
+
+    // axios
+    //   .post(
+    //     `api/v1/post/token?url=${params.postUrl}`,
+    //     {},
+    //     {
+    //       headers: {
+    //         Authentication: token,
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     setUrlId(response.data.id);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     history.push("/error"); // 백엔드 404 response 필요!!
+    //   });
+  }, []);
 
   useEffect(() => {
     if (editorRef.current) {
@@ -184,7 +248,7 @@ const WritePage = () => {
                 key={item.id}
                 onClick={() => handleDeleteTag(item)}
               >
-                {item.tag}
+                {item.name}
               </div>
             ))}
             <input
@@ -203,12 +267,12 @@ const WritePage = () => {
             previewStyle="vertical"
             height="75vh"
             initialEditType="markdown"
-            placeholder="내용을 입력하세요."
             ref={editorRef}
             plugins={[
               colorSyntax,
               [codeSyntaxHighlight, { highlighter: Prism }],
             ]}
+            initialValue={localStorage.getItem("tempContent")}
             onChange={onChangeEditorTextHandler}
           />
           <div className="btn-box">
@@ -216,12 +280,10 @@ const WritePage = () => {
               <BiArrowBack className="out-icon" />
               <span>나가기</span>
             </button>
-
             <button className="submit-btn" onClick={handleSave}>
               임시저장
               <AiOutlineEnter className="submit-icon" />
             </button>
-
             <button className="submit-btn" onClick={handleSubmit}>
               업로드
               <AiOutlineEnter className="submit-icon" />
@@ -243,4 +305,4 @@ const WritePage = () => {
   );
 };
 
-export default WritePage;
+export default SavePostPage;
