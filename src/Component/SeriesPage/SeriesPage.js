@@ -179,7 +179,7 @@ const SeriesPage = () => {
                     <div className="series-wrapper">
                         {userSeries.map((item) => (
                             <div className="series-contents" key={item.id}>
-                                <a className="series-thumb">
+                                <a className="series-thumb" href={`/@${params.userId}/series/${item.name}/${item.id}`}>
                                     <div className="series-thumb-wrapper">
                                         {item.thumbnail === "" ?
                                             <img className="series-thumb-img" src="https://static.velog.io/static/media/series-thumbnail.4c53a750.svg"/>
@@ -189,7 +189,7 @@ const SeriesPage = () => {
                                     </div>
                                 </a>
                                 <h4 className="series-title">
-                                    <a className="series-title-href">{item.name}</a>
+                                    <a className="series-title-href" href={`/@${params.userId}/series/${item.name}/${item.id}`}>{item.name}</a>
                                 </h4>
                                 <div className="series-info">
                                     <span className="count">{item.postCount}개의 포스트</span>
