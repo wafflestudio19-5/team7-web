@@ -28,7 +28,7 @@ const SavesPage = () => {
                     page: 0,
                     size: 10,
                 },
-                header: {
+                headers: {
                     Authentication: token
                 }
             })
@@ -63,6 +63,9 @@ const SavesPage = () => {
                             page: searchPageNumber,
                             size: 10,
                         },
+                        headers: {
+                            Authentication: token
+                        }
                     })
                     .then((response) => {
                         setSavesPostList(savesPostList.concat(response.data.content));

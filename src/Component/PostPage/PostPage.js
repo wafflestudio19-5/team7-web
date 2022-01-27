@@ -171,6 +171,7 @@ const PostPage = () => {
       })
       .then((response) => {
         console.log(response);
+        localStorage.setItem("tempContent", response.data.content);
         setIsLoading(false);
         setPostResponse(response.data);
         setPostId(response.data.id);
