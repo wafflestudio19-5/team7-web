@@ -179,7 +179,7 @@ const SeriesPage = () => {
                     <div className="series-wrapper">
                         {userSeries.map((item) => (
                             <div className="series-contents" key={item.id}>
-                                <a className="series-thumb" href={`/@${params.userId}/series/${item.name}/${item.id}`}>
+                                <a className="series-thumb" href={`/@${params.userId}/series/${item.name}`}>
                                     <div className="series-thumb-wrapper">
                                         {item.thumbnail === "" ?
                                             <img className="series-thumb-img" src="https://static.velog.io/static/media/series-thumbnail.4c53a750.svg"/>

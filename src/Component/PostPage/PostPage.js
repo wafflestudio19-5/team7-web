@@ -390,11 +390,13 @@ const PostPage = () => {
 
             {seriesPosts !== null ? (
               <div className={"post-series"}>
-                <h2 className={"post-series-title"}>시리즈</h2>
+                <a className={"post-series-title-href"} href={`/@${postResponse.user.userId}/series/${postResponse.seriesName}`}>
+                  <h2 className={"post-series-title"}>{postResponse.seriesName}</h2>
+                </a>
                 <ol className="post-series-list">
                   {seriesPosts.map((item) => (
                     <a
-                      className={"post-series-href"}
+                      className={"post-series-item-href"}
                       href={`/post/@${postResponse.user.userId}/${item.url}`}
                     >
                       <li
@@ -519,7 +521,7 @@ const PostPage = () => {
               )}
 
               {postResponse.user.homepage !== "" ? (
-                <a className={"href-sns"} href={postResponse.user.homepage}>
+                <a className={"href-sns"} href={"https://"+postResponse.user.homepage}>
                   <AiFillHome className={"icon-sns"} />
                 </a>
               ) : (
