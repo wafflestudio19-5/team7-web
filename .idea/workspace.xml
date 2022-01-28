@@ -4,44 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="error modified">
-      <change beforePath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" afterDir="false" />
+    <list default="true" id="fc87f4e0-1bc6-44a2-8afb-7b01db70d73f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/AboutPage/AboutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/AboutPage/AboutPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="SCSS File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/PostPage/PostPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Context/SessionContext.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SettingPage/SettingPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/LoginPage/LoginPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/RegisterPage/RegisterPage.js" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectId" id="23N4zDqzczstMt1Qypi7Sftv172" />
+  <component name="ProjectId" id="24Kb0hjkRL9Sd4mIyXwf7ftvB0U" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,142 +26,27 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Component/SettingPage" />
-    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/Component/SettingPage" />
-      <recent name="$PROJECT_DIR$/src/Component/WritePage" />
-    </key>
-  </component>
-  <component name="RunManager" selected="npm.npm start">
-    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
-      <method v="2" />
-    </configuration>
-    <configuration name="npm start" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8d61b2d2-9c01-4366-a42a-fbc870b9a12c" name="Changes" comment="" />
-      <created>1641561470357</created>
+      <changelist id="fc87f4e0-1bc6-44a2-8afb-7b01db70d73f" name="Changes" comment="" />
+      <created>1643382004332</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1641561470357</updated>
-      <workItem from="1641561472471" duration="6509000" />
-      <workItem from="1641607889161" duration="283000" />
-      <workItem from="1641804129486" duration="1203000" />
-      <workItem from="1641837170974" duration="902000" />
-      <workItem from="1641888584781" duration="5546000" />
-      <workItem from="1641912480130" duration="1014000" />
-      <workItem from="1641914037468" duration="3290000" />
-      <workItem from="1642003696059" duration="19096000" />
-      <workItem from="1642179637539" duration="527000" />
-      <workItem from="1642322683233" duration="4535000" />
-      <workItem from="1642344914841" duration="2467000" />
-      <workItem from="1642384791219" duration="25162000" />
-      <workItem from="1642672330947" duration="4942000" />
-      <workItem from="1642694357975" duration="5598000" />
-      <workItem from="1642954414945" duration="1379000" />
-      <workItem from="1643105907958" duration="13371000" />
-      <workItem from="1643266148101" duration="3740000" />
-      <workItem from="1643270406389" duration="3307000" />
-      <workItem from="1643297603847" duration="2187000" />
+      <updated>1643382004332</updated>
+      <workItem from="1643382006798" duration="1734000" />
     </task>
-    <task id="LOCAL-00001" summary="new git repo">
-      <created>1641561603979</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1641561603979</updated>
-    </task>
-    <task id="LOCAL-00002" summary="new git repo">
-      <created>1641561649137</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1641561649137</updated>
-    </task>
-    <task id="LOCAL-00003" summary="comment modify">
-      <created>1641563303399</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1641563303399</updated>
-    </task>
-    <task id="LOCAL-00004" summary="social login links">
-      <created>1641564194079</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1641564194079</updated>
-    </task>
-    <task id="LOCAL-00005" summary="error modified">
-      <created>1641564355751</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1641564355751</updated>
-    </task>
-    <task id="LOCAL-00006" summary="merge modification">
-      <created>1641580309020</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1641580309020</updated>
-    </task>
-    <task id="LOCAL-00007" summary="error modified">
-      <created>1642609325795</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1642609325795</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="new git repo" />
-    <MESSAGE value="comment modify" />
-    <MESSAGE value="social login links" />
-    <MESSAGE value="merge modification" />
-    <MESSAGE value="pagination search posts increased" />
-    <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
-    <MESSAGE value="bug" />
-    <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;src/Component/LoginModal/LoginModal.js" />
-    <MESSAGE value="error modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="error modified" />
   </component>
 </project>
