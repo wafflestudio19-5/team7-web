@@ -150,15 +150,39 @@
 
       .about-write{
         display: block;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        width: 768px;
 
-        .about-long{
-          font-size: 1.125rem;
-          color: rgb(34, 36, 38);
-          line-height: 1.7;
-          letter-spacing: -0.004em;
+        .about-write-wrapper{
+          display: block;
           word-break: keep-all;
           overflow-wrap: break-word;
+          width: 768px;
+
+          .about-wrapper{
+            font-size: 1.125rem;
+            width: 768px;
+            color: rgb(34, 36, 38);
+            line-height: 1.7;
+            letter-spacing: -0.004em;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            display: block;
+
+            .about-long{
+              width: 100%;
+              font-size: 1.125rem;
+              color: rgb(34, 36, 38);
+              line-height: 1.7;
+              letter-spacing: -0.004em;
+              word-break: keep-all;
+              overflow-wrap: break-word;
+            }
+          }
         }
+
+
 
         .about-btn-wrapper{
           display: flex;
