@@ -16,7 +16,7 @@ const ReplyItem = ({
   setIsLoginOpen,
   parentCommentId,
 }) => {
-  const { id, token } = useSessionContext();
+  const { id, token, isLogin } = useSessionContext();
 
   const [isReplyModifying, setIsReplyModifying] = useState(false);
   const [modifyInput, setModifyInput] = useState(replyItem.content);
@@ -54,7 +54,7 @@ const ReplyItem = ({
         toast.success("댓글이 수정되었습니다.");
       })
       .catch((error) => {
-        toast.error("댓글 수정 오류");
+        toast.error("댓글이 비어있는지 확인해주세요.");
       });
   };
 
@@ -91,8 +91,13 @@ const ReplyItem = ({
       })
       .catch((error) => {
         console.log(error);
-        toast.error("먼저 로그인해주세요.");
-        setIsLoginOpen(true);
+        if(isLogin === false) {
+          toast.error("먼저 로그인해주세요.");
+          setIsLoginOpen(true);
+        }
+        else{
+          toast.error("댓글이 비어있는지 확인해주세요.");
+        }
       });
   };
 
