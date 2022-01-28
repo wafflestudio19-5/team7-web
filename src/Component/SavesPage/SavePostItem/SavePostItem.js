@@ -19,13 +19,12 @@ const SavePostItem = ({ item, setUpdateSavePost }) => {
             })
             .then((response) => {
                 localStorage.setItem("tempContent", response.data.content);
+                history.push("/save/" + item.token);
             })
             .catch((error) => {
                 console.log(error);
                 history.push("/error"); // 백엔드 404 response 필요!!
             });
-
-        history.push("/save/" + item.token);
     };
 
     const handleDelete = () => {
