@@ -97,7 +97,29 @@ const AboutPage = () => {
         setLongValue(e.target.value);
     }
     const handleSaveLong = () => {
+        axios
+            .put(`/api/v1/user/title`,{
+                longIntro : longValue
+            },{
+                headers: {
+                    Authentication: token,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                setUserLong(longValue);
+                toast.success("저장을 성공했습니다.", {
+                    autoClose: 3000,
+                });
+            })
+            .catch((error) => {
+                toast.error("저장을 실패했습니다.", {
+                    autoClose: 3000,
+                });
+                console.log(error);
+            });
         setLongWrite(false);
+
     }
     const handleWriteLong = () => {
         setLongWrite(true);
@@ -183,7 +205,7 @@ const AboutPage = () => {
                             null
                         }
                         {eH ?
-                            <a className="user-link-social" target="_blank" href={`${userHome}`} >
+                            <a className="user-link-social" target="_blank" href={`https://${userHome}`} >
                                 <AiFillHome className="user-social-icon"/>
                             </a>
                             :
@@ -230,7 +252,7 @@ const AboutPage = () => {
                                     }
                                     <div>
                                         <pre className="about-long">
-                                            {longValue}
+                                            {userLong}
                                         </pre>
                                     </div>
                                 </div>
