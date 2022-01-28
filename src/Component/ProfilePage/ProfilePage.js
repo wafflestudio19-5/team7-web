@@ -116,7 +116,7 @@ const ProfilePage = () => {
         .catch((error) => {
           console.log(error);
         });
-  },[]);
+  },[params.userId]);
 
   useEffect(() => {
 
