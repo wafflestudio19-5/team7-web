@@ -236,6 +236,7 @@ const SettingPage = () => {
             .then((response) => {
                 console.log(response.data);
                 setUserPageTitle(newUserPageTitle);
+                setInTitle(false);
                 toast.success("페이지 제목이 변경되었습니다.", {
                     autoClose: 3000,
                 });
@@ -392,9 +393,9 @@ const SettingPage = () => {
                                             <div className="list-title">벨로그 제목</div>
                                             <div className="list-info">{userPageTitle}</div>
                                         </div>
-                                      <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
-                                        <div  className="btn-wrapper">
-                                            <button className="social-save" onClick={()=>setInTitle(true)}>수정</button>
+                                        <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
+                                        <div  className="title-btn-wrapper">
+                                            <button className="title-save" onClick={()=>setInTitle(true)}>수정</button>
                                         </div>
                                     </>
                                     )
@@ -406,9 +407,9 @@ const SettingPage = () => {
                                             </div>
                                             <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
 
-                                            <div  className="btn-wrapper">
-                                                <button className="social-cancel" onClick={()=>setInTitle(false)}>취소</button>
-                                                <button className="social-save" onClick={handleSaveTitle}>저장</button>
+                                            <div  className="title-btn-wrapper">
+                                                <button className="title-cancel" onClick={()=>setInTitle(false)}>취소</button>
+                                                <button className="title-save" onClick={handleSaveTitle}>저장</button>
                                             </div>
                                         </>)}
                             </div>
