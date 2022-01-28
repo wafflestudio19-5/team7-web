@@ -220,6 +220,51 @@
         box-sizing: inherit;
         border-top: 1px solid rgb(233, 236, 239);
 
+        .title-btn-wrapper{
+          margin-top: 1.5rem;
+          display: flex;
+          -webkit-box-pack: end;
+          justify-content: flex-end;
+
+          .title-cancel{
+            display: inline-flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            background: rgb(134, 142, 150);;
+            color: white;
+            border-radius: 4px;
+            padding: 0px 1.25rem;
+            height: 2rem;
+            font-size: 1rem;
+          }
+
+          .title-save{
+            display: inline-flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            background: rgb(18, 184, 134);
+            color: white;
+            border-radius: 4px;
+            padding: 0px 1.25rem;
+            height: 2rem;
+            font-size: 1rem;
+            margin-left: 0.5rem;
+          }
+        }
+
+
         .wrapper{
           display: flex;
 

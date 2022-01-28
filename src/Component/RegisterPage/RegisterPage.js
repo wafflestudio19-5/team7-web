@@ -74,6 +74,8 @@ const RegisterPage = () => {
           history.push("/");
         })
         .catch((error) => {
+          console.log(error.response);
+
           if (error.response.errorCode === 9011) {
             setRegisterError(3);
           }

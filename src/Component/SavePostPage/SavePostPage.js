@@ -154,6 +154,9 @@ const SavePostPage = () => {
   useEffect(() => {
     console.log("SavePost Page");
 
+    console.log(editorRef.current);
+
+
     axios
       .get(`api/v1/save?id=${params.saveToken}`, {
         headers: {
