@@ -386,40 +386,31 @@ const SettingPage = () => {
                         <div className="custom">
                             <div className="custom-list">
 
-                                <div className="list-style">
-                                    <div className="list-title">벨로그 제목</div>
-                                    <div className="list-info">{userPageTitle}</div>
-                                </div>
-                                <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
-                                <div  className="btn-wrapper">
-                                    <button className="social-save" onClick={setInTitle(true)}>수정</button>
-                                </div>
+                                {!inTitle ? (
+                                    <>
+                                        <div className="list-style">
+                                            <div className="list-title">벨로그 제목</div>
+                                            <div className="list-info">{userPageTitle}</div>
+                                        </div>
+                                      <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
+                                        <div  className="btn-wrapper">
+                                            <button className="social-save" onClick={()=>setInTitle(true)}>수정</button>
+                                        </div>
+                                    </>
+                                    )
+                                    :(
+                                        <>
+                                            <div className="list-style">
+                                                <div className="list-title">벨로그 제목</div>
+                                                <input className="social-input" placeholder="페이지 제목을 입력하세요." value={newUserPageTitle} onChange={(e) => setNewUserPageTitle(e.target.value)}/>
+                                            </div>
+                                            <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
 
-                                {/*{!inTitle ? (*/}
-                                {/*    <>*/}
-                                {/*        <div className="list-style">*/}
-                                {/*            <div className="list-title">벨로그 제목</div>*/}
-                                {/*            <div className="list-info">{userPageTitle}</div>*/}
-                                {/*        </div>*/}
-                                {/*      <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>*/}
-                                {/*        <div  className="btn-wrapper">*/}
-                                {/*            <button className="social-save" onClick={setInTitle(true)}>수정</button>*/}
-                                {/*        </div>*/}
-                                {/*    </>*/}
-                                {/*    )*/}
-                                {/*    :(*/}
-                                {/*        <>*/}
-                                {/*            <div className="list-style">*/}
-                                {/*                <div className="list-title">벨로그 제목</div>*/}
-                                {/*                <input className="social-input" placeholder="페이지 제목을 입력하세요." value={newUserPageTitle} onChange={(e) => setNewUserPageTitle(e.target.value)}/>*/}
-                                {/*            </div>*/}
-                                {/*            <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>*/}
-
-                                {/*            <div  className="btn-wrapper">*/}
-                                {/*                <button className="social-cancel" onClick={setInTitle(false)}>취소</button>*/}
-                                {/*                <button className="social-save" onClick={handleSaveTitle}>저장</button>*/}
-                                {/*            </div>*/}
-                                {/*        </>)}*/}
+                                            <div  className="btn-wrapper">
+                                                <button className="social-cancel" onClick={()=>setInTitle(false)}>취소</button>
+                                                <button className="social-save" onClick={handleSaveTitle}>저장</button>
+                                            </div>
+                                        </>)}
                             </div>
                             {inSocial ?
                                 <div className="custom-list">
@@ -453,8 +444,8 @@ const SettingPage = () => {
                                                         <AiFillHome className="social-icon"/>
                                                         <input className="social-input" placeholder="홈페이지 주소를 입력하세요. (https:// 등 포함!)" value={userHome} onChange={handleHome}/>
                                                     </div>
-                                                    <div  className="btn-wrapper">
-                                                        <button className="social-cancel" onClick={setInSocial(false)}>취소</button>
+                                                    <div className="btn-wrapper">
+                                                        <button className="social-cancel" onClick={()=>setInSocial(false)}>취소</button>
                                                         <button className="social-save" onClick={handleSaveSocial}>저장</button>
                                                     </div>
                                                 </div>

@@ -91,7 +91,7 @@ const ReplyItem = ({
       })
       .catch((error) => {
         console.log(error);
-        if(isLogin === false) {
+        if(token === null) {
           toast.error("먼저 로그인해주세요.");
           setIsLoginOpen(true);
         }

@@ -57,7 +57,7 @@ const CommentsItem = ({
         toast.success("댓글이 수정되었습니다.");
       })
       .catch((error) => {
-        toast.error("댓글 수정 오류");
+        toast.error("댓글이 비어있는지 확인해주세요.");
       });
   };
 
@@ -106,7 +106,8 @@ const CommentsItem = ({
       })
       .catch((error) => {
         console.log(error);
-        if(isLogin === false) {
+
+        if(token === null) {
           toast.error("먼저 로그인해주세요.");
           setIsLoginOpen(true);
         }
