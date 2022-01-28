@@ -24,16 +24,15 @@ const RegisterPage = () => {
     setRegisterToken(URLSearch.get("token"));
 
     axios
-        .post(`/api/v1/auth/verify`, {
-          email: URLSearch.get("email"),
-          token: URLSearch.get("token")
-        })
-        .then((response) => {
-        })
-        .catch((error) => {
-          history.push("/");
-          toast.error("잘못된 접근입니다.");
-        });
+      .post(`/api/v1/auth/verify`, {
+        email: URLSearch.get("email"),
+        token: URLSearch.get("token"),
+      })
+      .then((response) => {})
+      .catch((error) => {
+        history.push("/");
+        toast.error("잘못된 접근입니다.");
+      });
   }, []);
 
   const handleCancel = () => {
@@ -65,12 +64,22 @@ const RegisterPage = () => {
           token: registerToken,
         })
         .then((response) => {
-          handleLogin(response.data.user.id, response.data.user.userId, response.data.user.image, response.data.token);
+          handleLogin(
+            response.data.user.id,
+            response.data.user.userId,
+            response.data.user.image,
+            response.data.token
+          );
           toast.success("회원가입이 완료되었습니다.");
           history.push("/");
         })
         .catch((error) => {
-          setRegisterError(4);
+          if (error.errorCode === 9011) {
+            setRegisterError(3);
+          }
+          else {
+            setRegisterError(4);
+          }
         });
     }
   };
@@ -144,6 +153,8 @@ const RegisterPage = () => {
             ? "이름을 입력해주세요."
             : registerError === 2
             ? "아이디는 3~16자의 알파벳,숫자,혹은 - _ 으로 이루어져야 합니다."
+            : registerError === 3
+            ? "이미 존재하는 아이디입니다."
             : "에러 발생!"}
         </div>
 

@@ -20,7 +20,10 @@ const SettingPage = () => {
     const [userImg, setUserCImg] = useState("");
     const [userName, setUserName] = useState("testName");
     const [userShort, setUserShort] = useState("");
+    const [userPageTitle, setUserPageTitle] = useState("");
 
+    const [inTitle, setInTitle] = useState(false);
+    const [newUserPageTitle, setNewUserPageTitle] = useState("");
 
     const [inSocial, setInSocial] = useState(false);
     const [eE,setEE] = useState(false);
@@ -41,10 +44,12 @@ const SettingPage = () => {
     const [thumbImgFile, setThumbImgFile] = useState(null); //파일
     const [thumbUrl, setThumbUrl] = useState("");
 
-    const setSetting = (image, name, short, email, home, g, f, t, aEmail) => {
+    const setSetting = (image, name, short, pageTitle, email, home, g, f, t, aEmail) => {
         setUserCImg(image);
         setUserName(name);
         setUserShort(short);
+        setUserPageTitle(pageTitle);
+        setNewUserPageTitle(pageTitle);
         setUserEmail(email);
         setUserHome(home);
         setUserGit(g);
@@ -219,6 +224,30 @@ const SettingPage = () => {
         setUserName(e.target.value);
     }
 
+    const handleSaveTitle = () => {
+        axios
+            .put(`/api/v1/user/title`,{
+                    title: newUserPageTitle
+                },{
+                    headers: {
+                        Authentication: token,
+                    },
+                })
+            .then((response) => {
+                console.log(response.data);
+                setUserPageTitle(newUserPageTitle);
+                toast.success("페이지 제목이 변경되었습니다.", {
+                    autoClose: 3000,
+                });
+            })
+            .catch((error) => {
+                toast.error("변경을 실패했습니다.", {
+                    autoClose: 3000,
+                });
+                console.log(error);
+            });
+    }
+
 
     const handleInSocial = () => {
         setInSocial(true);
@@ -278,7 +307,7 @@ const SettingPage = () => {
                         toast.success("저장을 성공했습니다.", {
                             autoClose: 3000,
                         });
-                        setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId, response.data.email);
+                        setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.pageTitle, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId, response.data.email);
                         console.log(response.data);
                     })
                     .catch((error) => {
@@ -309,7 +338,7 @@ const SettingPage = () => {
                 },
             })
             .then((response) => {
-                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId, response.data.email);
+                setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.pageTitle, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId, response.data.email);
                 console.log(response.data);
             })
             .catch((error) => {
@@ -356,11 +385,31 @@ const SettingPage = () => {
                         </div>
                         <div className="custom">
                             <div className="custom-list">
-                                <div className="list-style">
-                                    <div className="list-title">벨로그 제목</div>
-                                    <div className="list-info">{userId}</div>
-                                </div>
-                                <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
+                                {!inTitle ? (
+                                    <>
+                                        <div className="list-style">
+                                            <div className="list-title">벨로그 제목</div>
+                                            <div className="list-info">{userPageTitle}</div>
+                                        </div>
+                                      <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
+                                        <div  className="btn-wrapper">
+                                            <button className="social-save" onClick={setInTitle(true)}>수정</button>
+                                        </div>
+                                    </>
+                                    )
+                                    :(
+                                        <>
+                                            <div className="list-style">
+                                                <div className="list-title">벨로그 제목</div>
+                                                <input className="social-input" placeholder="페이지 제목을 입력하세요." value={newUserPageTitle} onChange={(e) => setNewUserPageTitle(e.target.value)}/>
+                                            </div>
+                                            <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
+
+                                            <div  className="btn-wrapper">
+                                                <button className="social-cancel" onClick={setInSocial(false)}>취소</button>
+                                                <button className="social-save" onClick={handleSaveTitle}>저장</button>
+                                            </div>
+                                        </>)}
                             </div>
                             {inSocial ?
                                 <div className="custom-list">
@@ -395,6 +444,7 @@ const SettingPage = () => {
                                                         <input className="social-input" placeholder="홈페이지 주소를 입력하세요." value={userHome} onChange={handleHome}/>
                                                     </div>
                                                     <div  className="btn-wrapper">
+                                                        <button className="social-cancel" onClick={setInSocial(false)}>취소</button>
                                                         <button className="social-save" onClick={handleSaveSocial}>저장</button>
                                                     </div>
                                                 </div>

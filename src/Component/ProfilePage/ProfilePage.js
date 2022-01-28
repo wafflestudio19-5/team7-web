@@ -25,6 +25,7 @@ const ProfilePage = () => {
   const [userImg, setUserImg] = useState("");
   const [userShort, setUserShort] = useState("");
   const [userPost, setUserPost] = useState([]);
+  const [userPageTitle, setUserPageTitle] = useState("");
   const [postPageNumber, setPostPageNumber] = useState(0);
 
   const [eE,setEE] = useState(false);
@@ -92,6 +93,7 @@ const ProfilePage = () => {
           setUserName(response.data.name);
           setUserImg(response.data.image);
           setUserShort(response.data.shortIntro);
+          setUserPageTitle(response.data.pageTitle);
           setUserLink(response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId)
         })
         .catch((error) => {
@@ -172,7 +174,7 @@ const ProfilePage = () => {
     }
 
 
-  }, [params]);
+  }, [params.userId]);
 
   const handleWord = (e) => {
     if(searchTag !== ""){
@@ -247,7 +249,7 @@ const ProfilePage = () => {
 
   return (
     <div className="profilepage" ref={postPageRef} onScroll={handleScroll}>
-      <Header pageTitle={`${params.userId}.log`} />
+      <Header pageTitle={userPageTitle} />
       <div className="all-container">
         <div className="main-profile">
           <div className="user-info">

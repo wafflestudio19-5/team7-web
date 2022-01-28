@@ -313,6 +313,24 @@
                   -webkit-box-pack: end;
                   justify-content: flex-end;
 
+                  .social-cancel{
+                    display: inline-flex;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    cursor: pointer;
+                    outline: none;
+                    border: none;
+                    background: rgb(134, 142, 150);;
+                    color: white;
+                    border-radius: 4px;
+                    padding: 0px 1.25rem;
+                    height: 2rem;
+                    font-size: 1rem;
+                  }
+
                   .social-save{
                     display: inline-flex;
                     -webkit-box-align: center;
@@ -329,6 +347,7 @@
                     padding: 0px 1.25rem;
                     height: 2rem;
                     font-size: 1rem;
+                    margin-left: 0.5rem;
                   }
                 }
               }
