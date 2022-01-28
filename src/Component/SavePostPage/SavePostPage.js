@@ -111,7 +111,7 @@ const SavePostPage = () => {
     const tags = [];
 
     for (const i in tagList) {
-      tags.push(tagList[i].tag);
+      tags.push(tagList[i].name);
     }
 
     console.log(tags);
