@@ -403,7 +403,7 @@ const SettingPage = () => {
                                         <>
                                             <div className="list-style">
                                                 <div className="list-title">벨로그 제목</div>
-                                                <input className="social-input" placeholder="페이지 제목을 입력하세요." value={newUserPageTitle} onChange={(e) => setNewUserPageTitle(e.target.value)}/>
+                                                <input className="title-input" placeholder="페이지 제목을 입력하세요." value={newUserPageTitle} onChange={(e) => setNewUserPageTitle(e.target.value)}/>
                                             </div>
                                             <div className="explanation">개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.</div>
 

@@ -166,6 +166,7 @@ const SavePostPage = () => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("tempContent", response.data.content);
+        editorRef.current.props.initialValue = response.data.content;
         setPostResponse(response.data);
         setTitle(response.data.title);
         setContents(response.data.content);
