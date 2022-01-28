@@ -23,9 +23,26 @@ const SeriesItemPage = () => {
 
     const [order, setOrder] = useState(true);
 
+    const [userPageTitle, setUserPageTitle] = useState("");
+
     const [userSeriesPostList, setUserSeriesPostList] = useState([]);
 
     useEffect(() => {
+
+        axios
+            .get(`/api/v1/user/@${params.userId}`, {
+                headers: {
+                    Authentication: token,
+                },
+                params: {},
+            })
+            .then((response) => {
+                setUserPageTitle(response.data.pageTitle);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
         axios
             .get(`/api/v1/user/@${params.userId}/series/${params.name}`, {
                 params: {
@@ -55,7 +72,7 @@ const SeriesItemPage = () => {
 
     return(
         <div className="series-item-page">
-            <Header pageTitle={`${params.userId}.log`} />
+            <Header pageTitle={userPageTitle} pageUser={params.userId} />
 
             <div className="series-page-wrapper">
                 <div className="series-contents-wrapper">
