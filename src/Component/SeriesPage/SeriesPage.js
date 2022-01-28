@@ -17,6 +17,7 @@ const SeriesPage = () => {
     const [userName, setUserName] = useState("");
     const [userImg, setUserImg] = useState("");
     const [userShort, setUserShort] = useState("");
+    const [userPageTitle, setUserPageTitle] = useState("");
 
     const [eE,setEE] = useState(false);
     const [eG,setEG] = useState(false);
@@ -82,6 +83,7 @@ const SeriesPage = () => {
                 setUserName(response.data.name);
                 setUserImg(response.data.image);
                 setUserShort(response.data.shortIntro);
+                setUserPageTitle(response.data.pageTitle);
                 setUserLink(response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId)
             })
             .catch((error) => {
@@ -102,7 +104,7 @@ const SeriesPage = () => {
 
     return (
         <div className="profilepage">
-            <Header pageTitle={`${params.userId}.log`} />
+            <Header pageTitle={userPageTitle} pageUser={params.userId} />
             <div className="all-container">
                 <div className="main-profile">
                     <div className="user-info">
