@@ -27,7 +27,7 @@ const SeriesItemPage = () => {
 
     useEffect(() => {
         axios
-            .get(`/api/v1/user/@${params.userId}/series/@${params.name}`, {
+            .get(`/api/v1/user/@${params.userId}/series/${params.name}`, {
                 params: {
                 },
                 headers: {
@@ -44,6 +44,15 @@ const SeriesItemPage = () => {
         history.push(``)
     }
 
+    const handleUpOrder = () => {
+        setOrder(false);
+        setUserSeriesPostList(userSeriesPostList.reverse());
+    }
+    const handleDownOrder = () => {
+        setOrder(true);
+        setUserSeriesPostList(userSeriesPostList.reverse());
+    }
+
     return(
         <div className="series-item-page">
             <Header pageTitle={`${params.userId}.log`} />
@@ -56,18 +65,18 @@ const SeriesItemPage = () => {
                     <section className="series-contents-list">
                         <div className="series-menubar-wrapper">
                             <div className="series-menubar">
-                                <button className="change">수정</button>
-                                <button className="delete">삭제</button>
+                                {/*<button className="change">수정</button>
+                                <button className="delete">삭제</button>*/}
                             </div>
                         </div>
                         <div className="order">
                             {order ?
-                                <button className="order-btn">
+                                <button className="order-btn" onClick={handleUpOrder}>
                                     <BiUpArrowAlt className="up"/>
                                     <span className="order-name">오름차순</span>
                                 </button>
                             :
-                                <button className="order-btn">
+                                <button className="order-btn" onClick={handleDownOrder}>
                                     <BiDownArrowAlt className="down"/>
                                     <span className="order-name">내림차순</span>
                                 </button>
