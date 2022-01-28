@@ -18,7 +18,7 @@ const CommentsItem = ({
   setIsLoginOpen,
 }) => {
   const history = useHistory();
-  const { id, token } = useSessionContext();
+  const { id, token, isLogin } = useSessionContext();
   const [isModifying, setIsModifying] = useState(false);
   const [modifyInput, setModifyInput] = useState(item.rootComment.content);
   const [showReply, setShowReply] = useState(false);
@@ -106,8 +106,13 @@ const CommentsItem = ({
       })
       .catch((error) => {
         console.log(error);
-        toast.error("먼저 로그인해주세요.");
-        setIsLoginOpen(true);
+        if(isLogin === false) {
+          toast.error("먼저 로그인해주세요.");
+          setIsLoginOpen(true);
+        }
+        else{
+          toast.error("댓글이 비어있는지 확인해주세요.");
+        }
       });
   };
 
