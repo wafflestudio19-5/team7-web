@@ -443,7 +443,10 @@ const SettingPage = () => {
                                                     </div>
                                                     <div className="social-list">
                                                         <AiFillHome className="social-icon"/>
-                                                        <input className="social-input" placeholder="홈페이지 주소를 입력하세요. (https:// 등 포함!)" value={userHome} onChange={handleHome}/>
+                                                        <div className="facebook-div">
+                                                            <span>https://</span>
+                                                            <input className="social-input" placeholder="홈페이지 주소를 입력하세요. (https:// 제외)" value={userHome} onChange={handleHome}/>
+                                                        </div>
                                                     </div>
                                                     <div className="btn-wrapper">
                                                         <button className="social-cancel" onClick={()=>setInSocial(false)}>취소</button>

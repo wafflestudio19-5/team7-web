@@ -346,12 +346,21 @@
   padding-bottom: 2rem;
 }
 
-.post-series-title{
-  margin: 2rem;
-  color: rgb(73, 80, 87)
+.post-series-title-href {
+  color: rgb(73, 80, 87);
+  text-decoration: none;
 }
 
-.post-series-href {
+.post-series-title{
+  margin: 2rem;
+  color: rgb(73, 80, 87);
+}
+
+.post-series-title:hover{
+  text-decoration: underline;
+}
+
+.post-series-item-href {
   color: #4b4b4b;
   text-decoration: none;
 }
