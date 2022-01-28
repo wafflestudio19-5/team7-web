@@ -290,7 +290,7 @@ const PostPage = () => {
 
   return (
     <div className="postpage">
-      <Header pageTitle={postResponse.user.pageTitle} />
+      <Header pageTitle={postResponse.user.pageTitle} pageUser={postResponse.user.userId} />
 
       {isLoading ? (
         <div className="loading-section">

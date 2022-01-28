@@ -7,7 +7,7 @@ import LoginModal from "../../LoginModal/LoginModal";
 import "@fontsource/source-code-pro";
 import { useSessionContext } from "../../../Context/SessionContext";
 
-const Header = ({ pageTitle }) => {
+const Header = ({ pageTitle, pageUser }) => {
   const { handleLogout, isLogin, userId, userImg } = useSessionContext();
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState(false);
@@ -27,7 +27,7 @@ const Header = ({ pageTitle }) => {
     history.push("");
   };
   const handlePageTitle = () => {
-    history.push("/@"+userId);
+    history.push("/@"+pageUser);
   };
   const handleLogOut = () => {
     setOption(false);

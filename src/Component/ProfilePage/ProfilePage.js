@@ -250,7 +250,7 @@ const ProfilePage = () => {
 
   return (
     <div className="profilepage" ref={postPageRef} onScroll={handleScroll}>
-      <Header pageTitle={userPageTitle} />
+      <Header pageTitle={userPageTitle} pageUser={params.userId}/>
       <div className="all-container">
         <div className="main-profile">
           <div className="user-info">
