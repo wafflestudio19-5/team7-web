@@ -254,7 +254,7 @@ const AboutPage = () => {
                         :
                         <div className="about-write">
                             {eL ?
-                                <div>
+                                <div className="about-write-wrapper">
                                     {isMe ?
                                         <div className="about-btn-wrapper">
                                             <button className="about-btn" onClick={handleWriteLong}>수정하기</button>
@@ -262,10 +262,10 @@ const AboutPage = () => {
                                         :
                                         null
                                     }
-                                    <div>
-                                        <pre className="about-long">
+                                    <div className="about-wrapper">
+                                        <div className="about-long">
                                             {userLong}
-                                        </pre>
+                                        </div>
                                     </div>
                                 </div>
                                 :

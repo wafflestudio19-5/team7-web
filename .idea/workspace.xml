@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc87f4e0-1bc6-44a2-8afb-7b01db70d73f" name="Changes" comment="header href bug fixed">
+    <list default="true" id="fc87f4e0-1bc6-44a2-8afb-7b01db70d73f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,20 +14,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Component/SearchPage/SearchPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SettingPage/SettingPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/SocialLogin/SocialLogin.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/LoginPage/LoginPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/MainPage/Header/Header.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Context/SessionContext.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/LoginModal/LoginModal.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/RecentPage/RecentPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/PostPage/PostPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WritePage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/RegisterPage/RegisterPage.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Component/WritePage/WriteModal/WriteModal.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="24Kb0hjkRL9Sd4mIyXwf7ftvB0U" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -47,23 +33,6 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.start" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,90 +41,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643382004332</updated>
-      <workItem from="1643382006798" duration="1734000" />
-      <workItem from="1643389505607" duration="4469000" />
+      <workItem from="1643382006798" duration="3621000" />
     </task>
-    <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown">
-      <created>1643386364678</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1643386364678</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown">
-      <created>1643386409441</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1643386409441</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown">
-      <created>1643386414902</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1643386414902</updated>
-    </task>
-    <task id="LOCAL-00004" summary="postpage series style modified">
-      <created>1643386912625</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1643386912625</updated>
-    </task>
-    <task id="LOCAL-00005" summary="postpage series style modified + save bug fixed">
-      <created>1643388200028</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1643388200028</updated>
-    </task>
-    <task id="LOCAL-00006" summary="seriespage bottom space">
-      <created>1643388408756</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1643388408756</updated>
-    </task>
-    <task id="LOCAL-00007" summary="postpage homepage href + seriespage url modified">
-      <created>1643391464765</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1643391464766</updated>
-    </task>
-    <task id="LOCAL-00008" summary="header href bug fixed">
-      <created>1643393121878</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1643393121878</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge branch 'master' of https://github.com/wafflestudio19-5/team7-web into dev/postpage/markdown" />
-    <MESSAGE value="postpage series style modified" />
-    <MESSAGE value="postpage series style modified + save bug fixed" />
-    <MESSAGE value="seriespage bottom space" />
-    <MESSAGE value="postpage homepage href + seriespage url modified" />
-    <MESSAGE value="header href bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="header href bug fixed" />
   </component>
 </project>
