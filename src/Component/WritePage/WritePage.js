@@ -97,7 +97,7 @@ const WritePage = () => {
 
     axios
       .post(
-        `/api/v1/post`,
+        `/api/v1/save`,
         {
           title: title,
           content: contents,
