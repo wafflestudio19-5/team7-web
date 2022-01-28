@@ -76,7 +76,7 @@ const RegisterPage = () => {
         .catch((error) => {
           console.log(error.response);
 
-          if (error.response.errorCode === 9011) {
+          if (error.response.data.errorCode === 9011) {
             setRegisterError(3);
           }
           else {
