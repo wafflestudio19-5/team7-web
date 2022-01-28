@@ -27,7 +27,7 @@ const Header = ({ pageTitle }) => {
     history.push("");
   };
   const handlePageTitle = () => {
-    history.push("/@"+pageTitle.substr(0,pageTitle.length-4));
+    history.push("/@"+userId);
   };
   const handleLogOut = () => {
     setOption(false);
