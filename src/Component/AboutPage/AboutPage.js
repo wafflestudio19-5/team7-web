@@ -98,7 +98,7 @@ const AboutPage = () => {
     }
     const handleSaveLong = () => {
         axios
-            .put(`/api/v1/user/title`,{
+            .put(`/api/v1/user/about`,{
                 longIntro : longValue
             },{
                 headers: {
