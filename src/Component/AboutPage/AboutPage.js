@@ -97,27 +97,37 @@ const AboutPage = () => {
         setLongValue(e.target.value);
     }
     const handleSaveLong = () => {
-        axios
-            .put(`/api/v1/user/about`,{
-                longIntro : longValue
-            },{
-                headers: {
-                    Authentication: token,
-                },
-            })
-            .then((response) => {
-                console.log(response.data);
-                setUserLong(longValue);
-                toast.success("저장을 성공했습니다.", {
-                    autoClose: 3000,
-                });
-            })
-            .catch((error) => {
-                toast.error("저장을 실패했습니다.", {
-                    autoClose: 3000,
-                });
-                console.log(error);
+        if(longValue.length > 255){
+            toast.error("255자를 초과하였습니다.", {
+                autoClose: 3000,
             });
+            return;
+        }
+        else{
+            axios
+                .put(`/api/v1/user/about`,{
+                    longIntro : longValue
+                },{
+                    headers: {
+                        Authentication: token,
+                    },
+                })
+                .then((response) => {
+                    console.log(response.data);
+                    setUser(response.data.id, response.data.longIntro);
+                    setUserLong(longValue);
+                    toast.success("저장을 성공했습니다.", {
+                        autoClose: 3000,
+                    });
+                })
+                .catch((error) => {
+                    toast.error("저장을 실패했습니다.", {
+                        autoClose: 3000,
+                    });
+                    console.log(error);
+                });
+        }
+
         setLongWrite(false);
 
     }
@@ -233,7 +243,7 @@ const AboutPage = () => {
                             <div className="about-input-wrapper">
                                 <textarea
                                     className="about-input"
-                                    placeholder={"당신은 어떤 사람인가요? 당신에 대해서 알려주세요"}
+                                    placeholder={"당신은 어떤 사람인가요? 당신에 대해서 알려주세요 (255자 이내)"}
                                     value={longValue}
                                     onChange={handleLong}
                                 />
