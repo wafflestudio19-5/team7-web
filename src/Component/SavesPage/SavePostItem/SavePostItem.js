@@ -11,6 +11,20 @@ const SavePostItem = ({ item, setUpdateSavePost }) => {
     const { token } = useSessionContext();
 
     const handlePostClick = () => {
+        axios
+            .get(`api/v1/save?id=${item.token}`, {
+                headers: {
+                    Authentication: token
+                },
+            })
+            .then((response) => {
+                localStorage.setItem("tempContent", response.data.content);
+            })
+            .catch((error) => {
+                console.log(error);
+                history.push("/error"); // 백엔드 404 response 필요!!
+            });
+
         history.push("/save/" + item.token);
     };
 
@@ -63,13 +77,11 @@ const SavePostItem = ({ item, setUpdateSavePost }) => {
                 {/*        </a>*/}
                 {/*    ))}*/}
                 {/*</div>*/}
+            </div>
 
-                <div className="sub-info">
-                    {dayjs(item.createAt).format("YYYY년 MM월 DD일")}
-
-                    <button className={"save-post-delete-button"} onClick={handleDelete}>삭제</button>
-                </div>
-
+            <div className="sub-info">
+                {dayjs(item.createAt).format("YYYY년 MM월 DD일")}
+                <button className={"save-post-delete-button"} onClick={handleDelete}>삭제</button>
             </div>
         </div>
     );
