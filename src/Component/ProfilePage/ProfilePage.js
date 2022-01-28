@@ -117,7 +117,7 @@ const ProfilePage = () => {
         .catch((error) => {
           console.log(error);
         });
-  },[params.userId]);
+  },[params]);
 
   useEffect(() => {
 
@@ -175,7 +175,7 @@ const ProfilePage = () => {
     }
 
 
-  }, [params.userId]);
+  }, [params]);
 
   const handleWord = (e) => {
     if(searchTag !== ""){
