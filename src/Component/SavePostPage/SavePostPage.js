@@ -118,7 +118,7 @@ const SavePostPage = () => {
 
     axios
         .put(
-            `/api/v1/post`,
+            `/api/v1/save`,
             {
               token: params.saveToken,
               title: title,
