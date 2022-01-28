@@ -38,6 +38,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 
 import MarkdownPreview from "@uiw/react-markdown-preview";
+import SearchItem from "../SearchPage/SearchItem/SearchItem";
 // import MDEditor from '@uiw/react-md-editor';
 
 const dataFormat = {
@@ -136,7 +137,6 @@ const tagData = [
   "asadfasdf",
 ];
 
-
 const PostPage = () => {
   const params = useParams();
   const history = useHistory();
@@ -156,6 +156,7 @@ const PostPage = () => {
   const [isLike, setIsLike] = useState(false);
   const [isPostDeleteOpen, setIsPostDeleteOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [seriesPosts, setSeriesPosts] = useState([]);
 
   const currentUrl = window.location.href;
 
@@ -177,6 +178,7 @@ const PostPage = () => {
         setPostId(response.data.id);
         setCommentsCount(response.data.comments.count);
         setCommentsList(response.data.comments.contents);
+        setSeriesPosts(response.data.seriesPosts);
 
         if (isLogin === true) {
           axios
@@ -290,7 +292,10 @@ const PostPage = () => {
 
   return (
     <div className="postpage">
-      <Header pageTitle={postResponse.user.pageTitle} pageUser={postResponse.user.userId} />
+      <Header
+        pageTitle={postResponse.user.pageTitle}
+        pageUser={postResponse.user.userId}
+      />
 
       {isLoading ? (
         <div className="loading-section">
@@ -383,6 +388,32 @@ const PostPage = () => {
               <div />
             )}
 
+            {seriesPosts !== null ? (
+              <div className={"post-series"}>
+                <h2 className={"post-series-title"}>시리즈</h2>
+                <ol className="post-series-list">
+                  {seriesPosts.map((item) => (
+                    <a
+                      className={"post-series-href"}
+                      href={`/post/@${postResponse.user.userId}/${item.url}`}
+                    >
+                      <li
+                        className={
+                          item.url === params.postUrl
+                            ? "post-series-item-selected"
+                            : "post-series-item"
+                        }
+                      >
+                        {item.title}
+                      </li>
+                    </a>
+                  ))}
+                </ol>
+              </div>
+            ) : (
+              <div />
+            )}
+
             {/*<ReactMarkdown*/}
             {/*  className="post-content"*/}
             {/*  remarkPlugins={[*/}
@@ -427,7 +458,6 @@ const PostPage = () => {
             {/*    value={postResponse.content}*/}
             {/*    // onChange={setPostContent}*/}
             {/*/>*/}
-
           </div>
 
           <div className="post-user-section">
