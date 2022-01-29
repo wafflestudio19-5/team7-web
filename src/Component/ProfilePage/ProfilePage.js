@@ -8,6 +8,7 @@ import axios from "axios";
 import { IoIosSearch } from "react-icons/io";
 import { AiTwotoneMail, AiOutlineGithub, AiOutlineTwitter, AiFillFacebook, AiFillHome } from "react-icons/ai";
 import {useSessionContext} from "../../Context/SessionContext";
+import {BiLoaderAlt} from "react-icons/bi";
 
 const ProfilePage = () => {
   const params = useParams();
@@ -41,6 +42,8 @@ const ProfilePage = () => {
 
   const [tagMenuList, setTagMenuList] = useState([]);
   const [totalTag, setTotalTag] = useState("");
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const setUserLink = (email, home, g, f, t) => {
     setUserEmail(email);
@@ -130,13 +133,14 @@ const ProfilePage = () => {
             params: {
               keyword: word,
               page: 0,
-              size: 6,
+              size: 10,
             },
           })
           .then((response) => {
             console.log(response.data);
             setUserPost([]);
             setUserPost(response.data.content);
+            setIsLoading(false);
             if (response.data.last === true) {
               setPostPageNumber(null);
             } else {
@@ -156,13 +160,14 @@ const ProfilePage = () => {
             params: {
               keyword: word,
               page: 0,
-              size: 6,
+              size: 10,
             },
           })
           .then((response) => {
             console.log(response.data);
             setUserPost([]);
             setUserPost(response.data.content);
+            setIsLoading(false);
             if (response.data.last === true) {
               setPostPageNumber(null);
             } else {
@@ -201,7 +206,7 @@ const ProfilePage = () => {
                 params: {
                   keyword: word,
                   page: postPageNumber,
-                  size: 6,
+                  size: 10,
                 },
               })
               .then((response) => {
@@ -223,7 +228,7 @@ const ProfilePage = () => {
                 params: {
                   keyword: word,
                   page: postPageNumber,
-                  size: 6,
+                  size: 10,
                 },
               })
               .then((response) => {
@@ -344,11 +349,17 @@ const ProfilePage = () => {
             </ul>
           </div>
         </div>
+        {isLoading ? (
+            <div className="loading-section">
+              <BiLoaderAlt className="loading-icon" />
+              <div className={"loading-text"}>로딩 중입니다.</div>
+            </div>
+        ) : (
         <ul className="userpost-list">
           {userPost.map((item) => (
             <UserPost item={item} userId={params.userId} key={item.id} />
           ))}
-        </ul>
+        </ul>)}
       </div>
     </div>
   );

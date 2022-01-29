@@ -7,6 +7,7 @@ import axios from "axios";
 import { IoIosSearch } from "react-icons/io";
 import { AiTwotoneMail, AiOutlineGithub, AiOutlineTwitter, AiFillFacebook, AiFillHome } from "react-icons/ai";
 import {useSessionContext} from "../../Context/SessionContext";
+import {BiLoaderAlt} from "react-icons/bi";
 
 const AboutPage = () => {
     const params = useParams();
@@ -36,6 +37,8 @@ const AboutPage = () => {
     const [longWrite, setLongWrite] = useState(false);
 
     const [longValue, setLongValue] = useState("");
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const setUser = (currentId, long) => {
         if(Number(currentId) === Number(id)){
@@ -162,6 +165,7 @@ const AboutPage = () => {
             .then((response) => {
                 console.log(response.data);
                 setUser(response.data.id, response.data.longIntro);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);
@@ -169,7 +173,7 @@ const AboutPage = () => {
     },[]);
 
     return (
-        <div className="profilepage">
+        <div className="aboutpage">
             <Header pageTitle={userPageTitle} pageUser={params.userId} />
             <div className="all-container">
                 <div className="main-profile">
@@ -236,6 +240,12 @@ const AboutPage = () => {
                         <a className="type-btn-on" href={`/@${params.userId}/about`}>소개</a>
                     </div>
                 </div>
+                {isLoading ? (
+                    <div className="loading-section">
+                        <BiLoaderAlt className="loading-icon" />
+                        <div className={"loading-text"}>로딩 중입니다.</div>
+                    </div>
+                ) : (
                 <div className="about">
                     {longWrite ?
                         <div className="about-write">
@@ -282,6 +292,7 @@ const AboutPage = () => {
                         </div>
                     }
                 </div>
+                    )}
             </div>
         </div>
     );

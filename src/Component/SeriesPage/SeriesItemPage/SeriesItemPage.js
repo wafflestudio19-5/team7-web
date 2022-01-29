@@ -4,7 +4,7 @@ import {useHistory, useLocation, useParams} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 import {useSessionContext} from "../../../Context/SessionContext";
 import axios from "axios";
-import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
+import {BiUpArrowAlt, BiDownArrowAlt, BiLoaderAlt} from "react-icons/bi";
 import PostItem from "../../MainPage/PostItem/PostItem";
 import dayjs from "dayjs";
 
@@ -26,6 +26,8 @@ const SeriesItemPage = () => {
     const [userPageTitle, setUserPageTitle] = useState("");
 
     const [userSeriesPostList, setUserSeriesPostList] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
 
@@ -54,6 +56,7 @@ const SeriesItemPage = () => {
             .then((response) => {
                 console.log(response.data);
                 setUserSeriesPostList(response.data.content);
+                setIsLoading(false);
             });
     },[]);
 
@@ -79,6 +82,13 @@ const SeriesItemPage = () => {
                     <label className="series-label">시리즈</label>
                     <h1 className="series-name">{params.name}</h1>
                     <div className="line"/>
+
+                    {isLoading ? (
+                        <div className="loading-section">
+                            <BiLoaderAlt className="loading-icon" />
+                            <div className={"loading-text"}>로딩 중입니다.</div>
+                        </div>
+                    ) : (<>
                     <section className="series-contents-list">
                         <div className="series-menubar-wrapper">
                             <div className="series-menubar">
@@ -99,6 +109,7 @@ const SeriesItemPage = () => {
                                 </button>
                             }
                         </div>
+
                         <div className="series-item-wrapper">
                             {userSeriesPostList.map((item) => (
                                 <div className="series-item" key={item.order} onClick={() => handleSeriesClick(item)}>
@@ -125,6 +136,7 @@ const SeriesItemPage = () => {
                             ))}
                         </div>
                     </section>
+                    </>)}
                 </div>
             </div>
         </div>
