@@ -12,7 +12,7 @@ const SavesPage = () => {
     const params = useParams();
     const savesPageRef = useRef({});
 
-    const { token } = useSessionContext();
+    const { token, isLogin } = useSessionContext();
 
     const [totalPostNumber, setTotalPostNumber] = useState(0);
     const [savesPostList, setSavesPostList] = useState([]);
@@ -20,6 +20,10 @@ const SavesPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [searchPageNumber, setSearchPageNumber] = useState(0);
     const [updateSavePost, setUpdateSavePost] = useState();
+
+    const handleReturnHome = () => {
+        history.push("");
+    };
 
     useEffect(() => {
         axios
@@ -81,6 +85,8 @@ const SavesPage = () => {
 
     return (
         <div className="savespage" ref={savesPageRef} onScroll={handleScroll}>
+
+            {isLogin ? (<>
             <Header pageTitle={"Waflog"} />
 
             <div className="saves-main-section">
@@ -107,7 +113,19 @@ const SavesPage = () => {
                         </ul>
                     </>
                 )}
-            </div>
+            </div></>):(
+
+            <div className="errorpage">
+                <img
+                    className="error-image"
+                    src="https://static.velog.io/static/media/undraw_page_not_found_su7k.7e3de5e9.svg"
+                    alt="error"
+                />
+                <div className={"text-nothing"}>로그인 이후 이용해주세요!</div>
+                <button className={"btn-returnhome"} onClick={handleReturnHome}>
+                    홈으로
+                </button>
+            </div>)}
         </div>
     );
 };
