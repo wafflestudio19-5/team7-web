@@ -82,15 +82,11 @@ const SavePostPage = () => {
 
   const handleTagInput = (e) => {
     if (e.target.value.substr(e.target.value.length - 1, 1) === ",") {
-      const tagForm = {
-        id: tagId,
-        name: e.target.value.substr(0, e.target.value.length - 1),
-      };
 
-      if (tagList.some((tag) => tag.name === tagForm.name)) {
+      if (tagList.some((tag) => tag === e.target.value.substr(0, e.target.value.length - 1))) {
         setTag("");
       } else {
-        setTagList(tagList.concat(tagForm));
+        setTagList(tagList.concat(e.target.value.substr(0, e.target.value.length - 1)));
         setTag("");
         setTagId(Number(tagId) + 1);
       }
@@ -100,7 +96,7 @@ const SavePostPage = () => {
   };
 
   const handleDeleteTag = (item) => {
-    setTagList(tagList.filter((tag) => tag.id !== item.id));
+    setTagList(tagList.filter((tag) => tag !== item));
   };
 
   const handleOut = () => {
@@ -111,7 +107,7 @@ const SavePostPage = () => {
     const tags = [];
 
     for (const i in tagList) {
-      tags.push(tagList[i].name);
+      tags.push(tagList[i]);
     }
 
     console.log(tags);
@@ -249,10 +245,9 @@ const SavePostPage = () => {
             {tagList.map((item) => (
               <div
                 className="tag-style"
-                key={item.id}
                 onClick={() => handleDeleteTag(item)}
               >
-                {item.name}
+                {item}
               </div>
             ))}
             <input
