@@ -284,13 +284,15 @@ const PostPage = () => {
             .post(
                 `/api/v1/post/commentNotification`,
                 {
-                  post_id : postId,
-                  comment_id : response.data.value
                 },
                 {
                   headers: {
                     Authentication: token,
                   },
+                  params : {
+                    post_id : postId,
+                    comment_id : response.data.value
+                  }
                 }
             )
             .then((response) => {
