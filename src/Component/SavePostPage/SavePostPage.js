@@ -129,7 +129,6 @@ const SavePostPage = () => {
             }
         )
         .then((response) => {
-          history.push("");
           toast.success("임시저장되었습니다.", { autoClose: 3000 });
         })
         .catch((error) => {
