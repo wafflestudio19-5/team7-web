@@ -55,6 +55,9 @@ const Header = ({ pageTitle, pageUser }) => {
     window.location.pathname === "/" ||
     window.location.pathname === "/recent" ||
     window.location.pathname === "/search"
+      || window.location.pathname === "/tag"
+      || window.location.pathname === "/setting"
+      || window.location.pathname === "/saves"
   ) {
     return (
       <div className="header">
