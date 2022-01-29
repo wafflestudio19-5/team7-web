@@ -86,9 +86,10 @@ const SavePostPage = () => {
       if (tagList.some((tag) => tag === e.target.value.substr(0, e.target.value.length - 1))) {
         setTag("");
       } else {
-        setTagList(tagList.concat(e.target.value.substr(0, e.target.value.length - 1)));
+        setTagList(tagList.concat([e.target.value.substr(0, e.target.value.length - 1)]));
         setTag("");
         setTagId(Number(tagId) + 1);
+        console.log(tagList);
       }
     } else {
       setTag(e.target.value);
@@ -109,6 +110,7 @@ const SavePostPage = () => {
     for (const i in tagList) {
       tags.push(tagList[i]);
     }
+
 
     console.log(tags);
 
