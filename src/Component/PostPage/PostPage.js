@@ -280,6 +280,24 @@ const PostPage = () => {
         console.log(response.data);
         toast.success("댓글이 작성되었습니다.");
 
+        axios
+            .post(
+                `/api/v1/post/${postId}/commentNotification?post_id=${postId}&comment_id=${response.data.value}`,
+                {
+                },
+                {
+                  headers: {
+                    Authentication: token,
+                  },
+                }
+            )
+            .then((response) => {
+              console.log(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
       })
       .catch((error) => {
         console.log(error);
