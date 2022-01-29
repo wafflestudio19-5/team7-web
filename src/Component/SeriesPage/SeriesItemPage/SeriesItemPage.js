@@ -61,7 +61,7 @@ const SeriesItemPage = () => {
     },[]);
 
     const handleSeriesClick = (item) => {
-        history.push(``)
+        history.push(`/post/@${params.userId}/${item.url}`)
     }
 
     const handleUpOrder = () => {
@@ -128,7 +128,7 @@ const SeriesItemPage = () => {
                                             }
                                         </a>
                                         <div className="series-info">
-                                            <p className="series-post-summary">summary</p>
+                                            <p className="series-post-summary">{item.summary}</p>
                                             <div className="series-post-date">{dayjs(item.createAt).format("YYYY년 MM월 DD일")}</div>
                                         </div>
                                     </section>
