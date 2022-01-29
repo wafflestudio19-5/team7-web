@@ -466,6 +466,54 @@
               font-size: 1rem;
             }
           }
+
+          .list-info-btn{
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+
+            .list-info-btn-title{
+              width: 14rem;
+
+              .btn-on{
+                margin-left: 30px;
+                display: inline-flex;
+                -webkit-box-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                justify-content: center;
+                font-weight: bold;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                background: rgb(18, 184, 134);
+                color: white;
+                border-radius: 4px;
+                padding: 0px 1.125rem;
+                height: 2.5rem;
+                font-size: 1.125rem;
+
+              }
+              .btn-off{
+                display: inline-flex;
+                -webkit-box-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                justify-content: center;
+                font-weight: bold;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                background: rgb(134, 142, 150);
+                color: white;
+                border-radius: 4px;
+                padding: 0px 1.125rem;
+                height: 2.5rem;
+                font-size: 1.125rem;
+
+              }
+            }
+          }
         }
 
         .explanation{
