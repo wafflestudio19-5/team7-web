@@ -24,6 +24,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineEnter } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useSessionContext } from "../../Context/SessionContext";
+import SavePostModal from "./SavePostModal/SavePostModal";
 
 const dataFormat = {
   comments: [],
@@ -289,7 +290,7 @@ const SavePostPage = () => {
               <AiOutlineEnter className="submit-icon" />
             </button>
           </div>
-          <WriteModal
+          <SavePostModal
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             title={title}
