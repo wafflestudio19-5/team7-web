@@ -8,6 +8,7 @@ import { IoIosSearch } from "react-icons/io";
 import { AiTwotoneMail, AiOutlineGithub, AiOutlineTwitter, AiFillFacebook, AiFillHome } from "react-icons/ai";
 import {useSessionContext} from "../../Context/SessionContext";
 import dayjs from "dayjs";
+import {BiLoaderAlt} from "react-icons/bi";
 
 const SeriesPage = () => {
     const params = useParams();
@@ -31,6 +32,8 @@ const SeriesPage = () => {
     const [userHome, setUserHome] = useState("");
 
     const [userSeries, setUserSeries] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const setUserLink = (email, home, g, f, t) => {
         setUserEmail(email);
@@ -98,12 +101,13 @@ const SeriesPage = () => {
             .then((response) => {
                 console.log(response.data);
                 setUserSeries(response.data.content);
+                setIsLoading(false);
             });
 
     },[]);
 
     return (
-        <div className="profilepage">
+        <div className="seriespage">
             <Header pageTitle={userPageTitle} pageUser={params.userId} />
             <div className="all-container">
                 <div className="main-profile">
@@ -170,6 +174,14 @@ const SeriesPage = () => {
                         <a className="type-btn" href={`/@${params.userId}/about`}>소개</a>
                     </div>
                 </div>
+
+                {isLoading ? (
+                    <div className="loading-section">
+                        <BiLoaderAlt className="loading-icon" />
+                        <div className={"loading-text"}>로딩 중입니다.</div>
+                    </div>
+                ) : (
+                <>
                 {userSeries.length === 0 ?
                     <div className="series-wrapper-empty">
                         <div className="series-empty-img">
@@ -201,7 +213,7 @@ const SeriesPage = () => {
                             </div>
                         ))}
                     </div>
-                }
+                }</>)}
             </div>
         </div>
     );
