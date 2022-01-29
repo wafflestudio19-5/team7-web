@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc87f4e0-1bc6-44a2-8afb-7b01db70d73f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PostPage/PostPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/SettingPage/SettingPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SettingPage/SettingPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
