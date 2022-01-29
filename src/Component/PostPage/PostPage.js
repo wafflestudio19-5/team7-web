@@ -282,7 +282,7 @@ const PostPage = () => {
 
         axios
             .post(
-                `/api/v1/post/${postId}/commentNotification`,
+                `/api/v1/post/commentNotification`,
                 {
                   post_id : postId,
                   comment_id : response.data.value
