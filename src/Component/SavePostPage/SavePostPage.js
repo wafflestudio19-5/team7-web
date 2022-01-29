@@ -100,7 +100,7 @@ const SavePostPage = () => {
   };
 
   const handleOut = () => {
-    history.replace("");
+    history.replace("/saves");
   };
 
   const handleSave = () => {
