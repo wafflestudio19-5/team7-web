@@ -37,6 +37,7 @@ const SettingPage = () => {
     const [userTwit, setUserTwit] = useState("");
     const [userHome, setUserHome] = useState("");
     const [userAccountEmail, setUserAccountEmail] = useState("");
+    const [userNotification, setUserNotification] = useState(false);
 
     const [writeShort, setWriteShort] = useState(false);
 
@@ -331,6 +332,58 @@ const SettingPage = () => {
         setIsDeleteOpen(true);
     }
 
+    const handleOn = () => {
+        axios
+            .put(`/api/v1/user/commentNotification`,{
+                    commentNotification : false
+                }
+                ,{
+                    headers: {
+                        Authentication: token,
+                    },
+                })
+            .then((response) => {
+                console.log(response.data);
+                toast.success("저장을 성공했습니다.", {
+                    autoClose: 3000,
+                });
+                setUserNotification(false);
+
+            })
+            .catch((error) => {
+                toast.error("저장을 실패했습니다.", {
+                    autoClose: 3000,
+                });
+                console.log(error);
+            });
+    }
+
+    const handleOff = () => {
+        axios
+            .put(`/api/v1/user/commentNotification`,{
+                    commentNotification : true
+                }
+                ,{
+                    headers: {
+                        Authentication: token,
+                    },
+                })
+            .then((response) => {
+                console.log(response.data);
+                toast.success("저장을 성공했습니다.", {
+                    autoClose: 3000,
+                });
+                setUserNotification(true);
+
+            })
+            .catch((error) => {
+                toast.error("저장을 실패했습니다.", {
+                    autoClose: 3000,
+                });
+                console.log(error);
+            });
+    }
+
     useEffect(() => {
         axios
             .get(`/api/v1/user/setting`, {
@@ -340,6 +393,7 @@ const SettingPage = () => {
             })
             .then((response) => {
                 setSetting(response.data.image, response.data.name, response.data.shortIntro, response.data.pageTitle, response.data.publicEmail, response.data.homepage, response.data.githubId, response.data.facebookId, response.data.twitterId, response.data.email);
+                setUserNotification(response.data.commentNotification);
                 console.log(response.data);
             })
             .catch((error) => {
@@ -522,6 +576,19 @@ const SettingPage = () => {
                                     <div className="list-info">{userAccountEmail}</div>
                                 </div>
                                 <div className="explanation">회원 인증 또는 시스템에서 발송하는 이메일을 수신하는 주소입니다.</div>
+                            </div>
+                            <div className="custom-list">
+                                <div className="list-style">
+                                    <div className="list-title">이메일 수신 설정</div>
+                                    <li className="list-info-btn">
+                                        <span className="list-info-btn-title">댓글 알림</span>
+                                        {userNotification ?
+                                            <button className="btn-on" onClick={handleOn}>ON</button>
+                                            :
+                                            <button className="btn-off" onClick={handleOff}>OFF</button>
+                                        }
+                                    </li>
+                                </div>
                             </div>
                             <div className="custom-list">
                                 <div className="list-style">

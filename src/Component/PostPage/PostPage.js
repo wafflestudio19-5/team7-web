@@ -277,7 +277,9 @@ const PostPage = () => {
         setCommentInput("");
         setCommentsCount(response.data.count);
         setCommentsList(response.data.contents);
+        console.log(response.data);
         toast.success("댓글이 작성되었습니다.");
+
       })
       .catch((error) => {
         console.log(error);
