@@ -2,6 +2,7 @@
 
 ## Waflog 와플로그
 ### velog 클론코딩 토이프로젝트 - Web Frontend
+https://waflog-web.kro.kr
 - Developed by 조형근, 한동엽
 - React.js
 <br/>
